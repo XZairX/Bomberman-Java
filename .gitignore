@@ -1,0 +1,4 @@
+// File to inform Git of files to be ignored
+
+.idea/
+BombermanGame.iml
