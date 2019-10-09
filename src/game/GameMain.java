@@ -17,6 +17,13 @@ public class GameMain {
                 objects.add(BlockTile.spawnBlockTile(row, column));
             }
         }
+        for (int row = 0; row < 13; row++) {
+            for (int column = 0; column < 11; column++) {
+                if (row % 2 == 1 && column % 2 == 1) {
+                    objects.add(BlockHard.spawnBlockHard(row, column));
+                }
+            }
+        }
     }
 
     public static void main(String[] args) throws Exception {

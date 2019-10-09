@@ -3,11 +3,11 @@ package game;
 import java.awt.Graphics2D;
 import java.awt.Color;
 
+import static game.Constants.TILE_OUTLINE_COLOUR;
 import static game.Constants.TILE_RADIUS;
 
 public class BlockTile extends GameObject {
     private static final Color TILE_COLOUR = Color.GREEN;
-    private static final Color TILE_OUTLINE_COLOUR = Color.BLACK;
 
     public BlockTile(int x, int y, double radius) {
         super(x, y, radius);
