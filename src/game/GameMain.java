@@ -26,8 +26,8 @@ public class GameMain {
                 }
 
                 // BlockSoft Row 02
-                if (column == 1 && row % 2 == 0 && row != 0 && row != 12
-                        || column == 9 && row % 2 == 0 && row != 0 && row != 12) {
+                if (column == 1 && row != 0 && row != 12 && row % 2 == 0
+                        || column == 9 && row != 0 && row != 12 && row % 2 == 0) {
                     objects.add(BlockSoft.spawnBlockSoft(row, column));
                 }
 

@@ -21,6 +21,11 @@ public class BlockSoft extends GameObject {
     }
 
     @Override
+    public void hit() {
+        super.hit();;
+    }
+
+    @Override
     public void draw(Graphics2D g) {
         g.setColor(TILE_COLOUR);
         g.fillRect(x, y, TILE_RADIUS * 2, TILE_RADIUS * 2);
