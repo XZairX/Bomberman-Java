@@ -30,16 +30,6 @@ public class BlockTile extends GameObject {
     // (13 tiles across, 11 tiles down)
     */
 
-    // For testing purposes
-    public static void printGameSpace() {
-        for (int row = 0; row < 13; row++) {
-            for (int column = 0; column < 11; column++) {
-                System.out.print("0" + "\t");
-            }
-            System.out.println();
-        }
-    }
-
     public static BlockTile spawnBlockTile(int x, int y) {
         x *= TILE_RADIUS * 2;
         y *= TILE_RADIUS * 2;

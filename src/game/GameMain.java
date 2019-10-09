@@ -15,10 +15,6 @@ public class GameMain {
         for (int row = 0; row < 13; row++) {
             for (int column = 0; column < 11; column++) {
                 objects.add(BlockTile.spawnBlockTile(row, column));
-            }
-        }
-        for (int row = 0; row < 13; row++) {
-            for (int column = 0; column < 11; column++) {
                 if (row % 2 == 1 && column % 2 == 1) {
                     objects.add(BlockHard.spawnBlockHard(row, column));
                 }
@@ -30,8 +26,6 @@ public class GameMain {
         GameMain game = new GameMain();
         GameView view = new GameView(game);
         new JEasyFrame(view, "Bomberman Game");
-
-        BlockTile.printGameSpace();
 
         while (true) {
             game.update();
