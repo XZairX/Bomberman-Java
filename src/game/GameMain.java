@@ -20,15 +20,17 @@ public class GameMain {
                 }
 
                 // BlockSoft Row 01
-                if (column == 0 && row >= 2 && row <= 10
-                        || column == 10 && row >= 2 && row <= 10) {
-                    objects.add(BlockSoft.spawnBlockSoft(row, column));
+                if (column == 0 || column == 10) {
+                    if (row >= 2 && row <= 10) {
+                        objects.add(BlockSoft.spawnBlockSoft(row, column));
+                    }
                 }
 
                 // BlockSoft Row 02
-                if (column == 1 && row != 0 && row != 12 && row % 2 == 0
-                        || column == 9 && row != 0 && row != 12 && row % 2 == 0) {
-                    objects.add(BlockSoft.spawnBlockSoft(row, column));
+                if (column == 1 || column == 9) {
+                    if (row != 0 && row != 12 && row % 2 == 0) {
+                        objects.add(BlockSoft.spawnBlockSoft(row, column));
+                    }
                 }
 
                 // BlockSoft Row 03
