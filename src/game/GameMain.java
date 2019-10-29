@@ -5,30 +5,29 @@ import utilities.JEasyFrame;
 import java.util.ArrayList;
 import java.util.List;
 
-import static game.Constants.DELAY;
-
 public class GameMain {
+    public List<GameObject> nonRemovableObjects;
     public List<GameObject> objects;
-    public List<GameObject> border;
 
     public GameMain() {
-        border = new ArrayList<GameObject>();
+        nonRemovableObjects = new ArrayList<GameObject>();
+        objects = new ArrayList<GameObject>();
 
+        // BlockHard Border
         for (int row = 0; row < 15; row++) {
             for (int column = 0; column < 13; column++) {
                 if (row == 0 || column == 0 || row == 14 || column == 12) {
-                    border.add(BlockHard.spawnBlockHard(row + 2, column + 2));
+                    nonRemovableObjects.add(BlockHard.spawnBlockHard(row + 2, column + 2));
                 }
             }
         }
 
-        objects = new ArrayList<GameObject>();
-
+        // BlockTile Game Space
         for (int row = 1; row < 14; row++) {
             for (int column = 1; column < 12; column++) {
-                objects.add(BlockTile.spawnBlockTile(row + 2, column + 2));
+                nonRemovableObjects.add(BlockTile.spawnBlockTile(row + 2, column + 2));
                 if (row % 2 == 0 && column % 2 == 0) {
-                    objects.add(BlockHard.spawnBlockHard(row + 2, column + 2));
+                    nonRemovableObjects.add(BlockHard.spawnBlockHard(row + 2, column + 2));
                 }
 
                 // BlockSoft Row 01
