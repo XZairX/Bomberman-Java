@@ -21,6 +21,11 @@ public class GameView extends JComponent {
         Graphics2D g = (Graphics2D) g0;
         g.setColor(BACKGROUND_COLOUR);
         g.fillRect(0, 0, getWidth(), getHeight());
+
+        for (GameObject object: game.border) {
+            object.draw(g);
+        }
+
         for (GameObject object : game.objects) {
             object.draw(g);
         }
