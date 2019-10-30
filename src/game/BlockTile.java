@@ -16,7 +16,7 @@ public class BlockTile extends GameObject {
     public static BlockTile spawnBlockTile(int x, int y) {
         x *= TILE_RADIUS * 2;
         y *= TILE_RADIUS * 2;
-        return new BlockTile(x, y, TILE_RADIUS);
+        return new BlockTile(x + TILE_RADIUS * 4, y + TILE_RADIUS * 4, TILE_RADIUS);
     }
 
     @Override

@@ -16,7 +16,7 @@ public class BlockHard extends GameObject {
     public static BlockHard spawnBlockHard(int x, int y) {
         x *= TILE_RADIUS * 2;
         y *= TILE_RADIUS * 2;
-        return new BlockHard(x, y, TILE_RADIUS);
+        return new BlockHard(x + TILE_RADIUS * 4, y + TILE_RADIUS * 4, TILE_RADIUS);
     }
 
     @Override

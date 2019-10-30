@@ -12,9 +12,7 @@ public class Constants {
 
     public static final Color TILE_OUTLINE_COLOUR = Color.BLACK;
 
-
-    // Sleep time between frames
+    // Sleep time between frames (May not be necessary)
     public static final int DELAY = 20; // milliseconds
     public static final double DT = DELAY / 1000.0; // seconds
 }
-

@@ -17,7 +17,7 @@ public class GameMain {
         for (int row = 0; row < 15; row++) {
             for (int column = 0; column < 13; column++) {
                 if (row == 0 || column == 0 || row == 14 || column == 12) {
-                    nonRemovableObjects.add(BlockHard.spawnBlockHard(row + 2, column + 2));
+                    nonRemovableObjects.add(BlockHard.spawnBlockHard(row, column));
                 }
             }
         }
@@ -25,39 +25,38 @@ public class GameMain {
         // BlockTile Game Space
         for (int row = 1; row < 14; row++) {
             for (int column = 1; column < 12; column++) {
-                nonRemovableObjects.add(BlockTile.spawnBlockTile(row + 2, column + 2));
+                nonRemovableObjects.add(BlockTile.spawnBlockTile(row, column));
                 if (row % 2 == 0 && column % 2 == 0) {
-                    nonRemovableObjects.add(BlockHard.spawnBlockHard(row + 2, column + 2));
+                    nonRemovableObjects.add(BlockHard.spawnBlockHard(row, column));
                 }
 
                 // BlockSoft Row 01
                 if (column == 1 || column == 11) {
                     if (row >= 3 && row <= 11) {
-                        objects.add(BlockSoft.spawnBlockSoft(row + 2, column + 2));
+                        objects.add(BlockSoft.spawnBlockSoft(row, column));
                     }
                 }
 
                 // BlockSoft Row 02
                 if (column == 2 || column == 10) {
                     if (row != 1 && row != 13 && row % 2 == 1) {
-                        objects.add(BlockSoft.spawnBlockSoft(row + 2, column + 2));
+                        objects.add(BlockSoft.spawnBlockSoft(row, column));
                     }
                 }
 
                 // BlockSoft Row 03
                 if (column % 2 == 1 && column != 1 && column != 11) {
-                    objects.add(BlockSoft.spawnBlockSoft(row + 2, column + 2));
+                    objects.add(BlockSoft.spawnBlockSoft(row, column));
                 }
 
                 // BlockSoft Row 04
                 if (column % 2 == 0 && column != 2 && column != 10) {
                     if (row % 2 == 1) {
-                        objects.add(BlockSoft.spawnBlockSoft(row + 2, column + 2));
+                        objects.add(BlockSoft.spawnBlockSoft(row, column));
                     }
                 }
             }
         }
-
     }
 
     public static void main(String[] args) throws Exception {
