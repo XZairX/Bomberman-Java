@@ -2,6 +2,7 @@ package game;
 
 import utilities.JEasyFrame;
 
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import static game.Constants.TILE_RADIUS;
 public class GameMain {
     public List<GameObject> nonRemovableObjects;
     public List<GameObject> objects;
+    public Player player1, player2, player3, player4;
 
     public GameMain() {
         nonRemovableObjects = new ArrayList<GameObject>();
@@ -80,7 +82,7 @@ public class GameMain {
     public static void main(String[] args) throws Exception {
         GameMain game = new GameMain();
         GameView view = new GameView(game);
-        new JEasyFrame(view, "Bomberman Game");
+        new JEasyFrame(view, "Bomberman Game");//.addKeyListener(new GameKeys(game.player1));
 
         while (true) {
             game.update();

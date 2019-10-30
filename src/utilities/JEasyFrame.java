@@ -24,10 +24,10 @@ public class JEasyFrame extends JFrame {
         panelWest.setBackground(BACKGROUND_COLOUR);
 
         // Placeholder buttons
-        panelNorth.add(new JButton("NORTH"));
-        panelEast.add(new JButton("EAST"));
-        panelSouth.add(new JButton("SOUTH"));
-        panelWest.add(new JButton("WEST"));
+        panelNorth.add(new JButton("NORTH")).setFocusable(false);
+        panelEast.add(new JButton("EAST")).setFocusable(false);
+        panelSouth.add(new JButton("SOUTH")).setFocusable(false);
+        panelWest.add(new JButton("WEST")).setFocusable(false);
 
         //getContentPane().add
         add(comp, BorderLayout.CENTER);
