@@ -2,7 +2,6 @@ package game;
 
 import utilities.JEasyFrame;
 
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +26,10 @@ public class GameMain {
         }
 
         // Position spawn references for players
-        Player player1 = new Player(1, 1, TILE_RADIUS, 1);
-        Player player2 = new Player (13, 11, TILE_RADIUS, 2);
-        Player player3 = new Player(13, 1, TILE_RADIUS, 3);
-        Player player4 = new Player (1, 11, TILE_RADIUS, 4);
+        player1 = new Player(1, 1, TILE_RADIUS, 1);
+        player2 = new Player (13, 11, TILE_RADIUS, 2);
+        player3 = new Player(13, 1, TILE_RADIUS, 3);
+        player4 = new Player (1, 11, TILE_RADIUS, 4);
 
         objects.add(player1);
         objects.add(player2);
@@ -82,7 +81,7 @@ public class GameMain {
     public static void main(String[] args) throws Exception {
         GameMain game = new GameMain();
         GameView view = new GameView(game);
-        new JEasyFrame(view, "Bomberman Game");//.addKeyListener(new GameKeys(game.player1));
+        new JEasyFrame(view, "Bomberman Game").addKeyListener(new GameKeys(game));
 
         while (true) {
             game.update();

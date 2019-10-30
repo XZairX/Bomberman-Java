@@ -17,8 +17,7 @@ public class Player extends GameObject {
     private int bomb = 1;
     private int fire = 1;
     private int skate = 4;
-    private double speed = skate * 10;
-
+    private double speed = skate * 0.9;
 
     public Player(int x, int y, double radius, int playerID) {
         super(x, y, radius);
@@ -29,16 +28,6 @@ public class Player extends GameObject {
         this.radius += TILE_RADIUS * 1.5;
         this.playerID = playerID;
     }
-
-    /*
-    //Method which may be later deleted due to redundancy
-    public static Player spawnPlayer(int x, int y, int playerID) {
-        x *= TILE_RADIUS * 2;
-        y *= TILE_RADIUS * 2;
-        return new Player(x + (TILE_RADIUS * 4 + (TILE_RADIUS / 4)),
-                y + (TILE_RADIUS * 4 + (TILE_RADIUS / 4)), (int)(TILE_RADIUS * 1.5), playerID);
-    }
-    */
 
     public void debugPowerUps() {
         System.out.println(
