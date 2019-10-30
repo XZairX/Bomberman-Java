@@ -5,6 +5,8 @@ import utilities.JEasyFrame;
 import java.util.ArrayList;
 import java.util.List;
 
+import static game.Constants.TILE_RADIUS;
+
 public class GameMain {
     public List<GameObject> nonRemovableObjects;
     public List<GameObject> objects;
@@ -21,6 +23,22 @@ public class GameMain {
                 }
             }
         }
+
+        // Position spawn references for players
+        Player player1 = new Player(1, 1, TILE_RADIUS, 1);
+        Player player2 = new Player (13, 11, TILE_RADIUS, 2);
+        Player player3 = new Player(13, 1, TILE_RADIUS, 3);
+        Player player4 = new Player (1, 11, TILE_RADIUS, 4);
+
+        objects.add(player1);
+        objects.add(player2);
+        objects.add(player3);
+        objects.add(player4);
+
+        player1.debugPowerUps();
+        player2.debugPowerUps();
+        player3.debugPowerUps();
+        player4.debugPowerUps();
 
         // BlockTile Game Space
         for (int row = 1; row < 14; row++) {
