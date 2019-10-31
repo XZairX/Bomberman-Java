@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.Dimension;
 
 public class GameView extends JComponent {
-    private final Color BACKGROUND_COLOUR = Color.GRAY;
+    private static final Color BACKGROUND_COLOUR = Color.GRAY;
 
     private GameMain game;
 

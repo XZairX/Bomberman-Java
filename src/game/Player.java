@@ -6,10 +6,10 @@ import java.awt.Graphics2D;
 import static game.Constants.TILE_RADIUS;
 
 public class Player extends GameObject {
-    private final Color PLAYER1_COLOUR = Color.BLUE;
-    private final Color PLAYER2_COLOUR = Color.RED;
-    private final Color PLAYER3_COLOUR = Color.MAGENTA;
-    private final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (BlockTile is currently using this)
+    private static final Color PLAYER1_COLOUR = Color.BLUE;
+    private static final Color PLAYER2_COLOUR = Color.RED;
+    private static final Color PLAYER3_COLOUR = Color.MAGENTA;
+    private static final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (BlockTile is currently using this)
 
     private int playerID;
 

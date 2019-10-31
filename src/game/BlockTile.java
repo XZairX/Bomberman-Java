@@ -7,7 +7,7 @@ import static game.Constants.TILE_OUTLINE_COLOUR;
 import static game.Constants.TILE_RADIUS;
 
 public class BlockTile extends GameObject {
-    private final Color TILE_COLOUR = Color.GREEN;
+    private static final Color TILE_COLOUR = Color.GREEN;
 
     public BlockTile(int x, int y, double radius) {
         super(x, y, radius);
