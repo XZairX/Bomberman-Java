@@ -8,6 +8,7 @@ import java.util.List;
 import static game.Constants.TILE_RADIUS;
 
 public class GameMain {
+    // Possible refactor of nonRemovableObjects list to a BlockSpace class?
     public List<GameObject> nonRemovableObjects;
     public List<GameObject> objects;
     public Player player1, player2, player3, player4;
@@ -15,15 +16,6 @@ public class GameMain {
     public GameMain() {
         nonRemovableObjects = new ArrayList<GameObject>();
         objects = new ArrayList<GameObject>();
-
-        // BlockHard Border
-        for (int row = 0; row < 15; row++) {
-            for (int column = 0; column < 13; column++) {
-                if (row == 0 || column == 0 || row == 14 || column == 12) {
-                    nonRemovableObjects.add(BlockHard.spawnBlockHard(row, column));
-                }
-            }
-        }
 
         // Position spawn references for players
         player1 = new Player(1, 1, TILE_RADIUS, 1);
@@ -40,16 +32,33 @@ public class GameMain {
         player2.debugPowerUps();
         player3.debugPowerUps();
         player4.debugPowerUps();
+    }
 
-        // BlockTile Game Space
+    private void spawnBorder() {
+        for (int row = 0; row < 15; row++) {
+            for (int column = 0; column < 13; column++) {
+                if (row == 0 || column == 0 || row == 14 || column == 12) {
+                    nonRemovableObjects.add(BlockHard.spawnBlockHard(row, column));
+                }
+            }
+        }
+    }
+
+    private void spawnTiles() {
         for (int row = 1; row < 14; row++) {
             for (int column = 1; column < 12; column++) {
                 nonRemovableObjects.add(BlockTile.spawnBlockTile(row, column));
                 if (row % 2 == 0 && column % 2 == 0) {
                     nonRemovableObjects.add(BlockHard.spawnBlockHard(row, column));
                 }
+            }
+        }
+    }
 
-                // BlockSoft Row 01
+    private void spawnRows() {
+        for (int row = 1; row < 14; row++) {
+            for (int column = 1; column < 12; column++) {
+                // BlockSoft 01
                 if (column == 1 || column == 11) {
                     if (row >= 3 && row <= 11) {
                         objects.add(BlockSoft.spawnBlockSoft(row, column));
@@ -82,6 +91,10 @@ public class GameMain {
         GameMain game = new GameMain();
         GameView view = new GameView(game);
         new JEasyFrame(view, "Bomberman Game").addKeyListener(new GameKeys(game));
+
+        game.spawnBorder();
+        game.spawnTiles();
+        game.spawnRows();
 
         while (true) {
             game.update();

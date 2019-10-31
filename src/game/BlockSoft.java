@@ -7,7 +7,7 @@ import static game.Constants.TILE_OUTLINE_COLOUR;
 import static game.Constants.TILE_RADIUS;
 
 public class BlockSoft extends GameObject {
-    private static final Color TILE_COLOUR = Color.RED;
+    private final Color TILE_COLOUR = Color.RED;
 
     public BlockSoft(int x, int y, double radius) {
         super(x, y, radius);
