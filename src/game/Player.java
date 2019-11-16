@@ -2,6 +2,7 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 import static game.Constants.TILE_RADIUS;
 
@@ -17,7 +18,7 @@ public class Player extends GameObject {
     private int bomb = 1;
     private int fire = 1;
     private int skate = 4;
-    private double speed = skate * 0.9;
+    private double speed = (skate - 3) * 3;
 
     public Player(int x, int y, double radius, int playerID) {
         super(x, y, radius);
@@ -27,6 +28,12 @@ public class Player extends GameObject {
         this.y += (TILE_RADIUS * 4 + (TILE_RADIUS / 4));
         this.radius += TILE_RADIUS * 1.5;
         this.playerID = playerID;
+    }
+
+    @Override
+    public Rectangle getBounds() {
+        radius = TILE_RADIUS * 1.5;
+        return new Rectangle(x + 1, y + 1, (int)radius, (int)radius);
     }
 
     public void debugPowerUps() {
@@ -98,6 +105,10 @@ public class Player extends GameObject {
 
     @Override
     public void draw(Graphics2D g) {
+        // Temporary Bounding box visibility
+        g.setColor(Color.DARK_GRAY);
+        g.fillRect(getBounds().x, getBounds().y, (int)getBounds().width, (int)getBounds().height);
+
         switch (playerID) {
             case 1: g.setColor(PLAYER1_COLOUR);
                 break;

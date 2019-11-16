@@ -1,6 +1,9 @@
 package game;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+import static game.Constants.TILE_RADIUS;
 
 public abstract class GameObject {
     public int x;
@@ -18,6 +21,19 @@ public abstract class GameObject {
         dead = true;
     }
 
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, (int)TILE_RADIUS * 2, (int)TILE_RADIUS * 2);
+    }
+
+    public boolean isColliding(GameObject other) {
+        if (this.getBounds().intersects(other.getBounds())) {
+            return true;
+        }
+        return false;
+    }
+
+    /*
+    // Potentially redundant collision handling code
     public boolean overlap(GameObject other) {
         if (this.x - other.x <= this.radius + other.radius
                 || this.y - other.y <= this.radius + other.radius) {
@@ -32,9 +48,9 @@ public abstract class GameObject {
             other.hit();
         }
     }
+    */
 
-    public void update() {
-    }
+    public void update() {}
 
     public abstract void draw(Graphics2D g);
 }
