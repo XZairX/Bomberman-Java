@@ -62,4 +62,54 @@ public class GameSpace {
             }
         }
     }
+
+    public void spawnRows01() {
+        for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
+            for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
+                if (column == 1 || column == 11) {
+                    if (row >= 3 && row <= 11) {
+                        game.listBlockSoft.add(BlockSoft.spawnBlockSoft(row, column));
+                    }
+                }
+            }
+        }
+    }
+
+    public void spawnRows02() {
+        for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
+            for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
+                if (column == 2 || column == 10) {
+                    if (row != 1 && row != 13 && row % 2 == 1) {
+                        game.listBlockSoft.add(BlockSoft.spawnBlockSoft(row, column));
+                    }
+                }
+            }
+        }
+    }
+
+    public void spawnRows03() {
+        for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
+            for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
+                if (column % 2 == 1 && column != 1 && column != 11) {
+                    game.listBlockSoft.add(BlockSoft.spawnBlockSoft(row, column));
+                }
+            }
+        }
+    }
+
+    public void spawnRows04() {
+        for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
+            for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
+                if (column % 2 == 0 && column != 2 && column != 10) {
+                    if (row % 2 == 1) {
+                        game.listBlockSoft.add(BlockSoft.spawnBlockSoft(row, column));
+                    }
+                }
+            }
+        }
+    }
+
+    public void spawnBlockSoft(int row, int column) {
+        game.listBlockSoft.add(BlockSoft.spawnBlockSoft(row, column));
+    }
 }

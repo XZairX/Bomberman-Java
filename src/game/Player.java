@@ -44,25 +44,24 @@ public class Player extends GameObject {
 
     @Override
     public void collisionHandling(GameObject other) {
-        if (isColliding(other)) {
-            // Need to detect which side of the bounding box is hit and call appropriate move method
-            // e.g. if (collision at bottom of BlockHard bounding box) { moveDown(); // to counter up movement }
+        // Need to detect which side of the bounding box is hit and call appropriate move method
+        // e.g. if (collision at bottom of BlockHard bounding box) { moveDown(); // to counter up movement }
 
-            // OR create a secondary bounding box which looks slightly ahead of the player to predict a collision
+        // OR create a secondary bounding box which looks slightly ahead of the player to predict a collision
 
-            // OR detect which movement was used to trigger collision and offset it
-            // e.g. if (moveUp() triggered collision) moveDown()
+        // OR detect which movement was used to trigger collision and offset it
+        // e.g. if (moveUp() triggered collision) moveDown()
 
-            if (other instanceof BlockHard) {
-                // Moves right by default
-                moveRight();
-                System.out.println("collision hard");
-            }
-
-            if (other instanceof BlockSoft) {
-                System.out.println("collision soft");
-            }
+        if (other instanceof BlockHard) {
+            // Moves right by default
+            moveRight();
+            System.out.println("collision hard");
         }
+
+        if (other instanceof BlockSoft) {
+            System.out.println("collision soft");
+        }
+
     }
 
     public void moveLeft() {

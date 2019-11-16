@@ -52,6 +52,13 @@ public class GameMain {
         space.spawnTiles();
         space.spawnRows();
 
+        // Individual row spawning for developmental purposes
+        //space.spawnRows01();
+        //space.spawnRows02();
+        //space.spawnRows03();
+        //space.spawnRows04();
+
+
         while (true) {
             game.update();
             view.repaint();
