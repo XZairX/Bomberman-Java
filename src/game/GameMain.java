@@ -5,6 +5,8 @@ import utilities.JEasyFrame;
 import java.util.ArrayList;
 import java.util.List;
 
+import static game.Constants.GAMESPACE_COLUMN;
+import static game.Constants.GAMESPACE_ROW;
 import static game.Constants.TILE_RADIUS;
 
 public class GameMain {
@@ -21,10 +23,10 @@ public class GameMain {
         listObjects = new ArrayList<GameObject>();
 
         // Position spawn references for players
-        player1 = new Player(1, 1, TILE_RADIUS, 1);
-        player2 = new Player (13, 11, TILE_RADIUS, 2);
-        player3 = new Player(13, 1, TILE_RADIUS, 3);
-        player4 = new Player (1, 11, TILE_RADIUS, 4);
+        player1 = new Player(GAMESPACE_ROW - (GAMESPACE_ROW - 1), GAMESPACE_COLUMN - (GAMESPACE_COLUMN - 1),TILE_RADIUS, 1);
+        player2 = new Player (GAMESPACE_ROW - 2, GAMESPACE_COLUMN - 2, TILE_RADIUS, 2);
+        player3 = new Player(GAMESPACE_ROW - 2, GAMESPACE_COLUMN - (GAMESPACE_COLUMN - 1), TILE_RADIUS, 3);
+        player4 = new Player (GAMESPACE_ROW - (GAMESPACE_ROW - 1), GAMESPACE_COLUMN - 2, TILE_RADIUS, 4);
 
         listObjects.add(player1);
         listObjects.add(player2);

@@ -1,9 +1,9 @@
 package game;
 
-public class GameSpace {
-    private static final int GAMESPACE_ROW = 15;
-    private static final int GAMESPACE_COLUMN = 13;
+import static game.Constants.GAMESPACE_COLUMN;
+import static game.Constants.GAMESPACE_ROW;
 
+public class GameSpace {
     private GameMain game;
 
     public GameSpace(GameMain game) {
