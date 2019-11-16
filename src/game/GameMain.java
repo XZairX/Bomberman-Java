@@ -64,13 +64,13 @@ public class GameMain {
         for (GameObject object: listBlockHard)
         {
             if (player1.isColliding(object)) {
-                // Insert BlockHard collision handling here
+                player1.collisionHandling(object);
             }
         }
 
         for (GameObject object : listBlockSoft) {
             if (player1.isColliding(object)) {
-                // Insert BlockSoft collision handling here
+                player1.collisionHandling(object);
             }
         }
 

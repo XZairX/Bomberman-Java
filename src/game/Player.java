@@ -19,6 +19,7 @@ public class Player extends GameObject {
     private int fire = 1;
     private int skate = 4;
     private double speed = (skate - 3) * 3;
+    private boolean canMove = true;
 
     public Player(int x, int y, double radius, int playerID) {
         super(x, y, radius);
@@ -36,29 +37,45 @@ public class Player extends GameObject {
         return new Rectangle(x + 1, y + 1, (int)radius, (int)radius);
     }
 
-    public void debugPowerUps() {
-        System.out.println(
-                "ID: player" + playerID + "\n \t\t" +
-                "Heart: " + heart + " \t" +
-                "Bomb: " + bomb + " \t" +
-                "Fire: " + fire + " \t" +
-                "Skate: " + skate);
+    @Override
+    public boolean isColliding(GameObject other) {
+        return super.isColliding(other);
     }
 
-    public void moveUp() {
-        this.y -= speed;
+    @Override
+    public void collisionHandling(GameObject other) {
+        if (isColliding(other)) {
+            // Need to detect which side of the bounding box is hit and call appropriate move method
+            // e.g. if (collision at bottom of BlockHard bounding box) { moveDown(); // to counter up movement }
+
+            // OR detect which movement was used to trigger collision and offset it
+            // e.g. if (moveUp() triggered collision) moveDown()
+
+            if (other instanceof BlockHard) {
+                moveRight();
+                System.out.println("collision hard");
+            }
+
+            if (other instanceof BlockSoft) {
+                System.out.println("collision soft");
+            }
+        }
     }
 
     public void moveLeft() {
         this.x -= speed;
     }
 
-    public void moveDown() {
-        this.y += speed;
-    }
-
     public void moveRight() {
         this.x += speed;
+    }
+
+    public void moveUp() {
+        this.y -= speed;
+    }
+
+    public void moveDown() {
+        this.y += speed;
     }
 
     public void heartUp() {
@@ -101,6 +118,15 @@ public class Player extends GameObject {
         if (skate < 8) {
             skate++;
         }
+    }
+
+    public void debugPowerUps() {
+        System.out.println(
+                "ID: player" + playerID + "\n \t\t" +
+                        "Heart: " + heart + " \t" +
+                        "Bomb: " + bomb + " \t" +
+                        "Fire: " + fire + " \t" +
+                        "Skate: " + skate);
     }
 
     @Override

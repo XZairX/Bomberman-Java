@@ -41,14 +41,14 @@ public abstract class GameObject {
         }
         return false;
     }
+    */
 
     public void collisionHandling(GameObject other) {
-        if (this.getClass() != other.getClass() && this.overlap(other)) {
+        /*if (this.getClass() != other.getClass() && this.overlap(other)) {
             this.hit();
             other.hit();
-        }
+        }*/
     }
-    */
 
     public void update() {}
 
