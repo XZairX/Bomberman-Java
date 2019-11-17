@@ -32,17 +32,6 @@ public abstract class GameObject {
         return false;
     }
 
-    /*
-    // Potentially redundant collision handling code
-    public boolean overlap(GameObject other) {
-        if (this.x - other.x <= this.radius + other.radius
-                || this.y - other.y <= this.radius + other.radius) {
-            return true;
-        }
-        return false;
-    }
-    */
-
     public void collisionHandling(GameObject other) {
         /*if (this.getClass() != other.getClass() && this.overlap(other)) {
             this.hit();

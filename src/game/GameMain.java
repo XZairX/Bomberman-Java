@@ -49,10 +49,12 @@ public class GameMain {
         new JEasyFrame(view, "Bomberman Game").addKeyListener(new GameKeys(game));
 
         space.spawnBorder();
-        space.spawnTiles();
-        space.spawnRows();
+        space.spawnGameSpace();
+        //space.spawnBlockTiles();
+        //space.spawnBlockHards();
+        //space.spawnBlockSofts();
 
-        // Individual row spawning for developmental purposes
+        // Individual row spawning for debug purposes
         //space.spawnRows01();
         //space.spawnRows02();
         //space.spawnRows03();

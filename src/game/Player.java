@@ -19,7 +19,9 @@ public class Player extends GameObject {
     private int fire = 1;
     private int skate = 4;
     private double speed = (skate - 3) * 3;
-    private boolean canMove = true;
+
+    private enum Movement { LEFT, RIGHT, UP, DOWN, NULL };
+    private Movement movement = Movement.NULL;
 
     public Player(int x, int y, double radius, int playerID) {
         super(x, y, radius);
@@ -34,7 +36,7 @@ public class Player extends GameObject {
     @Override
     public Rectangle getBounds() {
         radius = TILE_RADIUS * 1.5;
-        return new Rectangle(x + 1, y + 1, (int)radius, (int)radius);
+        return new Rectangle(x, y, (int)radius, (int)radius);
     }
 
     @Override
@@ -53,31 +55,60 @@ public class Player extends GameObject {
         // e.g. if (moveUp() triggered collision) moveDown()
 
         if (other instanceof BlockHard) {
-            // Moves right by default
-            moveRight();
+            switch (movement) {
+                case LEFT:
+                    this.x += speed;
+                    break;
+                case RIGHT:
+                    this.x -= speed;
+                    break;
+                case UP:
+                    this.y += speed;
+                    break;
+                case DOWN:
+                    this.y -= speed;
+                    break;
+            }
             System.out.println("collision hard");
         }
 
         if (other instanceof BlockSoft) {
+            switch (movement) {
+                case LEFT:
+                    this.x += speed;
+                    break;
+                case RIGHT:
+                    this.x -= speed;
+                    break;
+                case UP:
+                    this.y += speed;
+                    break;
+                case DOWN:
+                    this.y -= speed;
+                    break;
+            }
             System.out.println("collision soft");
         }
-
     }
 
     public void moveLeft() {
         this.x -= speed;
+        movement = Movement.LEFT;
     }
 
     public void moveRight() {
         this.x += speed;
+        movement = Movement.RIGHT;
     }
 
     public void moveUp() {
         this.y -= speed;
+        movement = Movement.UP;
     }
 
     public void moveDown() {
         this.y += speed;
+        movement = Movement.DOWN;
     }
 
     public void heartUp() {

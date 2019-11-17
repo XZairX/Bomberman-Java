@@ -20,7 +20,7 @@ public class GameSpace {
         }
     }
 
-    public void spawnTiles() {
+    public void spawnGameSpace() {
         for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
             for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
                 game.listBlockTile.add(BlockTile.spawnBlockTile(row, column));
@@ -31,7 +31,27 @@ public class GameSpace {
         }
     }
 
-    public void spawnRows() {
+    // Debug code
+    public void spawnBlockTiles() {
+        for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
+            for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
+                game.listBlockTile.add(BlockTile.spawnBlockTile(row, column));
+            }
+        }
+    }
+
+    // Debug code
+    public void spawnBlockHards() {
+        for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
+            for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
+                if (row % 2 == 0 && column % 2 == 0) {
+                    game.listBlockHard.add(BlockHard.spawnBlockHard(row, column));
+                }
+            }
+        }
+    }
+
+    public void spawnBlockSofts() {
         for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
             for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
                 // BlockSoft 01
