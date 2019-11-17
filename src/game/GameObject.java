@@ -6,40 +6,37 @@ import java.awt.Rectangle;
 import static game.Constants.TILE_RADIUS;
 
 public abstract class GameObject {
-    public int x;
-    public int y;
-    public double radius;
-    public boolean dead = false;
+    protected int x;
+    protected int y;
+    protected double radius;
+    protected boolean dead = false;
 
-    public GameObject(int x, int y, double radius) {
+    protected GameObject(int x, int y, double radius) {
         this.x = x;
         this.y = y;
         this.radius = radius;
     }
 
-    public void hit() {
+    protected void hit() {
         dead = true;
     }
 
-    public Rectangle getBounds() {
+    protected Rectangle getBounds() {
         return new Rectangle(x, y, (int)TILE_RADIUS * 2, (int)TILE_RADIUS * 2);
     }
 
-    public boolean isColliding(GameObject other) {
-        if (this.getBounds().intersects(other.getBounds())) {
-            return true;
-        }
-        return false;
+    protected boolean isColliding(GameObject other) {
+        return (this.getBounds().intersects(other.getBounds()));
     }
 
-    public void collisionHandling(GameObject other) {
+    protected void collisionHandling(GameObject other) {
         /*if (this.getClass() != other.getClass() && this.overlap(other)) {
             this.hit();
             other.hit();
         }*/
     }
 
-    public void update() {}
+    protected void update() {}
 
-    public abstract void draw(Graphics2D g);
+    protected abstract void draw(Graphics2D g);
 }
