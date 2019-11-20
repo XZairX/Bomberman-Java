@@ -52,14 +52,13 @@ public class GameMain {
         space.spawnGameSpace();
         //space.spawnBlockTiles();
         //space.spawnBlockHards();
-        //space.spawnBlockSofts();
+        space.spawnBlockSofts();
 
         // Individual row spawning for debug purposes
         //space.spawnRows01();
         //space.spawnRows02();
         //space.spawnRows03();
         //space.spawnRows04();
-
 
         while (true) {
             game.update();

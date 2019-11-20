@@ -19,7 +19,10 @@ public class BlockSoft extends GameObject {
         return super.getBounds();
     }
 
-    // Currently 100% spawn rate, to be adjusted at a later time
+    public static boolean canSpawnBlockSoft() {
+        return ((int)(Math.random() * 100) >= 33);
+    }
+
     public static BlockSoft spawnBlockSoft(int x, int y) {
         x *= TILE_RADIUS * 2;
         y *= TILE_RADIUS * 2;
