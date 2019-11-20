@@ -54,7 +54,7 @@ public class Player extends GameObject {
         // OR detect which movement was used to trigger collision and offset it
         // e.g. if (moveUp() triggered collision) moveDown()
 
-        if (other instanceof BlockHard) {
+        if (other.getClass() == BlockHard.class) {
             switch (movement) {
                 case LEFT:
                     this.x += speed;
@@ -72,7 +72,7 @@ public class Player extends GameObject {
             System.out.println("collision hard");
         }
 
-        if (other instanceof BlockSoft) {
+        if (other.getClass() == BlockSoft.class) {
             switch (movement) {
                 case LEFT:
                     this.x += speed;
