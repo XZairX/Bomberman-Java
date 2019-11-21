@@ -20,7 +20,7 @@ public class BlockSoft extends GameObject {
     }
 
     public static boolean canSpawnBlockSoft() {
-        return ((int)(Math.random() * 100) >= 33);
+        return ((int)(Math.random() * 100) < 66);
     }
 
     public static BlockSoft spawnBlockSoft(int x, int y) {
