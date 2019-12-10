@@ -31,7 +31,7 @@ https://www.jetbrains.com/help/idea/sdk.html
 
 
 #### Setting up and running the program
-1. Navigate to the project repository, open the "src" directory and use the download button at the top-right to convert and download the current directory as a .ZIP file.
+1. Navigate to the GitLab project repository, open the "src" directory and use the download button at the top-right to convert and download the current directory as a .ZIP file.
 
 2. Extract (unzip) the contents and locate the two package folders "game" and "utilities" within the "src" folder.
  
