@@ -37,7 +37,7 @@ https://www.jetbrains.com/help/idea/sdk.html
  
 3. Create and open a new project in IntelliJ and drag these two folders into your "src" directory within the project view sidebar on the left.
 
-4. If you have correctly set up the JDK and you have correctly transferred the extracted files, you will now be able to view and run the game by running the GameMain class.
+4. If you have correctly set up the JDK and you have correctly transferred the extracted files, you will now be able to run and view the game by running the GameMain class.
 
 
 ### Versioning Strategy
