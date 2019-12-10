@@ -7,8 +7,8 @@ In order to get the project running, you will need to have IntelliJ IDEA install
 
 
 ### Prerequisites
-* IntelliJ IDEA Version 2016 and later
-* Java JDK 8 or later
+* IntelliJ IDEA Version 2016 (or later)
+* Java JDK 8 (or later)
 
 
 ### Installing and setting up IntelliJ IDEA
