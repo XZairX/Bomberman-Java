@@ -43,13 +43,11 @@ https://www.jetbrains.com/help/idea/sdk.html
 ### Versioning Statergy
 There is no specific versioning strategy being used for this project. Tasks relating to the project are uploaded and reviewed on Jira on a weekly basis. The development time of the project pertaining to these tasks is committed, pushed, and annotated as it progresses until the task is completed. Completed tasks are marked as done in Jira with a relevant comment provided to give detail on the work done and this process is repeated for every task created.
 
-For every week that passes, my project supervisor and I hold a short meeting to reflect on the status of the project. This normally involves the discussion of development in terms of what had been done, how it progressed, and what is to be done next. In relation to Jira, this involves looking at what Jira tasks have been completed, what remain, and what could be created for the future.
+For every week that passes, my project supervisor and I hold a short meeting to reflect on the status of the project. This normally involves the discussion of development in terms of what had been done, the general progression of workflow, and what is to be done next. In relation to Jira, this involves looking at which Jira tasks have been completed, which remain, and what new tasks could be potentially created for the future. A supervior feedback issue is created and marked as done for each week that these meetings are held to provide an overview of our discussions.
 
 
 ## Authors
 * Riaz Philippe - University of Essex BSc Computer Games Undergraduate
-
->Provide your names here
 
 
 ## References
@@ -59,4 +57,6 @@ For every week that passes, my project supervisor and I hold a short meeting to 
 * [IntelliJ Download (Windows)](https://www.jetbrains.com/idea/download/#section=windows)
 * [IntelliJ SDK Help](https://www.jetbrains.com/help/idea/sdk.html)
 * [Oracle JDK Download](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [GitLab Project Repository](https://cseegit.essex.ac.uk/ce301_2019/ce301_philippe_r)
+* [Jira Project Repository](https://cseejira.essex.ac.uk/secure/Dashboard.jspa)
 
