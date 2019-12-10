@@ -8,7 +8,7 @@ In order to get the project running, you will need to have IntelliJ IDEA install
 
 ### Prerequisites
 * IntelliJ IDEA Version 2016 (or later)
-* Java JDK 8 (or later)
+* Java Standard Edition Development Kit (JDK) 8 (or later)
 
 
 ### Installing and setting up IntelliJ IDEA
@@ -21,12 +21,12 @@ In order to get the project running, you will need to have IntelliJ IDEA install
 4. Download and save the binary .exe file, run it, and follow the instructions given to install the application.
 
 
-### Downloading Java JDK
+### Downloading Java SE Development Kit 8
 The Java Standard Edition Development Kit (JDK) is a collection of tools which provides IntelliJ with the necessary configurations to allow for it to work with Java programs. It can be downloaded from the [official Oracle website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Note that this provided link is only for downloading JDK 8. If you wish to use a newer version, you will need to navigate the website to find the appropriate page. The specific download required is entirely dependent on your operating system and your computer architecture (x86 vs x64). You **must** accept the Oracle Technology Network License Agreement for Oracle Java SE to download the JDK. Newer versions of the JDK support a limited but functional sense of backwards-compatibility with JDK 8.
 
 
-#### Setting up Java JDK
-It is highly recommended to follow the link below for understanding how to configure the JDK to cohesively work with IntelliJ and Java.\
+#### Setting up the JDK
+It is highly recommended to follow the link below for understanding how to configure the JDK to work cohesively with IntelliJ and Java.\
 https://www.jetbrains.com/help/idea/sdk.html
 
 
