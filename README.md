@@ -3,16 +3,19 @@ The project I have chosen to undertake is Michael Fairbank's "Recreate a Classic
 
 >A *brief* paragraph explaining your project and what it does should be written here. The idea is to give readers an overview of what it is that you've built.
 
+
 ## Getting Started
 In order to get the project running, you will need to have IntelliJ IDEA installed on your computer. This is a Java IDE (integrated development environment) that allows for the development of computer software, and more importantly, for the viewing and manipulation of the program that this project is contained within. IntelliJ is provided by JetBrains, a certified company who specialise in distributing developer tools for professional and teams. As it is distributed as open-source software, it can be freely downloaded from JetBrain's official website without concern for malicious malware.
 
 >You should write a bit about **how** I can get your project working, It's good to think in terms of the following sections:
+
 
 ### Prerequisites
 * IntelliJ IDEA Version 2016 and later
 * Java JDK 8 or later
 
 >What do I need in order to get your project running? For example,
+
 
 ### Installing and setting up IntelliJ IDEA
 1. Navigate to the [official JetBrains official website](https://www.jetbrains.com) and select the IntelliJ-based IDEs option to be redirected to the [IntelliJ-based IDE page](https://www.jetbrains.com/products.html#type=ide).
@@ -28,9 +31,11 @@ In order to get the project running, you will need to have IntelliJ IDEA install
 ### Downloading Java JDK
 The Java JDK (Java Development Kit) is a collection of tools which provides IntelliJ with the necessary configurations to allow for it to work with Java programs. It can be downloaded from the [official Oracle website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Note that this link is only for downloading Java JDK 8. If you wish to use a newer version, you will need to navigate the website to find the appropriate page. The specific download required is entirely dependent on your operating system and your computer architecture (x86 vs x64). You **must** accept the Oracle Technology Network License Agreement for Oracle Java SE to download the JDK.
 
+
 #### Setting up Java JDK
 It is highly recommended to follow the link below for understanding how to configure the JDK to work with IntelliJ and Java.\
 https://www.jetbrains.com/help/idea/sdk.html
+
 
 #### Setting up and running the program
 1. Navigate to the project repository, enter the "src" directory and use the download button at the top-right to convert and download the current directory as a .ZIP file.
@@ -41,14 +46,16 @@ https://www.jetbrains.com/help/idea/sdk.html
 
 4. If you have correctly set up the Java JDK and you have correctly transferred the extracted files, you will now be able to view and run the game by running the GameMain class.
 
+
 ### Versioning Statergy
-There is no specific versioning strategy being used for this project. Tasks relating to the project are uploaded and reviewed on Jira whereby then development of the project that relates to these tasks is committed, pushed, and annotated as it progresses until the task is complete. The task is done marked as done as Jira with a relevant comment provided to give detail on the work done and the process is repeated.
+There is no specific versioning strategy being used for this project. Tasks relating to the project are uploaded and reviewed on Jira whereby then development of the project that relates to these tasks is committed, pushed, and annotated as it progresses until the task is complete. The task is done marked as done as Jira with a relevant comment provided to give detail on the work done and the process is repeated. For every week that passes, my project supervisor and I hold a short meeting to reflect on the status of the project. This normally involves the discussion of development in terms of what had been done, how it progressed, and what is to be done next. In relation to Jira, this involves looking at what Jira tasks have been completed, what remain, and what could be created for the future.
 
 
 ## Authors
 * Riaz Philippe - University of Essex BSc Computer Games Undergraduate
 
 >Provide your names here
+
 
 ## References
 * [Markdown Template](https://cseegit.essex.ac.uk/snippets/8)
@@ -57,3 +64,4 @@ There is no specific versioning strategy being used for this project. Tasks rela
 * [IntelliJ Download (Windows)](https://www.jetbrains.com/idea/download/#section=windows)
 * [IntelliJ SDK Help](https://www.jetbrains.com/help/idea/sdk.html)
 * [Oracle JDK Download](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
