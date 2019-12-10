@@ -14,45 +14,35 @@ In order to get the project running, you will need to have IntelliJ IDEA install
 
 >What do I need in order to get your project running? For example,
 
-### Installing IntelliJ
-* Installing IntelliJ guide
->A step by step guide on how to build and install your software, for example:
+### Installing and setting up IntelliJ IDEA
+1. Navigate to the [official JetBrains official website](https://www.jetbrains.com) and select the IntelliJ-based IDEs option to be redirected to the [IntelliJ-based IDE page](https://www.jetbrains.com/products.html#type=ide).
 
-1. Navigate to the [official JetBrains official website](https://www.jetbrains.com/) and select the IntelliJ-based IDEs option to be redirected to the [IntelliJ-based IDE page](https://www.jetbrains.com/products.html#type=ide).
-
-2. Select the IntelliJ IDEA option on this page to once again be redirected this time to the main [IntelliJ IDEA page](https://www.jetbrains.com/idea/).
+2. Select the IntelliJ IDEA option on this page to once again be redirected this time to the main [IntelliJ IDEA page](https://www.jetbrains.com/idea).
 
 3. Select the "DOWNLOAD" option to be further redirected to the [IntelliJ download page](https://www.jetbrains.com/idea/download/#section=windows). Here, two versions are listed: Ultimate and Community. A list of features is present on this page which highlight the differences between the two editions. Also take note that there are different versions of IntelliJ for compatibility with different operating systems. The page provided is for downloading IntelliJ on a Windows operating system and this will need to be changed if not using a Windows computer. For the purposes of viewing the project, you should select the Community version which can be acquired for free.
 
 4. Download and save the binary .exe file, run it, and follow the instructions to install the application.
 
-### Installing Java JDK
-* Downloading Java SDK
+>A step by step guide on how to build and install your software, for example:
 
-The Java JDK (Java Development Kit) is a collection of tools which provides IntelliJ with the necessary configurations to allow for it to work with Java programs. It can be downloaded from the [official Oracle website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Note that this link is only for downloading Java JDK 8. If you wish to use a newer version, you will need to navigate the website to find the appropriate page. The specific download required is entirely dependent on your operating system and your computer architecture (x86 vs x64). You *must* accept the Oracle Technology Network License Agreement for Oracle Java SE to download the JDK.
+### Downloading Java JDK
+The Java JDK (Java Development Kit) is a collection of tools which provides IntelliJ with the necessary configurations to allow for it to work with Java programs. It can be downloaded from the [official Oracle website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Note that this link is only for downloading Java JDK 8. If you wish to use a newer version, you will need to navigate the website to find the appropriate page. The specific download required is entirely dependent on your operating system and your computer architecture (x86 vs x64). You **must** accept the Oracle Technology Network License Agreement for Oracle Java SE to download the JDK.
 
-#### Setting up the Java JDK
-* Setting up Java JDK
-
-It is highly recommended to follow the link below for understanding how to configure the JDK to work with IntelliJ and Java.
+#### Setting up Java JDK
+It is highly recommended to follow the link below for understanding how to configure the JDK to work with IntelliJ and Java.\
 https://www.jetbrains.com/help/idea/sdk.html
 
 #### Setting up and running the program
-
-* Package and class files
-
-1. Navigate to the project repository, enter the "src" directory and use the download button at the top-right to download the current directory as a .ZIP file.
+1. Navigate to the project repository, enter the "src" directory and use the download button at the top-right to convert and download the current directory as a .ZIP file.
 
 2. Extract (unzip) the contents, and locate the two package folders "game" and "utilies" within the "src" folder.
  
-3. Create a new projet in IntelliJ and drag these two folders into your "src" directory.
+3. Create and open a new project in IntelliJ and drag these two folders into your "src" directory within the project view sidebar on the left.
 
 4. If you have correctly set up the Java JDK and you have correctly transferred the extracted files, you will now be able to view and run the game by running the GameMain class.
 
-
 ### Versioning Statergy
-Git commits
->What versioning statergy are you using for your project, something like [semantic versioning](https://semver.org/) might be a good idea.
+There is no specific versioning strategy being used for this project. Tasks relating to the project are uploaded and reviewed on Jira whereby then development of the project that relates to these tasks is committed, pushed, and annotated as it progresses until the task is complete. The task is done marked as done as Jira with a relevant comment provided to give detail on the work done and the process is repeated.
 
 
 ## Authors
@@ -61,6 +51,9 @@ Git commits
 >Provide your names here
 
 ## References
-* [Gitlab Markdown Guide](https://docs.gitlab.com/ee/user/markdown.html)
-* [Example 1](https://github.com/erasmus-without-paper/ewp-specs-sec-intro/tree/v2.0.2)
-* [Example 2](https://github.com/erasmus-without-paper/ewp-specs-architecture/tree/v1.10.0)
+* [Markdown Template](https://cseegit.essex.ac.uk/snippets/8)
+* [JetBrains Website](https://www.jetbrains.com)
+* [IntelliJ-based IDEs](https://www.jetbrains.com/products.html#type=ide)
+* [IntelliJ Download (Windows)](https://www.jetbrains.com/idea/download/#section=windows)
+* [IntelliJ SDK Help](https://www.jetbrains.com/help/idea/sdk.html)
+* [Oracle JDK Download](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
