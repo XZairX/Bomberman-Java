@@ -22,7 +22,7 @@ In order to get the project running, you will need to have IntelliJ IDEA install
 
 2. Select the IntelliJ IDEA option on this page to once again be redirected this time to the main [IntelliJ IDEA page](https://www.jetbrains.com/idea/).
 
-3. Select the "DOWNLOAD" option to be further redirected to the [IntelliJ download page](https://www.jetbrains.com/idea/download/#section=windows). Here, two versions are listed: Ultimate and Community. A list of features is present on this page which highlight the differences between the two editions. Also take note that there are different versions of IntelliJ for compatibility with different operating systems. The page provided is for downloading IntelliJ on Windows Operating Systems and this will need to be changed if not installing on a Windows computer. For the purposes of viewing the project, you should select the Community version which can be acquired for free.
+3. Select the "DOWNLOAD" option to be further redirected to the [IntelliJ download page](https://www.jetbrains.com/idea/download/#section=windows). Here, two versions are listed: Ultimate and Community. A list of features is present on this page which highlight the differences between the two editions. Also take note that there are different versions of IntelliJ for compatibility with different operating systems. The page provided is for downloading IntelliJ on a Windows operating system and this will need to be changed if not using a Windows computer. For the purposes of viewing the project, you should select the Community version which can be acquired for free.
 
 4. Download and save the binary .exe file, run it, and follow the instructions to install the application.
 
