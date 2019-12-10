@@ -40,7 +40,7 @@ https://www.jetbrains.com/help/idea/sdk.html
 4. If you have correctly set up the Java JDK and you have correctly transferred the extracted files, you will now be able to view and run the game by running the GameMain class.
 
 
-### Versioning Statergy
+### Versioning Strategy
 There is no specific versioning strategy being used for this project. Tasks relating to the project are uploaded and reviewed on Jira on a weekly basis. The development time of the project pertaining to these tasks is committed, pushed, and annotated as it progresses until the task is completed. Completed tasks are marked as done in Jira with a relevant comment provided to give detail on the work done and this process is repeated for every task created.
 
 For every week that passes, my project supervisor and I hold a short meeting to reflect on the status of the project. This normally involves the discussion of development in terms of what had been done, the general progression of workflow, and what is to be done next. In relation to Jira, this involves looking at which Jira tasks have been completed, which remain, and what new tasks could be potentially created for the future. A supervior feedback issue is created and marked as done for each week that these meetings are held to provide an overview of our discussions.
