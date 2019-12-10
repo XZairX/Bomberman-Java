@@ -37,11 +37,17 @@ The Java JDK (Java Development Kit) is a collection of tools which provides Inte
 It is highly recommended to follow the link below for understanding how to configure the JDK to work with IntelliJ and Java.
 https://www.jetbrains.com/help/idea/sdk.html
 
-
-#### Install libraries and run program
+#### Setting up and running the program
 
 * Package and class files
 
+1. Navigate to the project repository, enter the "src" directory and use the download button at the top-right to download the current directory as a .ZIP file.
+
+2. Extract (unzip) the contents, and locate the two package folders "game" and "utilies" within the "src" folder.
+ 
+3. Create a new projet in IntelliJ and drag these two folders into your "src" directory.
+
+4. If you have correctly set up the Java JDK and you have correctly transferred the extracted files, you will now be able to view and run the game by running the GameMain class.
 
 
 ### Versioning Statergy
