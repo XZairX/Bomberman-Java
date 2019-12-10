@@ -29,6 +29,8 @@ In order to get the project running, you will need to have IntelliJ IDEA install
 ### Installing Java JDK
 * Downloading Java JDK
 
+The Java JDK (Java Development Kit) provides a virtual environment to IntelliJ which provides the necessary configuration to allow it to work with Java programs. It can be downloaded from the [official Oracle website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Note that this link is for downloading Java JDK 8. If you wish to use a newer version, you will need to navigate the website to find the appropriate page. The specific download required is entirely dependent on your operating system and your computer architecture (x86 vs x64). You *must* accept the Oracle Technology Network License Agreement for Oracle Java SE to download the JDK.
+
 #### Install libraries and run program
 * Setting up Java SDK
 * Package and class files
