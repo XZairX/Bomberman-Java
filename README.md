@@ -3,7 +3,7 @@ The project I have chosen to undertake is Michael Fairbank's "Recreate a Classic
 
 
 ## Getting Started
-In order to get the project running, you will need to have IntelliJ IDEA installed on your computer. This application is a Java IDE (integrated development environment) that allows for the development of computer software. More importantly, it allows for the viewing and manipulation of the Java program that this project is contained within. IntelliJ is provided by JetBrains, a certified company who specialise in distributing developer tools for professionals and teams. As it is distributed as open-source software, it can be freely downloaded from JetBrain's official website without concern for malicious malware.
+In order to get the project running, you will need to have IntelliJ IDEA installed on your computer. This application is a Java IDE (integrated development environment) that allows for the development of computer software. More importantly, it allows for the viewing and manipulation of the Java program that this project is contained within. IntelliJ is provided by JetBrains, a certified company who specialise in distributing developer tools for professionals and teams. As the application is distributed as open-source software, it can be freely downloaded from JetBrain's official website without concern for malicious malware.
 
 
 ### Prerequisites
