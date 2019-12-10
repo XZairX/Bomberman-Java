@@ -9,15 +9,18 @@ In order to get the project running, you will need to have IntelliJ IDEA install
 >You should write a bit about **how** I can get your project working, It's good to think in terms of the following sections:
 
 ### Prerequisites
-* IntelliJ IDEA Version 2016 and up
-* Java 8 SDK
+* IntelliJ IDEA Version 2016 and later
+* Java JDK 8 or later
 
 >What do I need in order to get your project running? For example,
 
-### Installing
+### Installing IntelliJ
 * Installing IntelliJ guide
 >A step by step guide on how to build and install your software, for example:
 
+
+### Installing Java JDK
+* Downloading Java JDK
 
 #### Install libraries and run program
 * Setting up Java SDK
