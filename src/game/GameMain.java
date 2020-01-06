@@ -13,14 +13,16 @@ public class GameMain {
     public List<BlockTile> listBlockTile;
     public List<BlockHard> listBlockHard;
     public List<BlockSoft> listBlockSoft;
+    public List<Player> listPlayer;
     public static List<GameObject> listObjects;
     public Player player1, player2, player3, player4;
 
     public GameMain() {
-        listBlockTile = new ArrayList<BlockTile>();
-        listBlockHard = new ArrayList<BlockHard>();
-        listBlockSoft = new ArrayList<BlockSoft>();
-        listObjects = new ArrayList<GameObject>();
+        listBlockTile = new ArrayList<>();
+        listBlockHard = new ArrayList<>();
+        listBlockSoft = new ArrayList<>();
+        listPlayer = new ArrayList<>();
+        listObjects = new ArrayList<>();
 
         // Position spawn references for players
         player1 = new Player(GAMESPACE_ROW - (GAMESPACE_ROW - 1), GAMESPACE_COLUMN - (GAMESPACE_COLUMN - 1), TILE_RADIUS, 1);
@@ -28,10 +30,14 @@ public class GameMain {
         player3 = new Player(GAMESPACE_ROW - 2, GAMESPACE_COLUMN - (GAMESPACE_COLUMN - 1), TILE_RADIUS, 3);
         player4 = new Player (GAMESPACE_ROW - (GAMESPACE_ROW - 1), GAMESPACE_COLUMN - 2, TILE_RADIUS, 4);
 
-        listObjects.add(player1);
+        /*listObjects.add(player1);
         listObjects.add(player2);
         listObjects.add(player3);
-        listObjects.add(player4);
+        listObjects.add(player4);*/
+        listPlayer.add(player1);
+        listPlayer.add(player2);
+        listPlayer.add(player3);
+        listPlayer.add(player4);
 
         /*
         // For after collision detection

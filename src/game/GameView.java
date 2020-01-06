@@ -22,15 +22,19 @@ public class GameView extends JComponent {
         g.setColor(BACKGROUND_COLOUR);
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        for (GameObject object: game.listBlockTile) {
+        for (GameObject object : game.listBlockTile) {
             object.draw(g);
         }
 
-        for (GameObject object: game.listBlockHard) {
+        for (GameObject object : game.listBlockHard) {
             object.draw(g);
         }
 
-        for (GameObject object: game.listBlockSoft) {
+        for (GameObject object : game.listBlockSoft) {
+            object.draw(g);
+        }
+
+        for (GameObject object : game.listPlayer) {
             object.draw(g);
         }
 

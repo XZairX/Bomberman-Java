@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 // Bomb drawn on top of player
 // Possible resizing optimisation
+// Bomb snap to BlockTile's (0, 0)
 
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
