@@ -39,7 +39,7 @@ public class BlockSoft extends GameObject {
         /*
         // For viewing the bounding box
         g.setColor(Color.MAGENTA);
-        g.fillRect(getBounds().x, getBounds().y, (int)getBounds().width, (int)getBounds().height);
+        g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
         */
 
         g.setColor(TILE_COLOUR);

@@ -13,7 +13,7 @@ public class GameMain {
     public List<BlockTile> listBlockTile;
     public List<BlockHard> listBlockHard;
     public List<BlockSoft> listBlockSoft;
-    public List<GameObject> listObjects;
+    public static List<GameObject> listObjects;
     public Player player1, player2, player3, player4;
 
     public GameMain() {
@@ -34,7 +34,7 @@ public class GameMain {
         listObjects.add(player4);
 
         /*
-        // For after collsion detection
+        // For after collision detection
         player1.debugPowerUps();
         player2.debugPowerUps();
         player3.debugPowerUps();
@@ -83,6 +83,9 @@ public class GameMain {
         }
 
         for (GameObject object : listObjects) {
+            if (player1.isColliding(object)) {
+                player1.collisionHandling(object);
+            }
             object.update();
         }
     }

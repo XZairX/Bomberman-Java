@@ -17,12 +17,8 @@ public abstract class GameObject {
         this.radius = radius;
     }
 
-    protected void hit() {
-        dead = true;
-    }
-
     protected Rectangle getBounds() {
-        return new Rectangle(x, y, (int)TILE_RADIUS * 2, (int)TILE_RADIUS * 2);
+        return new Rectangle(x, y, TILE_RADIUS * 2, TILE_RADIUS * 2);
     }
 
     protected boolean isColliding(GameObject other) {
@@ -34,6 +30,10 @@ public abstract class GameObject {
         /*if (this.getClass() != other.getClass() && other.getClass().equals(Fire.class)) {
             this.hit();
         }*/
+    }
+
+    protected void hit() {
+        dead = true;
     }
 
     protected void update() {}

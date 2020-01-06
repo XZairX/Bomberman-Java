@@ -18,7 +18,7 @@ public class Player extends GameObject {
     private int bomb = 1;
     private int fire = 1;
     private int skate = 4;
-    private double speed = (skate - 3) * 3;
+    private double speed = (skate - 3) * 3; // (Speed modifier)
 
     private enum Movement { LEFT, RIGHT, UP, DOWN, NULL };
     private Movement movement = Movement.NULL;
@@ -89,6 +89,10 @@ public class Player extends GameObject {
             }
             System.out.println("collision soft");
         }
+
+        if (other.getClass() == Bomb.class) {
+            System.out.println("collision bomb");
+        }
     }
 
     public void moveLeft() {
@@ -153,6 +157,11 @@ public class Player extends GameObject {
         }
     }
 
+    public void dropBomb() {
+        System.out.println(x + "\n" + y + "\n" + radius + "\n");
+        GameMain.listObjects.add(new Bomb(x, y, radius));
+    }
+
     public void debugPowerUps() {
         System.out.println(
                 "ID: player" + playerID + "\n \t\t" +
@@ -166,7 +175,7 @@ public class Player extends GameObject {
     public void draw(Graphics2D g) {
         // Temporary Bounding box visibility
         g.setColor(Color.DARK_GRAY);
-        g.fillRect(getBounds().x, getBounds().y, (int)getBounds().width, (int)getBounds().height);
+        g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
 
         switch (playerID) {
             case 1: g.setColor(PLAYER1_COLOUR);

@@ -26,7 +26,7 @@ public class GameKeys extends KeyAdapter {
                 game.player1.moveDown();
                 break;
             case KeyEvent.VK_SPACE:
-                // Drop bomb
+                game.player1.dropBomb();
                 break;
         }
     }
