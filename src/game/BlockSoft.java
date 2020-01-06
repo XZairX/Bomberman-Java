@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_OUTLINE_COLOUR;
 import static game.Constants.TILE_RADIUS;
 
@@ -24,9 +25,9 @@ public class BlockSoft extends GameObject {
     }
 
     public static BlockSoft spawnBlockSoft(int x, int y) {
-        x *= TILE_RADIUS * 2;
-        y *= TILE_RADIUS * 2;
-        return new BlockSoft(x + TILE_RADIUS * 4, y + TILE_RADIUS * 4, TILE_RADIUS);
+        x *= TILE_DIAMETER;
+        y *= TILE_DIAMETER;
+        return new BlockSoft(x + TILE_DIAMETER * 2, y + TILE_DIAMETER * 2, TILE_RADIUS);
     }
 
     @Override
@@ -43,8 +44,8 @@ public class BlockSoft extends GameObject {
         */
 
         g.setColor(TILE_COLOUR);
-        g.fillRect(x, y, TILE_RADIUS * 2, TILE_RADIUS * 2);
+        g.fillRect(x, y, TILE_DIAMETER, TILE_DIAMETER);
         g.setColor(TILE_OUTLINE_COLOUR);
-        g.drawRect(x, y, TILE_RADIUS * 2, TILE_RADIUS * 2);
+        g.drawRect(x, y, TILE_DIAMETER, TILE_DIAMETER);
     }
 }

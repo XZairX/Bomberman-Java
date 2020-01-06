@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
 public class Player extends GameObject {
@@ -25,10 +26,10 @@ public class Player extends GameObject {
 
     public Player(int x, int y, double radius, int playerID) {
         super(x, y, radius);
-        this.x *= TILE_RADIUS * 2;
-        this.x += (TILE_RADIUS * 4 + (TILE_RADIUS / 4));
-        this.y *= TILE_RADIUS * 2;
-        this.y += (TILE_RADIUS * 4 + (TILE_RADIUS / 4));
+        this.x *= TILE_DIAMETER;
+        this.x += (TILE_DIAMETER * 2 + (TILE_RADIUS / 4));
+        this.y *= TILE_DIAMETER;
+        this.y += (TILE_DIAMETER * 2 + (TILE_RADIUS / 4));
         this.radius += TILE_RADIUS * 1.5;
         this.playerID = playerID;
     }
@@ -36,7 +37,7 @@ public class Player extends GameObject {
     @Override
     public Rectangle getBounds() {
         radius = TILE_RADIUS * 1.5;
-        return new Rectangle(x, y, (int)radius, (int)radius);
+        return new Rectangle((int)x, (int)y, (int)radius, (int)radius);
     }
 
     @Override
