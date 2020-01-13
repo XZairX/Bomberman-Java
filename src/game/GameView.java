@@ -7,6 +7,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Dimension;
 
+import static game.GameMain.listBlockTile;
+import static game.GameMain.listObjects;
+
 public class GameView extends JComponent {
     private static final Color BACKGROUND_COLOUR = Color.GRAY;
 
@@ -22,7 +25,7 @@ public class GameView extends JComponent {
         g.setColor(BACKGROUND_COLOUR);
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        for (GameObject object : game.listBlockTile) {
+        for (GameObject object : listBlockTile) {
             object.draw(g);
         }
 
@@ -34,11 +37,11 @@ public class GameView extends JComponent {
             object.draw(g);
         }
 
-        for (GameObject object : game.listPlayer) {
+        for (GameObject object : listObjects) {
             object.draw(g);
         }
 
-        for (GameObject object : game.listObjects) {
+        for (GameObject object : game.listPlayer) {
             object.draw(g);
         }
     }

@@ -2,6 +2,7 @@ package game;
 
 import static game.Constants.GAMESPACE_COLUMN;
 import static game.Constants.GAMESPACE_ROW;
+import static game.GameMain.listBlockTile;
 
 public class GameSpace {
     private GameMain game;
@@ -23,7 +24,7 @@ public class GameSpace {
     public void spawnGameSpace() {
         for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
             for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
-                game.listBlockTile.add(BlockTile.spawnBlockTile(row, column));
+                listBlockTile.add(BlockTile.spawnBlockTile(row, column));
                 if (row % 2 == 0 && column % 2 == 0) {
                     game.listBlockHard.add(BlockHard.spawnBlockHard(row, column));
                 }

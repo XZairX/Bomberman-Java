@@ -70,7 +70,7 @@ public class Player extends GameObject {
                     this.y -= speed;
                     break;
             }
-            System.out.println("collision hard");
+            //System.out.println("collision hard");
         }
 
         if (other.getClass() == BlockSoft.class) {
@@ -88,11 +88,11 @@ public class Player extends GameObject {
                     this.y -= speed;
                     break;
             }
-            System.out.println("collision soft");
+            //System.out.println("collision soft");
         }
 
         if (other.getClass() == Bomb.class) {
-            System.out.println("collision bomb");
+            //System.out.println("collision bomb");
         }
     }
 
@@ -159,8 +159,7 @@ public class Player extends GameObject {
     }
 
     public void dropBomb() {
-        System.out.println(x + "\n" + y + "\n" + radius + "\n");
-        GameMain.listObjects.add(new Bomb(x, y, radius));
+        Bomb.spawnBomb(x, y);
     }
 
     public void debugPowerUps() {

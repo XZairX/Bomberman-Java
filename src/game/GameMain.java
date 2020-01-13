@@ -10,11 +10,11 @@ import static game.Constants.GAMESPACE_ROW;
 import static game.Constants.TILE_RADIUS;
 
 public class GameMain {
-    public List<BlockTile> listBlockTile;
+    public static List<BlockTile> listBlockTile;
     public List<BlockHard> listBlockHard;
     public List<BlockSoft> listBlockSoft;
-    public List<Player> listPlayer;
     public static List<GameObject> listObjects;
+    public List<Player> listPlayer;
     public Player player1, player2, player3, player4;
 
     public GameMain() {

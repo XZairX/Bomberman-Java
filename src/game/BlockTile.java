@@ -10,8 +10,18 @@ import static game.Constants.TILE_RADIUS;
 public class BlockTile extends GameObject {
     private static final Color TILE_COLOUR = Color.GREEN;
 
+    public boolean isAvailable = true;
+
     public BlockTile(int x, int y, double radius) {
         super(x, y, radius);
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void toggleAvailability() {
+        isAvailable = (true) ? false : true;
     }
 
     public static BlockTile spawnBlockTile(int x, int y) {
