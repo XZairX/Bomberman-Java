@@ -37,7 +37,7 @@ public class Player extends GameObject {
     @Override
     public Rectangle getBounds() {
         radius = TILE_RADIUS * 1.5;
-        return new Rectangle((int)x, (int)y, (int)radius, (int)radius);
+        return new Rectangle(x, y, (int)radius, (int)radius);
     }
 
     @Override
