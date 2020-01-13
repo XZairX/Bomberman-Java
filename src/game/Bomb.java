@@ -4,14 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 import static game.GameMain.listBlockTile;
 import static game.GameMain.listObjects;
-
-// Bomb drawn on top of player
-// Possible resizing optimisation
-// Bomb snap to BlockTile's (0, 0) (-2 to x and y)
-// Refactor Tile diameter for readability
 
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
@@ -24,12 +20,6 @@ public class Bomb extends GameObject {
     public Rectangle getBounds() {
         return super.getBounds();
     }
-
-// Player drops bomb
-// Check blocktile based on position of dropped bomb
-// (possibly loop through blocktiles to find closest and assign based on returned result)
-// Check if tile is free
-// Add bomb to list and place
 
     public static void spawnBomb(int x, int y) {
         //System.out.println("Px: " + x + ", " + "Py: " + y);
@@ -49,7 +39,6 @@ public class Bomb extends GameObject {
                 }
             }
         }
-        //listObjects.add(new Bomb(x, y, TILE_RADIUS * 0.5));
     }
 
     @Override
@@ -61,6 +50,6 @@ public class Bomb extends GameObject {
         */
 
         g.setColor(BOMB_COLOUR);
-        g.fillOval(x, y, getBounds().width, getBounds().height);
+        g.fillOval(x, y, TILE_DIAMETER, TILE_DIAMETER);
     }
 }
