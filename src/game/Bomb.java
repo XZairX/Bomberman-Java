@@ -67,11 +67,10 @@ public class Bomb extends GameObject {
                     System.out.println("Bomb placed");
                     listObjects.add(new Bomb(x, y, TILE_RADIUS));
                     tile.toggleAvailability();
-                    break;
                 } else {
                     System.out.println("Bomb could not be placed");
-                    break;
                 }
+                break;
             }
         }
     }
