@@ -34,6 +34,7 @@ public class Bomb extends GameObject {
                     for (BlockTile tile : listBlockTile) {
                         if (tile.x == x && tile.y == y) {
                             tile.toggleAvailability();
+                            break;
                         }
                     }
                     hit();
@@ -66,8 +67,10 @@ public class Bomb extends GameObject {
                     System.out.println("Bomb placed");
                     listObjects.add(new Bomb(x, y, TILE_RADIUS));
                     tile.toggleAvailability();
+                    break;
                 } else {
                     System.out.println("Bomb could not be placed");
+                    break;
                 }
             }
         }
