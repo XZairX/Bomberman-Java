@@ -21,7 +21,7 @@ public class BlockTile extends GameObject {
     }
 
     public void toggleAvailability() {
-        isAvailable = (true) ? false : true;
+        isAvailable = (isAvailable == true) ? false : true;
     }
 
     public static BlockTile spawnBlockTile(int x, int y) {

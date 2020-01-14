@@ -3,6 +3,8 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
@@ -11,9 +13,40 @@ import static game.GameMain.listObjects;
 
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
+    private static final int BOMB_DELAY = 3000;
+
+    // For debugging
+    private int secondsToExplode = 3;
+
+    private boolean isRunning = false;
 
     public Bomb(int x, int y, double radius) {
         super(x, y, radius);
+
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                isRunning = true;
+                if (secondsToExplode > 0) {
+                    secondsToExplode--;
+                } else {
+                    for (BlockTile tile : listBlockTile) {
+                        if (tile.x == x && tile.y == y) {
+                            tile.toggleAvailability();
+                        }
+                    }
+                    hit();
+                    System.out.println("BOOM");
+                    timer.cancel();
+                }
+            }
+        };
+        // Correct version
+        //timer.schedule(timerTask, BOMB_DELAY);
+
+        // Debug version
+        timer.schedule(timerTask, 0, 1000);
     }
 
     @Override
@@ -30,15 +63,21 @@ public class Bomb extends GameObject {
         for (BlockTile tile : listBlockTile) {
             if (tile.x == x && tile.y == y) {
                 if (tile.isAvailable()) {
-                    System.out.println(tile.x + ", " + tile.y);
-                    listObjects.add(new Bomb(x, y, TILE_RADIUS));
                     System.out.println("Bomb placed");
+                    listObjects.add(new Bomb(x, y, TILE_RADIUS));
                     tile.toggleAvailability();
                 } else {
-                    System.out.println("Space occupied");
+                    System.out.println("Bomb could not be placed");
                 }
             }
         }
+    }
+
+    @Override
+    public void hit() {
+        secondsToExplode = 0;
+        isRunning = false;
+        dead = true;
     }
 
     @Override
@@ -51,5 +90,13 @@ public class Bomb extends GameObject {
 
         g.setColor(BOMB_COLOUR);
         g.fillOval(x, y, TILE_DIAMETER, TILE_DIAMETER);
+
+        // Debug code
+        g.setColor(Color.WHITE);
+        if (isRunning) {
+            g.drawString(Integer.toString(secondsToExplode + 1), x + TILE_RADIUS, y + TILE_RADIUS);
+        } else {
+            g.drawString(Integer.toString(secondsToExplode), x + TILE_RADIUS, y + TILE_RADIUS);
+        }
     }
 }
