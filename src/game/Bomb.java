@@ -38,7 +38,6 @@ public class Bomb extends GameObject {
                         }
                     }
                     hit();
-                    System.out.println("BOOM");
                     timer.cancel();
                 }
             }
@@ -80,6 +79,14 @@ public class Bomb extends GameObject {
         secondsToExplode = 0;
         isRunning = false;
         dead = true;
+        /*
+        for (GameObject bomb : listObjects) {
+            if (bomb.x == x && bomb.y == y) {
+                listObjects.remove(bomb);
+                break;
+            }
+        }
+        */
     }
 
     @Override
@@ -97,8 +104,6 @@ public class Bomb extends GameObject {
         g.setColor(Color.WHITE);
         if (isRunning) {
             g.drawString(Integer.toString(secondsToExplode + 1), x + TILE_RADIUS, y + TILE_RADIUS);
-        } else {
-            g.drawString(Integer.toString(secondsToExplode), x + TILE_RADIUS, y + TILE_RADIUS);
         }
     }
 }

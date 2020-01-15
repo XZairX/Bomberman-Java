@@ -71,6 +71,8 @@ public class GameMain {
 
     public void update() {
         List<GameObject> alive = new ArrayList<>();
+
+        // Collisions BlockHard
         for (GameObject object: listBlockHard)
         {
             if (player1.isColliding(object)) {
@@ -78,17 +80,28 @@ public class GameMain {
             }
         }
 
+        // Collisions BlockSoft
         for (GameObject object : listBlockSoft) {
             if (player1.isColliding(object)) {
                 player1.collisionHandling(object);
             }
         }
 
+        // Collisions GameObjects
         for (GameObject object : listObjects) {
             if (player1.isColliding(object)) {
                 player1.collisionHandling(object);
             }
+
             object.update();
+            if (!object.dead) {
+                alive.add(object);
+            }
+        }
+
+        synchronized (GameMain.class) {
+            listObjects.clear();
+            listObjects.addAll(alive);
         }
     }
 }
