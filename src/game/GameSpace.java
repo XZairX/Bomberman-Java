@@ -2,6 +2,7 @@ package game;
 
 import static game.Constants.GAMESPACE_COLUMN;
 import static game.Constants.GAMESPACE_ROW;
+
 import static game.GameMain.listBlockTile;
 
 public class GameSpace {
@@ -32,7 +33,7 @@ public class GameSpace {
         }
     }
 
-    // Debug code
+    // Debug code to isolate BlockTile spawns
     public void spawnBlockTiles() {
         for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
             for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
@@ -41,7 +42,7 @@ public class GameSpace {
         }
     }
 
-    // Debug code
+    // Debug code to isolate BlockHard spawns
     public void spawnBlockHards() {
         for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
             for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {

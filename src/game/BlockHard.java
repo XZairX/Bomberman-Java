@@ -1,7 +1,7 @@
 package game;
 
-import java.awt.Graphics2D;
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import static game.Constants.TILE_DIAMETER;
@@ -20,23 +20,22 @@ public class BlockHard extends GameObject {
         return super.getBounds();
     }
 
-    public static BlockHard spawnBlockHard(int x, int y) {
-        x *= TILE_DIAMETER;
-        y *= TILE_DIAMETER;
-        return new BlockHard(x + TILE_DIAMETER * 2, y + TILE_DIAMETER * 2, TILE_RADIUS);
-    }
-
     @Override
     public void draw(Graphics2D g) {
         /*
-        // For viewing the bounding box
+        // Debug Bounding Box
         g.setColor(Color.RED);
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
         */
-
         g.setColor(TILE_COLOUR);
         g.fillRect(x, y, TILE_DIAMETER, TILE_DIAMETER);
         g.setColor(TILE_OUTLINE_COLOUR);
         g.drawRect(x, y, TILE_DIAMETER, TILE_DIAMETER);
+    }
+
+    public static BlockHard spawnBlockHard(int x, int y) {
+        x *= TILE_DIAMETER;
+        y *= TILE_DIAMETER;
+        return new BlockHard(x + TILE_DIAMETER * 2, y + TILE_DIAMETER * 2, TILE_RADIUS);
     }
 }

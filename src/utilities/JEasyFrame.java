@@ -3,7 +3,10 @@ package utilities;
 import game.Constants;
 
 import javax.swing.*;
-import java.awt.*;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 
 public class JEasyFrame extends JFrame {
     private static final Color BACKGROUND_COLOUR = Color.BLACK;

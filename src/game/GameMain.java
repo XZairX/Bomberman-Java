@@ -5,13 +5,12 @@ import utilities.JEasyFrame;
 import java.util.ArrayList;
 import java.util.List;
 
+import static game.Constants.GAME_LOOP_DELAY;
 import static game.Constants.GAMESPACE_COLUMN;
 import static game.Constants.GAMESPACE_ROW;
 import static game.Constants.TILE_RADIUS;
 
 public class GameMain {
-    private static final int GAME_LOOP_DELAY = 50; // milliseconds
-
     public static List<BlockTile> listBlockTile;
     public List<BlockHard> listBlockHard;
     public List<BlockSoft> listBlockSoft;
@@ -26,7 +25,6 @@ public class GameMain {
         listPlayer = new ArrayList<>();
         listObjects = new ArrayList<>();
 
-        // Position spawn references for players
         player1 = new Player(GAMESPACE_ROW - (GAMESPACE_ROW - 1), GAMESPACE_COLUMN - (GAMESPACE_COLUMN - 1), TILE_RADIUS, 1);
         player2 = new Player (GAMESPACE_ROW - 2, GAMESPACE_COLUMN - 2, TILE_RADIUS, 2);
         player3 = new Player(GAMESPACE_ROW - 2, GAMESPACE_COLUMN - (GAMESPACE_COLUMN - 1), TILE_RADIUS, 3);
@@ -75,8 +73,7 @@ public class GameMain {
         List<GameObject> listAlive = new ArrayList<>();
 
         // Collisions BlockHard
-        for (GameObject object: listBlockHard)
-        {
+        for (GameObject object: listBlockHard) {
             if (player1.isColliding(object)) {
                 player1.collisionHandling(object);
             }

@@ -3,9 +3,11 @@ package game;
 import javax.swing.JComponent;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Dimension;
+
+import static game.Constants.FRAME_SIZE;
 
 import static game.GameMain.listBlockTile;
 import static game.GameMain.listObjects;
@@ -48,6 +50,6 @@ public class GameView extends JComponent {
 
     @Override
     public Dimension getPreferredSize() {
-        return Constants.FRAME_SIZE;
+        return FRAME_SIZE;
     }
 }

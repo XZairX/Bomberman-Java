@@ -96,6 +96,25 @@ public class Player extends GameObject {
         }
     }
 
+    @Override
+    public void draw(Graphics2D g) {
+        // Debug Bounding Box
+        g.setColor(Color.DARK_GRAY);
+        g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
+
+        switch (playerID) {
+            case 1: g.setColor(PLAYER1_COLOUR);
+                break;
+            case 2: g.setColor(PLAYER2_COLOUR);
+                break;
+            case 3: g.setColor(PLAYER3_COLOUR);
+                break;
+            case 4: g.setColor(PLAYER4_COLOUR);
+                break;
+        }
+        g.fillOval(x, y, (int)(TILE_RADIUS * 1.5), (int)(TILE_RADIUS * 1.5));
+    }
+
     public void moveLeft() {
         this.x -= speed;
         movement = Movement.LEFT;
@@ -169,24 +188,5 @@ public class Player extends GameObject {
                         "Bomb: " + bomb + " \t" +
                         "Fire: " + fire + " \t" +
                         "Skate: " + skate);
-    }
-
-    @Override
-    public void draw(Graphics2D g) {
-        // Temporary Bounding box visibility
-        g.setColor(Color.DARK_GRAY);
-        g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
-
-        switch (playerID) {
-            case 1: g.setColor(PLAYER1_COLOUR);
-                break;
-            case 2: g.setColor(PLAYER2_COLOUR);
-                break;
-            case 3: g.setColor(PLAYER3_COLOUR);
-                break;
-            case 4: g.setColor(PLAYER4_COLOUR);
-                break;
-        }
-        g.fillOval(x, y, (int)(TILE_RADIUS * 1.5), (int)(TILE_RADIUS * 1.5));
     }
 }
