@@ -3,6 +3,7 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -55,11 +56,8 @@ public class Bomb extends GameObject {
     }
 
     public static void spawnBomb(int x, int y) {
-        //System.out.println("Px: " + x + ", " + "Py: " + y);
         x = Math.round(x / 20) * 20;
         y = Math.round(y / 20) * 20;
-        //System.out.println("Bx: " + x + ", " + "By: " + y);
-        //System.out.println();
         for (BlockTile tile : listBlockTile) {
             if (tile.x == x && tile.y == y) {
                 if (tile.isAvailable()) {
@@ -79,14 +77,22 @@ public class Bomb extends GameObject {
         secondsToExplode = 0;
         isRunning = false;
         dead = true;
-        /*
-        for (GameObject bomb : listObjects) {
+
+        Iterator<GameObject> iterator = listObjects.iterator();
+        while (iterator.hasNext()) {
+            GameObject object = iterator.next();
+            if (object.x == x && object.y == y) {
+                iterator.remove();
+                System.out.println("Removed bomb");
+                break;
+            }
+        }
+        /*for (GameObject bomb : listObjects) {
             if (bomb.x == x && bomb.y == y) {
                 listObjects.remove(bomb);
                 break;
             }
-        }
-        */
+        }*/
     }
 
     @Override

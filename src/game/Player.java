@@ -19,7 +19,7 @@ public class Player extends GameObject {
     private int bomb = 1;
     private int fire = 1;
     private int skate = 4;
-    private double speed = (skate - 3) * 3; // (Speed modifier)
+    private double speed = (skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
 
     private enum Movement { LEFT, RIGHT, UP, DOWN, NULL };
     private Movement movement = Movement.NULL;

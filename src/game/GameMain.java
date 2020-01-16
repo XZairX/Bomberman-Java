@@ -62,15 +62,17 @@ public class GameMain {
         //space.spawnRows03();
         //space.spawnRows04();
 
-        while (true) {
-            game.update();
-            view.repaint();
-            //Thread.sleep(DELAY);
+        synchronized (GameMain.class) {
+            while (true) {
+                game.update();
+                view.repaint();
+                //Thread.sleep(DELAY);
+            }
         }
     }
 
     public void update() {
-        List<GameObject> alive = new ArrayList<>();
+        List<GameObject> listAlive = new ArrayList<>();
 
         // Collisions BlockHard
         for (GameObject object: listBlockHard)
@@ -95,13 +97,13 @@ public class GameMain {
 
             object.update();
             if (!object.dead) {
-                alive.add(object);
+                listAlive.add(object);
             }
         }
 
-        synchronized (GameMain.class) {
+        /*synchronized (listObjects) {
             listObjects.clear();
-            listObjects.addAll(alive);
-        }
+            listObjects.addAll(listAlive);
+        }*/
     }
 }
