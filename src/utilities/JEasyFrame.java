@@ -1,12 +1,12 @@
 package utilities;
 
-import game.Constants;
-
 import javax.swing.*;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+
+import static game.Constants.TILE_RADIUS;
 
 public class JEasyFrame extends JFrame {
     private static final Color BACKGROUND_COLOUR = Color.BLACK;
@@ -40,7 +40,7 @@ public class JEasyFrame extends JFrame {
         add(BorderLayout.WEST, panelWest);
 
         pack();
-        setSize(getWidth() + Constants.TILE_RADIUS * 8, getHeight() + Constants.TILE_RADIUS * 4);
+        setSize(getWidth() + TILE_RADIUS * 8, getHeight() + TILE_RADIUS * 4);
         this.setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         repaint();

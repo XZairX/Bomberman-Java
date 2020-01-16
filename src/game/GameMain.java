@@ -56,7 +56,7 @@ public class GameMain {
         //space.spawnBlockHards();
         //space.spawnBlockSofts();
 
-        // Individual row spawning for debug purposes
+        // Debug isolated row spawning
         //space.spawnRows01();
         //space.spawnRows02();
         //space.spawnRows03();
