@@ -10,11 +10,13 @@ import static game.Constants.GAMESPACE_ROW;
 import static game.Constants.TILE_RADIUS;
 
 public class GameMain {
+    private static final int GAME_LOOP_DELAY = 50; // milliseconds
+
     public static List<BlockTile> listBlockTile;
     public List<BlockHard> listBlockHard;
     public List<BlockSoft> listBlockSoft;
-    public static List<GameObject> listObjects;
     public List<Player> listPlayer;
+    public static List<GameObject> listObjects;
     public Player player1, player2, player3, player4;
 
     public GameMain() {
@@ -62,12 +64,10 @@ public class GameMain {
         //space.spawnRows03();
         //space.spawnRows04();
 
-        synchronized (GameMain.class) {
-            while (true) {
-                game.update();
-                view.repaint();
-                //Thread.sleep(DELAY);
-            }
+        while (true) {
+            game.update();
+            view.repaint();
+            Thread.sleep(GAME_LOOP_DELAY);
         }
     }
 
@@ -101,9 +101,9 @@ public class GameMain {
             }
         }
 
-        /*synchronized (listObjects) {
+        synchronized (GameMain.class) {
             listObjects.clear();
             listObjects.addAll(listAlive);
-        }*/
+        }
     }
 }
