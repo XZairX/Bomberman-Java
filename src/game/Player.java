@@ -19,9 +19,9 @@ public class Player extends GameObject {
     private int bomb = 1;
     private int fire = 1;
     private int skate = 4;
-    private double speed = (skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
+    private double speed = 3;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
 
-    private enum Movement { LEFT, RIGHT, UP, DOWN, NULL };
+    public enum Movement { LEFT, RIGHT, UP, DOWN, NULL };
     private Movement movement = Movement.NULL;
 
     public Player(int x, int y, double radius, int playerID) {
@@ -98,6 +98,7 @@ public class Player extends GameObject {
 
     @Override
     public void draw(Graphics2D g) {
+        movePlayer();
         // Debug Bounding Box
         g.setColor(Color.DARK_GRAY);
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
@@ -115,7 +116,32 @@ public class Player extends GameObject {
         g.fillOval(x, y, (int)(TILE_RADIUS * 1.5), (int)(TILE_RADIUS * 1.5));
     }
 
-    public void moveLeft() {
+    public void resetMovement() {
+        movement = Movement.NULL;
+    }
+
+    public void setMovement(Movement direction) {
+        movement = direction;
+    }
+
+    private void movePlayer() {
+        switch (movement) {
+            case LEFT:
+                this.x -= speed;
+                break;
+            case RIGHT:
+                this.x += speed;
+                break;
+            case UP:
+                this.y -= speed;
+                break;
+            case DOWN:
+                this.y += speed;
+                break;
+        }
+    }
+
+    /*public void moveLeft() {
         this.x -= speed;
         movement = Movement.LEFT;
     }
@@ -133,7 +159,7 @@ public class Player extends GameObject {
     public void moveDown() {
         this.y += speed;
         movement = Movement.DOWN;
-    }
+    }*/
 
     public void dropBomb() {
         Bomb.spawnBomb(x, y);
