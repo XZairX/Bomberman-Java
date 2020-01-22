@@ -16,7 +16,7 @@ import static game.GameMain.listObjects;
 
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
-    private static final int BOMB_DELAY = 2500;
+    private static final int BOMB_DELAY = 2400;
 
     // For debugging
     private int secondsToExplode = 3;
@@ -49,7 +49,7 @@ public class Bomb extends GameObject {
         //timer.schedule(timerTask, BOMB_DELAY);
 
         // Debug version
-        timer.schedule(timerTask, 0, 1000);
+        timer.schedule(timerTask, 0, 800);
     }
 
     @Override
@@ -68,7 +68,6 @@ public class Bomb extends GameObject {
             GameObject object = iterator.next();
             if (object.x == x && object.y == y) {
                 iterator.remove();
-                System.out.println("Removed bomb");
                 break;
             }
         }
@@ -97,11 +96,8 @@ public class Bomb extends GameObject {
         for (BlockTile tile : listBlockTile) {
             if (tile.x == x && tile.y == y) {
                 if (tile.isAvailable()) {
-                    System.out.println("Bomb placed");
                     listObjects.add(new Bomb(x, y, TILE_RADIUS));
                     tile.toggleAvailability();
-                } else {
-                    System.out.println("Bomb could not be placed");
                 }
                 break;
             }
