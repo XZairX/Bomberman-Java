@@ -21,6 +21,8 @@ public class Player extends GameObject {
     private int skate = 4;
     private double speed = 3;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
 
+    private boolean canDropBomb = true;
+
     public enum Movement { LEFT, RIGHT, UP, DOWN, NULL };
     private Movement movement = Movement.NULL;
 
@@ -141,28 +143,15 @@ public class Player extends GameObject {
         }
     }
 
-    /*public void moveLeft() {
-        this.x -= speed;
-        movement = Movement.LEFT;
+    public void canDropBomb() {
+        canDropBomb = true;
     }
-
-    public void moveRight() {
-        this.x += speed;
-        movement = Movement.RIGHT;
-    }
-
-    public void moveUp() {
-        this.y -= speed;
-        movement = Movement.UP;
-    }
-
-    public void moveDown() {
-        this.y += speed;
-        movement = Movement.DOWN;
-    }*/
 
     public void dropBomb() {
-        Bomb.spawnBomb(x, y);
+        if (canDropBomb) {
+            Bomb.spawnBomb(x, y);
+            canDropBomb = false;
+        }
     }
 
     public void heartUp() {

@@ -48,6 +48,9 @@ public class GameKeys extends KeyAdapter {
             case KeyEvent.VK_DOWN:
                 game.player1.resetMovement();
                 break;
+            case KeyEvent.VK_SPACE:
+                game.player1.canDropBomb();
+                break;
         }
     }
 }
