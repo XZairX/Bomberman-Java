@@ -135,6 +135,10 @@ public class Player extends GameObject {
         movement = Movement.DOWN;
     }
 
+    public void dropBomb() {
+        Bomb.spawnBomb(x, y);
+    }
+
     public void heartUp() {
         if (heart < 3) {
             heart++;
@@ -175,10 +179,6 @@ public class Player extends GameObject {
         if (skate < 8) {
             skate++;
         }
-    }
-
-    public void dropBomb() {
-        Bomb.spawnBomb(x, y);
     }
 
     public void debugPowerUps() {

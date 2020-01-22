@@ -10,9 +10,9 @@ public class GameKeys extends KeyAdapter {
         this.game = game;
     }
 
-    public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
-        switch (key) {
+    public void keyPressed(KeyEvent keyEvent) {
+        int keycode = keyEvent.getKeyCode();
+        switch (keycode) {
             case KeyEvent.VK_LEFT:
                 game.player1.moveLeft();
                 break;

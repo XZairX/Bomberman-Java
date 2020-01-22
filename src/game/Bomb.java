@@ -16,7 +16,7 @@ import static game.GameMain.listObjects;
 
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
-    private static final int BOMB_DELAY = 3000;
+    private static final int BOMB_DELAY = 2500;
 
     // For debugging
     private int secondsToExplode = 3;
