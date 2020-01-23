@@ -13,5 +13,5 @@ public class Constants {
     public static final int FRAME_WIDTH = TILE_DIAMETER * 15;
     public static final int GAMESPACE_ROW = 15;
     public static final int GAMESPACE_COLUMN = 13;
-    public static final int GAME_LOOP_DELAY = 50; // milliseconds
+    public static final int GAME_LOOP_DELAY = 20; // milliseconds
 }

@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,6 +25,7 @@ public class Bomb extends GameObject {
     private int secondsToExplode = 3;
 
     private boolean isRunning = false;
+    private boolean hasActiveCollision = false;
 
     public Bomb(int x, int y, double radius) {
         super(x, y, radius);
@@ -58,18 +62,39 @@ public class Bomb extends GameObject {
     }
 
     @Override
+    protected boolean isColliding(GameObject other) {
+        return (this.getBounds().intersects(other.getBounds()));
+    }
+
+    @Override
+    protected void collisionHandling(GameObject other) {
+        // If Bomb is not colliding
+        // ActiveCollision = TRUE
+        if (other.getClass() == Player.class) {}
+    }
+
+    @Override
     public void hit() {
         secondsToExplode = 0;
         isRunning = false;
         dead = true;
 
-        Iterator<GameObject> iterator = listObjects.iterator();
+        // List being modified at runtime so iterator not thread-safe
+        // Might make a copy of list and reference it
+        List<GameObject> remove = new ArrayList<>();
+        ListIterator<GameObject> iterator = listObjects.listIterator();
         while (iterator.hasNext()) {
             GameObject object = iterator.next();
             if (object.x == x && object.y == y) {
-                iterator.remove();
+                remove.add(object);
+                //iterator.remove();
                 break;
             }
+        }
+
+        synchronized (GameMain.class) {
+            listObjects.removeAll(remove);
+            System.out.println("removed");
         }
     }
 
@@ -102,5 +127,16 @@ public class Bomb extends GameObject {
                 break;
             }
         }
+    }
+
+    // If Bomb is not colliding
+    // ActiveCollision = TRUE
+
+    public boolean getHasActiveCollision() {
+        return hasActiveCollision;
+    }
+
+    public void setHasActiveCollision() {
+        hasActiveCollision = true;
     }
 }
