@@ -4,10 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -35,6 +31,7 @@ public class Bomb extends GameObject {
             @Override
             public void run() {
                 isRunning = true;
+                // IF statement belongs to debug timer for displaying the bomb secondsToExplode countdown
                 if (secondsToExplode > 0) {
                     secondsToExplode--;
                 } else {
@@ -75,27 +72,8 @@ public class Bomb extends GameObject {
 
     @Override
     public void hit() {
-        secondsToExplode = 0;
         isRunning = false;
         dead = true;
-
-        // List being modified at runtime so iterator not thread-safe
-        // Might make a copy of list and reference it
-        List<GameObject> remove = new ArrayList<>();
-        ListIterator<GameObject> iterator = listObjects.listIterator();
-        while (iterator.hasNext()) {
-            GameObject object = iterator.next();
-            if (object.x == x && object.y == y) {
-                remove.add(object);
-                //iterator.remove();
-                break;
-            }
-        }
-
-        synchronized (GameMain.class) {
-            listObjects.removeAll(remove);
-            System.out.println("removed");
-        }
     }
 
     @Override
