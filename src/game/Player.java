@@ -7,6 +7,8 @@ import java.awt.Rectangle;
 import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
+import static game.GameMain.listObjects;
+
 public class Player extends GameObject {
     private static final Color PLAYER1_COLOUR = Color.BLUE;
     private static final Color PLAYER2_COLOUR = Color.RED;
@@ -16,10 +18,10 @@ public class Player extends GameObject {
     private final int playerID;
 
     private int heart = 1;
-    private int bomb = 1;
+    private int bomb = 4;
     private int fire = 1;
     private int skate = 4;
-    private double speed = 1;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
+    private double speed = 4;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
 
     private boolean canDropBomb;
 
@@ -166,7 +168,15 @@ public class Player extends GameObject {
 
     public void dropBomb() {
         if (canDropBomb) {
-            Bomb.spawnBomb(x + radius, y + radius);
+            int droppedBombs = 0;
+            for (GameObject object : listObjects) {
+                if (object.getClass() == Bomb.class) {
+                    droppedBombs++;
+                }
+            }
+            if (droppedBombs < bomb) {
+                Bomb.spawnBomb(x + radius, y + radius);
+            }
             canDropBomb = false;
         }
     }
