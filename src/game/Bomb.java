@@ -16,6 +16,8 @@ public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
     private static final int BOMB_DELAY = 2400;
 
+    private final int diameter;
+
     // For debugging
     private int secondsToExplode = 3;
 
@@ -23,6 +25,7 @@ public class Bomb extends GameObject {
 
     public Bomb(int x, int y, int radius) {
         super(x, y, radius);
+        this.diameter = radius * 2;
 
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
@@ -80,7 +83,7 @@ public class Bomb extends GameObject {
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
         */
         g.setColor(BOMB_COLOUR);
-        g.fillOval(x, y, radius * 2, radius * 2);
+        g.fillOval(x, y, diameter, diameter);
 
         // Debug Detonation Time
         g.setColor(Color.WHITE);

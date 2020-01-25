@@ -13,7 +13,8 @@ public class Player extends GameObject {
     private static final Color PLAYER3_COLOUR = Color.MAGENTA;
     private static final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (BlockTile is currently using this)
 
-    private int playerID;
+    private final int diameter;
+    private final int playerID;
 
     private int heart = 1;
     private int bomb = 1;
@@ -33,6 +34,7 @@ public class Player extends GameObject {
         this.y *= TILE_DIAMETER;
         this.y += (TILE_DIAMETER * 2 + (TILE_RADIUS / 4));
         this.radius *= 0.8;
+        this.diameter = this.radius * 2;
         this.playerID = playerID;
         canDropBomb = true;
     }
@@ -115,7 +117,7 @@ public class Player extends GameObject {
             case 4: g.setColor(PLAYER4_COLOUR);
                 break;
         }
-        g.fillOval(x + 1, y + 1, (radius * 2) - 3, (radius * 2) - 3);
+        g.fillOval(x, y, diameter, diameter);
     }
 
     public void resetMovement() {

@@ -10,19 +10,22 @@ import static game.Constants.TILE_RADIUS;
 public class BlockTile extends GameObject {
     private static final Color TILE_COLOUR = Color.GREEN;
 
+    private final int diameter;
+
     private boolean isAvailable;
 
     public BlockTile(int x, int y, int radius) {
         super(x, y, radius);
+        this.diameter = radius * 2;
         isAvailable = true;
     }
 
     @Override
     public void draw(Graphics2D g) {
         g.setColor(TILE_COLOUR);
-        g.fillRect(x, y, radius * 2, radius * 2);
+        g.fillRect(x, y, diameter, diameter);
         g.setColor(TILE_OUTLINE_COLOUR);
-        g.drawRect(x, y, radius * 2, radius * 2);
+        g.drawRect(x, y, diameter, diameter);
     }
 
     public boolean isAvailable() {
