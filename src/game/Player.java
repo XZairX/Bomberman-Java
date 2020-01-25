@@ -19,7 +19,7 @@ public class Player extends GameObject {
     private int bomb = 1;
     private int fire = 1;
     private int skate = 4;
-    private double speed = 3;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
+    private double speed = 1;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
 
     private boolean canDropBomb;
 
@@ -32,15 +32,14 @@ public class Player extends GameObject {
         this.x += (TILE_DIAMETER * 2 + (TILE_RADIUS / 4));
         this.y *= TILE_DIAMETER;
         this.y += (TILE_DIAMETER * 2 + (TILE_RADIUS / 4));
-        this.radius += TILE_RADIUS * 1.5;
+        this.radius *= 0.8;
         this.playerID = playerID;
         canDropBomb = true;
     }
 
     @Override
     public Rectangle getBounds() {
-        radius = TILE_RADIUS * 1.5;
-        return new Rectangle(x, y, (int)radius, (int)radius);
+        return super.getBounds();
     }
 
     @Override
@@ -61,16 +60,16 @@ public class Player extends GameObject {
         if (other.getClass() == BlockHard.class) {
             switch (movement) {
                 case LEFT:
-                    this.x += speed;
+                    this.x += speed * 5;
                     break;
                 case RIGHT:
-                    this.x -= speed;
+                    this.x -= speed * 5;
                     break;
                 case UP:
-                    this.y += speed;
+                    this.y += speed * 5;
                     break;
                 case DOWN:
-                    this.y -= speed;
+                    this.y -= speed * 5;
                     break;
             }
             //System.out.println("collision hard");
@@ -79,16 +78,16 @@ public class Player extends GameObject {
         if (other.getClass() == BlockSoft.class) {
             switch (movement) {
                 case LEFT:
-                    this.x += speed;
+                    this.x += speed * 5;
                     break;
                 case RIGHT:
-                    this.x -= speed;
+                    this.x -= speed * 5;
                     break;
                 case UP:
-                    this.y += speed;
+                    this.y += speed * 5;
                     break;
                 case DOWN:
-                    this.y -= speed;
+                    this.y -= speed * 5;
                     break;
             }
             //System.out.println("collision soft");
@@ -116,7 +115,7 @@ public class Player extends GameObject {
             case 4: g.setColor(PLAYER4_COLOUR);
                 break;
         }
-        g.fillOval(x, y, (int)(TILE_RADIUS * 1.5), (int)(TILE_RADIUS * 1.5));
+        g.fillOval(x + 1, y + 1, (int)(radius * 2) - 3, (int)(radius * 2 - 3));
     }
 
     public void resetMovement() {
@@ -150,7 +149,7 @@ public class Player extends GameObject {
 
     public void dropBomb() {
         if (canDropBomb) {
-            Bomb.spawnBomb(x, y);
+            Bomb.spawnBomb((int)(x + radius), (int)(y + radius));
             canDropBomb = false;
         }
     }

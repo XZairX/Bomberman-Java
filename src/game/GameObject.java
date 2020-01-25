@@ -3,8 +3,6 @@ package game;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import static game.Constants.TILE_DIAMETER;
-
 public abstract class GameObject {
     protected int x;
     protected int y;
@@ -18,7 +16,7 @@ public abstract class GameObject {
     }
 
     protected Rectangle getBounds() {
-        return new Rectangle(x, y, TILE_DIAMETER, TILE_DIAMETER);
+        return new Rectangle(x, y, (int)radius * 2, (int)radius * 2);
     }
 
     protected boolean isColliding(GameObject other) {
