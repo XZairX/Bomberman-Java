@@ -25,17 +25,17 @@ public class BlockTile extends GameObject {
         g.drawRect(x, y, diameter, diameter);
     }
 
+    public static BlockTile spawnBlockTile(int x, int y) {
+        x *= TILE_DIAMETER;
+        y *= TILE_DIAMETER;
+        return new BlockTile(x + TILE_DIAMETER * 2, y + TILE_DIAMETER * 2, TILE_RADIUS);
+    }
+
     public boolean isAvailable() {
         return isAvailable;
     }
 
     public void toggleAvailability() {
         isAvailable = (isAvailable == true) ? false : true;
-    }
-
-    public static BlockTile spawnBlockTile(int x, int y) {
-        x *= TILE_DIAMETER;
-        y *= TILE_DIAMETER;
-        return new BlockTile(x + TILE_DIAMETER * 2, y + TILE_DIAMETER * 2, TILE_RADIUS);
     }
 }

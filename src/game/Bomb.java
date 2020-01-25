@@ -19,7 +19,7 @@ public class Bomb extends GameObject {
     // For debugging
     private int secondsToExplode = 3;
 
-    private boolean hasActiveCollision;
+    private boolean isCollisionActive;
 
     public Bomb(int x, int y, int radius) {
         super(x, y, radius);
@@ -62,9 +62,11 @@ public class Bomb extends GameObject {
 
     @Override
     protected void collisionHandling(GameObject other) {
-        // If Bomb is not colliding
-        // ActiveCollision = TRUE
-        if (other.getClass() == Player.class) {}
+        /*if (other.getClass() == Player.class) {
+            if (hasActiveCollision) {
+                System.out.println("bomb collision active");
+            }
+        }*/
     }
 
     @Override
@@ -101,14 +103,11 @@ public class Bomb extends GameObject {
         }
     }
 
-    // If Bomb is not colliding
-    // ActiveCollision = TRUE
-
-    public boolean getHasActiveCollision() {
-        return hasActiveCollision;
+    public boolean getIsCollisionActive() {
+        return isCollisionActive;
     }
 
-    public void setHasActiveCollision() {
-        hasActiveCollision = true;
+    public void setIsCollisionActive() {
+        isCollisionActive = true;
     }
 }

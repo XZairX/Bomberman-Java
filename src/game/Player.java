@@ -95,7 +95,23 @@ public class Player extends GameObject {
         }
 
         if (other.getClass() == Bomb.class) {
-            //System.out.println("collision bomb");
+            Bomb bomb = (Bomb)other;
+            if (bomb.getIsCollisionActive()) {
+                switch (movement) {
+                    case LEFT:
+                        this.x += speed * 5;
+                        break;
+                    case RIGHT:
+                        this.x -= speed * 5;
+                        break;
+                    case UP:
+                        this.y += speed * 5;
+                        break;
+                    case DOWN:
+                        this.y -= speed * 5;
+                        break;
+                }
+            }
         }
     }
 

@@ -92,6 +92,14 @@ public class GameMain {
                 player1.collisionHandling(object);
             }
 
+            // Setting active collisions with new bombs that are not being currently being collided with
+            if ((!player1.isColliding(object)) && (object.getClass() == Bomb.class)) {
+                Bomb bomb = (Bomb)object;
+                if (!bomb.getIsCollisionActive()) {
+                    bomb.setIsCollisionActive();
+                }
+            }
+
             object.update();
             if (!object.dead) {
                 listAlive.add(object);
