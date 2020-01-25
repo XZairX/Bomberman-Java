@@ -7,7 +7,6 @@ import java.awt.Rectangle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
 import static game.GameMain.listBlockTile;
@@ -22,7 +21,7 @@ public class Bomb extends GameObject {
 
     private boolean hasActiveCollision;
 
-    public Bomb(int x, int y, double radius) {
+    public Bomb(int x, int y, int radius) {
         super(x, y, radius);
 
         Timer timer = new Timer();
@@ -81,12 +80,11 @@ public class Bomb extends GameObject {
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
         */
         g.setColor(BOMB_COLOUR);
-        g.fillOval(x, y, TILE_DIAMETER, TILE_DIAMETER);
+        g.fillOval(x, y, radius * 2, radius * 2);
 
         // Debug Detonation Time
         g.setColor(Color.WHITE);
         g.drawString(Integer.toString(secondsToExplode + 1), x + TILE_RADIUS, y + TILE_RADIUS);
-
     }
 
     public static void spawnBomb(int x, int y) {

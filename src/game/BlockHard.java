@@ -11,7 +11,7 @@ import static game.Constants.TILE_RADIUS;
 public class BlockHard extends GameObject {
     private static final Color TILE_COLOUR = Color.WHITE;
 
-    public BlockHard(int x, int y, double radius) {
+    public BlockHard(int x, int y, int radius) {
         super(x, y, radius);
     }
 
@@ -28,9 +28,9 @@ public class BlockHard extends GameObject {
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
         */
         g.setColor(TILE_COLOUR);
-        g.fillRect(x, y, TILE_DIAMETER, TILE_DIAMETER);
+        g.fillRect(x, y, radius * 2, radius * 2);
         g.setColor(TILE_OUTLINE_COLOUR);
-        g.drawRect(x, y, TILE_DIAMETER, TILE_DIAMETER);
+        g.drawRect(x, y, radius * 2, radius * 2);
     }
 
     public static BlockHard spawnBlockHard(int x, int y) {

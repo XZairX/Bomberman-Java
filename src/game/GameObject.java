@@ -6,17 +6,17 @@ import java.awt.Rectangle;
 public abstract class GameObject {
     protected int x;
     protected int y;
-    protected double radius;
+    protected int radius;
     protected boolean dead;
 
-    protected GameObject(int x, int y, double radius) {
+    protected GameObject(int x, int y, int radius) {
         this.x = x;
         this.y = y;
         this.radius = radius;
     }
 
     protected Rectangle getBounds() {
-        return new Rectangle(x, y, (int)radius * 2, (int)radius * 2);
+        return new Rectangle(x, y, radius * 2, radius * 2);
     }
 
     protected boolean isColliding(GameObject other) {

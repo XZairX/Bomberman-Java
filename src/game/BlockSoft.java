@@ -11,7 +11,7 @@ import static game.Constants.TILE_RADIUS;
 public class BlockSoft extends GameObject {
     private static final Color TILE_COLOUR = Color.RED;
 
-    public BlockSoft(int x, int y, double radius) {
+    public BlockSoft(int x, int y, int radius) {
         super(x, y, radius);
     }
 
@@ -33,9 +33,9 @@ public class BlockSoft extends GameObject {
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
         */
         g.setColor(TILE_COLOUR);
-        g.fillRect(x, y, TILE_DIAMETER, TILE_DIAMETER);
+        g.fillRect(x, y, radius * 2, radius * 2);
         g.setColor(TILE_OUTLINE_COLOUR);
-        g.drawRect(x, y, TILE_DIAMETER, TILE_DIAMETER);
+        g.drawRect(x, y, radius * 2, radius * 2);
     }
 
     public static boolean canSpawnBlockSoft() {

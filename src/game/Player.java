@@ -26,7 +26,7 @@ public class Player extends GameObject {
     public enum Movement { LEFT, RIGHT, UP, DOWN, NULL };
     private Movement movement = Movement.NULL;
 
-    public Player(int x, int y, double radius, int playerID) {
+    public Player(int x, int y, int radius, int playerID) {
         super(x, y, radius);
         this.x *= TILE_DIAMETER;
         this.x += (TILE_DIAMETER * 2 + (TILE_RADIUS / 4));
@@ -115,7 +115,7 @@ public class Player extends GameObject {
             case 4: g.setColor(PLAYER4_COLOUR);
                 break;
         }
-        g.fillOval(x + 1, y + 1, (int)(radius * 2) - 3, (int)(radius * 2 - 3));
+        g.fillOval(x + 1, y + 1, (radius * 2) - 3, (radius * 2) - 3);
     }
 
     public void resetMovement() {

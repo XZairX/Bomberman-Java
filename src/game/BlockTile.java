@@ -12,7 +12,7 @@ public class BlockTile extends GameObject {
 
     private boolean isAvailable;
 
-    public BlockTile(int x, int y, double radius) {
+    public BlockTile(int x, int y, int radius) {
         super(x, y, radius);
         isAvailable = true;
     }
@@ -20,9 +20,9 @@ public class BlockTile extends GameObject {
     @Override
     public void draw(Graphics2D g) {
         g.setColor(TILE_COLOUR);
-        g.fillRect(x, y, TILE_DIAMETER, TILE_DIAMETER);
+        g.fillRect(x, y, radius * 2, radius * 2);
         g.setColor(TILE_OUTLINE_COLOUR);
-        g.drawRect(x, y, TILE_DIAMETER, TILE_DIAMETER);
+        g.drawRect(x, y, radius * 2, radius * 2);
     }
 
     public boolean isAvailable() {
