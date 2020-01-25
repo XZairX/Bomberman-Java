@@ -13,7 +13,6 @@ public class Player extends GameObject {
     private static final Color PLAYER3_COLOUR = Color.MAGENTA;
     private static final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (BlockTile is currently using this)
 
-    private final int diameter;
     private final int playerID;
 
     private int heart = 1;
@@ -151,7 +150,7 @@ public class Player extends GameObject {
 
     public void dropBomb() {
         if (canDropBomb) {
-            Bomb.spawnBomb((int)(x + radius), (int)(y + radius));
+            Bomb.spawnBomb(x + radius, y + radius);
             canDropBomb = false;
         }
     }

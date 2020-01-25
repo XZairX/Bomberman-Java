@@ -7,12 +7,14 @@ public abstract class GameObject {
     protected int x;
     protected int y;
     protected int radius;
+    protected int diameter;
     protected boolean dead;
 
     protected GameObject(int x, int y, int radius) {
         this.x = x;
         this.y = y;
         this.radius = radius;
+        this.diameter = radius * 2;
     }
 
     protected Rectangle getBounds() {

@@ -16,8 +16,6 @@ public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
     private static final int BOMB_DELAY = 2400;
 
-    private final int diameter;
-
     // For debugging
     private int secondsToExplode = 3;
 
@@ -25,7 +23,6 @@ public class Bomb extends GameObject {
 
     public Bomb(int x, int y, int radius) {
         super(x, y, radius);
-        this.diameter = radius * 2;
 
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {

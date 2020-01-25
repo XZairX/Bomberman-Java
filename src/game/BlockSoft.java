@@ -11,11 +11,8 @@ import static game.Constants.TILE_RADIUS;
 public class BlockSoft extends GameObject {
     private static final Color TILE_COLOUR = Color.RED;
 
-    private final int diameter;
-
     public BlockSoft(int x, int y, int radius) {
         super(x, y, radius);
-        this.diameter = radius * 2;
     }
 
     @Override

@@ -10,13 +10,10 @@ import static game.Constants.TILE_RADIUS;
 public class BlockTile extends GameObject {
     private static final Color TILE_COLOUR = Color.GREEN;
 
-    private final int diameter;
-
     private boolean isAvailable;
 
     public BlockTile(int x, int y, int radius) {
         super(x, y, radius);
-        this.diameter = radius * 2;
         isAvailable = true;
     }
 
