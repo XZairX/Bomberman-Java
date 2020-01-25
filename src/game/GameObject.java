@@ -9,7 +9,7 @@ public abstract class GameObject {
     protected int x;
     protected int y;
     protected double radius;
-    protected boolean dead = false;
+    protected boolean dead;
 
     protected GameObject(int x, int y, double radius) {
         this.x = x;

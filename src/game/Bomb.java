@@ -20,8 +20,7 @@ public class Bomb extends GameObject {
     // For debugging
     private int secondsToExplode = 3;
 
-    private boolean isRunning = false;
-    private boolean hasActiveCollision = false;
+    private boolean hasActiveCollision;
 
     public Bomb(int x, int y, double radius) {
         super(x, y, radius);
@@ -30,7 +29,6 @@ public class Bomb extends GameObject {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                isRunning = true;
                 // IF statement belongs to debug timer for displaying the bomb secondsToExplode countdown
                 if (secondsToExplode > 0) {
                     secondsToExplode--;
@@ -72,8 +70,7 @@ public class Bomb extends GameObject {
 
     @Override
     public void hit() {
-        isRunning = false;
-        dead = true;
+        super.hit();
     }
 
     @Override
@@ -88,9 +85,8 @@ public class Bomb extends GameObject {
 
         // Debug Detonation Time
         g.setColor(Color.WHITE);
-        if (isRunning) {
-            g.drawString(Integer.toString(secondsToExplode + 1), x + TILE_RADIUS, y + TILE_RADIUS);
-        }
+        g.drawString(Integer.toString(secondsToExplode + 1), x + TILE_RADIUS, y + TILE_RADIUS);
+
     }
 
     public static void spawnBomb(int x, int y) {

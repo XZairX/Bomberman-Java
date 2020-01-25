@@ -21,7 +21,7 @@ public class Player extends GameObject {
     private int skate = 4;
     private double speed = 3;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
 
-    private boolean canDropBomb = true;
+    private boolean canDropBomb;
 
     public enum Movement { LEFT, RIGHT, UP, DOWN, NULL };
     private Movement movement = Movement.NULL;
@@ -34,6 +34,7 @@ public class Player extends GameObject {
         this.y += (TILE_DIAMETER * 2 + (TILE_RADIUS / 4));
         this.radius += TILE_RADIUS * 1.5;
         this.playerID = playerID;
+        canDropBomb = true;
     }
 
     @Override
