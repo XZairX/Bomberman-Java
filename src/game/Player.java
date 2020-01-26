@@ -18,15 +18,13 @@ public class Player extends GameObject {
     private final int playerID;
 
     private int heart = 1;
-    private int bomb = 4;
+    private int bomb = 99;
     private int fire = 1;
     private int skate = 4;
-    private double speed = 4;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
+    private double speed = 3;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
 
     private boolean canDropBomb;
-
-    public enum Movement { LEFT, RIGHT, UP, DOWN, NULL };
-    private Movement movement = Movement.NULL;
+    private boolean moveLeft, moveRight, moveUp, moveDown;
 
     public Player(int x, int y, int radius, int playerID) {
         super(x, y, radius);
@@ -52,66 +50,60 @@ public class Player extends GameObject {
 
     @Override
     public void collisionHandling(GameObject other) {
-        // Need to detect which side of the bounding box is hit and call appropriate move method
-        // e.g. if (collision at bottom of BlockHard bounding box) { moveDown(); // to counter up movement }
+        /*
+        - Need to detect which side of the bounding box is hit and call appropriate move method
+            e.g. if (collision at bottom of BlockHard bounding box) { moveDown(); // to counter up movement }
 
-        // OR create a secondary bounding box which looks slightly ahead of the player to predict a collision
+        - OR create a secondary bounding box which looks slightly ahead of the player to predict a collision
 
-        // OR detect which movement was used to trigger collision and offset it
-        // e.g. if (moveUp() triggered collision) moveDown()
+        - OR detect which movement was used to trigger collision and offset it
+            e.g. if (moveUp() triggered collision) moveDown()
+        */
 
         if (other.getClass() == BlockHard.class) {
-            switch (movement) {
-                case LEFT:
-                    this.x += speed * 5;
-                    break;
-                case RIGHT:
-                    this.x -= speed * 5;
-                    break;
-                case UP:
-                    this.y += speed * 5;
-                    break;
-                case DOWN:
-                    this.y -= speed * 5;
-                    break;
+            if (moveLeft) {
+                this.x += speed * 5;
             }
-            //System.out.println("collision hard");
+            if (moveRight) {
+                this.x -= speed * 5;
+            }
+            if (moveUp) {
+                this.y += speed * 5;
+            }
+            if (moveDown) {
+                this.y -= speed * 5;
+            }
         }
 
         if (other.getClass() == BlockSoft.class) {
-            switch (movement) {
-                case LEFT:
-                    this.x += speed * 5;
-                    break;
-                case RIGHT:
-                    this.x -= speed * 5;
-                    break;
-                case UP:
-                    this.y += speed * 5;
-                    break;
-                case DOWN:
-                    this.y -= speed * 5;
-                    break;
+            if (moveLeft) {
+                this.x += speed * 5;
             }
-            //System.out.println("collision soft");
+            if (moveRight) {
+                this.x -= speed * 5;
+            }
+            if (moveUp) {
+                this.y += speed * 5;
+            }
+            if (moveDown) {
+                this.y -= speed * 5;
+            }
         }
 
         if (other.getClass() == Bomb.class) {
             Bomb bomb = (Bomb)other;
             if (bomb.getIsCollisionActive()) {
-                switch (movement) {
-                    case LEFT:
-                        this.x += speed * 5;
-                        break;
-                    case RIGHT:
-                        this.x -= speed * 5;
-                        break;
-                    case UP:
-                        this.y += speed * 5;
-                        break;
-                    case DOWN:
-                        this.y -= speed * 5;
-                        break;
+                if (moveLeft) {
+                    this.x += speed * 5;
+                }
+                if (moveRight) {
+                    this.x -= speed * 5;
+                }
+                if (moveUp) {
+                    this.y += speed * 5;
+                }
+                if (moveDown) {
+                    this.y -= speed * 5;
                 }
             }
         }
@@ -137,28 +129,34 @@ public class Player extends GameObject {
         g.fillOval(x, y, diameter, diameter);
     }
 
-    public void resetMovement() {
-        movement = Movement.NULL;
+    public void setMoveLeft(boolean movement) {
+        moveLeft = (movement == true) ? true : false;
     }
 
-    public void setMovement(Movement direction) {
-        movement = direction;
+    public void setMoveRight(boolean movement) {
+        moveRight = (movement == true) ? true : false;
+    }
+
+    public void setMoveUp(boolean movement) {
+        moveUp = (movement == true) ? true : false;
+    }
+
+    public void setMoveDown(boolean movement) {
+        moveDown = (movement == true) ? true : false;
     }
 
     private void movePlayer() {
-        switch (movement) {
-            case LEFT:
-                this.x -= speed;
-                break;
-            case RIGHT:
-                this.x += speed;
-                break;
-            case UP:
-                this.y -= speed;
-                break;
-            case DOWN:
-                this.y += speed;
-                break;
+        if (moveLeft) {
+            this.x -= speed;
+        }
+        if (moveRight) {
+            this.x += speed;
+        }
+        if (moveUp) {
+            this.y -= speed;
+        }
+        if (moveDown) {
+            this.y += speed;
         }
     }
 

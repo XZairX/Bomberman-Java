@@ -4,7 +4,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class GameKeys extends KeyAdapter {
-    GameMain game;
+    private GameMain game;
 
     public GameKeys(GameMain game) {
         this.game = game;
@@ -15,16 +15,16 @@ public class GameKeys extends KeyAdapter {
         int keycode = keyEvent.getKeyCode();
         switch (keycode) {
             case KeyEvent.VK_LEFT:
-                game.player1.setMovement(Player.Movement.LEFT);
+                game.player1.setMoveLeft(true);
                 break;
             case KeyEvent.VK_RIGHT:
-                game.player1.setMovement(Player.Movement.RIGHT);
+                game.player1.setMoveRight(true);
                 break;
             case KeyEvent.VK_UP:
-                game.player1.setMovement(Player.Movement.UP);
+                game.player1.setMoveUp(true);
                 break;
             case KeyEvent.VK_DOWN:
-                game.player1.setMovement(Player.Movement.DOWN);
+                game.player1.setMoveDown(true);
                 break;
             case KeyEvent.VK_SPACE:
                 game.player1.dropBomb();
@@ -37,16 +37,16 @@ public class GameKeys extends KeyAdapter {
         int keycode = keyEvent.getKeyCode();
         switch (keycode) {
             case KeyEvent.VK_LEFT:
-                game.player1.resetMovement();
+                game.player1.setMoveLeft(false);
                 break;
             case KeyEvent.VK_RIGHT:
-                game.player1.resetMovement();
+                game.player1.setMoveRight(false);
                 break;
             case KeyEvent.VK_UP:
-                game.player1.resetMovement();
+                game.player1.setMoveUp(false);
                 break;
             case KeyEvent.VK_DOWN:
-                game.player1.resetMovement();
+                game.player1.setMoveDown(false);
                 break;
             case KeyEvent.VK_SPACE:
                 game.player1.canDropBomb();
