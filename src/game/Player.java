@@ -29,10 +29,10 @@ public class Player extends GameObject {
     public Player(int x, int y, int radius, int playerID) {
         super(x, y, radius);
         this.x *= TILE_DIAMETER;
-        this.x += (TILE_DIAMETER * 2 + (TILE_RADIUS / 4));
+        this.x += (TILE_DIAMETER * 2 + (TILE_RADIUS / 2));
         this.y *= TILE_DIAMETER;
-        this.y += (TILE_DIAMETER * 2 + (TILE_RADIUS / 4));
-        this.radius *= 0.8;
+        this.y += (TILE_DIAMETER * 2 + (TILE_RADIUS / 2));
+        this.radius *= 0.5;
         this.diameter = this.radius * 2;
         this.playerID = playerID;
         canDropBomb = true;
@@ -128,30 +128,34 @@ public class Player extends GameObject {
 
     private void movePlayer() {
         if (moveLeft) {
-            this.x -= speed;
+            x -= speed;
         }
         if (moveRight) {
-            this.x += speed;
+            x += speed;
         }
         if (moveUp) {
-            this.y -= speed;
+            y -= speed;
         }
         if (moveDown) {
-            this.y += speed;
+            y += speed;
         }
     }
 
     private void cancelCollisionMovement() {
         if (moveLeft) {
+            x = Math.round((x / TILE_DIAMETER) * TILE_DIAMETER);
             moveLeft = false;
         }
         else if (moveRight) {
+            x = Math.round((x / TILE_DIAMETER) * TILE_DIAMETER) + (TILE_DIAMETER - diameter);
             moveRight = false;
         }
         else if (moveUp) {
+            y = Math.round((y / TILE_DIAMETER) * TILE_DIAMETER);
             moveUp = false;
         }
         else {
+            y = Math.round((y / TILE_DIAMETER) * TILE_DIAMETER) + (TILE_DIAMETER - diameter);
             moveDown = false;
         }
     }
