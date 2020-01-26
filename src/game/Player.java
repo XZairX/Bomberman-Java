@@ -40,7 +40,21 @@ public class Player extends GameObject {
 
     @Override
     public Rectangle getBounds() {
-        return super.getBounds();
+        if (moveLeft) {
+            return new Rectangle(x - (int)speed, y, radius * 2, radius * 2);
+        }
+        if (moveRight) {
+            return new Rectangle(x + (int)speed, y, radius * 2, radius * 2);
+        }
+        if (moveUp) {
+            return new Rectangle(x, y - (int)speed, radius * 2, radius * 2);
+        }
+        if (moveDown) {
+            return new Rectangle(x, y + (int)speed, radius * 2, radius * 2);
+        }
+        else {
+            return super.getBounds();
+        }
     }
 
     @Override
@@ -61,50 +75,17 @@ public class Player extends GameObject {
         */
 
         if (other.getClass() == BlockHard.class) {
-            if (moveLeft) {
-                this.x += speed * 5;
-            }
-            if (moveRight) {
-                this.x -= speed * 5;
-            }
-            if (moveUp) {
-                this.y += speed * 5;
-            }
-            if (moveDown) {
-                this.y -= speed * 5;
-            }
+            cancelCollisionMovement();
         }
 
         if (other.getClass() == BlockSoft.class) {
-            if (moveLeft) {
-                this.x += speed * 5;
-            }
-            if (moveRight) {
-                this.x -= speed * 5;
-            }
-            if (moveUp) {
-                this.y += speed * 5;
-            }
-            if (moveDown) {
-                this.y -= speed * 5;
-            }
+            cancelCollisionMovement();
         }
 
         if (other.getClass() == Bomb.class) {
             Bomb bomb = (Bomb)other;
             if (bomb.getIsCollisionActive()) {
-                if (moveLeft) {
-                    this.x += speed * 5;
-                }
-                if (moveRight) {
-                    this.x -= speed * 5;
-                }
-                if (moveUp) {
-                    this.y += speed * 5;
-                }
-                if (moveDown) {
-                    this.y -= speed * 5;
-                }
+                cancelCollisionMovement();
             }
         }
     }
@@ -157,6 +138,21 @@ public class Player extends GameObject {
         }
         if (moveDown) {
             this.y += speed;
+        }
+    }
+
+    private void cancelCollisionMovement() {
+        if (moveLeft) {
+            moveLeft = false;
+        }
+        else if (moveRight) {
+            moveRight = false;
+        }
+        else if (moveUp) {
+            moveUp = false;
+        }
+        else {
+            moveDown = false;
         }
     }
 

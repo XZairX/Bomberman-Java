@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
 import static game.GameMain.listBlockTile;
@@ -90,8 +91,8 @@ public class Bomb extends GameObject {
     }
 
     public static void spawnBomb(int x, int y) {
-        x = Math.round(x / 20) * 20;
-        y = Math.round(y / 20) * 20;
+        x = Math.round(x / TILE_DIAMETER) * TILE_DIAMETER;
+        y = Math.round(y / TILE_DIAMETER) * TILE_DIAMETER;
         for (BlockTile tile : listBlockTile) {
             if (tile.x == x && tile.y == y) {
                 if (tile.isAvailable()) {
