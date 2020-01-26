@@ -111,19 +111,19 @@ public class Player extends GameObject {
     }
 
     public void setMoveLeft(boolean movement) {
-        moveLeft = (movement == true) ? true : false;
+        moveLeft = movement;
     }
 
     public void setMoveRight(boolean movement) {
-        moveRight = (movement == true) ? true : false;
+        moveRight = movement;
     }
 
     public void setMoveUp(boolean movement) {
-        moveUp = (movement == true) ? true : false;
+        moveUp = movement;
     }
 
     public void setMoveDown(boolean movement) {
-        moveDown = (movement == true) ? true : false;
+        moveDown = movement;
     }
 
     private void movePlayer() {
@@ -143,20 +143,20 @@ public class Player extends GameObject {
 
     private void cancelCollisionMovement() {
         if (moveLeft) {
-            x = Math.round((x / TILE_DIAMETER) * TILE_DIAMETER);
             moveLeft = false;
+            x = Math.round((x / TILE_DIAMETER) * TILE_DIAMETER);
         }
         else if (moveRight) {
-            x = Math.round((x / TILE_DIAMETER) * TILE_DIAMETER) + (TILE_DIAMETER - diameter);
             moveRight = false;
+            x = Math.round((x / TILE_DIAMETER) * TILE_DIAMETER) + (TILE_DIAMETER - diameter);
         }
         else if (moveUp) {
-            y = Math.round((y / TILE_DIAMETER) * TILE_DIAMETER);
             moveUp = false;
+            y = Math.round((y / TILE_DIAMETER) * TILE_DIAMETER);
         }
         else {
-            y = Math.round((y / TILE_DIAMETER) * TILE_DIAMETER) + (TILE_DIAMETER - diameter);
             moveDown = false;
+            y = Math.round((y / TILE_DIAMETER) * TILE_DIAMETER) + (TILE_DIAMETER - diameter);
         }
     }
 
