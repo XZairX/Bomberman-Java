@@ -23,8 +23,9 @@ public class Player extends GameObject {
     private int skate = 4;
     private double speed = 3;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
 
-    private boolean canDropBomb;
+    private boolean canMove;
     private boolean moveLeft, moveRight, moveUp, moveDown;
+    private boolean canDropBomb;
 
     public Player(int x, int y, int radius, int playerID) {
         super(x, y, radius);
@@ -35,6 +36,7 @@ public class Player extends GameObject {
         this.radius *= 0.5;
         this.diameter = this.radius * 2;
         this.playerID = playerID;
+        canMove = true;
         canDropBomb = true;
     }
 
@@ -52,9 +54,7 @@ public class Player extends GameObject {
         if (moveDown) {
             return new Rectangle(x, y + (int)speed, radius * 2, radius * 2);
         }
-        else {
-            return super.getBounds();
-        }
+        return super.getBounds();
     }
 
     @Override
@@ -64,16 +64,6 @@ public class Player extends GameObject {
 
     @Override
     public void collisionHandling(GameObject other) {
-        /*
-        - Need to detect which side of the bounding box is hit and call appropriate move method
-            e.g. if (collision at bottom of BlockHard bounding box) { moveDown(); // to counter up movement }
-
-        - OR create a secondary bounding box which looks slightly ahead of the player to predict a collision
-
-        - OR detect which movement was used to trigger collision and offset it
-            e.g. if (moveUp() triggered collision) moveDown()
-        */
-
         if (other.getClass() == BlockHard.class) {
             cancelCollisionMovement();
         }
@@ -92,7 +82,10 @@ public class Player extends GameObject {
 
     @Override
     public void draw(Graphics2D g) {
-        movePlayer();
+        if (canMove) {
+            movePlayer();
+        }
+
         // Debug Bounding Box
         g.setColor(Color.DARK_GRAY);
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
@@ -142,22 +135,28 @@ public class Player extends GameObject {
     }
 
     private void cancelCollisionMovement() {
+        canMove = false;
         if (moveLeft) {
             moveLeft = false;
+            x += speed;
             x = Math.round((x / TILE_DIAMETER) * TILE_DIAMETER);
         }
-        else if (moveRight) {
+        if (moveRight) {
             moveRight = false;
+            x -= speed;
             x = Math.round((x / TILE_DIAMETER) * TILE_DIAMETER) + (TILE_DIAMETER - diameter);
         }
-        else if (moveUp) {
+        if (moveUp) {
             moveUp = false;
+            y += speed;
             y = Math.round((y / TILE_DIAMETER) * TILE_DIAMETER);
         }
-        else {
+        if (moveDown) {
             moveDown = false;
+            y -= speed;
             y = Math.round((y / TILE_DIAMETER) * TILE_DIAMETER) + (TILE_DIAMETER - diameter);
         }
+        canMove = true;
     }
 
     public void canDropBomb() {
