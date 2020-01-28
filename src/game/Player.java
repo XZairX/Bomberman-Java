@@ -64,6 +64,8 @@ public class Player extends GameObject {
 
     @Override
     public void collisionHandling(GameObject other) {
+        super.collisionHandling(other);
+
         if (other.getClass() == BlockHard.class) {
             cancelCollisionMovement();
         }
@@ -78,6 +80,11 @@ public class Player extends GameObject {
                 cancelCollisionMovement();
             }
         }
+    }
+
+    @Override
+    public void hit() {
+        System.out.println("player hit");
     }
 
     @Override

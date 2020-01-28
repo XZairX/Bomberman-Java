@@ -26,10 +26,9 @@ public abstract class GameObject {
     }
 
     protected void collisionHandling(GameObject other) {
-        // Global collision handling functionality for checking if hit by Fire object
-        /*if (this.getClass() != other.getClass() && other.getClass().equals(Fire.class)) {
+        if (other.getClass().equals(Fire.class)) {
             this.hit();
-        }*/
+        }
     }
 
     protected void hit() {

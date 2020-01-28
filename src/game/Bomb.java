@@ -15,7 +15,7 @@ import static game.GameMain.listObjects;
 
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
-    private static final int BOMB_DELAY = 2400;
+    private static final int BOMB_DELAY = 2500;
 
     // For debugging
     private int secondsToExplode = 3;
@@ -39,6 +39,7 @@ public class Bomb extends GameObject {
                             break;
                         }
                     }
+                    //Fire.spawnFire(x, y);
                     hit();
                     timer.cancel();
                 }
@@ -63,6 +64,7 @@ public class Bomb extends GameObject {
 
     @Override
     protected void collisionHandling(GameObject other) {
+        super.collisionHandling(other);
         /*if (other.getClass() == Player.class) {
             if (hasActiveCollision) {
                 System.out.println("bomb collision active");
@@ -72,6 +74,7 @@ public class Bomb extends GameObject {
 
     @Override
     public void hit() {
+        Fire.spawnFire(x, y);
         super.hit();
     }
 
