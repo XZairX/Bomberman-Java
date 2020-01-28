@@ -26,7 +26,7 @@ public abstract class GameObject {
     }
 
     protected void collisionHandling(GameObject other) {
-        if (other.getClass().equals(Fire.class)) {
+        if (other.getClass() == (Fire.class)) {
             this.hit();
         }
     }
