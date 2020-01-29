@@ -65,6 +65,10 @@ public class GameKeys extends KeyAdapter {
                 break;
             case KeyEvent.VK_P:
                 game.player1.debugPowerUps();
+                break;
+            case KeyEvent.VK_ESCAPE:
+                game.player1.debugGiveAll();
+                break;
         }
     }
 

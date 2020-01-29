@@ -18,6 +18,9 @@ public class Player extends GameObject {
     private static final Color PLAYER3_COLOUR = Color.MAGENTA;
     private static final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (BlockTile is currently using this)
     private static final int PLAYER_INVINCIBILITY = 2500;
+    private static final int HEART_MAX = 3;
+    private static final int MIN = 1;
+    private static final int MAX = 8;
 
     private final int playerID;
 
@@ -25,7 +28,7 @@ public class Player extends GameObject {
     private int bomb = 1;
     private int fire = 1;
     private int skate = 4;
-    private double speed = 3;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
+    private double speed = 3;
 
     private boolean canMove;
     private boolean moveLeft, moveRight, moveUp, moveDown;
@@ -212,45 +215,50 @@ public class Player extends GameObject {
     }
 
     public void heartUp() {
-        if (heart < 3) {
+        if (heart < HEART_MAX) {
             heart++;
         }
     }
 
     public void bombDown() {
-        if (bomb > 1) {
+        if (bomb > MIN) {
             bomb--;
         }
     }
 
     public void bombUp() {
-        if (bomb < 8) {
+        if (bomb < MAX) {
             bomb++;
         }
     }
 
     public void fireDown() {
-        if (fire > 1) {
+        if (fire > MIN) {
             fire--;
         }
     }
 
     public void fireUp() {
-        if (fire < 8) {
+        if (fire < MAX) {
             fire++;
         }
     }
 
     public void speedDown() {
-        if (skate > 1) {
+        if (skate > MIN) {
             skate--;
         }
     }
 
     public void speedUp() {
-        if (skate < 8) {
+        if (skate < MAX) {
             skate++;
         }
+    }
+
+    private void setSpeed() {
+        // IF skate 4 or higher (speed +30)
+        // IF skate 3 or lower (speed -90)
     }
 
     public void debugPowerUps() {
@@ -260,5 +268,13 @@ public class Player extends GameObject {
                         "Bomb: " + bomb + " \t" +
                         "Fire: " + fire + " \t" +
                         "Skate: " + skate);
+    }
+
+    public void debugGiveAll() {
+        heart = HEART_MAX;
+        bomb = MAX;
+        fire = MAX;
+        skate = MAX;
+        debugPowerUps();
     }
 }
