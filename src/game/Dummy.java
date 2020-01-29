@@ -2,7 +2,9 @@ package game;
 
 public class Dummy {
     /*
-    Update and refine collision logic
-    Bomb collision (May need code/logic revision)
+    Collisions still need refinement (holding a direction against a wall)
+    Bomb collision (Due for code/logic revision)
+    Fire initializer
+    Player health and invincibility system
     */
 }

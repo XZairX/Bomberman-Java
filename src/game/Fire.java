@@ -15,6 +15,10 @@ public class Fire extends GameObject {
     private static final Color FIRE_COLOUR = Color.YELLOW;
     private static final int FIRE_DELAY = 500;
 
+    //private static int x;
+    //private static int y;
+    //private static int radius;
+
     private int range = 3;
 
     public Fire(int x, int y, int radius) {
@@ -24,6 +28,7 @@ public class Fire extends GameObject {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
+                System.out.println(x + ", " + y);
                 hit();
             }
         };
@@ -31,10 +36,12 @@ public class Fire extends GameObject {
     }
 
     /*private void test() {
-        for (int i = 0; i < range; i++) {
-            spawnFire(x + 20, y);
-        }
-        hit();
+        spawnFire(x + 20, y + 20);
+    }*/
+
+    /*private static void create() {
+        Fire fire = new Fire(x, y, TILE_RADIUS);
+        fire.test();
     }*/
 
     @Override
@@ -49,7 +56,15 @@ public class Fire extends GameObject {
 
     @Override
     protected void collisionHandling(GameObject other) {
-        other.hit();
+        if (other.getClass() == BlockHard.class) {
+            hit();
+        if (other.getClass() == Bomb.class) {
+            System.out.println("sfjkljsldk");
+        }
+        } else {
+            System.out.println("jkd");
+            other.hit();
+        }
     }
 
     @Override

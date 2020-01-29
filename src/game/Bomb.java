@@ -29,27 +29,32 @@ public class Bomb extends GameObject {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                // IF statement belongs to debug timer for displaying the bomb secondsToExplode countdown
+                for (BlockTile tile : listBlockTile) {
+                    if (tile.x == x && tile.y == y) {
+                        tile.toggleAvailability();
+                        break;
+                    }
+                }
+                hit();
+                timer.cancel();
+            }
+        };
+
+        // Debug to show time to detonation
+        TimerTask timerTaskDebug = new TimerTask() {
+            @Override
+            public void run() {
                 if (secondsToExplode > 0) {
                     secondsToExplode--;
-                } else {
-                    for (BlockTile tile : listBlockTile) {
-                        if (tile.x == x && tile.y == y) {
-                            tile.toggleAvailability();
-                            break;
-                        }
-                    }
-                    //Fire.spawnFire(x, y);
-                    hit();
-                    timer.cancel();
                 }
             }
         };
+
         // Correct version
-        //timer.schedule(timerTask, BOMB_DELAY);
+        timer.schedule(timerTask, BOMB_DELAY);
 
         // Debug version
-        timer.schedule(timerTask, 0, 800);
+        timer.schedule(timerTaskDebug, 0, BOMB_DELAY / 3);
     }
 
     @Override
@@ -65,11 +70,6 @@ public class Bomb extends GameObject {
     @Override
     protected void collisionHandling(GameObject other) {
         super.collisionHandling(other);
-        /*if (other.getClass() == Player.class) {
-            if (hasActiveCollision) {
-                System.out.println("bomb collision active");
-            }
-        }*/
     }
 
     @Override
