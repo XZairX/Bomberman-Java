@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
@@ -14,6 +17,7 @@ public class Player extends GameObject {
     private static final Color PLAYER2_COLOUR = Color.RED;
     private static final Color PLAYER3_COLOUR = Color.MAGENTA;
     private static final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (BlockTile is currently using this)
+    private static final int PLAYER_INVINCIBILITY = 2500;
 
     private final int playerID;
 
@@ -26,6 +30,7 @@ public class Player extends GameObject {
     private boolean canMove;
     private boolean moveLeft, moveRight, moveUp, moveDown;
     private boolean canDropBomb;
+    private boolean isInvincible;
 
     public Player(int x, int y, int radius, int playerID) {
         super(x, y, radius);
@@ -84,7 +89,23 @@ public class Player extends GameObject {
 
     @Override
     public void hit() {
-        heart--;
+        if (!isInvincible) {
+            heart--;
+            if (heart == 0) {
+                System.out.println("player dead");
+                super.hit();
+            } else {
+                isInvincible = true;
+                Timer timer = new Timer();
+                TimerTask timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        isInvincible = false;
+                    }
+                };
+                timer.schedule(timerTask, PLAYER_INVINCIBILITY);
+            }
+        }
     }
 
     @Override
@@ -108,6 +129,11 @@ public class Player extends GameObject {
                 break;
         }
         g.fillOval(x, y, diameter, diameter);
+
+        if (isInvincible) {
+            g.setColor(Color.WHITE);
+            g.drawString("Invincible", x, y);
+        }
     }
 
     public void setMoveLeft(boolean movement) {

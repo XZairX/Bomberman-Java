@@ -63,6 +63,8 @@ public class GameKeys extends KeyAdapter {
                 game.player1.speedDown();
                 game.player1.debugPowerUps();
                 break;
+            case KeyEvent.VK_P:
+                game.player1.debugPowerUps();
         }
     }
 
