@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
 import static game.GameMain.listObjects;
@@ -15,12 +16,6 @@ public class Fire extends GameObject {
     private static final Color FIRE_COLOUR = Color.YELLOW;
     private static final int FIRE_DELAY = 500;
 
-    //private static int x;
-    //private static int y;
-    //private static int radius;
-
-    private int range = 3;
-
     public Fire(int x, int y, int radius) {
         super(x, y, radius);
 
@@ -28,21 +23,11 @@ public class Fire extends GameObject {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println(x + ", " + y);
                 hit();
             }
         };
         timer.schedule(timerTask, FIRE_DELAY);
     }
-
-    /*private void test() {
-        spawnFire(x + 20, y + 20);
-    }*/
-
-    /*private static void create() {
-        Fire fire = new Fire(x, y, TILE_RADIUS);
-        fire.test();
-    }*/
 
     @Override
     public Rectangle getBounds() {
@@ -58,9 +43,9 @@ public class Fire extends GameObject {
     protected void collisionHandling(GameObject other) {
         if (other.getClass() == BlockHard.class) {
             hit();
+        }
         if (other.getClass() == Bomb.class) {
             System.out.println("sfjkljsldk");
-        }
         } else {
             System.out.println("jkd");
             other.hit();
@@ -85,8 +70,21 @@ public class Fire extends GameObject {
         g.fillRect(x, y, diameter, diameter);
     }
 
-    public static void spawnFire(int x, int y) {
-        //listObjects.add(new Fire(x + 1, y + 1, TILE_RADIUS - 1));
+    private static void spawnFire(int x, int y) {
         listObjects.add(new Fire(x, y, TILE_RADIUS));
+    }
+
+    public static void spawnFire(int x, int y, int range) {
+        spawnFire(x, y);
+        for (int i = 0; i < range; i++) {
+            // Left
+            spawnFire(x - (TILE_DIAMETER * (i + 1)), y);
+            // Right
+            spawnFire(x + (TILE_DIAMETER * (i + 1)), y);
+            // Up
+            spawnFire(x, y - (TILE_DIAMETER * (i + 1)));
+            // Down
+            spawnFire(x, y + (TILE_DIAMETER * (i + 1)));
+        }
     }
 }

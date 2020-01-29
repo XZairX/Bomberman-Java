@@ -74,7 +74,7 @@ public class Bomb extends GameObject {
 
     @Override
     public void hit() {
-        Fire.spawnFire(x, y);
+        Fire.spawnFire(x, y, 3);
         super.hit();
     }
 
