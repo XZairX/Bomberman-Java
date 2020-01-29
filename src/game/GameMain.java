@@ -36,11 +36,10 @@ public class GameMain {
         listPlayer.add(player4);
 
         /*
-        // For after collision detection
-        player1.debugPowerUps();
-        player2.debugPowerUps();
-        player3.debugPowerUps();
-        player4.debugPowerUps();
+        // Debug initial inventory state
+        for (Player player : listPlayer) {
+            player.debugPowerUps();
+        }
         */
     }
 

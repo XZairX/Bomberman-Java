@@ -16,14 +16,16 @@ import static game.GameMain.listObjects;
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
     private static final int BOMB_DELAY = 2500;
+    private final int fire;
 
     // For debugging
     private int secondsToExplode = 3;
 
     private boolean isCollisionActive;
 
-    public Bomb(int x, int y, int radius) {
+    public Bomb(int x, int y, int radius, int fire) {
         super(x, y, radius);
+        this.fire = fire;
 
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
@@ -74,7 +76,7 @@ public class Bomb extends GameObject {
 
     @Override
     public void hit() {
-        Fire.spawnFire(x, y, 3);
+        Fire.spawnFire(x, y, fire);
         super.hit();
     }
 
@@ -93,13 +95,13 @@ public class Bomb extends GameObject {
         g.drawString(Integer.toString(secondsToExplode + 1), x + TILE_RADIUS, y + TILE_RADIUS);
     }
 
-    public static void spawnBomb(int x, int y) {
+    public static void spawnBomb(int x, int y, int fire) {
         x = Math.round(x / TILE_DIAMETER) * TILE_DIAMETER;
         y = Math.round(y / TILE_DIAMETER) * TILE_DIAMETER;
         for (BlockTile tile : listBlockTile) {
             if (tile.x == x && tile.y == y) {
                 if (tile.isAvailable()) {
-                    listObjects.add(new Bomb(x, y, TILE_RADIUS));
+                    listObjects.add(new Bomb(x, y, TILE_RADIUS, fire));
                     tile.toggleAvailability();
                 }
                 break;

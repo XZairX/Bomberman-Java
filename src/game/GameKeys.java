@@ -29,6 +29,40 @@ public class GameKeys extends KeyAdapter {
             case KeyEvent.VK_SPACE:
                 game.player1.dropBomb();
                 break;
+
+            // Debug keys
+            case KeyEvent.VK_H:
+                game.player1.heartUp();
+                game.player1.debugPowerUps();
+                break;
+            case KeyEvent.VK_J:
+                game.player1.hit();
+                game.player1.debugPowerUps();
+                break;
+            case KeyEvent.VK_B:
+                game.player1.bombUp();
+                game.player1.debugPowerUps();
+                break;
+            case KeyEvent.VK_N:
+                game.player1.bombDown();
+                game.player1.debugPowerUps();
+                break;
+            case KeyEvent.VK_F:
+                game.player1.fireUp();
+                game.player1.debugPowerUps();
+                break;
+            case KeyEvent.VK_G:
+                game.player1.fireDown();
+                game.player1.debugPowerUps();
+                break;
+            case KeyEvent.VK_S:
+                game.player1.speedUp();
+                game.player1.debugPowerUps();
+                break;
+            case KeyEvent.VK_D:
+                game.player1.speedDown();
+                game.player1.debugPowerUps();
+                break;
         }
     }
 

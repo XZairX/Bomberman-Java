@@ -18,7 +18,7 @@ public class Player extends GameObject {
     private final int playerID;
 
     private int heart = 1;
-    private int bomb = 99;
+    private int bomb = 1;
     private int fire = 1;
     private int skate = 4;
     private double speed = 3;//(skate - 3) * TILE_DIAMETER; //3; // (Speed modifier)
@@ -84,7 +84,7 @@ public class Player extends GameObject {
 
     @Override
     public void hit() {
-        System.out.println("player hit");
+        heart--;
     }
 
     @Override
@@ -179,7 +179,7 @@ public class Player extends GameObject {
                 }
             }
             if (droppedBombs < bomb) {
-                Bomb.spawnBomb(x + radius, y + radius);
+                Bomb.spawnBomb(x + radius, y + radius, fire);
             }
             canDropBomb = false;
         }
