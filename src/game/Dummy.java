@@ -6,5 +6,7 @@ public class Dummy {
     Bomb collision (Due for code/logic revision)
     Fire and bomb collision interaction
     Player health and invincibility system
+    Safely adding and removing objects from lists
+        - Refactor GameMain lists to not be static (add static methods for list addition/removal)
     */
 }

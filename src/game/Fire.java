@@ -74,6 +74,7 @@ public class Fire extends GameObject {
         listObjects.add(new Fire(x, y, TILE_RADIUS));
     }
 
+    // Possibly convert into an object which spawns only 1 range fires recursively
     public static void spawnFire(int x, int y, int range) {
         spawnFire(x, y);
         for (int i = 0; i < range; i++) {
