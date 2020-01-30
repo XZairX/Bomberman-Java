@@ -4,9 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
@@ -27,10 +24,15 @@ public class Bomb extends GameObject {
         super(x, y, radius);
         this.fire = fire;
 
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(BOMB_DELAY);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 for (BlockTile tile : listBlockTile) {
                     if (tile.x == x && tile.y == y) {
                         tile.toggleAvailability();
@@ -38,25 +40,25 @@ public class Bomb extends GameObject {
                     }
                 }
                 hit();
-                timer.cancel();
             }
-        };
+        });
 
-        // Debug to show time to detonation
-        TimerTask timerTaskDebug = new TimerTask() {
+        Thread threadDebug = new Thread(new Runnable() {
             @Override
             public void run() {
-                if (secondsToExplode > 0) {
-                    secondsToExplode--;
+                while (secondsToExplode > 0) {
+                    try {
+                        secondsToExplode--;
+                        Thread.sleep(BOMB_DELAY / 3);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-        };
+        });
 
-        // Correct version
-        timer.schedule(timerTask, BOMB_DELAY);
-
-        // Debug version
-        timer.schedule(timerTaskDebug, 0, BOMB_DELAY / 3);
+        thread.start();
+        threadDebug.start();
     }
 
     @Override

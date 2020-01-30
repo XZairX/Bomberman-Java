@@ -4,9 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
@@ -19,14 +16,19 @@ public class Fire extends GameObject {
     public Fire(int x, int y, int radius) {
         super(x, y, radius);
 
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(FIRE_DELAY);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 hit();
             }
-        };
-        timer.schedule(timerTask, FIRE_DELAY);
+        });
+
+        thread.start();
     }
 
     @Override
