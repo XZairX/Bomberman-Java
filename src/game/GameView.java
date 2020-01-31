@@ -19,11 +19,26 @@ public class GameView extends JComponent {
 
     public GameView(GameMain game) {
         this.game = game;
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        repaint();
+                        Thread.sleep(20);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        thread.start();
     }
 
     @Override
     public void paintComponent(Graphics g0) {
-        Graphics2D g = (Graphics2D) g0;
+        Graphics2D g = (Graphics2D)g0;
         g.setColor(BACKGROUND_COLOUR);
         g.fillRect(0, 0, getWidth(), getHeight());
 

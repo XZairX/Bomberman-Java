@@ -27,7 +27,6 @@ public class Fire extends GameObject {
                 hit();
             }
         });
-
         thread.start();
     }
 
@@ -78,16 +77,24 @@ public class Fire extends GameObject {
 
     // Possibly convert into an object which spawns only 1 range fires recursively
     public static void spawnFire(int x, int y, int range) {
-        spawnFire(x, y);
-        for (int i = 0; i < range; i++) {
-            // Left
-            spawnFire(x - (TILE_DIAMETER * (i + 1)), y);
-            // Right
-            spawnFire(x + (TILE_DIAMETER * (i + 1)), y);
-            // Up
-            spawnFire(x, y - (TILE_DIAMETER * (i + 1)));
-            // Down
-            spawnFire(x, y + (TILE_DIAMETER * (i + 1)));
-        }
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (range > 0) {
+                    spawnFire(x - (TILE_DIAMETER * (range)), y);
+                    spawnFire(x + (TILE_DIAMETER * (range)), y);
+                    spawnFire(x, y - (TILE_DIAMETER * (range)));
+                    spawnFire(x, y + (TILE_DIAMETER * (range)));
+
+                    spawnFire(x, y, range - 1);
+                }
+            }
+        });
+        thread.start();
     }
 }

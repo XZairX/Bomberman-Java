@@ -42,6 +42,7 @@ public class Bomb extends GameObject {
                 hit();
             }
         });
+        thread.start();
 
         Thread threadDebug = new Thread(new Runnable() {
             @Override
@@ -56,8 +57,6 @@ public class Bomb extends GameObject {
                 }
             }
         });
-
-        thread.start();
         threadDebug.start();
     }
 
