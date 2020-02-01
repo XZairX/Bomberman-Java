@@ -32,13 +32,6 @@ public class Bomb extends GameObject {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-                for (BlockTile tile : listBlockTile) {
-                    if (tile.x == x && tile.y == y) {
-                        tile.toggleAvailability();
-                        break;
-                    }
-                }
                 hit();
             }
         });
@@ -77,7 +70,13 @@ public class Bomb extends GameObject {
 
     @Override
     public void hit() {
-        Fire.spawnFire(x, y, fire);
+        for (BlockTile tile : listBlockTile) {
+            if (tile.x == x && tile.y == y) {
+                tile.toggleAvailability();
+                break;
+            }
+        }
+        //Fire.spawnFire(x, y, fire);
         super.hit();
     }
 

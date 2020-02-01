@@ -44,12 +44,9 @@ public class Fire extends GameObject {
     protected void collisionHandling(GameObject other) {
         if (other.getClass() == BlockHard.class) {
             hit();
-        }
-        if (other.getClass() == Bomb.class) {
-            System.out.println("sfjkljsldk");
         } else {
-            System.out.println("jkd");
             other.hit();
+            System.out.println("Fire hit " + other.getClass());
         }
     }
 
@@ -86,10 +83,10 @@ public class Fire extends GameObject {
                     e.printStackTrace();
                 }
                 if (range > 0) {
-                    spawnFire(x - (TILE_DIAMETER * (range)), y);
-                    spawnFire(x + (TILE_DIAMETER * (range)), y);
-                    spawnFire(x, y - (TILE_DIAMETER * (range)));
-                    spawnFire(x, y + (TILE_DIAMETER * (range)));
+                    spawnFire(x - (TILE_DIAMETER * (range - 9)), y);
+                    spawnFire(x + (TILE_DIAMETER * (range - 9)), y);
+                    spawnFire(x, y - (TILE_DIAMETER * (range - 9)));
+                    spawnFire(x, y + (TILE_DIAMETER * (range - 9)));
 
                     spawnFire(x, y, range - 1);
                 }

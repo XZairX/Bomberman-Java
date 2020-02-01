@@ -272,7 +272,7 @@ public class Player extends GameObject {
 
     public void debugGiveAll() {
         heart = HEART_MAX;
-        bomb = MAX;
+        bomb = MAX * 4;
         fire = MAX;
         skate = MAX;
         debugPowerUps();
