@@ -76,7 +76,8 @@ public class Bomb extends GameObject {
                 break;
             }
         }
-        //Fire.spawnFire(x, y, fire);
+        Fire.spawnFire(x, y);
+        Fire.spawnFire(x, y, 0, fire);
         super.hit();
     }
 
