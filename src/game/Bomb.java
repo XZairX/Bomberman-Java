@@ -26,12 +26,14 @@ public class Bomb extends GameObject {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(BOMB_DELAY);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                while (!dead) {
+                    try {
+                        Thread.sleep(BOMB_DELAY);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    hit();
                 }
-                hit();
             }
         });
         thread.start();
@@ -39,7 +41,7 @@ public class Bomb extends GameObject {
         Thread threadDebug = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (secondsToExplode > 0) {
+                while (!dead) {
                     try {
                         secondsToExplode--;
                         Thread.sleep(BOMB_DELAY / 3);
@@ -54,7 +56,7 @@ public class Bomb extends GameObject {
         Thread threadDebugCollision = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true) {
+                while (!dead) {
                     System.out.println(getIsCollisionActive());
                     try {
                         Thread.sleep(500);

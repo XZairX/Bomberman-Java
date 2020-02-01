@@ -11,6 +11,7 @@ import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
 import static game.GameMain.listObjects;
+import static game.GameMain.numberOfPlayers;
 
 public class Player extends GameObject {
     private static final Color PLAYER1_COLOUR = Color.BLUE;
@@ -83,8 +84,7 @@ public class Player extends GameObject {
         }
 
         if (other.getClass() == Bomb.class) {
-            Bomb bomb = (Bomb)other;
-            if (bomb.getIsCollisionActive()) {
+            if (((Bomb)other).getIsCollisionActive()) {
                 cancelCollisionMovement();
             }
         }
@@ -96,6 +96,7 @@ public class Player extends GameObject {
             heart--;
             if (heart == 0) {
                 System.out.println("player dead");
+                numberOfPlayers--;
                 super.hit();
             } else {
                 isInvincible = true;

@@ -14,8 +14,8 @@ public class GameMain {
     public static List<BlockTile> listBlockTile;
     public static List<GameObject> listObjects;
     public static List<GameObject> listAlive;
-    public static List<Player> listPlayer;
     public Player player1, player2, player3, player4;
+    public static int numberOfPlayers;
 
     public GameMain() {
         listBlockTile = new ArrayList<>();
@@ -28,9 +28,11 @@ public class GameMain {
         player4 = new Player (GAMESPACE_ROW - (GAMESPACE_ROW - 1), GAMESPACE_COLUMN - 2, TILE_RADIUS, 4);
 
         addAliveGameObject(player1);
-        //addAliveGameObject(player2);
-        //addAliveGameObject(player3);
-        //addAliveGameObject(player4);
+        addAliveGameObject(player2);
+        addAliveGameObject(player3);
+        addAliveGameObject(player4);
+
+        numberOfPlayers = listAlive.size();
     }
 
     public static void addTileGameObject(BlockTile blockTile) {
@@ -81,12 +83,23 @@ public class GameMain {
                     if (object.isColliding(other)) {
                         object.collisionHandling(other);
                     }
+                }
+            }
 
-                    // Setting active collisions with new bombs that are not being currently being collided with
-                    if ((!object.isColliding(other)) && (other.getClass() == Bomb.class)) {
-                        Bomb bomb = (Bomb)other;
-                        if (!bomb.getIsCollisionActive()) {
-                            bomb.setIsCollisionActive();
+            // Collisions Bomb
+            if (object.getClass() == Bomb.class) {
+                int playersNotColliding = 0;
+                for (int i = listObjects.indexOf(this) + 1; i < listObjects.size(); i++) {
+                    GameObject other = listObjects.get(i);
+
+                    if ((!object.isColliding(other)) && other.getClass() == Player.class) {
+                        playersNotColliding++;
+                    }
+
+                    // Setting active collisions with bombs that are not being currently being collided with
+                    if (playersNotColliding == numberOfPlayers) {
+                        if (!((Bomb)object).getIsCollisionActive()) {
+                            ((Bomb)object).setIsCollisionActive();
                         }
                     }
                 }

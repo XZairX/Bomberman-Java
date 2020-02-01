@@ -18,12 +18,14 @@ public class Fire extends GameObject {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(FIRE_DELAY);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                while (!dead) {
+                    try {
+                        Thread.sleep(FIRE_DELAY);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    hit();
                 }
-                hit();
             }
         });
         thread.start();

@@ -19,6 +19,13 @@ public class GameView extends JComponent {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                // Temporary fix to stop errors on startup
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 while (true) {
                     try {
                         repaint();
