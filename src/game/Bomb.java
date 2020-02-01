@@ -50,6 +50,21 @@ public class Bomb extends GameObject {
             }
         });
         threadDebug.start();
+
+        Thread threadDebugCollision = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    System.out.println(getIsCollisionActive());
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        //threadDebugCollision.start();
     }
 
     @Override

@@ -11,7 +11,6 @@ import static game.Constants.FRAME_SIZE;
 
 import static game.GameMain.listBlockTile;
 import static game.GameMain.listObjects;
-import static game.GameMain.listPlayer;
 
 public class GameView extends JComponent {
     private static final Color BACKGROUND_COLOUR = Color.GRAY;
@@ -44,10 +43,6 @@ public class GameView extends JComponent {
         }
 
         for (GameObject object : listObjects) {
-            object.draw(g);
-        }
-
-        for (GameObject object : listPlayer) {
             object.draw(g);
         }
     }

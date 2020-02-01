@@ -19,7 +19,6 @@ public class GameMain {
 
     public GameMain() {
         listBlockTile = new ArrayList<>();
-        listPlayer = new ArrayList<>();
         listObjects = new ArrayList<>();
         listAlive = new ArrayList<>();
 
@@ -28,17 +27,10 @@ public class GameMain {
         player3 = new Player(GAMESPACE_ROW - 2, GAMESPACE_COLUMN - (GAMESPACE_COLUMN - 1), TILE_RADIUS, 3);
         player4 = new Player (GAMESPACE_ROW - (GAMESPACE_ROW - 1), GAMESPACE_COLUMN - 2, TILE_RADIUS, 4);
 
-        listPlayer.add(player1);
-        listPlayer.add(player2);
-        listPlayer.add(player3);
-        listPlayer.add(player4);
-
-        /*
-        // Debug initial inventory state
-        for (Player player : listPlayer) {
-            player.debugPowerUps();
-        }
-        */
+        addAliveGameObject(player1);
+        //addAliveGameObject(player2);
+        //addAliveGameObject(player3);
+        //addAliveGameObject(player4);
     }
 
     public static void addTileGameObject(BlockTile blockTile) {
@@ -81,15 +73,22 @@ public class GameMain {
     public void update() {
         // Collisions GameObjects
         for (GameObject object : listObjects) {
-            if (player1.isColliding(object)) {
-                player1.collisionHandling(object);
-            }
 
-            // Setting active collisions with new bombs that are not being currently being collided with
-            if ((!player1.isColliding(object)) && (object.getClass() == Bomb.class)) {
-                Bomb bomb = (Bomb)object;
-                if (!bomb.getIsCollisionActive()) {
-                    bomb.setIsCollisionActive();
+            // Collisions Player
+            if (object.getClass() == Player.class) {
+                for (int i = listObjects.indexOf(this) + 1; i < listObjects.size(); i++) {
+                    GameObject other = listObjects.get(i);
+                    if (object.isColliding(other)) {
+                        object.collisionHandling(other);
+                    }
+
+                    // Setting active collisions with new bombs that are not being currently being collided with
+                    if ((!object.isColliding(other)) && (other.getClass() == Bomb.class)) {
+                        Bomb bomb = (Bomb)other;
+                        if (!bomb.getIsCollisionActive()) {
+                            bomb.setIsCollisionActive();
+                        }
+                    }
                 }
             }
 
