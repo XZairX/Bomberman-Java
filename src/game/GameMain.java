@@ -16,6 +16,7 @@ public class GameMain {
     public List<BlockSoft> listBlockSoft;
     public List<Player> listPlayer;
     public static List<GameObject> listObjects;
+    public static List<GameObject> listAlive;
     public Player player1, player2, player3, player4;
 
     public GameMain() {
@@ -24,6 +25,7 @@ public class GameMain {
         listBlockSoft = new ArrayList<>();
         listPlayer = new ArrayList<>();
         listObjects = new ArrayList<>();
+        listAlive = new ArrayList<>();
 
         player1 = new Player(GAMESPACE_ROW - (GAMESPACE_ROW - 1), GAMESPACE_COLUMN - (GAMESPACE_COLUMN - 1), TILE_RADIUS, 1);
         player2 = new Player (GAMESPACE_ROW - 2, GAMESPACE_COLUMN - 2, TILE_RADIUS, 2);
@@ -41,6 +43,10 @@ public class GameMain {
             player.debugPowerUps();
         }
         */
+    }
+
+    public static void addGameObject(GameObject object) {
+        listAlive.add(object);
     }
 
     public static void main(String[] args) throws Exception {
@@ -69,8 +75,6 @@ public class GameMain {
     }
 
     public void update() {
-        List<GameObject> listAlive = new ArrayList<>();
-
         // Collisions BlockHard
         for (GameObject object: listBlockHard) {
             if (player1.isColliding(object)) {
@@ -108,6 +112,7 @@ public class GameMain {
         synchronized (GameMain.class) {
             listObjects.clear();
             listObjects.addAll(listAlive);
+            listAlive.clear();
         }
     }
 }

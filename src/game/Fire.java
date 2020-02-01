@@ -7,11 +7,10 @@ import java.awt.Rectangle;
 import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
-import static game.GameMain.listObjects;
-
 public class Fire extends GameObject {
     private static final Color FIRE_COLOUR = Color.YELLOW;
     private static final int FIRE_DELAY = 500;
+    private static final int FIRE_RECURSION_DELAY = 10;
 
     public Fire(int x, int y, int radius) {
         super(x, y, radius);
@@ -69,7 +68,7 @@ public class Fire extends GameObject {
     }
 
     public static void spawnFire(int x, int y) {
-        listObjects.add(new Fire(x, y, TILE_RADIUS));
+        GameMain.addGameObject(new Fire(x, y, TILE_RADIUS));
     }
 
     // Possibly convert into an object which spawns only 1 range fires recursively
@@ -78,7 +77,7 @@ public class Fire extends GameObject {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(20);
+                    Thread.sleep(FIRE_RECURSION_DELAY);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

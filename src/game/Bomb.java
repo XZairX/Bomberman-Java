@@ -8,7 +8,6 @@ import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
 import static game.GameMain.listBlockTile;
-import static game.GameMain.listObjects;
 
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
@@ -102,7 +101,7 @@ public class Bomb extends GameObject {
         for (BlockTile tile : listBlockTile) {
             if (tile.x == x && tile.y == y) {
                 if (tile.isAvailable()) {
-                    listObjects.add(new Bomb(x, y, TILE_RADIUS, fire));
+                    GameMain.addGameObject(new Bomb(x, y, TILE_RADIUS, fire));
                     tile.toggleAvailability();
                 }
                 break;
