@@ -134,10 +134,20 @@ public class Player extends GameObject {
         }
         g.fillOval(x, y, diameter, diameter);
 
-        if (isInvincible) {
+        switch (playerID) {
+            case 1:
+                g.setColor(PLAYER1_COLOUR);
+                g.drawString(("Bomb " + bomb), TILE_DIAMETER, 15);
+                g.drawString(("Fire " + fire), TILE_DIAMETER * 5, 15);
+                g.drawString(("Skate " + skate), TILE_DIAMETER, 30);
+                g.drawString(("Heart " + heart), TILE_DIAMETER * 5, 30);
+                break;
+        }
+
+        /*if (isInvincible) {
             g.setColor(Color.WHITE);
             g.drawString("Invincible", x, y);
-        }
+        }*/
     }
 
     public void setMoveLeft(boolean movement) {
@@ -262,20 +272,10 @@ public class Player extends GameObject {
         // IF skate 3 or lower (speed -90)
     }
 
-    public void debugPowerUps() {
-        System.out.println(
-                "ID: player" + playerID + "\n \t\t" +
-                        "Heart: " + heart + " \t" +
-                        "Bomb: " + bomb + " \t" +
-                        "Fire: " + fire + " \t" +
-                        "Skate: " + skate);
-    }
-
     public void debugGiveAll() {
         heart = HEART_MAX;
         bomb = MAX * 4;
         fire = MAX;
         skate = MAX;
-        debugPowerUps();
     }
 }
