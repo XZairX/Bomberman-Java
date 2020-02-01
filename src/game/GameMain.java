@@ -12,17 +12,13 @@ import static game.Constants.TILE_RADIUS;
 
 public class GameMain {
     public static List<BlockTile> listBlockTile;
-    public List<BlockHard> listBlockHard;
-    public List<BlockSoft> listBlockSoft;
-    public List<Player> listPlayer;
     public static List<GameObject> listObjects;
     public static List<GameObject> listAlive;
+    public static List<Player> listPlayer;
     public Player player1, player2, player3, player4;
 
     public GameMain() {
         listBlockTile = new ArrayList<>();
-        listBlockHard = new ArrayList<>();
-        listBlockSoft = new ArrayList<>();
         listPlayer = new ArrayList<>();
         listObjects = new ArrayList<>();
         listAlive = new ArrayList<>();
@@ -45,50 +41,44 @@ public class GameMain {
         */
     }
 
-    public static void addGameObject(GameObject object) {
+    public static void addTileGameObject(BlockTile blockTile) {
+        listBlockTile.add(blockTile);
+    }
+
+    public static void addBlockGameObject(GameObject object) {
+        listObjects.add(object);
+    }
+
+    public static void addAliveGameObject(GameObject object) {
         listAlive.add(object);
     }
 
     public static void main(String[] args) throws Exception {
-        GameMain game = new GameMain();
-        GameView view = new GameView(game);
-        GameSpace space = new GameSpace(game);
-        new JEasyFrame(view, "Bomberman Game").addKeyListener(new GameKeys(game));
+        GameMain gameMain = new GameMain();
+        GameView gameView = new GameView();
+        GameSpace gameSpace = new GameSpace();
+        new JEasyFrame(gameView, "Bomberman Game").addKeyListener(new GameKeys(gameMain));
 
-        space.spawnBorder();
-        //space.spawnGameSpace();
-        space.spawnBlockTiles();
-        //space.spawnBlockHards();
-        //space.spawnBlockSofts();
+        gameSpace.spawnBorder();
+        //gameSpace.spawnGameSpace();
+        gameSpace.spawnBlockTiles();
+        //gameSpace.spawnBlockHards();
+        //gameSpace.spawnBlockSofts();
 
         // Debug isolated row spawning
-        //space.spawnRows01();
-        //space.spawnRows02();
-        //space.spawnRows03();
-        //space.spawnRows04();
+        //gameSpace.spawnRows01();
+        //gameSpace.spawnRows02();
+        //gameSpace.spawnRows03();
+        //gameSpace.spawnRows04();
 
         while (true) {
-            game.update();
-            view.repaint();
+            gameMain.update();
+            gameView.repaint();
             Thread.sleep(GAME_LOOP_DELAY);
         }
     }
 
     public void update() {
-        // Collisions BlockHard
-        for (GameObject object: listBlockHard) {
-            if (player1.isColliding(object)) {
-                player1.collisionHandling(object);
-            }
-        }
-
-        // Collisions BlockSoft
-        for (GameObject object : listBlockSoft) {
-            if (player1.isColliding(object)) {
-                player1.collisionHandling(object);
-            }
-        }
-
         // Collisions GameObjects
         for (GameObject object : listObjects) {
             if (player1.isColliding(object)) {
@@ -100,6 +90,16 @@ public class GameMain {
                 Bomb bomb = (Bomb)object;
                 if (!bomb.getIsCollisionActive()) {
                     bomb.setIsCollisionActive();
+                }
+            }
+
+            // Collisions Fire
+            if (object.getClass() == Fire.class) {
+                for (int i = listObjects.indexOf(this) + 1; i < listObjects.size(); i++) {
+                    GameObject other = listObjects.get(i);
+                    if (object.isColliding(other)) {
+                        object.collisionHandling(other);
+                    }
                 }
             }
 

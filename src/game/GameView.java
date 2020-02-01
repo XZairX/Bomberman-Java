@@ -11,15 +11,12 @@ import static game.Constants.FRAME_SIZE;
 
 import static game.GameMain.listBlockTile;
 import static game.GameMain.listObjects;
+import static game.GameMain.listPlayer;
 
 public class GameView extends JComponent {
     private static final Color BACKGROUND_COLOUR = Color.GRAY;
 
-    private GameMain game;
-
-    public GameView(GameMain game) {
-        this.game = game;
-
+    public GameView() {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -46,19 +43,11 @@ public class GameView extends JComponent {
             object.draw(g);
         }
 
-        for (GameObject object : game.listBlockHard) {
-            object.draw(g);
-        }
-
-        for (GameObject object : game.listBlockSoft) {
-            object.draw(g);
-        }
-
         for (GameObject object : listObjects) {
             object.draw(g);
         }
 
-        for (GameObject object : game.listPlayer) {
+        for (GameObject object : listPlayer) {
             object.draw(g);
         }
     }

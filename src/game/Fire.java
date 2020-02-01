@@ -43,7 +43,7 @@ public class Fire extends GameObject {
     protected void collisionHandling(GameObject other) {
         if (other.getClass() == BlockHard.class) {
             hit();
-        } else {
+        } else if (other.getClass() != Fire.class) {
             other.hit();
             System.out.println("Fire hit " + other.getClass());
         }
@@ -68,7 +68,7 @@ public class Fire extends GameObject {
     }
 
     public static void spawnFire(int x, int y) {
-        GameMain.addGameObject(new Fire(x, y, TILE_RADIUS));
+        GameMain.addAliveGameObject(new Fire(x, y, TILE_RADIUS));
     }
 
     // Possibly convert into an object which spawns only 1 range fires recursively

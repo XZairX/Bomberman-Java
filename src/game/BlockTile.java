@@ -28,7 +28,7 @@ public class BlockTile extends GameObject {
     public static BlockTile spawnBlockTile(int x, int y) {
         x *= TILE_DIAMETER;
         y *= TILE_DIAMETER;
-        return new BlockTile(x + TILE_DIAMETER * 2, y + TILE_DIAMETER * 2, TILE_RADIUS);
+        return new BlockTile(x + (TILE_DIAMETER * 2), y + (TILE_DIAMETER * 2), TILE_RADIUS);
     }
 
     public boolean isAvailable() {

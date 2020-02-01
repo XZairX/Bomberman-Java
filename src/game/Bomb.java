@@ -64,6 +64,7 @@ public class Bomb extends GameObject {
 
     @Override
     protected void collisionHandling(GameObject other) {
+        System.out.println("Bomb hit by " + other.getClass());
         super.collisionHandling(other);
     }
 
@@ -101,7 +102,7 @@ public class Bomb extends GameObject {
         for (BlockTile tile : listBlockTile) {
             if (tile.x == x && tile.y == y) {
                 if (tile.isAvailable()) {
-                    GameMain.addGameObject(new Bomb(x, y, TILE_RADIUS, fire));
+                    GameMain.addAliveGameObject(new Bomb(x, y, TILE_RADIUS, fire));
                     tile.toggleAvailability();
                 }
                 break;

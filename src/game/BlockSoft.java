@@ -45,6 +45,6 @@ public class BlockSoft extends GameObject {
     public static BlockSoft spawnBlockSoft(int x, int y) {
         x *= TILE_DIAMETER;
         y *= TILE_DIAMETER;
-        return new BlockSoft(x + TILE_DIAMETER * 2, y + TILE_DIAMETER * 2, TILE_RADIUS);
+        return new BlockSoft(x + (TILE_DIAMETER * 2), y + (TILE_DIAMETER * 2), TILE_RADIUS);
     }
 }
