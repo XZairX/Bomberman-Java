@@ -7,6 +7,8 @@ import java.awt.Rectangle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static game.Constants.FRAME_HEIGHT;
+import static game.Constants.FRAME_WIDTH;
 import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
@@ -95,8 +97,8 @@ public class Player extends GameObject {
         if (!isInvincible) {
             heart--;
             if (heart == 0) {
-                System.out.println("player dead");
                 numberOfPlayers--;
+                System.out.println("Player " + playerID + " died.");
                 super.hit();
             } else {
                 isInvincible = true;
@@ -122,32 +124,38 @@ public class Player extends GameObject {
         g.setColor(Color.DARK_GRAY);
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
 
-        switch (playerID) {
-            case 1: g.setColor(PLAYER1_COLOUR);
-                break;
-            case 2: g.setColor(PLAYER2_COLOUR);
-                break;
-            case 3: g.setColor(PLAYER3_COLOUR);
-                break;
-            case 4: g.setColor(PLAYER4_COLOUR);
-                break;
+        if (isInvincible) {
+            g.setColor(Color.WHITE);
+            g.fillRect(x - (radius / 2), y - (radius / 2), (int)(diameter * 1.5), (int)(diameter * 1.5));
         }
-        g.fillOval(x, y, diameter, diameter);
 
         switch (playerID) {
-            case 1:
-                g.setColor(PLAYER1_COLOUR);
+            case 1: g.setColor(PLAYER1_COLOUR);
                 g.drawString(("Bomb " + bomb), TILE_DIAMETER, 15);
                 g.drawString(("Fire " + fire), TILE_DIAMETER * 5, 15);
                 g.drawString(("Skate " + skate), TILE_DIAMETER, 30);
                 g.drawString(("Heart " + heart), TILE_DIAMETER * 5, 30);
                 break;
+            case 2: g.setColor(PLAYER2_COLOUR);
+                g.drawString(("Bomb " + bomb), TILE_DIAMETER * 10, 15);
+                g.drawString(("Fire " + fire), FRAME_WIDTH, 15);
+                g.drawString(("Skate " + skate), TILE_DIAMETER * 10, 30);
+                g.drawString(("Heart " + heart), FRAME_WIDTH, 30);
+                break;
+            case 3: g.setColor(PLAYER3_COLOUR);
+                g.drawString(("Bomb " + bomb), TILE_DIAMETER, FRAME_HEIGHT + 15);
+                g.drawString(("Fire " + fire), TILE_DIAMETER * 5, FRAME_HEIGHT + 15);
+                g.drawString(("Skate " + skate), TILE_DIAMETER, FRAME_HEIGHT + 30);
+                g.drawString(("Heart " + heart), TILE_DIAMETER * 5, FRAME_HEIGHT + 30);
+                break;
+            case 4: g.setColor(PLAYER4_COLOUR);
+                g.drawString(("Bomb " + bomb), TILE_DIAMETER * 10, FRAME_HEIGHT + 15);
+                g.drawString(("Fire " + fire), FRAME_WIDTH, FRAME_HEIGHT + 15);
+                g.drawString(("Skate " + skate), TILE_DIAMETER * 10, FRAME_HEIGHT + 30);
+                g.drawString(("Heart " + heart), FRAME_WIDTH, FRAME_HEIGHT + 30);
+                break;
         }
-
-        /*if (isInvincible) {
-            g.setColor(Color.WHITE);
-            g.drawString("Invincible", x, y);
-        }*/
+        g.fillOval(x, y, diameter, diameter);
     }
 
     public void setMoveLeft(boolean movement) {
