@@ -21,26 +21,26 @@ public class GameView extends JComponent {
             public void run() {
                 // Temporary fix to stop errors on startup
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
-                while (true) {
+                /*while (true) {
                     try {
                         repaint();
                         Thread.sleep(20);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }
+                }*/
             }
         });
         thread.start();
     }
 
     @Override
-    public void paintComponent(Graphics g0) {
+    public synchronized void paintComponent(Graphics g0) {
         Graphics2D g = (Graphics2D)g0;
         g.setColor(BACKGROUND_COLOUR);
         g.fillRect(0, 0, getWidth(), getHeight());
