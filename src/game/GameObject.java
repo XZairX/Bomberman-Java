@@ -3,12 +3,22 @@ package game;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import static game.Constants.TILE_DIAMETER;
+import static game.Constants.TILE_RADIUS;
+
 public abstract class GameObject {
     protected int x;
     protected int y;
     protected int radius;
     protected int diameter;
     protected boolean dead;
+
+    protected GameObject(int x, int y) {
+        this.x = x;
+        this.y = y;
+        this.radius = TILE_RADIUS;
+        this.diameter = TILE_DIAMETER;
+    }
 
     protected GameObject(int x, int y, int radius) {
         this.x = x;

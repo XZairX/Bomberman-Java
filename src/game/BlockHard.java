@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_OUTLINE_COLOUR;
-import static game.Constants.TILE_RADIUS;
 
 public class BlockHard extends GameObject {
     private static final Color TILE_COLOUR = Color.WHITE;
 
-    public BlockHard(int x, int y, int radius) {
-        super(x, y, radius);
+    public BlockHard(int x, int y) {
+        super(x, y);
+        this.x = (this.x * diameter) + (diameter * 2);
+        this.y = (this.y * diameter) + (diameter * 2);
     }
 
     @Override
@@ -31,11 +31,5 @@ public class BlockHard extends GameObject {
         g.fillRect(x, y, diameter, diameter);
         g.setColor(TILE_OUTLINE_COLOUR);
         g.drawRect(x, y, diameter, diameter);
-    }
-
-    public static BlockHard spawnBlockHard(int x, int y) {
-        x *= TILE_DIAMETER;
-        y *= TILE_DIAMETER;
-        return new BlockHard(x + (TILE_DIAMETER * 2), y + (TILE_DIAMETER * 2), TILE_RADIUS);
     }
 }

@@ -3,17 +3,17 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_OUTLINE_COLOUR;
-import static game.Constants.TILE_RADIUS;
 
 public class BlockTile extends GameObject {
     private static final Color TILE_COLOUR = Color.GREEN;
 
     private boolean isAvailable;
 
-    public BlockTile(int x, int y, int radius) {
-        super(x, y, radius);
+    public BlockTile(int x, int y) {
+        super(x, y);
+        this.x = (this.x * diameter) + (diameter * 2);
+        this.y = (this.y * diameter) + (diameter * 2);
         isAvailable = true;
     }
 
@@ -23,12 +23,8 @@ public class BlockTile extends GameObject {
         g.fillRect(x, y, diameter, diameter);
         g.setColor(TILE_OUTLINE_COLOUR);
         g.drawRect(x, y, diameter, diameter);
-    }
-
-    public static BlockTile spawnBlockTile(int x, int y) {
-        x *= TILE_DIAMETER;
-        y *= TILE_DIAMETER;
-        return new BlockTile(x + (TILE_DIAMETER * 2), y + (TILE_DIAMETER * 2), TILE_RADIUS);
+        g.setColor(Color.BLUE);
+        g.drawString(String.valueOf(isAvailable).substring(0, 1).toUpperCase(), x + 7, y + 15);
     }
 
     public boolean isAvailable() {

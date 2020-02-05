@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_OUTLINE_COLOUR;
-import static game.Constants.TILE_RADIUS;
 
 public class BlockSoft extends GameObject {
     private static final Color TILE_COLOUR = Color.RED;
 
-    public BlockSoft(int x, int y, int radius) {
-        super(x, y, radius);
+    public BlockSoft(int x, int y) {
+        super(x, y);
+        this.x = (this.x * diameter) + (diameter * 2);
+        this.y = (this.y * diameter) + (diameter * 2);
     }
 
     @Override
@@ -40,11 +40,5 @@ public class BlockSoft extends GameObject {
 
     public static boolean canSpawnBlockSoft() {
         return ((int)(Math.random() * 100) < 66);
-    }
-
-    public static BlockSoft spawnBlockSoft(int x, int y) {
-        x *= TILE_DIAMETER;
-        y *= TILE_DIAMETER;
-        return new BlockSoft(x + (TILE_DIAMETER * 2), y + (TILE_DIAMETER * 2), TILE_RADIUS);
     }
 }
