@@ -11,8 +11,8 @@ public class BlockHard extends GameObject {
 
     public BlockHard(int x, int y) {
         super(x, y);
-        this.x = (this.x * diameter) + (diameter * 2);
-        this.y = (this.y * diameter) + (diameter * 2);
+        this.x = (x * diameter) + (diameter * 2);
+        this.y = (y * diameter) + (diameter * 2);
     }
 
     @Override
