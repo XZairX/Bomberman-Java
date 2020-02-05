@@ -11,7 +11,7 @@ public abstract class GameObject {
     protected int y;
     protected int radius;
     protected int diameter;
-    protected boolean dead;
+    protected boolean isDead;
 
     protected GameObject(int x, int y) {
         this.x = x;
@@ -42,7 +42,7 @@ public abstract class GameObject {
     }
 
     protected void hit() {
-        dead = true;
+        isDead = true;
     }
 
     protected void update() {}

@@ -17,23 +17,39 @@ public class Bomb extends GameObject {
     // For debugging
     private int secondsToExplode = 3;
 
+    private boolean isDropped;
     private boolean isCollisionActive;
 
-    public Bomb(int x, int y, int radius, int range) {
-        super(x, y, radius);
+    public Bomb(int x, int y, int range) {
+        super(x, y);
+        this.x = Math.round(x / TILE_DIAMETER) * TILE_DIAMETER;
+        this.y = Math.round(y / TILE_DIAMETER) * TILE_DIAMETER;
         this.range = range;
+
+        for (BlockTile tile : listBlockTile) {
+            if (tile.x == this.x && tile.y == this.y) {
+                if (tile.isAvailable()) {
+                    tile.toggleAvailability();
+                    isDropped = true;
+                    break;
+                } else {
+                    hit();
+                    break;
+                }
+            }
+        }
 
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!dead) {
+                while (!isDead) {
                     try {
                         Thread.sleep(BOMB_DELAY);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
-                    if (!dead) {
+                    if (!isDead) {
                         hit();
                     }
                 }
@@ -44,7 +60,7 @@ public class Bomb extends GameObject {
         Thread threadDebug = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!dead) {
+                while (!isDead) {
                     try {
                         secondsToExplode--;
                         Thread.sleep(BOMB_DELAY / 3);
@@ -59,7 +75,7 @@ public class Bomb extends GameObject {
         Thread threadDebugCollision = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!dead) {
+                while (!isDead) {
                     System.out.println(getIsCollisionActive());
                     try {
                         Thread.sleep(500);
@@ -89,15 +105,19 @@ public class Bomb extends GameObject {
 
     @Override
     public void hit() {
-        for (BlockTile tile : listBlockTile) {
-            if (tile.x == x && tile.y == y) {
-                tile.toggleAvailability();
-                break;
+        if (isDropped) {
+            for (BlockTile tile : listBlockTile) {
+                if (tile.x == x && tile.y == y) {
+                    if (!tile.isAvailable()) {
+                        tile.toggleAvailability();
+                        break;
+                    }
+                }
             }
+            Fire fire = new Fire(x, y, TILE_RADIUS);
+            fire.spawnFire(x, y);
+            fire.spawnFire(x, y, 0, range);
         }
-        Fire fire = new Fire(x, y, TILE_RADIUS);
-        fire.spawnFire(x, y);
-        fire.spawnFire(x, y, 0, range);
         super.hit();
     }
 
@@ -114,20 +134,6 @@ public class Bomb extends GameObject {
         // Debug Detonation Time
         g.setColor(Color.WHITE);
         g.drawString(Integer.toString(secondsToExplode + 1), x + TILE_RADIUS, y + TILE_RADIUS);
-    }
-
-    public static void spawnBomb(int x, int y, int fire) {
-        x = Math.round(x / TILE_DIAMETER) * TILE_DIAMETER;
-        y = Math.round(y / TILE_DIAMETER) * TILE_DIAMETER;
-        for (BlockTile tile : listBlockTile) {
-            if (tile.x == x && tile.y == y) {
-                if (tile.isAvailable()) {
-                    GameMain.addAliveGameObject(new Bomb(x, y, TILE_RADIUS, fire));
-                    tile.toggleAvailability();
-                }
-                break;
-            }
-        }
     }
 
     public boolean getIsCollisionActive() {

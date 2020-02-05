@@ -227,7 +227,7 @@ public class Player extends GameObject {
                 }
             }
             if (droppedBombs < bomb) {
-                Bomb.spawnBomb(x + radius, y + radius, fire);
+                GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire));
             }
             canDropBomb = false;
         }

@@ -116,7 +116,7 @@ public class GameMain {
             }
 
             object.update();
-            if (!object.dead) {
+            if (!object.isDead) {
                 listAlive.add(object);
             }
         }

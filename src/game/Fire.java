@@ -21,7 +21,7 @@ public class Fire extends GameObject {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!dead) {
+                while (!isDead) {
                     try {
                         Thread.sleep(FIRE_DELAY);
                     } catch (InterruptedException e) {
@@ -85,7 +85,7 @@ public class Fire extends GameObject {
             }
         }
 
-        if (!dead) {
+        if (!isDead) {
             spawnFire(x, y);
         }
     }
