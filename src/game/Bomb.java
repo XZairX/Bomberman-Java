@@ -12,16 +12,16 @@ import static game.GameMain.listBlockTile;
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
     private static final int BOMB_DELAY = 2500;
-    private final int fire;
+    private final int range;
 
     // For debugging
     private int secondsToExplode = 3;
 
     private boolean isCollisionActive;
 
-    public Bomb(int x, int y, int radius, int fire) {
+    public Bomb(int x, int y, int radius, int range) {
         super(x, y, radius);
-        this.fire = fire;
+        this.range = range;
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -95,8 +95,9 @@ public class Bomb extends GameObject {
                 break;
             }
         }
-        Fire.spawnFire(x, y);
-        Fire.spawnFire(x, y, 0, fire);
+        Fire fire = new Fire(x, y, TILE_RADIUS);
+        fire.spawnFire(x, y);
+        fire.spawnFire(x, y, 0, range);
         super.hit();
     }
 

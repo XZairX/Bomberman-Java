@@ -3,9 +3,12 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.List;
 
 import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
+import static game.GameMain.listObjects;
 
 public class Fire extends GameObject {
     private static final Color FIRE_COLOUR = Color.YELLOW;
@@ -68,12 +71,27 @@ public class Fire extends GameObject {
         g.fillRect(x, y, diameter, diameter);
     }
 
-    public static void spawnFire(int x, int y) {
+    public void spawnFire(int x, int y) {
         GameMain.addAliveGameObject(new Fire(x, y, TILE_RADIUS));
     }
 
+    private void spawnFireLeft(int x, int y) {
+        List<GameObject> listLeft = new ArrayList<>();
+        listLeft.addAll(listObjects);
+        for (GameObject object : listLeft) {
+            if (object.getClass() == BlockHard.class && object.x == x && object.y == y) {
+                hit();
+                break;
+            }
+        }
+
+        if (!dead) {
+            spawnFire(x, y);
+        }
+    }
+
     // Possibly convert into an object which spawns only 1 range fires recursively
-    public static void spawnFire(int x, int y, int rangeCurrent, int rangeMax) {
+    public void spawnFire(int x, int y, int rangeCurrent, int rangeMax) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -83,7 +101,9 @@ public class Fire extends GameObject {
                     e.printStackTrace();
                 }
                 if (rangeCurrent < rangeMax) {
-                    spawnFire(x - (TILE_DIAMETER * (rangeCurrent + 1)), y);
+                    //spawnFire(x - (TILE_DIAMETER * (rangeCurrent + 1)), y);
+                    spawnFireLeft(x - (TILE_DIAMETER * (rangeCurrent + 1)), y);
+
                     spawnFire(x + (TILE_DIAMETER * (rangeCurrent + 1)), y);
                     spawnFire(x, y - (TILE_DIAMETER * (rangeCurrent + 1)));
                     spawnFire(x, y + (TILE_DIAMETER * (rangeCurrent + 1)));
