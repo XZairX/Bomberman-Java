@@ -281,7 +281,7 @@ public class Player extends GameObject {
     }
 
     public void debugGiveAll() {
-        heart = HEART_MAX;
+        heart = HEART_MAX * 33;
         bomb = MAX * 4;
         fire = MAX;
         skate = MAX;

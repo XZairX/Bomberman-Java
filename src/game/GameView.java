@@ -21,7 +21,7 @@ public class GameView extends JComponent {
             public void run() {
                 // Temporary fix to stop errors on startup
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
