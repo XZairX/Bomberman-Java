@@ -47,7 +47,6 @@ public class Fire extends GameObject {
             hit();
         } else if (other.getClass() != Fire.class) {
             other.hit();
-            System.out.println("Fire hit " + other.getClass());
         }
     }
 

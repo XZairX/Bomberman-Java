@@ -32,7 +32,10 @@ public class Bomb extends GameObject {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    hit();
+
+                    if (!dead) {
+                        hit();
+                    }
                 }
             }
         });
@@ -81,7 +84,6 @@ public class Bomb extends GameObject {
 
     @Override
     protected void collisionHandling(GameObject other) {
-        System.out.println("Bomb hit by " + other.getClass());
         super.collisionHandling(other);
     }
 
