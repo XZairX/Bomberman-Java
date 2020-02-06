@@ -4,13 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import static game.Constants.FRAME_HEIGHT;
 import static game.Constants.FRAME_WIDTH;
 import static game.Constants.TILE_DIAMETER;
-import static game.Constants.TILE_RADIUS;
 
 import static game.GameMain.listObjects;
 import static game.GameMain.numberOfPlayers;
@@ -38,12 +39,10 @@ public class Player extends GameObject {
     private boolean canDropBomb;
     private boolean isInvincible;
 
-    public Player(int x, int y, int radius, int playerID) {
-        super(x, y, radius);
-        this.x *= TILE_DIAMETER;
-        this.x += (TILE_DIAMETER * 2 + (TILE_RADIUS / 2));
-        this.y *= TILE_DIAMETER;
-        this.y += (TILE_DIAMETER * 2 + (TILE_RADIUS / 2));
+    public Player(int x, int y, int playerID) {
+        super(x, y);
+        this.x = (x * diameter) + (diameter * 2) + (radius / 2);
+        this.y = (y * diameter) + (diameter * 2) + (radius / 2);
         this.radius *= 0.5;
         this.diameter = this.radius * 2;
         this.playerID = playerID;
@@ -221,7 +220,8 @@ public class Player extends GameObject {
     public void dropBomb() {
         if (canDropBomb) {
             int droppedBombs = 0;
-            for (GameObject object : listObjects) {
+            List<GameObject> listPlayerBombs = new ArrayList<>(listObjects);
+            for (GameObject object : listPlayerBombs) {
                 if (object.getClass() == Bomb.class) {
                     droppedBombs++;
                 }

@@ -49,6 +49,7 @@ public class GameView extends JComponent {
             object.draw(g);
         }
 
+        // Possibly add GameMain sync block after fixing Fire spawn logic
         for (GameObject object : listObjects) {
             object.draw(g);
         }
