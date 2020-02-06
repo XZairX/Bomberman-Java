@@ -112,9 +112,8 @@ public class Bomb extends GameObject {
                     }
                 }
             }
-            Fire fire = new Fire(x, y, TILE_RADIUS);
-            fire.spawnFire(x, y);
-            fire.spawnFire(x, y, 0, range);
+            Fire fire = new Fire(x, y);
+            fire.spawnFire(x, y, range);
         }
         super.hit();
     }

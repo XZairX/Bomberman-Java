@@ -3,21 +3,17 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static game.Constants.TILE_DIAMETER;
-import static game.Constants.TILE_RADIUS;
-
-import static game.GameMain.listObjects;
 
 public class Fire extends GameObject {
     private static final Color FIRE_COLOUR = Color.YELLOW;
     private static final int FIRE_DELAY = 500;
     private static final int FIRE_RECURSION_DELAY = 10;
 
-    public Fire(int x, int y, int radius) {
-        super(x, y, radius);
+    public Fire(int x, int y) {
+        super(x, y);
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -75,47 +71,62 @@ public class Fire extends GameObject {
         g.fillRect(x, y, diameter, diameter);
     }
 
-    public void spawnFire(int x, int y) {
-        GameMain.addAliveGameObject(new Fire(x, y, TILE_RADIUS));
-    }
-
-    private void spawnFireLeft(int x, int y) {
-        List<GameObject> listLeft = new ArrayList<>();
-        listLeft.addAll(listObjects);
-        for (GameObject object : listLeft) {
-            if (object.getClass() == BlockHard.class && object.x == x && object.y == y) {
-                hit();
-                break;
-            }
-        }
-
-        if (!isDead) {
-            spawnFire(x, y);
-        }
-    }
-
     // Possibly convert into an object which spawns only 1 range fires recursively
-    public void spawnFire(int x, int y, int rangeCurrent, int rangeMax) {
+    public void spawnFire(int x, int y, int rangeMax) {
+        // Bomb currently does this, will need to fix after moving to constructor
+        //spawnFire(x, y);
+
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(FIRE_RECURSION_DELAY);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                if (rangeCurrent < rangeMax) {
-                    //spawnFire(x - (TILE_DIAMETER * (rangeCurrent + 1)), y);
-                    spawnFireLeft(x - (TILE_DIAMETER * (rangeCurrent + 1)), y);
+                boolean isLeftHit = false;
+                boolean isRightHit = false;
+                boolean isUpHit = false;
+                boolean isDownHit = false;
 
-                    spawnFire(x + (TILE_DIAMETER * (rangeCurrent + 1)), y);
-                    spawnFire(x, y - (TILE_DIAMETER * (rangeCurrent + 1)));
-                    spawnFire(x, y + (TILE_DIAMETER * (rangeCurrent + 1)));
+                for (int i = 0; i < rangeMax + 1; i++) {
 
-                    spawnFire(x, y, rangeCurrent + 1, rangeMax);
+                    try {
+                        Thread.sleep(FIRE_RECURSION_DELAY);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    int leftX = x - (diameter * i);
+                    int rightX = x + (diameter * i);
+
+                    List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
+                    for (GameObject object : listObject) {
+                        if (!isLeftHit) {
+                            if (object.getClass() == BlockHard.class && object.x == leftX && object.y == y) {
+                                isLeftHit = true;
+                            }
+                        }
+
+                        if (!isRightHit) {
+                            if (object.getClass() == BlockHard.class && object.x == rightX && object.y == y) {
+                                isRightHit = true;
+                            }
+                        }
+                    }
+
+                    if (!isLeftHit) {
+                        spawnFire(leftX, y);
+                    }
+                    if (!isRightHit) {
+                        spawnFire(rightX, y);
+                    }
+
+                    if (isLeftHit && isRightHit) {
+                        break;
+                    }
                 }
             }
         });
         thread.start();
+    }
+
+    private void spawnFire(int x, int y) {
+        GameMain.addAliveGameObject(new Fire(x, y));
     }
 }
