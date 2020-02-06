@@ -4,17 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import static game.Constants.FRAME_HEIGHT;
 import static game.Constants.FRAME_WIDTH;
 import static game.Constants.TILE_DIAMETER;
-
-import static game.GameMain.listObjects;
-import static game.GameMain.numberOfPlayers;
 
 public class Player extends GameObject {
     private static final Color PLAYER1_COLOUR = Color.BLUE;
@@ -76,11 +71,7 @@ public class Player extends GameObject {
     public void collisionHandling(GameObject other) {
         super.collisionHandling(other);
 
-        if (other.getClass() == BlockHard.class) {
-            cancelCollisionMovement();
-        }
-
-        if (other.getClass() == BlockSoft.class) {
+        if (other.getClass() == BlockHard.class || other.getClass() == BlockSoft.class) {
             cancelCollisionMovement();
         }
 
@@ -96,7 +87,7 @@ public class Player extends GameObject {
         if (!isInvincible) {
             heart--;
             if (heart == 0) {
-                numberOfPlayers--;
+                GameMain.decrementNumberOfPlayers();
                 System.out.println("Player " + playerID + " died.");
                 super.hit();
             } else {
@@ -220,8 +211,7 @@ public class Player extends GameObject {
     public void dropBomb() {
         if (canDropBomb) {
             int droppedBombs = 0;
-            List<GameObject> listPlayerBombs = new ArrayList<>(listObjects);
-            for (GameObject object : listPlayerBombs) {
+            for (GameObject object : GameMain.getListObjects()) {
                 if (object.getClass() == Bomb.class) {
                     droppedBombs++;
                 }

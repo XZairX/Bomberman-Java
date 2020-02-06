@@ -9,48 +9,22 @@ import java.awt.Graphics2D;
 
 import static game.Constants.FRAME_SIZE;
 
-import static game.GameMain.listBlockTile;
-import static game.GameMain.listObjects;
-
 public class GameView extends JComponent {
     private static final Color BACKGROUND_COLOUR = Color.GRAY;
 
-    public GameView() {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // Temporary fix to stop errors on startup
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                /*while (true) {
-                    try {
-                        repaint();
-                        Thread.sleep(20);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }*/
-            }
-        });
-        thread.start();
-    }
+    public GameView() {}
 
     @Override
-    public synchronized void paintComponent(Graphics g0) {
+    public void paintComponent(Graphics g0) {
         Graphics2D g = (Graphics2D)g0;
         g.setColor(BACKGROUND_COLOUR);
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        for (GameObject object : listBlockTile) {
+        for (GameObject object : GameMain.getListBlockTile()) {
             object.draw(g);
         }
 
-        // Possibly add GameMain sync block after fixing Fire spawn logic
-        for (GameObject object : listObjects) {
+        for (GameObject object : GameMain.getListObjects()) {
             object.draw(g);
         }
     }

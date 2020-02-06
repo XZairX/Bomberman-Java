@@ -7,8 +7,6 @@ import java.awt.Rectangle;
 import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
-import static game.GameMain.listBlockTile;
-
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
     private static final int BOMB_DELAY = 2500;
@@ -26,7 +24,7 @@ public class Bomb extends GameObject {
         this.y = Math.round(y / TILE_DIAMETER) * TILE_DIAMETER;
         this.range = range;
 
-        for (BlockTile tile : listBlockTile) {
+        for (BlockTile tile : GameMain.getListBlockTile()) {
             if (tile.x == this.x && tile.y == this.y) {
                 if (tile.isAvailable()) {
                     tile.toggleAvailability();
@@ -106,7 +104,7 @@ public class Bomb extends GameObject {
     @Override
     public void hit() {
         if (isDropped) {
-            for (BlockTile tile : listBlockTile) {
+            for (BlockTile tile : GameMain.getListBlockTile()) {
                 if (tile.x == x && tile.y == y) {
                     if (!tile.isAvailable()) {
                         tile.toggleAvailability();

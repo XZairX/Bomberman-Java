@@ -8,6 +8,7 @@ import java.util.List;
 
 import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
+
 import static game.GameMain.listObjects;
 
 public class Fire extends GameObject {
@@ -47,6 +48,9 @@ public class Fire extends GameObject {
     @Override
     protected void collisionHandling(GameObject other) {
         if (other.getClass() == BlockHard.class) {
+            hit();
+        } else if (other.getClass() == BlockSoft.class) {
+            other.hit();
             hit();
         } else if (other.getClass() != Fire.class) {
             other.hit();

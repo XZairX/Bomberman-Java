@@ -8,14 +8,13 @@ import java.util.List;
 import static game.Constants.GAME_LOOP_DELAY;
 import static game.Constants.GAMESPACE_COLUMN;
 import static game.Constants.GAMESPACE_ROW;
-import static game.Constants.TILE_RADIUS;
 
 public class GameMain {
     public static List<BlockTile> listBlockTile;
     public static List<GameObject> listObjects;
     public static List<GameObject> listAlive;
-    public Player player1, player2, player3, player4;
     public static int numberOfPlayers;
+    public Player player1, player2, player3, player4;
 
     public GameMain() {
         listBlockTile = new ArrayList<>();
@@ -35,6 +34,14 @@ public class GameMain {
         numberOfPlayers = listAlive.size();
     }
 
+    public static List<BlockTile> getListBlockTile() {
+        return listBlockTile;
+    }
+
+    public static List<GameObject> getListObjects() {
+        return listObjects;
+    }
+
     public static void addTileGameObject(BlockTile blockTile) {
         listBlockTile.add(blockTile);
     }
@@ -45,6 +52,10 @@ public class GameMain {
 
     public static void addAliveGameObject(GameObject object) {
         listAlive.add(object);
+    }
+
+    public static void decrementNumberOfPlayers() {
+        numberOfPlayers--;
     }
 
     public static void main(String[] args) throws Exception {
@@ -64,7 +75,7 @@ public class GameMain {
         //gameSpace.spawnRows02();
         //gameSpace.spawnRows03();
         //gameSpace.spawnRows04();
-
+        
         while (true) {
             gameMain.update();
             gameView.repaint();
