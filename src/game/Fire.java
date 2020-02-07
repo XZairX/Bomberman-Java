@@ -12,6 +12,9 @@ public class Fire extends GameObject {
     private static final int FIRE_DELAY = 500;
     private static final int FIRE_RECURSION_DELAY = 10;
 
+    // Multiple Fire constructors with enums for directional references (x, y, LEFT), (x, y, RIGHT), etc.
+    // Extra Fire constructor with differing behaviour based on enum
+
     public Fire(int x, int y) {
         super(x, y);
 
@@ -73,8 +76,7 @@ public class Fire extends GameObject {
 
     // Possibly convert into an object which spawns only 1 range fires recursively
     public void spawnFire(int x, int y, int rangeMax) {
-        // Bomb currently does this, will need to fix after moving to constructor
-        //spawnFire(x, y);
+        spawnFire(x, y);
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -85,7 +87,6 @@ public class Fire extends GameObject {
                 boolean isDownHit = false;
 
                 for (int i = 0; i < rangeMax + 1; i++) {
-
                     try {
                         Thread.sleep(FIRE_RECURSION_DELAY);
                     } catch (InterruptedException e) {
@@ -94,18 +95,39 @@ public class Fire extends GameObject {
 
                     int leftX = x - (diameter * i);
                     int rightX = x + (diameter * i);
+                    int upY = y - (diameter * i);
+                    int downY = y + (diameter * i);
 
                     List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
                     for (GameObject object : listObject) {
-                        if (!isLeftHit) {
-                            if (object.getClass() == BlockHard.class && object.x == leftX && object.y == y) {
-                                isLeftHit = true;
-                            }
-                        }
+                        if (object.getClass() == BlockHard.class || object.getClass() == BlockSoft.class) {
 
-                        if (!isRightHit) {
-                            if (object.getClass() == BlockHard.class && object.x == rightX && object.y == y) {
-                                isRightHit = true;
+                            if (!isLeftHit) {
+                                if (object.x == leftX && object.y == y) {
+                                    spawnFire(leftX, y);
+                                    isLeftHit = true;
+                                }
+                            }
+
+                            if (!isRightHit) {
+                                if (object.x == rightX && object.y == y) {
+                                    spawnFire(rightX, y);
+                                    isRightHit = true;
+                                }
+                            }
+
+                            if (!isUpHit) {
+                                if (object.x == x && object.y == upY) {
+                                    spawnFire(x, upY);
+                                    isUpHit = true;
+                                }
+                            }
+
+                            if (!isDownHit) {
+                                if (object.x == x && object.y == downY) {
+                                    spawnFire(x, downY);
+                                    isDownHit = true;
+                                }
                             }
                         }
                     }
@@ -116,8 +138,14 @@ public class Fire extends GameObject {
                     if (!isRightHit) {
                         spawnFire(rightX, y);
                     }
+                    if (!isUpHit) {
+                        spawnFire(x, upY);
+                    }
+                    if (!isDownHit) {
+                        spawnFire(x, downY);
+                    }
 
-                    if (isLeftHit && isRightHit) {
+                    if (isLeftHit && isRightHit && isUpHit && isDownHit) {
                         break;
                     }
                 }

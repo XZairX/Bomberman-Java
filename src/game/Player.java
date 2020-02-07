@@ -25,7 +25,7 @@ public class Player extends GameObject {
 
     private int heart = 1;
     private int bomb = 1;
-    private int fire = 1;
+    private int fire = 2;
     private int skate = 4;
     private double speed = 3;
 
