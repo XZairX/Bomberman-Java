@@ -75,6 +75,7 @@ public class GameMain {
         //gameSpace.spawnRows02();
         //gameSpace.spawnRows03();
         //gameSpace.spawnRows04();
+        //gameSpace.spawnRows05();
         
         while (true) {
             gameMain.update();

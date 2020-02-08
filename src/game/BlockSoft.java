@@ -37,8 +37,4 @@ public class BlockSoft extends GameObject {
         g.setColor(TILE_OUTLINE_COLOUR);
         g.drawRect(x, y, diameter, diameter);
     }
-
-    public static boolean canSpawnBlockSoft() {
-        return ((int)(Math.random() * 100) < 66);
-    }
 }
