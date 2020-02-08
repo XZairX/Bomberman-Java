@@ -8,6 +8,7 @@ import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class BlockSoft extends GameObject {
     private static final Color TILE_COLOUR = Color.RED;
+    private static final int DESTROY_DELAY = 500;
 
     public BlockSoft(int x, int y) {
         super(x, y);
@@ -22,7 +23,18 @@ public class BlockSoft extends GameObject {
 
     @Override
     public void hit() {
-        super.hit();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(DESTROY_DELAY);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                isDead = true;
+            }
+        });
+        thread.start();
     }
 
     @Override
