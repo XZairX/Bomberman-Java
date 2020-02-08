@@ -112,8 +112,7 @@ public class Bomb extends GameObject {
                     }
                 }
             }
-            Fire fire = new Fire(x, y);
-            fire.spawnFire(x, y, range);
+            GameMain.addAliveGameObject(new Fire(x, y, range));
         }
         super.hit();
     }

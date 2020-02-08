@@ -12,10 +12,31 @@ public class Fire extends GameObject {
     private static final int FIRE_DELAY = 500;
     private static final int FIRE_RECURSION_DELAY = 10;
 
-    // Multiple Fire constructors with enums for directional references (x, y, LEFT), (x, y, RIGHT), etc.
-    // Extra Fire constructor with differing behaviour based on enum
+    private int leftX, rightX, upY, downY;
+    private boolean isLeftHit, isRightHit, isUpHit, isDownHit;
 
-    public Fire(int x, int y) {
+    public Fire(int x, int y, int range) {
+        super(x, y);
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                emitFire(x, y, range);
+
+                while (!isDead) {
+                    try {
+                        Thread.sleep(FIRE_DELAY);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    hit();
+                }
+            }
+        });
+        thread.start();
+    }
+
+    private Fire(int x, int y) {
         super(x, y);
 
         Thread thread = new Thread(new Runnable() {
@@ -75,74 +96,69 @@ public class Fire extends GameObject {
     }
 
     // Possibly convert into an object which spawns only 1 range fires recursively
-    public void spawnFire(int x, int y, int rangeMax) {
-        spawnFire(x, y);
-
+    private void emitFire(int x, int y, int range) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                boolean isLeftHit = false;
-                boolean isRightHit = false;
-                boolean isUpHit = false;
-                boolean isDownHit = false;
-
-                for (int i = 0; i < rangeMax + 1; i++) {
+                for (int i = 0; i < range + 1; i++) {
                     try {
                         Thread.sleep(FIRE_RECURSION_DELAY);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
-                    int leftX = x - (diameter * i);
-                    int rightX = x + (diameter * i);
-                    int upY = y - (diameter * i);
-                    int downY = y + (diameter * i);
+                    leftX = x - (diameter * i);
+                    rightX = x + (diameter * i);
+                    upY = y - (diameter * i);
+                    downY = y + (diameter * i);
 
                     List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
                     for (GameObject object : listObject) {
                         if (object.getClass() == BlockHard.class || object.getClass() == BlockSoft.class) {
 
+                            // Check if collided
                             if (!isLeftHit) {
                                 if (object.x == leftX && object.y == y) {
-                                    spawnFire(leftX, y);
+                                    GameMain.addAliveGameObject(new Fire(leftX, y));
                                     isLeftHit = true;
                                 }
                             }
 
                             if (!isRightHit) {
                                 if (object.x == rightX && object.y == y) {
-                                    spawnFire(rightX, y);
+                                    GameMain.addAliveGameObject(new Fire(rightX, y));
                                     isRightHit = true;
                                 }
                             }
 
                             if (!isUpHit) {
                                 if (object.x == x && object.y == upY) {
-                                    spawnFire(x, upY);
+                                    GameMain.addAliveGameObject(new Fire(x, upY));
                                     isUpHit = true;
                                 }
                             }
 
                             if (!isDownHit) {
                                 if (object.x == x && object.y == downY) {
-                                    spawnFire(x, downY);
+                                    GameMain.addAliveGameObject(new Fire(x, downY));
                                     isDownHit = true;
                                 }
                             }
                         }
                     }
 
+                    // If not collided
                     if (!isLeftHit) {
-                        spawnFire(leftX, y);
+                        GameMain.addAliveGameObject(new Fire(leftX, y));
                     }
                     if (!isRightHit) {
-                        spawnFire(rightX, y);
+                        GameMain.addAliveGameObject(new Fire(rightX, y));
                     }
                     if (!isUpHit) {
-                        spawnFire(x, upY);
+                        GameMain.addAliveGameObject(new Fire(x, upY));
                     }
                     if (!isDownHit) {
-                        spawnFire(x, downY);
+                        GameMain.addAliveGameObject(new Fire(x, downY));
                     }
 
                     if (isLeftHit && isRightHit && isUpHit && isDownHit) {
@@ -152,9 +168,5 @@ public class Fire extends GameObject {
             }
         });
         thread.start();
-    }
-
-    private void spawnFire(int x, int y) {
-        GameMain.addAliveGameObject(new Fire(x, y));
     }
 }
