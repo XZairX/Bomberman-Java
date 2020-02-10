@@ -36,7 +36,7 @@ public class BlockSoft extends GameObject {
                     e.printStackTrace();
                 }
 
-                if (Math.random() < 45) {
+                if ((Math.random() * 100) < 45) {
                     GameMain.addAliveGameObject(new BlockItem(x, y));
                 }
                 BlockSoft.super.hit();
