@@ -4,6 +4,7 @@ public class Dummy {
     /*
     Collisions still need refinement (holding a direction against a wall)
     Implement skate
-    BlockSoft power-ups/power-downs
+    Get correct % of power-ups
+    Refactor player's power-up/down methods into single method
     */
 }

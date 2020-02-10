@@ -8,7 +8,10 @@ import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class BlockSoft extends GameObject {
     private static final Color TILE_COLOUR = Color.RED;
+    private static final Color DESTROY_COLOUR = Color.ORANGE;
     private static final int DESTROY_DELAY = 500;
+
+    private boolean isHit;
 
     public BlockSoft(int x, int y) {
         super(x, y);
@@ -27,11 +30,16 @@ public class BlockSoft extends GameObject {
             @Override
             public void run() {
                 try {
+                    isHit = true;
                     Thread.sleep(DESTROY_DELAY);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                isDead = true;
+
+                if (Math.random() < 45) {
+                    GameMain.addAliveGameObject(new BlockItem(x, y));
+                }
+                BlockSoft.super.hit();
             }
         });
         thread.start();
@@ -44,7 +52,13 @@ public class BlockSoft extends GameObject {
         g.setColor(Color.MAGENTA);
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
         */
-        g.setColor(TILE_COLOUR);
+
+        if (isHit) {
+            g.setColor(DESTROY_COLOUR);
+        } else {
+            g.setColor(TILE_COLOUR);
+        }
+
         g.fillRect(x, y, diameter, diameter);
         g.setColor(TILE_OUTLINE_COLOUR);
         g.drawRect(x, y, diameter, diameter);

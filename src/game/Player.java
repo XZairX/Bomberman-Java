@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -211,7 +213,8 @@ public class Player extends GameObject {
     public void dropBomb() {
         if (canDropBomb) {
             int droppedBombs = 0;
-            for (GameObject object : GameMain.getListObjects()) {
+            List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
+            for (GameObject object : listObject) {
                 if (object.getClass() == Bomb.class) {
                     droppedBombs++;
                 }
@@ -221,6 +224,10 @@ public class Player extends GameObject {
             }
             canDropBomb = false;
         }
+    }
+
+    public void getItem(String string) {
+        System.out.println(string);
     }
 
     public void heartUp() {
@@ -263,6 +270,10 @@ public class Player extends GameObject {
         if (skate < MAX) {
             skate++;
         }
+    }
+
+    public void fullFire() {
+        fire = MAX;
     }
 
     private void setSpeed() {

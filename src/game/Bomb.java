@@ -4,9 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import static game.Constants.TILE_DIAMETER;
-import static game.Constants.TILE_RADIUS;
-
 public class Bomb extends GameObject {
     private static final Color BOMB_COLOUR = Color.BLACK;
     private static final int BOMB_DELAY = 2500;
@@ -20,8 +17,8 @@ public class Bomb extends GameObject {
 
     public Bomb(int x, int y, int range) {
         super(x, y);
-        this.x = Math.round(x / TILE_DIAMETER) * TILE_DIAMETER;
-        this.y = Math.round(y / TILE_DIAMETER) * TILE_DIAMETER;
+        this.x = Math.round(x / diameter) * diameter;
+        this.y = Math.round(y / diameter) * diameter;
         this.range = range;
 
         for (BlockTile tile : GameMain.getListBlockTile()) {
@@ -134,7 +131,7 @@ public class Bomb extends GameObject {
 
         // Debug Detonation Time
         g.setColor(Color.WHITE);
-        g.drawString(Integer.toString(secondsToExplode + 1), x + TILE_RADIUS, y + TILE_RADIUS);
+        g.drawString(Integer.toString(secondsToExplode + 1), x + 8, y + 14);
     }
 
     public boolean getIsCollisionActive() {
