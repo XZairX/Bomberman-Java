@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class BlockSoft extends GameObject {
-    private static final Color TILE_COLOUR = Color.RED;
+    private static final Color BLOCKSOFT_COLOUR = Color.RED;
     private static final Color DESTROY_COLOUR = Color.ORANGE;
     private static final int DESTROY_DELAY = 500;
 
@@ -56,7 +56,7 @@ public class BlockSoft extends GameObject {
         if (isHit) {
             g.setColor(DESTROY_COLOUR);
         } else {
-            g.setColor(TILE_COLOUR);
+            g.setColor(BLOCKSOFT_COLOUR);
         }
 
         g.fillRect(x, y, diameter, diameter);

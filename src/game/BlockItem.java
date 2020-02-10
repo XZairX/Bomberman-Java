@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class BlockItem extends GameObject {
-    private static final Color TILE_COLOUR = Color.CYAN;
+    private static final Color BLOCKITEM_COLOUR = Color.CYAN;
 
     private enum Item {
         HEART,
@@ -50,7 +50,7 @@ public class BlockItem extends GameObject {
 
     @Override
     public void draw(Graphics2D g) {
-        g.setColor(TILE_COLOUR);
+        g.setColor(BLOCKITEM_COLOUR);
         g.fillRect(x, y, diameter, diameter);
         g.setColor(TILE_OUTLINE_COLOUR);
         g.drawRect(x, y, diameter, diameter);

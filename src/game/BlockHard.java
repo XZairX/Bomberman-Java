@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class BlockHard extends GameObject {
-    private static final Color TILE_COLOUR = Color.WHITE;
+    private static final Color BLOCKHARD_COLOUR = Color.WHITE;
 
     public BlockHard(int x, int y) {
         super(x, y);
@@ -27,7 +27,7 @@ public class BlockHard extends GameObject {
         g.setColor(Color.RED);
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
         */
-        g.setColor(TILE_COLOUR);
+        g.setColor(BLOCKHARD_COLOUR);
         g.fillRect(x, y, diameter, diameter);
         g.setColor(TILE_OUTLINE_COLOUR);
         g.drawRect(x, y, diameter, diameter);

@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class BlockTile extends GameObject {
-    private static final Color TILE_COLOUR = Color.GREEN;
+    private static final Color BLOCKTILE_COLOUR = Color.GREEN;
 
     private boolean isAvailable;
 
@@ -19,7 +19,7 @@ public class BlockTile extends GameObject {
 
     @Override
     public void draw(Graphics2D g) {
-        g.setColor(TILE_COLOUR);
+        g.setColor(BLOCKTILE_COLOUR);
         g.fillRect(x, y, diameter, diameter);
         g.setColor(TILE_OUTLINE_COLOUR);
         g.drawRect(x, y, diameter, diameter);
