@@ -226,27 +226,6 @@ public class Player extends GameObject {
         }
     }
 
-    // [METHOD DUE FOR REVIEW]
-    public void getItem(String string) {
-        switch (string.toUpperCase()) {
-            case "HEART":
-                if (heart < HEART_MAX) {
-                    heart++;
-                }
-                break;
-            case "BOMBUP":
-                if (bomb < MAX) {
-                    bomb++;
-                }
-                break;
-            case "BOMBDOWN":
-                if (bomb > MIN) {
-                    bomb--;
-                }
-                break;
-        }
-    }
-
     public void heartUp() {
         if (heart < HEART_MAX) {
             heart++;
