@@ -226,19 +226,30 @@ public class Player extends GameObject {
         }
     }
 
+    // [METHOD DUE FOR REVIEW]
     public void getItem(String string) {
-        System.out.println(string);
+        switch (string.toUpperCase()) {
+            case "HEART":
+                if (heart < HEART_MAX) {
+                    heart++;
+                }
+                break;
+            case "BOMBUP":
+                if (bomb < MAX) {
+                    bomb++;
+                }
+                break;
+            case "BOMBDOWN":
+                if (bomb > MIN) {
+                    bomb--;
+                }
+                break;
+        }
     }
 
     public void heartUp() {
         if (heart < HEART_MAX) {
             heart++;
-        }
-    }
-
-    public void bombDown() {
-        if (bomb > MIN) {
-            bomb--;
         }
     }
 
@@ -248,9 +259,9 @@ public class Player extends GameObject {
         }
     }
 
-    public void fireDown() {
-        if (fire > MIN) {
-            fire--;
+    public void bombDown() {
+        if (bomb > MIN) {
+            bomb--;
         }
     }
 
@@ -260,15 +271,21 @@ public class Player extends GameObject {
         }
     }
 
-    public void speedDown() {
-        if (skate > MIN) {
-            skate--;
+    public void fireDown() {
+        if (fire > MIN) {
+            fire--;
         }
     }
 
     public void speedUp() {
         if (skate < MAX) {
             skate++;
+        }
+    }
+
+    public void speedDown() {
+        if (skate > MIN) {
+            skate--;
         }
     }
 

@@ -129,7 +129,8 @@ public class BlockItem extends GameObject {
     private void giveItem(Player player) {
         switch (item) {
             case HEART:
-                //player.getItem("HEARTUP");
+                // [DUE FOR REVIEW]
+                player.getItem("HEART");
                 player.heartUp();
                 break;
             case BOMBUP:
