@@ -71,6 +71,20 @@ public class Fire extends GameObject {
         } else if (other.getClass() == BlockSoft.class) {
             other.hit();
             hit();
+        } else if (other.getClass() == BlockItem.class) {
+            other.hit();
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(FIRE_DELAY);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    hit();
+                }
+            });
+            thread.start();
         } else if (other.getClass() != Fire.class) {
             other.hit();
         }
@@ -112,7 +126,8 @@ public class Fire extends GameObject {
 
                     List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
                     for (GameObject object : listObject) {
-                        if (object.getClass() == BlockHard.class || object.getClass() == BlockSoft.class) {
+                        if (object.getClass() == BlockHard.class || object.getClass() == BlockSoft.class
+                                || object.getClass() == BlockItem.class) {
 
                             // Check if collided
                             if (!isFireLeftHit) {

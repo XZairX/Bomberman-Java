@@ -10,7 +10,6 @@ import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class BlockItem extends GameObject {
     private static final Random RNG = new Random();
-
     private static final Color BLOCKITEM_COLOUR = Color.CYAN;
     private static final Color UNIMPLEMENTED_ITEM_COLOUR = Color.YELLOW;
 
