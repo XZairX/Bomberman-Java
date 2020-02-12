@@ -101,7 +101,7 @@ public abstract class BombObject extends GameObject {
 
     @Override
     protected void hit() {
-        dropFire(range);
+        dropFire();
         super.hit();
     }
 
@@ -119,7 +119,7 @@ public abstract class BombObject extends GameObject {
         isCollisionActive = true;
     }
 
-    private void dropFire(int range) {
+    private void dropFire() {
         if (isDropped) {
             for (BlockTile tile : GameMain.getListBlockTile()) {
                 if (isColliding(tile)) {
