@@ -31,9 +31,9 @@ public abstract class GameObject {
         return new Rectangle(x, y, radius * 2, radius * 2);
     }
 
-    protected boolean isOverlapping(GameObject other) {
+    /*protected boolean isOverlapping(GameObject other) {
         return (this.x == other.x && this.y == other.y);
-    }
+    }*/
 
     protected boolean isColliding(GameObject other) {
         return (this.getBounds().intersects(other.getBounds()));

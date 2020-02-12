@@ -22,7 +22,7 @@ public class Bomb extends GameObject {
         this.range = range;
 
         for (BlockTile tile : GameMain.getListBlockTile()) {
-            if (isOverlapping(tile)) {
+            if (isColliding(tile)) {
                 if (tile.isAvailable()) {
                     tile.toggleAvailability();
                     isDropped = true;
@@ -89,11 +89,6 @@ public class Bomb extends GameObject {
     }
 
     @Override
-    public boolean isOverlapping(GameObject other) {
-        return super.isColliding(other);
-    }
-
-    @Override
     public boolean isColliding(GameObject other) {
         return super.isColliding(other);
     }
@@ -107,7 +102,7 @@ public class Bomb extends GameObject {
     public void hit() {
         if (isDropped) {
             for (BlockTile tile : GameMain.getListBlockTile()) {
-                if (isOverlapping(tile)) {
+                if (isColliding(tile)) {
                     if (!tile.isAvailable()) {
                         tile.toggleAvailability();
                         break;

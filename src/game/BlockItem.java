@@ -9,14 +9,17 @@ import static game.Constants.TILE_OUTLINE_COLOUR;
 public class BlockItem extends GameObject {
     private static final Color BLOCKITEM_COLOUR = Color.CYAN;
 
+    private final int X_CENTRE = x + 3;
+    private final int Y_CENTRE = y + 15;
+
     private enum Item {
-        HEART,
         BOMBUP, FIREUP, SKATEUP,
-        BOMBDOWN, FIREDOWN, SKATEDOWN,
         KICK, PUNCH, THROW,
-        POWERBOMB, FULLFIRE,
-        DANGEROUSBOMB, REMOTEBOMB
-    }
+        FULLFIRE, POWERBOMB, SPIKEBOMB,
+        HEART, DANGEROUSBOMB, REMOTEBOMB,
+        BOMBDOWN, FIREDOWN, SKATEDOWN,
+        }
+
     private Item item;
 
     public BlockItem(int x, int y) {
@@ -58,32 +61,49 @@ public class BlockItem extends GameObject {
         g.setColor(Color.BLACK);
 
         switch (item) {
-            case HEART:
-                g.drawString("H+", x + 3, y + 15);
-                break;
             case BOMBUP:
-                g.drawString("B+", x + 3, y + 15);
-                break;
-            case BOMBDOWN:
-                g.drawString("B-", x + 3, y + 15);
+                g.drawString("B+", X_CENTRE, Y_CENTRE);
                 break;
             case FIREUP:
-                g.drawString("F+", x + 3, y + 15);
-                break;
-            case FIREDOWN:
-                g.drawString("F-", x + 3, y + 15);
+                g.drawString("F+", X_CENTRE, Y_CENTRE);
                 break;
             case SKATEUP:
-                g.drawString("S+", x + 3, y + 15);
+                g.drawString("S+", X_CENTRE, Y_CENTRE);
                 break;
-            case SKATEDOWN:
-                g.drawString("S-", x + 3, y + 15);
+
+            case KICK:
+                g.drawString("S+", X_CENTRE, Y_CENTRE);
+                break;
+            case PUNCH:
+                break;
+            case THROW:
+                break;
+
+            case FULLFIRE:
+                g.drawString("FF", X_CENTRE, Y_CENTRE);
                 break;
             case POWERBOMB:
-                g.drawString("PB", x + 3, y + 15);
+                g.drawString("PB", X_CENTRE, Y_CENTRE);
                 break;
-            case FULLFIRE:
-                g.drawString("FF", x + 3, y + 15);
+            case SPIKEBOMB:
+                break;
+
+            case HEART:
+                g.drawString("H+", X_CENTRE, Y_CENTRE);
+                break;
+            case DANGEROUSBOMB:
+                break;
+            case REMOTEBOMB:
+                break;
+
+            case BOMBDOWN:
+                g.drawString("B-", X_CENTRE, Y_CENTRE);
+                break;
+            case FIREDOWN:
+                g.drawString("F-", X_CENTRE, Y_CENTRE);
+                break;
+            case SKATEDOWN:
+                g.drawString("S-", X_CENTRE, Y_CENTRE);
                 break;
         }
     }
@@ -91,35 +111,73 @@ public class BlockItem extends GameObject {
     private void setItem() {
         double random = (Math.random() * 100);
 
-        if (random < 10) {
-            item = Item.HEART;
-        } else if (random >= 10 && random < 20) {
-            item = Item.FULLFIRE;
-        } else if (random >= 20 && random < 80) {
+        if (random < 60) {
             setBasicItemUP();
+        } else if (random >= 60 && random < 70) {
+            setUtilityItem();
+        } else if (random >= 70 && random < 80) {
+            setBasicSpecialItem();
+        } else if (random >= 80 && random < 90) {
+            setAdvancedSpecialItem();
         } else {
             setBasicItemDOWN();
         }
     }
 
     private void setBasicItemUP() {
-        double random = (Math.random() * 100);
+        double random = ((int)(Math.random() * 100));
 
-        if (random < 40) {
+        if (random < 33) {
             item = Item.BOMBUP;
-        } else if (random >= 40 && random < 80) {
+        } else if (random >= 33 && random < 66) {
             item = Item.FIREUP;
         } else {
             item = Item.SKATEUP;
         }
     }
 
-    private void setBasicItemDOWN() {
-        double random = (Math.random() * 100);
+    private void setUtilityItem() {
+        double random = ((int)(Math.random() * 100));
 
-        if (random < 40) {
+        if (random < 33) {
+            item = Item.KICK;
+        } else if (random >= 33 && random < 66) {
+            item = Item.PUNCH;
+        } else {
+            item = Item.THROW;
+        }
+    }
+
+    private void setBasicSpecialItem() {
+        double random = ((int)(Math.random() * 100));
+
+        if (random < 33) {
+            item = Item.FULLFIRE;
+        } else if (random >= 33 && random < 66) {
+            item = Item.POWERBOMB;
+        } else {
+            item = Item.SPIKEBOMB;
+        }
+    }
+
+    private void setAdvancedSpecialItem() {
+        double random = ((int)(Math.random() * 100));
+
+        if (random < 33) {
+            item = Item.HEART;
+        } else if (random >= 33 && random < 66) {
+            item = Item.DANGEROUSBOMB;
+        } else {
+            item = Item.REMOTEBOMB;
+        }
+    }
+
+    private void setBasicItemDOWN() {
+        double random = ((int)(Math.random() * 100));
+
+        if (random < 33) {
             item = Item.BOMBDOWN;
-        } else if (random >= 40 && random < 80) {
+        } else if (random >= 33 && random < 66) {
             item = Item.FIREDOWN;
         } else {
             item = Item.SKATEDOWN;
@@ -128,31 +186,47 @@ public class BlockItem extends GameObject {
 
     private void giveItem(Player player) {
         switch (item) {
-            case HEART:
-                player.heartUp();
-                break;
             case BOMBUP:
                 player.bombUp();
-                break;
-            case BOMBDOWN:
-                player.bombDown();
                 break;
             case FIREUP:
                 player.fireUp();
                 break;
-            case FIREDOWN:
-                player.fireDown();
-                break;
             case SKATEUP:
                 player.speedUp();
                 break;
-            case SKATEDOWN:
-                player.speedDown();
+
+            case KICK:
                 break;
+            case PUNCH:
+                break;
+            case THROW:
+                break;
+
             case FULLFIRE:
                 player.fullFire();
                 break;
             case POWERBOMB:
+                break;
+            case SPIKEBOMB:
+                break;
+
+            case HEART:
+                player.heartUp();
+                break;
+            case DANGEROUSBOMB:
+                break;
+            case REMOTEBOMB:
+                break;
+
+            case BOMBDOWN:
+                player.bombDown();
+                break;
+            case FIREDOWN:
+                player.fireDown();
+                break;
+            case SKATEDOWN:
+                player.speedDown();
                 break;
         }
     }

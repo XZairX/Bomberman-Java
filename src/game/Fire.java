@@ -116,28 +116,28 @@ public class Fire extends GameObject {
 
                             // Check if collided
                             if (!isFireLeftHit) {
-                                if (fireLeft.isOverlapping(object)) {
+                                if (fireLeft.isColliding(object)) {
                                     GameMain.addAliveGameObject(fireLeft);
                                     isFireLeftHit = true;
                                 }
                             }
 
                             if (!isFireRightHit) {
-                                if (fireRight.isOverlapping(object)) {
+                                if (fireRight.isColliding(object)) {
                                     GameMain.addAliveGameObject(fireRight);
                                     isFireRightHit = true;
                                 }
                             }
 
                             if (!isFireUpHit) {
-                                if (fireUp.isOverlapping(object)) {
+                                if (fireUp.isColliding(object)) {
                                     GameMain.addAliveGameObject(fireUp);
                                     isFireUpHit = true;
                                 }
                             }
 
                             if (!isFireDownHit) {
-                                if (fireDown.isOverlapping(object)) {
+                                if (fireDown.isColliding(object)) {
                                     GameMain.addAliveGameObject(fireDown);
                                     isFireDownHit = true;
                                 }

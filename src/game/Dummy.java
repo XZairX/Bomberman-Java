@@ -4,6 +4,7 @@ public class Dummy {
     /*
     Collisions still need refinement (holding a direction against a wall)
     Implement skate
-    Get correct % of power-ups
+    Refactor Math.random to Random.nextInt()
+    Fire collisions for blockItem
     */
 }
