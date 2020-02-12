@@ -28,6 +28,16 @@ public class BlockSoft extends GameObject {
     }
 
     @Override
+    public boolean isColliding(GameObject other) {
+        return super.isColliding(other);
+    }
+
+    @Override
+    public void collisionHandling(GameObject other) {
+        super.collisionHandling(other);
+    }
+
+    @Override
     public void hit() {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -50,12 +60,6 @@ public class BlockSoft extends GameObject {
 
     @Override
     public void draw(Graphics2D g) {
-        /*
-        // Debug Bounding Box
-        g.setColor(Color.MAGENTA);
-        g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
-        */
-
         if (isHit) {
             g.setColor(DESTROY_COLOUR);
         } else {

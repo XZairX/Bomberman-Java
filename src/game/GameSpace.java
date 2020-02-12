@@ -8,10 +8,6 @@ import static game.Constants.GAMESPACE_ROW;
 public class GameSpace {
     private static final Random RNG = new Random();
 
-    private boolean canSpawnBlockSoft() {
-        return (RNG.nextInt(100) < 66);
-    }
-
     public void spawnBorder() {
         for (int row = 0; row < GAMESPACE_ROW; row++) {
             for (int column = 0; column < GAMESPACE_COLUMN; column++) {
@@ -162,5 +158,9 @@ public class GameSpace {
                 }
             }
         }
+    }
+
+    private boolean canSpawnBlockSoft() {
+        return (RNG.nextInt(100) < 66);
     }
 }

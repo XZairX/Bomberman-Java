@@ -215,12 +215,13 @@ public class Player extends GameObject {
             int droppedBombs = 0;
             List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
             for (GameObject object : listObject) {
-                if (object.getClass() == Bomb.class) {
+                if (object instanceof BombObject) {
                     droppedBombs++;
                 }
             }
             if (droppedBombs < bomb) {
-                GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire));
+                //GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire));
+                GameMain.addAliveGameObject(new BombPower(x + radius, y + radius, fire));
             }
             canDropBomb = false;
         }
@@ -272,15 +273,16 @@ public class Player extends GameObject {
         fire = MAX;
     }
 
-    private void setSpeed() {
-        // IF skate 4 or higher (speed +30)
-        // IF skate 3 or lower (speed -90)
-    }
-
     public void debugGiveAll() {
         heart = HEART_MAX * 33;
         bomb = MAX * 4;
         fire = MAX;
         skate = MAX;
+    }
+
+    private void setSpeed() {
+        // y = 220 (distance to travel)
+        // IF skate 4 or higher (speed +30)
+        // IF skate 3 or lower (speed -90)
     }
 }

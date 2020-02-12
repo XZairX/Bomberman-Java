@@ -97,11 +97,6 @@ public class Fire extends GameObject {
 
     @Override
     public void draw(Graphics2D g) {
-        /*
-        // Debug Bounding Box
-        g.setColor(Color.WHITE);
-        g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
-        */
         g.setColor(FIRE_COLOUR);
         g.drawRect(x, y, diameter, diameter);
         g.setColor(FIRE_COLOUR);

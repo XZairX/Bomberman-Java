@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
 import static game.Constants.TILE_OUTLINE_COLOUR;
@@ -18,11 +19,33 @@ public class BlockTile extends GameObject {
     }
 
     @Override
+    public Rectangle getBounds() {
+        return super.getBounds();
+    }
+
+    @Override
+    public boolean isColliding(GameObject other) {
+        return super.isColliding(other);
+    }
+
+    @Override
+    public void collisionHandling(GameObject other) {
+        super.collisionHandling(other);
+    }
+
+    @Override
+    public void hit() {
+        super.hit();
+    }
+
+    @Override
     public void draw(Graphics2D g) {
         g.setColor(BLOCKTILE_COLOUR);
         g.fillRect(x, y, diameter, diameter);
         g.setColor(TILE_OUTLINE_COLOUR);
         g.drawRect(x, y, diameter, diameter);
+
+        // Debugging BlockTile isAvailable boolean flag
         g.setColor(Color.BLUE);
         g.drawString(String.valueOf(isAvailable).substring(0, 1).toUpperCase(), x + 7, y + 15);
     }

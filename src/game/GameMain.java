@@ -67,8 +67,8 @@ public class GameMain {
         gameSpace.spawnBorder();
         //gameSpace.spawnGameSpace();
         gameSpace.spawnBlockTiles();
-        gameSpace.spawnBlockHards();
-        gameSpace.spawnBlockSofts();
+        //gameSpace.spawnBlockHards();
+        //gameSpace.spawnBlockSofts();
 
         // Debug isolated row spawning
         //gameSpace.spawnRows01();
@@ -84,7 +84,7 @@ public class GameMain {
         }
     }
 
-    public void update() {
+    private void update() {
         // Collisions GameObjects
         for (GameObject object : listObjects) {
 
@@ -98,8 +98,8 @@ public class GameMain {
                 }
             }
 
-            // Collisions Bomb
-            if (object.getClass() == Bomb.class) {
+            // Collisions BombObject
+            if (object instanceof BombObject) {
                 int playersNotColliding = 0;
                 for (int i = listObjects.indexOf(this) + 1; i < listObjects.size(); i++) {
                     GameObject other = listObjects.get(i);
@@ -110,8 +110,8 @@ public class GameMain {
 
                     // Setting active collisions with bombs that are not being currently being collided with
                     if (playersNotColliding == numberOfPlayers) {
-                        if (!((Bomb)object).getIsCollisionActive()) {
-                            ((Bomb)object).setIsCollisionActive();
+                        if (!((BombObject)object).getIsCollisionActive()) {
+                            ((BombObject)object).setIsCollisionActive();
                         }
                     }
                 }
