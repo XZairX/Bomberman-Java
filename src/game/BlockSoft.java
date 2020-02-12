@@ -4,9 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import java.util.Random;
+
 import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class BlockSoft extends GameObject {
+    private static final Random RNG = new Random();
     private static final Color BLOCKSOFT_COLOUR = Color.RED;
     private static final Color DESTROY_COLOUR = Color.ORANGE;
     private static final int DESTROY_DELAY = 500;
@@ -36,7 +39,7 @@ public class BlockSoft extends GameObject {
                     e.printStackTrace();
                 }
 
-                if ((Math.random() * 100) < 45) {
+                if (RNG.nextInt(100) < 45) {
                     GameMain.addAliveGameObject(new BlockItem(x, y));
                 }
                 BlockSoft.super.hit();

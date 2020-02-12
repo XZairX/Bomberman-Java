@@ -1,11 +1,15 @@
 package game;
 
+import java.util.Random;
+
 import static game.Constants.GAMESPACE_COLUMN;
 import static game.Constants.GAMESPACE_ROW;
 
 public class GameSpace {
+    private static final Random RNG = new Random();
+
     private boolean canSpawnBlockSoft() {
-        return ((int)(Math.random() * 100) < 66);
+        return (RNG.nextInt(100) < 66);
     }
 
     public void spawnBorder() {

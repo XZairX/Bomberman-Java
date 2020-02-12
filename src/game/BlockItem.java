@@ -4,10 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import java.util.Random;
+
 import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class BlockItem extends GameObject {
+    private static final Random RNG = new Random();
+
     private static final Color BLOCKITEM_COLOUR = Color.CYAN;
+    private static final Color UNIMPLEMENTED_ITEM_COLOUR = Color.YELLOW;
 
     private final int X_CENTRE = x + 3;
     private final int Y_CENTRE = y + 15;
@@ -72,28 +77,40 @@ public class BlockItem extends GameObject {
                 break;
 
             case KICK:
-                g.drawString("S+", X_CENTRE, Y_CENTRE);
+                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.drawString("KI", X_CENTRE, Y_CENTRE);
                 break;
             case PUNCH:
+                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.drawString("PU", X_CENTRE, Y_CENTRE);
                 break;
             case THROW:
+                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.drawString("TH", X_CENTRE, Y_CENTRE);
                 break;
 
             case FULLFIRE:
                 g.drawString("FF", X_CENTRE, Y_CENTRE);
                 break;
             case POWERBOMB:
+                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
                 g.drawString("PB", X_CENTRE, Y_CENTRE);
                 break;
             case SPIKEBOMB:
+                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.drawString("SB", X_CENTRE, Y_CENTRE);
                 break;
 
             case HEART:
                 g.drawString("H+", X_CENTRE, Y_CENTRE);
                 break;
             case DANGEROUSBOMB:
+                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.drawString("DB", X_CENTRE, Y_CENTRE);
                 break;
             case REMOTEBOMB:
+                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.drawString("RB", X_CENTRE, Y_CENTRE);
                 break;
 
             case BOMBDOWN:
@@ -109,15 +126,15 @@ public class BlockItem extends GameObject {
     }
 
     private void setItem() {
-        double random = (Math.random() * 100);
+        int randomNumber = RNG.nextInt(100);
 
-        if (random < 60) {
+        if (randomNumber < 60) {
             setBasicItemUP();
-        } else if (random >= 60 && random < 70) {
+        } else if (randomNumber >= 60 && randomNumber < 70) {
             setUtilityItem();
-        } else if (random >= 70 && random < 80) {
+        } else if (randomNumber >= 70 && randomNumber < 80) {
             setBasicSpecialItem();
-        } else if (random >= 80 && random < 90) {
+        } else if (randomNumber >= 80 && randomNumber < 90) {
             setAdvancedSpecialItem();
         } else {
             setBasicItemDOWN();
@@ -125,11 +142,11 @@ public class BlockItem extends GameObject {
     }
 
     private void setBasicItemUP() {
-        double random = ((int)(Math.random() * 100));
+        int randomNumber = RNG.nextInt(100);
 
-        if (random < 33) {
+        if (randomNumber < 33) {
             item = Item.BOMBUP;
-        } else if (random >= 33 && random < 66) {
+        } else if (randomNumber >= 33 && randomNumber < 66) {
             item = Item.FIREUP;
         } else {
             item = Item.SKATEUP;
@@ -137,11 +154,11 @@ public class BlockItem extends GameObject {
     }
 
     private void setUtilityItem() {
-        double random = ((int)(Math.random() * 100));
+        int randomNumber = RNG.nextInt(100);
 
-        if (random < 33) {
+        if (randomNumber < 33) {
             item = Item.KICK;
-        } else if (random >= 33 && random < 66) {
+        } else if (randomNumber >= 33 && randomNumber < 66) {
             item = Item.PUNCH;
         } else {
             item = Item.THROW;
@@ -149,11 +166,11 @@ public class BlockItem extends GameObject {
     }
 
     private void setBasicSpecialItem() {
-        double random = ((int)(Math.random() * 100));
+        int randomNumber = RNG.nextInt(100);
 
-        if (random < 33) {
+        if (randomNumber < 33) {
             item = Item.FULLFIRE;
-        } else if (random >= 33 && random < 66) {
+        } else if (randomNumber >= 33 && randomNumber < 66) {
             item = Item.POWERBOMB;
         } else {
             item = Item.SPIKEBOMB;
@@ -161,11 +178,11 @@ public class BlockItem extends GameObject {
     }
 
     private void setAdvancedSpecialItem() {
-        double random = ((int)(Math.random() * 100));
+        int randomNumber = RNG.nextInt(100);
 
-        if (random < 33) {
+        if (randomNumber < 33) {
             item = Item.HEART;
-        } else if (random >= 33 && random < 66) {
+        } else if (randomNumber >= 33 && randomNumber < 66) {
             item = Item.DANGEROUSBOMB;
         } else {
             item = Item.REMOTEBOMB;
@@ -173,11 +190,11 @@ public class BlockItem extends GameObject {
     }
 
     private void setBasicItemDOWN() {
-        double random = ((int)(Math.random() * 100));
+        int randomNumber = RNG.nextInt(100);
 
-        if (random < 33) {
+        if (randomNumber < 33) {
             item = Item.BOMBDOWN;
-        } else if (random >= 33 && random < 66) {
+        } else if (randomNumber >= 33 && randomNumber < 66) {
             item = Item.FIREDOWN;
         } else {
             item = Item.SKATEDOWN;
