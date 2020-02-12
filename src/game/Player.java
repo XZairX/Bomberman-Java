@@ -35,6 +35,10 @@ public class Player extends GameObject {
     private boolean moveLeft, moveRight, moveUp, moveDown;
     private boolean canDropBomb;
     private boolean isInvincible;
+    private boolean hasSingleSpecialBomb, hasMultipleSpecialBomb;
+
+    private enum SpecialBomb { NULL, POWERBOMB, SPIKEBOMB, DANGEROUSBOMB, REMOTEBOMB }
+    private SpecialBomb specialBomb = SpecialBomb.NULL;
 
     public Player(int x, int y, int playerID) {
         super(x, y);
@@ -123,28 +127,32 @@ public class Player extends GameObject {
 
         switch (playerID) {
             case 1: g.setColor(PLAYER1_COLOUR);
-                g.drawString(("Bomb " + bomb), TILE_DIAMETER, 15);
-                g.drawString(("Fire " + fire), TILE_DIAMETER * 5, 15);
-                g.drawString(("Skate " + skate), TILE_DIAMETER, 30);
-                g.drawString(("Heart " + heart), TILE_DIAMETER * 5, 30);
+                g.drawString("Bomb " + bomb, TILE_DIAMETER, 15);
+                g.drawString("Fire " + fire, TILE_DIAMETER * 4, 15);
+                g.drawString("Skate " + skate, TILE_DIAMETER * 7, 15);
+                g.drawString("Heart " + heart, TILE_DIAMETER * 2, 30);
+                g.drawString(String.valueOf(specialBomb), TILE_DIAMETER * 5, 30);
                 break;
             case 2: g.setColor(PLAYER2_COLOUR);
-                g.drawString(("Bomb " + bomb), TILE_DIAMETER * 10, 15);
-                g.drawString(("Fire " + fire), FRAME_WIDTH, 15);
-                g.drawString(("Skate " + skate), TILE_DIAMETER * 10, 30);
-                g.drawString(("Heart " + heart), FRAME_WIDTH, 30);
+                g.drawString("Bomb " + bomb, TILE_DIAMETER * 10, 15);
+                g.drawString("Fire " + fire, TILE_DIAMETER * 13, 15);
+                g.drawString("Skate " + skate, TILE_DIAMETER * 16, 15);
+                g.drawString("Heart " + heart, TILE_DIAMETER * 11, 30);
+                g.drawString(String.valueOf(specialBomb), TILE_DIAMETER * 14, 30);
                 break;
             case 3: g.setColor(PLAYER3_COLOUR);
-                g.drawString(("Bomb " + bomb), TILE_DIAMETER, FRAME_HEIGHT + 15);
-                g.drawString(("Fire " + fire), TILE_DIAMETER * 5, FRAME_HEIGHT + 15);
-                g.drawString(("Skate " + skate), TILE_DIAMETER, FRAME_HEIGHT + 30);
-                g.drawString(("Heart " + heart), TILE_DIAMETER * 5, FRAME_HEIGHT + 30);
+                g.drawString("Bomb " + bomb, TILE_DIAMETER, FRAME_HEIGHT + 15);
+                g.drawString("Fire " + fire, TILE_DIAMETER * 4, FRAME_HEIGHT + 15);
+                g.drawString("Skate " + skate, TILE_DIAMETER * 7, FRAME_HEIGHT + 15);
+                g.drawString("Heart " + heart, TILE_DIAMETER * 2, FRAME_HEIGHT + 30);
+                g.drawString(String.valueOf(specialBomb), TILE_DIAMETER * 5, FRAME_HEIGHT + 30);
                 break;
             case 4: g.setColor(PLAYER4_COLOUR);
-                g.drawString(("Bomb " + bomb), TILE_DIAMETER * 10, FRAME_HEIGHT + 15);
-                g.drawString(("Fire " + fire), FRAME_WIDTH, FRAME_HEIGHT + 15);
-                g.drawString(("Skate " + skate), TILE_DIAMETER * 10, FRAME_HEIGHT + 30);
-                g.drawString(("Heart " + heart), FRAME_WIDTH, FRAME_HEIGHT + 30);
+                g.drawString("Bomb " + bomb, TILE_DIAMETER * 10, FRAME_HEIGHT + 15);
+                g.drawString("Fire " + fire, TILE_DIAMETER * 13, FRAME_HEIGHT + 15);
+                g.drawString("Skate " + skate, TILE_DIAMETER * 16, FRAME_HEIGHT + 15);
+                g.drawString("Heart " + heart, TILE_DIAMETER * 11, FRAME_HEIGHT + 30);
+                g.drawString(String.valueOf(specialBomb), TILE_DIAMETER * 14, FRAME_HEIGHT + 30);
                 break;
         }
         g.fillOval(x, y, diameter, diameter);
@@ -211,17 +219,45 @@ public class Player extends GameObject {
     }
 
     public void dropBomb() {
+        List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
+
         if (canDropBomb) {
             int droppedBombs = 0;
-            List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
+
+            if (hasSingleSpecialBomb) {
+                for (GameObject object : listObject) {
+                    switch (specialBomb) {
+                        case POWERBOMB:
+                            if (object.getClass() == PowerBomb.class) {
+                                droppedBombs++;
+                                break;
+                            }
+                        case DANGEROUSBOMB:
+                            /*if (object.getClass() == DangerousBomb.class) {
+                                droppedBombs++;
+                                break;
+                            }*/
+                    }
+                }
+
+                if (droppedBombs < 1) {
+                    switch (specialBomb) {
+                        case POWERBOMB:
+                            GameMain.addAliveGameObject(new PowerBomb(x + radius, y + radius, fire));
+                            break;
+                    }
+                }
+            }
+
             for (GameObject object : listObject) {
-                if (object instanceof BombObject) {
+                if (object.getClass() == Bomb.class) {
                     droppedBombs++;
                 }
             }
+
             if (droppedBombs < bomb) {
-                //GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire));
-                GameMain.addAliveGameObject(new PowerBomb(x + radius, y + radius, fire));
+                GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire));
+
             }
             canDropBomb = false;
         }
@@ -271,6 +307,36 @@ public class Player extends GameObject {
 
     public void fullFire() {
         fire = MAX;
+    }
+
+    public void powerBomb() {
+        specialBomb = SpecialBomb.POWERBOMB;
+        setHasSingleSpecialBomb();
+    }
+
+    public void spikeBomb() {
+        specialBomb = SpecialBomb.SPIKEBOMB;
+        setHasMultipleSpecialBomb();
+    }
+
+    public void dangerousBomb() {
+        specialBomb = SpecialBomb.DANGEROUSBOMB;
+        setHasSingleSpecialBomb();
+    }
+
+    public void remoteBomb() {
+        specialBomb = SpecialBomb.REMOTEBOMB;
+        setHasMultipleSpecialBomb();
+    }
+
+    private void setHasSingleSpecialBomb() {
+        hasSingleSpecialBomb = true;
+        hasMultipleSpecialBomb = false;
+    }
+
+    private void setHasMultipleSpecialBomb() {
+        hasSingleSpecialBomb = false;
+        hasMultipleSpecialBomb = true;
     }
 
     public void debugGiveAll() {

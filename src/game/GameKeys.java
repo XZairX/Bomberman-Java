@@ -55,6 +55,10 @@ public class GameKeys extends KeyAdapter {
             case KeyEvent.VK_D:
                 game.player1.speedDown();
                 break;
+            case KeyEvent.VK_P:
+                game.player1.powerBomb();
+                System.out.println("Gifted PowerBomb to Player 1.");
+                break;
             case KeyEvent.VK_ESCAPE:
                 game.player1.debugGiveAll();
                 break;

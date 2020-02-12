@@ -92,7 +92,6 @@ public class BlockItem extends GameObject {
                 g.drawString("FF", X_CENTRE, Y_CENTRE);
                 break;
             case POWERBOMB:
-                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
                 g.drawString("PB", X_CENTRE, Y_CENTRE);
                 break;
             case SPIKEBOMB:
@@ -223,16 +222,20 @@ public class BlockItem extends GameObject {
                 player.fullFire();
                 break;
             case POWERBOMB:
+                player.powerBomb();
                 break;
             case SPIKEBOMB:
+                player.spikeBomb();
                 break;
 
             case HEART:
                 player.heartUp();
                 break;
             case DANGEROUSBOMB:
+                player.dangerousBomb();
                 break;
             case REMOTEBOMB:
+                player.remoteBomb();
                 break;
 
             case BOMBDOWN:
