@@ -1,28 +1,34 @@
 package game;
 
-import java.awt.Graphics2D;
+import java.awt.Color;
 import java.awt.Rectangle;
+import java.awt.Graphics2D;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fire extends FireObject {
+public class PowerFire extends FireObject {
+    private static final Color POWERFIRE_COLOUR = Color.ORANGE;
+    private static final int POWERFIRE_DELAY = 100;
     private static final int FIRE_RECURSION_DELAY = 10;
+    private static final int POWERFIRE_RANGE = 16;
 
-    public Fire(int x, int y, int range) {
+    public PowerFire(int x, int y, int range) {
         super(x, y);
+        this.FIRE_DELAY = POWERFIRE_DELAY;
 
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                emitFire(x, y, range);
+                emitPowerFire(x, y, POWERFIRE_RANGE);
             }
         });
         thread.start();
     }
 
-    private Fire(int x, int y) {
+    private PowerFire(int x, int y) {
         super(x, y);
+        this.FIRE_DELAY = POWERFIRE_DELAY;
     }
 
     @Override
@@ -47,10 +53,13 @@ public class Fire extends FireObject {
 
     @Override
     public void draw(Graphics2D g) {
-        super.draw(g);
+        g.setColor(POWERFIRE_COLOUR);
+        g.drawRect(x, y, diameter, diameter);
+        g.setColor(POWERFIRE_COLOUR);
+        g.fillRect(x, y, diameter, diameter);
     }
 
-    private void emitFire(int x, int y, int range) {
+    private void emitPowerFire(int x, int y, int range) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -61,10 +70,10 @@ public class Fire extends FireObject {
                         e.printStackTrace();
                     }
 
-                    Fire fireLeft = new Fire(x - (diameter * i), y);
-                    Fire fireRight = new Fire(x + (diameter * i), y);
-                    Fire fireUp = new Fire (x, y - (diameter * i));
-                    Fire fireDown = new Fire (x, y + (diameter * i));
+                    PowerFire fireLeft = new PowerFire(x - (diameter * i), y);
+                    PowerFire fireRight = new PowerFire(x + (diameter * i), y);
+                    PowerFire fireUp = new PowerFire (x, y - (diameter * i));
+                    PowerFire fireDown = new PowerFire (x, y + (diameter * i));
 
                     List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
                     for (GameObject object : listObject) {

@@ -22,7 +22,7 @@ public class BlockItem extends GameObject {
         FULLFIRE, POWERBOMB, SPIKEBOMB,
         HEART, DANGEROUSBOMB, REMOTEBOMB,
         BOMBDOWN, FIREDOWN, SKATEDOWN,
-        }
+    }
 
     private Item item;
 

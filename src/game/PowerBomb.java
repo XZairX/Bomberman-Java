@@ -4,12 +4,11 @@ import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
-public class BombPower extends BombObject {
+public class PowerBomb extends BombObject {
     private static final Color POWERBOMB_COLOUR = Color.RED;
 
-    public BombPower(int x, int y, int range) {
+    public PowerBomb(int x, int y, int range) {
         super(x, y, range);
-        this.range = 16;
     }
 
     @Override
@@ -29,6 +28,7 @@ public class BombPower extends BombObject {
 
     @Override
     public void hit() {
+        dropFire(Type.POWER);
         super.hit();
     }
 

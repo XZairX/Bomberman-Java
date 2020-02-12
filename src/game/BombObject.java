@@ -5,16 +5,19 @@ import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
 public abstract class BombObject extends GameObject {
-    // Not private/final/static as Remote Bombs need a different delay
-    protected int BOMB_DELAY = 2500;
-
-    protected int range;
-
+    private final int range;
     // For debugging
     private int secondsToExplode = 3;
 
     private boolean isDropped;
     private boolean isCollisionActive;
+
+    // Required to be protected for Remote Bombs
+    protected final int BOMB_DELAY = 2500;
+
+    protected enum Type {
+        NORMAL, POWER, SPIKE, DANGEROUS, REMOTE
+    }
 
     protected BombObject(int x, int y, int range) {
         super(x, y);
@@ -101,7 +104,6 @@ public abstract class BombObject extends GameObject {
 
     @Override
     protected void hit() {
-        dropFire();
         super.hit();
     }
 
@@ -111,15 +113,7 @@ public abstract class BombObject extends GameObject {
         g.drawString(Integer.toString(secondsToExplode + 1), x + 8, y + 14);
     }
 
-    protected boolean getIsCollisionActive() {
-        return isCollisionActive;
-    }
-
-    protected void setIsCollisionActive() {
-        isCollisionActive = true;
-    }
-
-    private void dropFire() {
+    protected void dropFire(Type type) {
         if (isDropped) {
             for (BlockTile tile : GameMain.getListBlockTile()) {
                 if (isColliding(tile)) {
@@ -129,7 +123,24 @@ public abstract class BombObject extends GameObject {
                     }
                 }
             }
-            GameMain.addAliveGameObject(new Fire(x, y, range));
+
+            switch (type) {
+                case NORMAL:
+                    GameMain.addAliveGameObject(new Fire(x, y, range));
+                    break;
+                case POWER:
+                    GameMain.addAliveGameObject(new PowerFire(x, y, range));
+                    break;
+            }
+
         }
+    }
+
+    protected boolean getIsCollisionActive() {
+        return isCollisionActive;
+    }
+
+    protected void setIsCollisionActive() {
+        isCollisionActive = true;
     }
 }

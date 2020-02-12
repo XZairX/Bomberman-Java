@@ -77,8 +77,8 @@ public class Player extends GameObject {
             cancelCollisionMovement();
         }
 
-        if (other.getClass() == Bomb.class) {
-            if (((Bomb)other).getIsCollisionActive()) {
+        if (other instanceof BombObject) {
+            if (((BombObject)other).getIsCollisionActive()) {
                 cancelCollisionMovement();
             }
         }
@@ -221,7 +221,7 @@ public class Player extends GameObject {
             }
             if (droppedBombs < bomb) {
                 //GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire));
-                GameMain.addAliveGameObject(new BombPower(x + radius, y + radius, fire));
+                GameMain.addAliveGameObject(new PowerBomb(x + radius, y + radius, fire));
             }
             canDropBomb = false;
         }

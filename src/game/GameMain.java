@@ -68,7 +68,7 @@ public class GameMain {
         //gameSpace.spawnGameSpace();
         gameSpace.spawnBlockTiles();
         //gameSpace.spawnBlockHards();
-        //gameSpace.spawnBlockSofts();
+        gameSpace.spawnBlockSofts();
 
         // Debug isolated row spawning
         //gameSpace.spawnRows01();
@@ -117,8 +117,8 @@ public class GameMain {
                 }
             }
 
-            // Collisions Fire
-            if (object.getClass() == Fire.class) {
+            // Collisions FireObject
+            if (object instanceof FireObject) {
                 for (int i = listObjects.indexOf(this) + 1; i < listObjects.size(); i++) {
                     GameObject other = listObjects.get(i);
                     if (object.isColliding(other)) {

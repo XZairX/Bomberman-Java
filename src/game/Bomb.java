@@ -28,6 +28,7 @@ public class Bomb extends BombObject {
 
     @Override
     public void hit() {
+        dropFire(Type.NORMAL);
         super.hit();
     }
 

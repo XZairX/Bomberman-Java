@@ -11,6 +11,7 @@ public abstract class GameObject {
     protected int y;
     protected int radius;
     protected int diameter;
+    protected boolean isFireObject;
     protected boolean isDead;
 
     protected GameObject(int x, int y) {
@@ -40,7 +41,7 @@ public abstract class GameObject {
     }
 
     protected void collisionHandling(GameObject other) {
-        if (other.getClass() == Fire.class) {
+        if ((!isFireObject) && (other instanceof FireObject)) {
             this.hit();
         }
     }
