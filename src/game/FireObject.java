@@ -45,11 +45,20 @@ public abstract class FireObject extends GameObject {
     protected void collisionHandling(GameObject other) {
         if (other.getClass() == BlockHard.class) {
             hit();
-        } else if (other.getClass() == BlockSoft.class || other.getClass() == BlockItem.class) {
+
+        } else if (other.getClass() == BlockSoft.class) {
+            if (((BlockSoft)other).isNotHit()) {
+                other.hit();
+            }
+            hit();
+        }
+
+        else if (other.getClass() == BlockItem.class) {
             other.hit();
             if (this.getClass() != SpikeFire.class) {
                 hit();
             }
+
         } else if (other instanceof BombObject) {
             other.hit();
             hit();

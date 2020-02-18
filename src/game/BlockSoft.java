@@ -38,17 +38,16 @@ public class BlockSoft extends BlockObject {
 
     @Override
     public void hit() {
+        isHit = true;
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    isHit = true;
                     Thread.sleep(BLOCKSOFT_DESTROY_DELAY);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-                if (RNG.nextInt(100) < 45) {
+                if (canSpawnBlockItem()) {
                     GameMain.addAliveGameObject(new BlockItem(x, y));
                 }
                 BlockSoft.super.hit();
@@ -63,5 +62,13 @@ public class BlockSoft extends BlockObject {
             BLOCK_COLOUR = BLOCKSOFT_DESTROY_COLOUR;
         }
         super.draw(g);
+    }
+
+    public boolean isNotHit() {
+        return !isHit;
+    }
+
+    private boolean canSpawnBlockItem() {
+        return (RNG.nextInt(100) < 45);
     }
 }

@@ -60,8 +60,12 @@ public class GameKeys extends KeyAdapter {
                 break;
             case KeyEvent.VK_O:
                 game.player1.spikeBomb();
+                break;
             case KeyEvent.VK_ESCAPE:
                 game.player1.debugGiveAll();
+                break;
+            case KeyEvent.VK_BACK_SPACE:
+                game.player1.debugReset();
                 break;
         }
     }

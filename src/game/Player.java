@@ -233,9 +233,9 @@ public class Player extends GameObject {
                             }
                         case DANGEROUSBOMB:
                             /*if (object.getClass() == DangerousBomb.class) {
-                                droppedBombs++;
+                                droppedBombs++;*/
                                 break;
-                            }*/
+                            //}
                     }
                 }
 
@@ -354,6 +354,12 @@ public class Player extends GameObject {
     private void setHasMultipleSpecialBomb() {
         hasSingleSpecialBomb = false;
         hasMultipleSpecialBomb = true;
+    }
+
+    public void debugReset() {
+        bomb = 1;
+        fire = 2;
+        skate = 4;
     }
 
     public void debugGiveAll() {
