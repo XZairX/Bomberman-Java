@@ -6,11 +6,10 @@ import java.awt.Rectangle;
 
 import java.util.Random;
 
-import static game.Constants.TILE_OUTLINE_COLOUR;
-
-public class BlockItem extends GameObject {
+public class BlockItem extends BlockObject {
     private static final Random RNG = new Random();
     private static final Color BLOCKITEM_COLOUR = Color.CYAN;
+    private static final Color DEBUG_ITEM_TEXT_COLOUR = Color.BLACK;
     private static final Color UNIMPLEMENTED_ITEM_COLOUR = Color.YELLOW;
 
     private final int X_CENTRE = x + 3;
@@ -28,6 +27,7 @@ public class BlockItem extends GameObject {
 
     public BlockItem(int x, int y) {
         super(x, y);
+        BLOCK_COLOUR = BLOCKITEM_COLOUR;
         setItem();
     }
 
@@ -57,12 +57,9 @@ public class BlockItem extends GameObject {
 
     @Override
     public void draw(Graphics2D g) {
-        g.setColor(BLOCKITEM_COLOUR);
-        g.fillRect(x, y, diameter, diameter);
-        g.setColor(TILE_OUTLINE_COLOUR);
-        g.drawRect(x, y, diameter, diameter);
+        super.draw(g);
 
-        g.setColor(Color.BLACK);
+        g.setColor(DEBUG_ITEM_TEXT_COLOUR);
 
         switch (item) {
             case BOMBUP:

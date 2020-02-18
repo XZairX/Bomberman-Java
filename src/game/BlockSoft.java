@@ -6,9 +6,7 @@ import java.awt.Rectangle;
 
 import java.util.Random;
 
-import static game.Constants.TILE_OUTLINE_COLOUR;
-
-public class BlockSoft extends GameObject {
+public class BlockSoft extends BlockObject {
     private static final Random RNG = new Random();
     private static final Color BLOCKSOFT_COLOUR = Color.RED;
     private static final Color DESTROY_COLOUR = Color.ORANGE;
@@ -20,6 +18,7 @@ public class BlockSoft extends GameObject {
         super(x, y);
         this.x = (x * diameter) + (diameter * 2);
         this.y = (y * diameter) + (diameter * 2);
+        BLOCK_COLOUR = BLOCKSOFT_COLOUR;
     }
 
     @Override
@@ -61,13 +60,8 @@ public class BlockSoft extends GameObject {
     @Override
     public void draw(Graphics2D g) {
         if (isHit) {
-            g.setColor(DESTROY_COLOUR);
-        } else {
-            g.setColor(BLOCKSOFT_COLOUR);
+            BLOCK_COLOUR = DESTROY_COLOUR;
         }
-
-        g.fillRect(x, y, diameter, diameter);
-        g.setColor(TILE_OUTLINE_COLOUR);
-        g.drawRect(x, y, diameter, diameter);
+        super.draw(g);
     }
 }

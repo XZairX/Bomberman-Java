@@ -25,7 +25,7 @@ public abstract class BombObject extends GameObject {
         this.y = Math.round(y / diameter) * diameter;
         this.range = range;
 
-        for (BlockTile tile : GameMain.getListBlockTile()) {
+        for (TileObject tile : GameMain.getListTileObject()) {
             if (isColliding(tile)) {
                 if (tile.isAvailable()) {
                     tile.toggleAvailability();
@@ -115,7 +115,7 @@ public abstract class BombObject extends GameObject {
 
     protected void dropFire(Type type) {
         if (isDropped) {
-            for (BlockTile tile : GameMain.getListBlockTile()) {
+            for (TileObject tile : GameMain.getListTileObject()) {
                 if (isColliding(tile)) {
                     if (!tile.isAvailable()) {
                         tile.toggleAvailability();

@@ -21,7 +21,7 @@ public class GameSpace {
     public void spawnGameSpace() {
         for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
             for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
-                GameMain.addTileGameObject(new BlockTile(row, column));
+                GameMain.addTileGameObject(new TileObject(row, column));
                 if (row % 2 == 0 && column % 2 == 0) {
                     GameMain.addBlockGameObject(new BlockHard(row, column));
                 }
@@ -30,11 +30,11 @@ public class GameSpace {
     }
 
 
-    // Debug code to isolate BlockTile spawns
+    // Debug code to isolate TileObject spawns
     public void spawnBlockTiles() {
         for (int row = 1; row < GAMESPACE_ROW - 1; row++) {
             for (int column = 1; column < GAMESPACE_COLUMN - 1; column++) {
-                GameMain.addTileGameObject(new BlockTile(row, column));
+                GameMain.addTileGameObject(new TileObject(row, column));
             }
         }
     }

@@ -17,7 +17,7 @@ public class Player extends GameObject {
     private static final Color PLAYER1_COLOUR = Color.BLUE;
     private static final Color PLAYER2_COLOUR = Color.RED;
     private static final Color PLAYER3_COLOUR = Color.MAGENTA;
-    private static final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (BlockTile is currently using this)
+    private static final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (TileObject is currently using this)
     private static final int PLAYER_INVINCIBILITY = 2500;
     private static final int HEART_MAX = 3;
     private static final int MIN = 1;

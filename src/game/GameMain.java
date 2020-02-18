@@ -10,14 +10,14 @@ import static game.Constants.GAMESPACE_COLUMN;
 import static game.Constants.GAMESPACE_ROW;
 
 public class GameMain {
-    public static List<BlockTile> listBlockTile;
+    public static List<TileObject> listTileObject;
     public static List<GameObject> listObjects;
     public static List<GameObject> listAlive;
     public static int numberOfPlayers;
     public Player player1, player2, player3, player4;
 
     public GameMain() {
-        listBlockTile = new ArrayList<>();
+        listTileObject = new ArrayList<>();
         listObjects = new ArrayList<>();
         listAlive = new ArrayList<>();
 
@@ -34,16 +34,16 @@ public class GameMain {
         numberOfPlayers = listAlive.size();
     }
 
-    public static List<BlockTile> getListBlockTile() {
-        return listBlockTile;
+    public static List<TileObject> getListTileObject() {
+        return listTileObject;
     }
 
     public static List<GameObject> getListObjects() {
         return listObjects;
     }
 
-    public static void addTileGameObject(BlockTile blockTile) {
-        listBlockTile.add(blockTile);
+    public static void addTileGameObject(TileObject tileObject) {
+        listTileObject.add(tileObject);
     }
 
     public static void addBlockGameObject(GameObject object) {
