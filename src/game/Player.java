@@ -337,13 +337,13 @@ public class Player extends GameObject {
     }
 
     public void dangerousBomb() {
-        specialBomb = SpecialBomb.DANGEROUSBOMB;
-        setHasSingleSpecialBomb();
+        /*specialBomb = SpecialBomb.DANGEROUSBOMB;
+        setHasSingleSpecialBomb();*/
     }
 
     public void remoteBomb() {
-        specialBomb = SpecialBomb.REMOTEBOMB;
-        setHasMultipleSpecialBomb();
+        /*specialBomb = SpecialBomb.REMOTEBOMB;
+        setHasMultipleSpecialBomb();*/
     }
 
     private void setHasSingleSpecialBomb() {

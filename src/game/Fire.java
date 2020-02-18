@@ -62,8 +62,8 @@ public class Fire extends FireObject {
 
                     Fire fireLeft = new Fire(x - (diameter * i), y);
                     Fire fireRight = new Fire(x + (diameter * i), y);
-                    Fire fireUp = new Fire (x, y - (diameter * i));
-                    Fire fireDown = new Fire (x, y + (diameter * i));
+                    Fire fireUp = new Fire(x, y - (diameter * i));
+                    Fire fireDown = new Fire(x, y + (diameter * i));
 
                     List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
                     for (GameObject object : listObject) {

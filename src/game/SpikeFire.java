@@ -7,29 +7,25 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PowerFire extends FireObject {
-    private static final Color POWERFIRE_COLOUR = Color.ORANGE;
-    private static final int POWERFIRE_DELAY = 1000;
-    private static final int POWERFIRE_RANGE = 16;
+public class SpikeFire extends FireObject {
+    private static final Color SPIKEFIRE_COLOUR = Color.BLUE;
 
-    public PowerFire(int x, int y, int range) {
+    public SpikeFire(int x, int y, int range) {
         super(x, y);
-        this.FIRE_DELAY = POWERFIRE_DELAY;
-        this.FIRE_COLOUR = POWERFIRE_COLOUR;
+        this.FIRE_COLOUR = SPIKEFIRE_COLOUR;
 
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                emitFire(x, y, POWERFIRE_RANGE);
+                emitFire(x, y, range);
             }
         });
         thread.start();
     }
 
-    private PowerFire(int x, int y) {
+    private SpikeFire(int x, int y) {
         super(x, y);
-        this.FIRE_DELAY = POWERFIRE_DELAY;
-        this.FIRE_COLOUR = POWERFIRE_COLOUR;
+        this.FIRE_COLOUR = SPIKEFIRE_COLOUR;
     }
 
     @Override
@@ -68,14 +64,14 @@ public class PowerFire extends FireObject {
                         e.printStackTrace();
                     }
 
-                    PowerFire fireLeft = new PowerFire(x - (diameter * i), y);
-                    PowerFire fireRight = new PowerFire(x + (diameter * i), y);
-                    PowerFire fireUp = new PowerFire(x, y - (diameter * i));
-                    PowerFire fireDown = new PowerFire(x, y + (diameter * i));
+                    SpikeFire fireLeft = new SpikeFire(x - (diameter * i), y);
+                    SpikeFire fireRight = new SpikeFire(x + (diameter * i), y);
+                    SpikeFire fireUp = new SpikeFire(x, y - (diameter * i));
+                    SpikeFire fireDown = new SpikeFire(x, y + (diameter * i));
 
                     List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
                     for (GameObject object : listObject) {
-                        if (object instanceof BlockObject || object instanceof BombObject) {
+                        if (object.getClass() == BlockHard.class || object instanceof BombObject) {
 
                             // Check if collided
                             if (!isFireLeftHit) {

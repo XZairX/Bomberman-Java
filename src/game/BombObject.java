@@ -134,6 +134,9 @@ public abstract class BombObject extends GameObject {
                 case POWER:
                     GameMain.addAliveGameObject(new PowerFire(x, y, range));
                     break;
+                case SPIKE:
+                    GameMain.addAliveGameObject(new SpikeFire(x, y, range));
+                    break;
             }
 
         }
