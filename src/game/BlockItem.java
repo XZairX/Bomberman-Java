@@ -9,8 +9,8 @@ import java.util.Random;
 public class BlockItem extends BlockObject {
     private static final Random RNG = new Random();
     private static final Color BLOCKITEM_COLOUR = Color.CYAN;
-    private static final Color DEBUG_ITEM_TEXT_COLOUR = Color.BLACK;
-    private static final Color UNIMPLEMENTED_ITEM_COLOUR = Color.YELLOW;
+    private static final Color BLOCKITEM_DEBUG_TEXT_COLOUR = Color.BLACK;
+    private static final Color BLOCKITEM_UNIMPLEMENTED_COLOUR = Color.YELLOW;
 
     private final int X_CENTRE = x + 3;
     private final int Y_CENTRE = y + 15;
@@ -59,7 +59,7 @@ public class BlockItem extends BlockObject {
     public void draw(Graphics2D g) {
         super.draw(g);
 
-        g.setColor(DEBUG_ITEM_TEXT_COLOUR);
+        g.setColor(BLOCKITEM_DEBUG_TEXT_COLOUR);
 
         switch (item) {
             case BOMBUP:
@@ -73,15 +73,15 @@ public class BlockItem extends BlockObject {
                 break;
 
             case KICK:
-                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
                 g.drawString("KI", X_CENTRE, Y_CENTRE);
                 break;
             case PUNCH:
-                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
                 g.drawString("PU", X_CENTRE, Y_CENTRE);
                 break;
             case THROW:
-                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
                 g.drawString("TH", X_CENTRE, Y_CENTRE);
                 break;
 
@@ -92,7 +92,7 @@ public class BlockItem extends BlockObject {
                 g.drawString("PB", X_CENTRE, Y_CENTRE);
                 break;
             case SPIKEBOMB:
-                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
                 g.drawString("SB", X_CENTRE, Y_CENTRE);
                 break;
 
@@ -100,11 +100,11 @@ public class BlockItem extends BlockObject {
                 g.drawString("H+", X_CENTRE, Y_CENTRE);
                 break;
             case DANGEROUSBOMB:
-                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
                 g.drawString("DB", X_CENTRE, Y_CENTRE);
                 break;
             case REMOTEBOMB:
-                g.setColor(UNIMPLEMENTED_ITEM_COLOUR);
+                g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
                 g.drawString("RB", X_CENTRE, Y_CENTRE);
                 break;
 

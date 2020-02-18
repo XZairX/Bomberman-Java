@@ -9,8 +9,8 @@ import java.util.Random;
 public class BlockSoft extends BlockObject {
     private static final Random RNG = new Random();
     private static final Color BLOCKSOFT_COLOUR = Color.RED;
-    private static final Color DESTROY_COLOUR = Color.ORANGE;
-    private static final int DESTROY_DELAY = 500;
+    private static final Color BLOCKSOFT_DESTROY_COLOUR = Color.ORANGE;
+    private static final int BLOCKSOFT_DESTROY_DELAY = 500;
 
     private boolean isHit;
 
@@ -43,7 +43,7 @@ public class BlockSoft extends BlockObject {
             public void run() {
                 try {
                     isHit = true;
-                    Thread.sleep(DESTROY_DELAY);
+                    Thread.sleep(BLOCKSOFT_DESTROY_DELAY);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -60,7 +60,7 @@ public class BlockSoft extends BlockObject {
     @Override
     public void draw(Graphics2D g) {
         if (isHit) {
-            BLOCK_COLOUR = DESTROY_COLOUR;
+            BLOCK_COLOUR = BLOCKSOFT_DESTROY_COLOUR;
         }
         super.draw(g);
     }
