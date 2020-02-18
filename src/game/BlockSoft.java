@@ -18,7 +18,7 @@ public class BlockSoft extends BlockObject {
         super(x, y);
         this.x = (x * diameter) + (diameter * 2);
         this.y = (y * diameter) + (diameter * 2);
-        BLOCK_COLOUR = BLOCKSOFT_COLOUR;
+        this.BLOCK_COLOUR = BLOCKSOFT_COLOUR;
     }
 
     @Override

@@ -27,7 +27,7 @@ public class BlockItem extends BlockObject {
 
     public BlockItem(int x, int y) {
         super(x, y);
-        BLOCK_COLOUR = BLOCKITEM_COLOUR;
+        this.BLOCK_COLOUR = BLOCKITEM_COLOUR;
         setItem();
     }
 
