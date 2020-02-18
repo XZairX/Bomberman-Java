@@ -92,7 +92,6 @@ public class BlockItem extends BlockObject {
                 g.drawString("PB", X_CENTRE, Y_CENTRE);
                 break;
             case SPIKEBOMB:
-                g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
                 g.drawString("SB", X_CENTRE, Y_CENTRE);
                 break;
 

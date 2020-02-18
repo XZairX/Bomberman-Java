@@ -67,8 +67,8 @@ public class GameMain {
         gameSpace.spawnBorder();
         //gameSpace.spawnGameSpace();
         gameSpace.spawnBlockTiles();
-        gameSpace.spawnBlockHards();
-        gameSpace.spawnBlockSofts();
+        //gameSpace.spawnBlockHards();
+        //gameSpace.spawnBlockSofts();
 
         // Debug isolated row spawning
         //gameSpace.spawnRows01();

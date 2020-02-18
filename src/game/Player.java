@@ -244,18 +244,36 @@ public class Player extends GameObject {
                         case POWERBOMB:
                             GameMain.addAliveGameObject(new PowerBomb(x + radius, y + radius, fire));
                             break;
+                        case DANGEROUSBOMB:
+                            //GameMain.addAliveGameObject(new DangerousBomb(x + radius, y + radius, fire));
+                            break;
                     }
                 }
             }
 
             for (GameObject object : listObject) {
-                if (object.getClass() == Bomb.class) {
+                if (hasMultipleSpecialBomb) {
+                    if (object.getClass() == SpikeBomb.class) { //|| object.getClass() == RemoteBomb.class) {
+                        droppedBombs++;
+                    }
+                } else if (object.getClass() == Bomb.class) {
                     droppedBombs++;
                 }
             }
 
             if (droppedBombs < bomb) {
-                GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire));
+                if (hasMultipleSpecialBomb) {
+                    switch (specialBomb) {
+                        case SPIKEBOMB:
+                            GameMain.addAliveGameObject(new SpikeBomb(x + radius, y + radius, fire));
+                            break;
+                        case REMOTEBOMB:
+                            //GameMain.addAliveGameObject(new RemoteBomb(x + radius, y + radius, fire));
+                            break;
+                    }
+                } else {
+                    GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire));
+                }
 
             }
             canDropBomb = false;
