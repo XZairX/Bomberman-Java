@@ -10,12 +10,12 @@ import java.util.List;
 public class PowerFire extends FireObject {
     private static final Color POWERFIRE_COLOUR = Color.ORANGE;
     private static final int POWERFIRE_DELAY = 1000;
-    private static final int FIRE_RECURSION_DELAY = 10;
     private static final int POWERFIRE_RANGE = 16;
 
     public PowerFire(int x, int y, int range) {
         super(x, y);
         this.FIRE_DELAY = POWERFIRE_DELAY;
+        this.FIRE_COLOUR = POWERFIRE_COLOUR;
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -29,6 +29,7 @@ public class PowerFire extends FireObject {
     private PowerFire(int x, int y) {
         super(x, y);
         this.FIRE_DELAY = POWERFIRE_DELAY;
+        this.FIRE_COLOUR = POWERFIRE_COLOUR;
     }
 
     @Override
@@ -53,10 +54,7 @@ public class PowerFire extends FireObject {
 
     @Override
     public void draw(Graphics2D g) {
-        g.setColor(POWERFIRE_COLOUR);
-        g.drawRect(x, y, diameter, diameter);
-        g.setColor(POWERFIRE_COLOUR);
-        g.fillRect(x, y, diameter, diameter);
+        super.draw(g);
     }
 
     public void emitFire(int x, int y, int range) {
@@ -77,41 +75,40 @@ public class PowerFire extends FireObject {
 
                     List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
                     for (GameObject object : listObject) {
-                        if (object.getClass() == BlockHard.class || object.getClass() == BlockSoft.class
-                                || object.getClass() == BlockItem.class || object instanceof BombObject) {
+                        if (object instanceof BlockObject || object instanceof BombObject) {
 
                             // Check if collided
                             if (!isFireLeftHit) {
                                 if (fireLeft.isColliding(object)) {
-                                    GameMain.addAliveGameObject(fireLeft);
+                                    collisionHandling(object);
                                     isFireLeftHit = true;
                                 }
                             }
 
                             if (!isFireRightHit) {
                                 if (fireRight.isColliding(object)) {
-                                    GameMain.addAliveGameObject(fireRight);
+                                    collisionHandling(object);
                                     isFireRightHit = true;
                                 }
                             }
 
                             if (!isFireUpHit) {
                                 if (fireUp.isColliding(object)) {
-                                    GameMain.addAliveGameObject(fireUp);
+                                    collisionHandling(object);
                                     isFireUpHit = true;
                                 }
                             }
 
                             if (!isFireDownHit) {
                                 if (fireDown.isColliding(object)) {
-                                    GameMain.addAliveGameObject(fireDown);
+                                    collisionHandling(object);
                                     isFireDownHit = true;
                                 }
                             }
                         }
                     }
 
-                    // If not collided
+                    // IF not collided
                     if (!isFireLeftHit) {
                         GameMain.addAliveGameObject(fireLeft);
                     }

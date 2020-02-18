@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fire extends FireObject {
-    private static final int FIRE_RECURSION_DELAY = 10;
-
     public Fire(int x, int y, int range) {
         super(x, y);
 
@@ -50,6 +48,7 @@ public class Fire extends FireObject {
         super.draw(g);
     }
 
+    @Override
     public void emitFire(int x, int y, int range) {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -68,41 +67,40 @@ public class Fire extends FireObject {
 
                     List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
                     for (GameObject object : listObject) {
-                        if (object.getClass() == BlockHard.class || object.getClass() == BlockSoft.class
-                                || object.getClass() == BlockItem.class) {
+                        if (object instanceof BlockObject || object instanceof BombObject) {
 
                             // Check if collided
                             if (!isFireLeftHit) {
                                 if (fireLeft.isColliding(object)) {
-                                    GameMain.addAliveGameObject(fireLeft);
+                                    collisionHandling(object);
                                     isFireLeftHit = true;
                                 }
                             }
 
                             if (!isFireRightHit) {
                                 if (fireRight.isColliding(object)) {
-                                    GameMain.addAliveGameObject(fireRight);
+                                    collisionHandling(object);
                                     isFireRightHit = true;
                                 }
                             }
 
                             if (!isFireUpHit) {
                                 if (fireUp.isColliding(object)) {
-                                    GameMain.addAliveGameObject(fireUp);
+                                    collisionHandling(object);
                                     isFireUpHit = true;
                                 }
                             }
 
                             if (!isFireDownHit) {
                                 if (fireDown.isColliding(object)) {
-                                    GameMain.addAliveGameObject(fireDown);
+                                    collisionHandling(object);
                                     isFireDownHit = true;
                                 }
                             }
                         }
                     }
 
-                    // If not collided
+                    // IF not collided
                     if (!isFireLeftHit) {
                         GameMain.addAliveGameObject(fireLeft);
                     }

@@ -13,7 +13,6 @@ public abstract class BombObject extends GameObject {
     private boolean isDropped;
     private boolean isCollisionActive;
 
-
     protected final int BOMB_DELAY = 2500; // Required to be protected for Remote Bombs
     protected Color BOMB_COLOUR = Color.BLACK;
 

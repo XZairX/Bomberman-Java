@@ -5,9 +5,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public abstract class FireObject extends GameObject {
-    private static final Color FIRE_COLOUR = Color.YELLOW;
-    private static final int BLOCKITEM_FIRE_DELAY = 500;
+    protected static final int FIRE_RECURSION_DELAY = 10;
 
+    protected Color FIRE_COLOUR = Color.YELLOW;
     protected int FIRE_DELAY = 500;
     protected boolean isFireLeftHit, isFireRightHit, isFireUpHit, isFireDownHit;
 
@@ -46,24 +46,10 @@ public abstract class FireObject extends GameObject {
         if (other.getClass() == BlockHard.class) {
             hit();
 
-        } else if (other.getClass() == BlockSoft.class || other instanceof BombObject) {
+        } else if (other.getClass() == BlockSoft.class || other.getClass() == BlockItem.class
+            || other instanceof BombObject) {
             other.hit();
             hit();
-
-        } else if (other.getClass() == BlockItem.class) {
-            other.hit();
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(BLOCKITEM_FIRE_DELAY);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    hit();
-                }
-            });
-            thread.start();
 
         } else if (!(other instanceof FireObject)) {
             other.hit();
