@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PowerFire extends FireObject {
     private static final Color POWERFIRE_COLOUR = Color.ORANGE;
-    private static final int POWERFIRE_DELAY = 100;
+    private static final int POWERFIRE_DELAY = 1000;
     private static final int FIRE_RECURSION_DELAY = 10;
     private static final int POWERFIRE_RANGE = 16;
 
@@ -20,7 +20,7 @@ public class PowerFire extends FireObject {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                emitPowerFire(x, y, POWERFIRE_RANGE);
+                emitFire(x, y, POWERFIRE_RANGE);
             }
         });
         thread.start();
@@ -59,7 +59,7 @@ public class PowerFire extends FireObject {
         g.fillRect(x, y, diameter, diameter);
     }
 
-    private void emitPowerFire(int x, int y, int range) {
+    public void emitFire(int x, int y, int range) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -78,7 +78,7 @@ public class PowerFire extends FireObject {
                     List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
                     for (GameObject object : listObject) {
                         if (object.getClass() == BlockHard.class || object.getClass() == BlockSoft.class
-                                || object.getClass() == BlockItem.class) {
+                                || object.getClass() == BlockItem.class || object instanceof BombObject) {
 
                             // Check if collided
                             if (!isFireLeftHit) {

@@ -46,7 +46,7 @@ public abstract class FireObject extends GameObject {
         if (other.getClass() == BlockHard.class) {
             hit();
 
-        } else if (other.getClass() == BlockSoft.class) {
+        } else if (other.getClass() == BlockSoft.class || other instanceof BombObject) {
             other.hit();
             hit();
 
@@ -82,4 +82,6 @@ public abstract class FireObject extends GameObject {
         g.setColor(FIRE_COLOUR);
         g.fillRect(x, y, diameter, diameter);
     }
+
+    protected abstract void emitFire(int x, int y, int range);
 }

@@ -50,7 +50,7 @@ public class Fire extends FireObject {
         super.draw(g);
     }
 
-    private void emitFire(int x, int y, int range) {
+    public void emitFire(int x, int y, int range) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

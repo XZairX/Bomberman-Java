@@ -9,6 +9,7 @@ public class Dummy {
     Game start and end state?
     Other bombs/fires?
     ID system for bombs (currently shared maximum between players)?
+    Look into starting to write the report
     Implement skate
     */
 }
