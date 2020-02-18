@@ -9,6 +9,7 @@ public class PowerBomb extends BombObject {
 
     public PowerBomb(int x, int y, int range) {
         super(x, y, range);
+        this.BOMB_COLOUR = POWERBOMB_COLOUR;
     }
 
     @Override
@@ -34,9 +35,6 @@ public class PowerBomb extends BombObject {
 
     @Override
     public void draw(Graphics2D g) {
-        g.setColor(POWERBOMB_COLOUR);
-        g.fillOval(x, y, diameter, diameter);
-
         super.draw(g);
     }
 }

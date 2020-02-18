@@ -5,15 +5,17 @@ import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
 public abstract class BombObject extends GameObject {
+    private static final Color DEBUG_DETONATION_COLOUR = Color.WHITE;
+
     private final int range;
-    // For debugging
-    private int secondsToExplode = 3;
+    private int debugSecondsToExplode = 3;
 
     private boolean isDropped;
     private boolean isCollisionActive;
 
-    // Required to be protected for Remote Bombs
-    protected final int BOMB_DELAY = 2500;
+
+    protected final int BOMB_DELAY = 2500; // Required to be protected for Remote Bombs
+    protected Color BOMB_COLOUR = Color.BLACK;
 
     protected enum Type {
         NORMAL, POWER, SPIKE, DANGEROUS, REMOTE
@@ -61,7 +63,7 @@ public abstract class BombObject extends GameObject {
             public void run() {
                 while (!isDead) {
                     try {
-                        secondsToExplode--;
+                        debugSecondsToExplode--;
                         Thread.sleep(BOMB_DELAY / 3);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -109,8 +111,10 @@ public abstract class BombObject extends GameObject {
 
     @Override
     protected void draw(Graphics2D g) {
-        g.setColor(Color.WHITE);
-        g.drawString(Integer.toString(secondsToExplode + 1), x + 8, y + 14);
+        g.setColor(BOMB_COLOUR);
+        g.fillOval(x, y, diameter, diameter);
+        g.setColor(DEBUG_DETONATION_COLOUR);
+        g.drawString(Integer.toString(debugSecondsToExplode + 1), x + 8, y + 14);
     }
 
     protected void dropFire(Type type) {

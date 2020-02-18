@@ -8,6 +8,7 @@ import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class TileObject extends GameObject {
     private static final Color BLOCKTILE_COLOUR = Color.GREEN;
+    private static final Color DEBUG_AVAILABILITY_COLOUR = Color.BLUE;
 
     private boolean isAvailable;
 
@@ -46,7 +47,7 @@ public class TileObject extends GameObject {
         g.drawRect(x, y, diameter, diameter);
 
         // Debugging TileObject isAvailable boolean flag
-        g.setColor(Color.BLUE);
+        g.setColor(DEBUG_AVAILABILITY_COLOUR);
         g.drawString(String.valueOf(isAvailable).substring(0, 1).toUpperCase(), x + 7, y + 15);
     }
 

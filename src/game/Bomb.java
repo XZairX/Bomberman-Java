@@ -1,12 +1,9 @@
 package game;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Bomb extends BombObject {
-    private static final Color BOMB_COLOUR = Color.BLACK;
-
     public Bomb(int x, int y, int range) {
         super(x, y, range);
     }
@@ -34,9 +31,6 @@ public class Bomb extends BombObject {
 
     @Override
     public void draw(Graphics2D g) {
-        g.setColor(BOMB_COLOUR);
-        g.fillOval(x, y, diameter, diameter);
-
         super.draw(g);
     }
 }

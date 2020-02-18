@@ -10,7 +10,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import static game.Constants.FRAME_HEIGHT;
-import static game.Constants.FRAME_WIDTH;
 import static game.Constants.TILE_DIAMETER;
 
 public class Player extends GameObject {

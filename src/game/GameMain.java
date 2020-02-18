@@ -127,7 +127,7 @@ public class GameMain {
                 }
             }
 
-            // Collisions Item
+            // Collisions BlockItem
             if (object.getClass() == BlockItem.class) {
                 for (int i = listObjects.indexOf(this) + 1; i < listObjects.size(); i++) {
                     GameObject other = listObjects.get(i);
