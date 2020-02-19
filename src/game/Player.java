@@ -33,11 +33,11 @@ public class Player extends GameObject {
     private boolean canMove;
     private boolean moveLeft, moveRight, moveUp, moveDown;
     private boolean canDropBomb;
-    private boolean isInvincible;
     private boolean hasSingleSpecialBomb, hasMultipleSpecialBomb;
+    private boolean isInvincible;
 
-    private enum SpecialBomb { NULL, POWERBOMB, SPIKEBOMB, DANGEROUSBOMB, REMOTEBOMB }
-    private SpecialBomb specialBomb = SpecialBomb.NULL;
+    private enum SpecialBomb { NORMAL, POWERBOMB, SPIKEBOMB, DANGEROUSBOMB, REMOTEBOMB }
+    private SpecialBomb specialBomb;
 
     public Player(int x, int y, int playerID) {
         super(x, y);
@@ -46,6 +46,7 @@ public class Player extends GameObject {
         this.radius *= 0.5;
         this.diameter = this.radius * 2;
         this.playerID = playerID;
+        this.specialBomb = SpecialBomb.NORMAL;
         canMove = true;
         canDropBomb = true;
     }

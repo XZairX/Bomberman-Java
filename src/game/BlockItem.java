@@ -28,7 +28,7 @@ public class BlockItem extends BlockObject {
     public BlockItem(int x, int y) {
         super(x, y);
         this.BLOCK_COLOUR = BLOCKITEM_COLOUR;
-        setItem();
+        this.item = setItem();
     }
 
     @Override
@@ -119,23 +119,23 @@ public class BlockItem extends BlockObject {
         }
     }
 
-    private void setItem() {
+    private Item setItem() {
         int randomNumber = RNG.nextInt(100);
 
         if (randomNumber < 60) {
-            setBasicItemUP();
+            return setBasicItemUP();
         } else if (randomNumber >= 60 && randomNumber < 70) {
-            setUtilityItem();
+            return setUtilityItem();
         } else if (randomNumber >= 70 && randomNumber < 80) {
-            setBasicSpecialItem();
+            return setBasicSpecialItem();
         } else if (randomNumber >= 80 && randomNumber < 90) {
-            setAdvancedSpecialItem();
+            return setAdvancedSpecialItem();
         } else {
-            setBasicItemDOWN();
+            return setBasicItemDOWN();
         }
     }
 
-    private void setBasicItemUP() {
+    private Item setBasicItemUP() {
         int randomNumber = RNG.nextInt(100);
 
         if (randomNumber < 33) {
@@ -145,9 +145,10 @@ public class BlockItem extends BlockObject {
         } else {
             item = Item.SKATEUP;
         }
+        return item;
     }
 
-    private void setUtilityItem() {
+    private Item setUtilityItem() {
         int randomNumber = RNG.nextInt(100);
 
         if (randomNumber < 33) {
@@ -157,9 +158,10 @@ public class BlockItem extends BlockObject {
         } else {
             item = Item.THROW;
         }
+        return item;
     }
 
-    private void setBasicSpecialItem() {
+    private Item setBasicSpecialItem() {
         int randomNumber = RNG.nextInt(100);
 
         if (randomNumber < 33) {
@@ -169,9 +171,10 @@ public class BlockItem extends BlockObject {
         } else {
             item = Item.SPIKEBOMB;
         }
+        return item;
     }
 
-    private void setAdvancedSpecialItem() {
+    private Item setAdvancedSpecialItem() {
         int randomNumber = RNG.nextInt(100);
 
         if (randomNumber < 33) {
@@ -181,9 +184,10 @@ public class BlockItem extends BlockObject {
         } else {
             item = Item.REMOTEBOMB;
         }
+        return item;
     }
 
-    private void setBasicItemDOWN() {
+    private Item setBasicItemDOWN() {
         int randomNumber = RNG.nextInt(100);
 
         if (randomNumber < 33) {
@@ -193,6 +197,7 @@ public class BlockItem extends BlockObject {
         } else {
             item = Item.SKATEDOWN;
         }
+        return item;
     }
 
     private void giveItem(Player player) {
