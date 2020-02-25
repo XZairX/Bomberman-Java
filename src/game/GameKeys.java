@@ -6,6 +6,10 @@ import java.awt.event.KeyEvent;
 public class GameKeys extends KeyAdapter {
     private GameMain game;
 
+    // To assist with debugging
+    private enum Special { BOMB, POWER, SPIKE, DANGEROUS, REMOTE }
+    private Special special = Special.BOMB;
+
     public GameKeys(GameMain game) {
         this.game = game;
     }
@@ -55,12 +59,32 @@ public class GameKeys extends KeyAdapter {
             case KeyEvent.VK_D:
                 game.player1.speedDown();
                 break;
-            case KeyEvent.VK_P:
-                game.player1.powerBomb();
+
+            case KeyEvent.VK_Q:
+                switch (special) {
+                    case BOMB:
+                        special = Special.POWER;
+                        game.player1.powerBomb();
+                        break;
+                    case POWER:
+                        special = Special.SPIKE;
+                        game.player1.spikeBomb();
+                        break;
+                    case SPIKE:
+                        special = Special.DANGEROUS;
+                        game.player1.dangerousBomb();
+                        break;
+                    case DANGEROUS:
+                        special = Special.REMOTE;
+                        game.player1.remoteBomb();
+                        break;
+                    case REMOTE:
+                        special = Special.POWER;
+                        game.player1.powerBomb();
+                        break;
+                }
                 break;
-            case KeyEvent.VK_O:
-                game.player1.spikeBomb();
-                break;
+
             case KeyEvent.VK_ESCAPE:
                 game.player1.debugGiveAll();
                 break;

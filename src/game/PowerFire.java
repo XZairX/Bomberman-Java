@@ -1,6 +1,5 @@
 package game;
 
-import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
@@ -8,14 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PowerFire extends FireObject {
-    private static final Color POWERFIRE_COLOUR = Color.ORANGE;
     private static final int POWERFIRE_DELAY = 1000;
     private static final int POWERFIRE_RANGE = 16;
 
     public PowerFire(int x, int y, int range) {
         super(x, y);
         this.FIRE_DELAY = POWERFIRE_DELAY;
-        this.FIRE_COLOUR = POWERFIRE_COLOUR;
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -29,7 +26,6 @@ public class PowerFire extends FireObject {
     private PowerFire(int x, int y) {
         super(x, y);
         this.FIRE_DELAY = POWERFIRE_DELAY;
-        this.FIRE_COLOUR = POWERFIRE_COLOUR;
     }
 
     @Override

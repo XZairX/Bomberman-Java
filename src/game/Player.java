@@ -18,7 +18,6 @@ public class Player extends GameObject {
     private static final Color PLAYER3_COLOUR = Color.MAGENTA;
     private static final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (TileObject is currently using this)
     private static final int PLAYER_INVINCIBILITY = 2500;
-    private static final int HEART_MAX = 3;
     private static final int MIN = 1;
     private static final int MAX = 8;
 
@@ -36,7 +35,7 @@ public class Player extends GameObject {
     private boolean hasSingleSpecialBomb, hasMultipleSpecialBomb;
     private boolean isInvincible;
 
-    private enum SpecialBomb { UNAVAILBLE, POWERBOMB, SPIKEBOMB, DANGEROUSBOMB, REMOTEBOMB }
+    private enum SpecialBomb { UNAVAILABLE, POWERBOMB, SPIKEBOMB, DANGEROUSBOMB, REMOTEBOMB }
     private SpecialBomb specialBomb;
 
     public Player(int x, int y, int playerID) {
@@ -46,7 +45,7 @@ public class Player extends GameObject {
         this.radius *= 0.5;
         this.diameter = this.radius * 2;
         this.playerID = playerID;
-        this.specialBomb = SpecialBomb.UNAVAILBLE;
+        this.specialBomb = SpecialBomb.UNAVAILABLE;
         canMove = true;
         canDropBomb = true;
     }
@@ -233,10 +232,10 @@ public class Player extends GameObject {
                                 break;
                             }
                         case DANGEROUSBOMB:
-                            /*if (object.getClass() == DangerousBomb.class) {
-                                droppedBombs++;*/
+                            if (object.getClass() == DangerousBomb.class) {
+                                droppedBombs++;
                                 break;
-                            //}
+                            }
                     }
                 }
 
@@ -246,7 +245,7 @@ public class Player extends GameObject {
                             GameMain.addAliveGameObject(new PowerBomb(x + radius, y + radius, fire));
                             break;
                         case DANGEROUSBOMB:
-                            //GameMain.addAliveGameObject(new DangerousBomb(x + radius, y + radius, fire));
+                            GameMain.addAliveGameObject(new DangerousBomb(x + radius, y + radius, fire));
                             break;
                     }
                 }
@@ -282,7 +281,7 @@ public class Player extends GameObject {
     }
 
     public void heartUp() {
-        if (heart < HEART_MAX) {
+        if (heart < MAX) {
             heart++;
         }
     }
@@ -338,8 +337,8 @@ public class Player extends GameObject {
     }
 
     public void dangerousBomb() {
-        /*specialBomb = SpecialBomb.DANGEROUSBOMB;
-        setHasSingleSpecialBomb();*/
+        specialBomb = SpecialBomb.DANGEROUSBOMB;
+        setHasSingleSpecialBomb();
     }
 
     public void remoteBomb() {
@@ -358,13 +357,14 @@ public class Player extends GameObject {
     }
 
     public void debugReset() {
+        heart = 1;
         bomb = 1;
         fire = 2;
         skate = 4;
     }
 
     public void debugGiveAll() {
-        heart = HEART_MAX * 33;
+        heart = MAX;
         bomb = MAX * 4;
         fire = MAX;
         skate = MAX;

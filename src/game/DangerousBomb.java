@@ -4,9 +4,12 @@ import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
-public class PowerBomb extends BombObject {
-    public PowerBomb(int x, int y, int range) {
+public class DangerousBomb extends BombObject {
+    private static final Color DANGEROUS_BOMB_COLOUR = Color.RED;
+
+    public DangerousBomb(int x, int y, int range) {
         super(x, y, range);
+        this.BOMB_COLOUR = DANGEROUS_BOMB_COLOUR;
     }
 
     @Override
@@ -26,14 +29,12 @@ public class PowerBomb extends BombObject {
 
     @Override
     public void hit() {
-        dropFire(Type.POWER);
+        dropFire(Type.DANGEROUS);
         super.hit();
     }
 
     @Override
     public void draw(Graphics2D g) {
         super.draw(g);
-        g.setColor(Color.WHITE);
-        g.drawString("P", this.x + 1, this.y + radius);
     }
 }

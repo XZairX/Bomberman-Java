@@ -7,8 +7,9 @@ public class Dummy {
     Sounds?
     Images?
     Game start and end state?
-    Other bombs/fires?
+    Remote bomb/fire
     ID system for bombs (currently shared maximum between players)?
+    z - axis for sorting painted layers
     Look into starting to write the report
     Implement skate
     */

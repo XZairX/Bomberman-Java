@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpikeFire extends FireObject {
-    private static final Color SPIKEFIRE_COLOUR = Color.BLUE;
+    private static final Color SPIKE_FIRE_COLOUR = Color.BLUE;
 
     public SpikeFire(int x, int y, int range) {
         super(x, y);
-        this.FIRE_COLOUR = SPIKEFIRE_COLOUR;
+        this.FIRE_COLOUR = SPIKE_FIRE_COLOUR;
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -25,7 +25,7 @@ public class SpikeFire extends FireObject {
 
     private SpikeFire(int x, int y) {
         super(x, y);
-        this.FIRE_COLOUR = SPIKEFIRE_COLOUR;
+        this.FIRE_COLOUR = SPIKE_FIRE_COLOUR;
     }
 
     @Override
