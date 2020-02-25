@@ -99,7 +99,6 @@ public class BlockItem extends BlockObject {
                 g.drawString("H+", X_CENTRE, Y_CENTRE);
                 break;
             case DANGEROUSBOMB:
-                g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
                 g.drawString("DB", X_CENTRE, Y_CENTRE);
                 break;
             case REMOTEBOMB:
