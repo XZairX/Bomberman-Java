@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DangerousFire extends FireObject {
-    private static final Color DANGEROUS_FIRE_COLOUR = Color.RED;
+    private static final Color DANGEROUSFIRE_COLOUR = Color.RED;
 
     public DangerousFire(int x, int y, int range) {
         super(x, y);
-        this.FIRE_COLOUR = DANGEROUS_FIRE_COLOUR;
+        this.FIRE_COLOUR = DANGEROUSFIRE_COLOUR;
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -25,7 +25,7 @@ public class DangerousFire extends FireObject {
 
     private DangerousFire(int x, int y) {
         super(x, y);
-        this.FIRE_COLOUR = DANGEROUS_FIRE_COLOUR;
+        this.FIRE_COLOUR = DANGEROUSFIRE_COLOUR;
     }
 
     @Override

@@ -7,8 +7,6 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import static game.Constants.FRAME_HEIGHT;
 import static game.Constants.TILE_DIAMETER;
@@ -98,14 +96,18 @@ public class Player extends GameObject {
                 super.hit();
             } else {
                 isInvincible = true;
-                Timer timer = new Timer();
-                TimerTask timerTask = new TimerTask() {
+                Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        try {
+                            Thread.sleep(PLAYER_INVINCIBILITY);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         isInvincible = false;
                     }
-                };
-                timer.schedule(timerTask, PLAYER_INVINCIBILITY);
+                });
+                thread.start();
             }
         }
     }

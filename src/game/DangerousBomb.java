@@ -5,11 +5,11 @@ import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
 public class DangerousBomb extends BombObject {
-    private static final Color DANGEROUS_BOMB_COLOUR = Color.RED;
+    private static final Color DANGEROUSBOMB_COLOUR = Color.RED;
 
     public DangerousBomb(int x, int y, int range) {
         super(x, y, range);
-        this.BOMB_COLOUR = DANGEROUS_BOMB_COLOUR;
+        this.BOMB_COLOUR = DANGEROUSBOMB_COLOUR;
     }
 
     @Override

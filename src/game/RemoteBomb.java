@@ -2,11 +2,9 @@ package game;
 
 import java.awt.Rectangle;
 import java.awt.Graphics2D;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class RemoteBomb extends BombObject {
-    private static final int REMOTE_BOMB_DETONATION_DELAY = 500;
+    private static final int REMOTEBOMB_DETONATION_DELAY = 500;
 
     public RemoteBomb(int x, int y, int range) {
         super(x, y, range);
@@ -40,14 +38,18 @@ public class RemoteBomb extends BombObject {
 
     public void detonate() {
         isHit = true;
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(REMOTEBOMB_DETONATION_DELAY);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 hit();
             }
-        };
-        timer.schedule(timerTask, REMOTE_BOMB_DETONATION_DELAY);
+        });
+        thread.start();
     }
 
     public boolean isNotHit() {
