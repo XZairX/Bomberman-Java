@@ -26,7 +26,7 @@ public class Player extends GameObject {
     private int bomb = 1;
     private int fire = 2;
     private int skate = 4;
-    private int speed = 3;
+    private int speed;
 
     private boolean moveLeft, moveRight, moveUp, moveDown;
     private boolean canDropBomb;
@@ -45,21 +45,22 @@ public class Player extends GameObject {
         this.playerID = playerID;
         this.specialBomb = SpecialBomb.UNAVAILABLE;
         canDropBomb = true;
+        setSpeed();
     }
 
     @Override
     public Rectangle getBounds() {
         if (moveLeft) {
-            return new Rectangle(x - 1, y, radius * 2, radius * 2);
+            return new Rectangle(x - speed, y, radius * 2, radius * 2);
 
         } else if (moveRight) {
-            return new Rectangle(x + 1, y, radius * 2, radius * 2);
+            return new Rectangle(x + speed, y, radius * 2, radius * 2);
 
         } else if (moveUp) {
-            return new Rectangle(x, y - 1, radius * 2, radius * 2);
+            return new Rectangle(x, y - speed, radius * 2, radius * 2);
 
         } else if (moveDown) {
-            return new Rectangle(x, y + 1, radius * 2, radius * 2);
+            return new Rectangle(x, y + speed, radius * 2, radius * 2);
         }
         return super.getBounds();
     }
@@ -306,13 +307,19 @@ public class Player extends GameObject {
     public void speedUp() {
         if (skate < MAX) {
             skate++;
+            setSpeed();
         }
     }
 
     public void speedDown() {
         if (skate > MIN) {
             skate--;
+            setSpeed();
         }
+    }
+
+    private void setSpeed() {
+        speed = (skate <= 2) ? 1 : skate - 2;
     }
 
     public void fullFire() {
@@ -365,6 +372,7 @@ public class Player extends GameObject {
         bomb = 1;
         fire = 2;
         skate = 4;
+        setSpeed();
     }
 
     public void debugGiveAll() {
@@ -372,11 +380,6 @@ public class Player extends GameObject {
         bomb = MAX * 4;
         fire = MAX;
         skate = MAX;
-    }
-
-    private void setSpeed() {
-        // y = 220 (distance to travel)
-        // IF skate 4 or higher (speed +30)
-        // IF skate 3 or lower (speed -90)
+        setSpeed();
     }
 }

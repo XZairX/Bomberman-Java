@@ -5,11 +5,13 @@ import utilities.JEasyFrame;
 import java.util.ArrayList;
 import java.util.List;
 
-import static game.Constants.GAME_LOOP_DELAY;
 import static game.Constants.GAMESPACE_COLUMN;
 import static game.Constants.GAMESPACE_ROW;
 
 public class GameMain {
+    private static final int GAME_STARTUP_DELAY = 100;
+    private static final int GAME_LOOP_DELAY = 20;
+
     public static List<TileObject> listTileObject;
     public static List<GameObject> listObjects;
     public static List<GameObject> listAlive;
@@ -76,6 +78,7 @@ public class GameMain {
         //gameSpace.spawnRows03();
         //gameSpace.spawnRows04();
         //gameSpace.spawnRows05();
+        Thread.sleep(GAME_STARTUP_DELAY);
         
         while (true) {
             gameMain.update();
