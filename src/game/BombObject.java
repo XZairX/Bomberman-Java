@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 
 public abstract class BombObject extends GameObject {
     private static final Color DEBUG_DETONATION_COLOUR = Color.WHITE;
+    private static final int BOMB_DELAY = 2500;
 
     private final int range;
     private int debugSecondsToExplode = 3;
@@ -13,7 +14,6 @@ public abstract class BombObject extends GameObject {
     private boolean isDropped;
     private boolean isCollisionActive;
 
-    protected final int BOMB_DELAY = 2500; // Required to be protected for Remote Bombs
     protected Color BOMB_COLOUR = Color.BLACK;
 
     protected enum Type {
@@ -55,7 +55,10 @@ public abstract class BombObject extends GameObject {
                 }
             }
         });
-        thread.start();
+
+        if (this.getClass() != RemoteBomb.class) {
+            thread.start();
+        }
 
         Thread threadDebugExplosion = new Thread(new Runnable() {
             @Override
@@ -70,7 +73,12 @@ public abstract class BombObject extends GameObject {
                 }
             }
         });
-        threadDebugExplosion.start();
+
+        if (this.getClass() != RemoteBomb.class) {
+            threadDebugExplosion.start();
+        } else {
+            debugSecondsToExplode = -1;
+        }
 
         Thread threadDebugCollision = new Thread(new Runnable() {
             @Override
@@ -114,6 +122,7 @@ public abstract class BombObject extends GameObject {
         g.fillOval(x, y, diameter, diameter);
         g.setColor(DEBUG_DETONATION_COLOUR);
         g.drawString(Integer.toString(debugSecondsToExplode + 1), x + 8, y + 14);
+
     }
 
     protected void dropFire(Type type) {
@@ -140,8 +149,10 @@ public abstract class BombObject extends GameObject {
                 case DANGEROUS:
                     GameMain.addAliveGameObject(new DangerousFire(x, y, range));
                     break;
+                case REMOTE:
+                    GameMain.addAliveGameObject(new Fire(x, y, range));
+                    break;
             }
-
         }
     }
 

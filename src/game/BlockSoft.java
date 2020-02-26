@@ -12,8 +12,6 @@ public class BlockSoft extends BlockObject {
     private static final Color BLOCKSOFT_DESTROY_COLOUR = Color.ORANGE;
     private static final int BLOCKSOFT_DESTROY_DELAY = 500;
 
-    private boolean isHit;
-
     public BlockSoft(int x, int y) {
         super(x, y);
         this.x = (x * diameter) + (diameter * 2);

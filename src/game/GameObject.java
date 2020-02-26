@@ -12,6 +12,7 @@ public abstract class GameObject {
     protected int radius;
     protected int diameter;
     protected boolean isFireObject;
+    protected boolean isHit;
     protected boolean isDead;
 
     protected GameObject(int x, int y) {

@@ -85,6 +85,9 @@ public class GameKeys extends KeyAdapter {
                 }
                 break;
 
+            case KeyEvent.VK_X:
+                game.player1.detonateRemoteBomb();
+                break;
             case KeyEvent.VK_ESCAPE:
                 game.player1.debugGiveAll();
                 break;

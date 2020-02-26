@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -253,7 +254,7 @@ public class Player extends GameObject {
 
             for (GameObject object : listObject) {
                 if (hasMultipleSpecialBomb) {
-                    if (object.getClass() == SpikeBomb.class) { //|| object.getClass() == RemoteBomb.class) {
+                    if (object.getClass() == SpikeBomb.class || object.getClass() == RemoteBomb.class) {
                         droppedBombs++;
                     }
                 } else if (object.getClass() == Bomb.class) {
@@ -268,7 +269,7 @@ public class Player extends GameObject {
                             GameMain.addAliveGameObject(new SpikeBomb(x + radius, y + radius, fire));
                             break;
                         case REMOTEBOMB:
-                            //GameMain.addAliveGameObject(new RemoteBomb(x + radius, y + radius, fire));
+                            GameMain.addAliveGameObject(new RemoteBomb(x + radius, y + radius, fire));
                             break;
                     }
                 } else {
@@ -342,8 +343,19 @@ public class Player extends GameObject {
     }
 
     public void remoteBomb() {
-        /*specialBomb = SpecialBomb.REMOTEBOMB;
-        setHasMultipleSpecialBomb();*/
+        specialBomb = SpecialBomb.REMOTEBOMB;
+        setHasMultipleSpecialBomb();
+    }
+
+    public void detonateRemoteBomb() {
+        List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
+        Collections.reverse(listObject);
+        for (GameObject object : listObject) {
+            if (object.getClass() == RemoteBomb.class && ((RemoteBomb)object).isNotHit()) {
+                ((RemoteBomb)object).detonate();
+                break;
+            }
+        }
     }
 
     private void setHasSingleSpecialBomb() {
