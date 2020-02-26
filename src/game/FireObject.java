@@ -51,9 +51,8 @@ public abstract class FireObject extends GameObject {
                 other.hit();
             }
             hit();
-        }
 
-        else if (other.getClass() == BlockItem.class) {
+        } else if (other.getClass() == BlockItem.class) {
             other.hit();
             if (this.getClass() != SpikeFire.class) {
                 hit();

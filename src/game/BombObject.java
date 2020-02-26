@@ -79,21 +79,6 @@ public abstract class BombObject extends GameObject {
         } else {
             debugSecondsToExplode = -1;
         }
-
-        Thread threadDebugCollision = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!isDead) {
-                    System.out.println(getIsCollisionActive());
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        //threadDebugCollision.start();
     }
 
     @Override
@@ -123,6 +108,11 @@ public abstract class BombObject extends GameObject {
         g.setColor(DEBUG_DETONATION_COLOUR);
         g.drawString(Integer.toString(debugSecondsToExplode + 1), x + 8, y + 14);
 
+        // Debug collision
+        if (isCollisionActive) {
+            g.setColor(Color.WHITE);
+            g.drawOval(x, y, diameter, diameter);
+        }
     }
 
     protected void dropFire(Type type) {

@@ -26,9 +26,8 @@ public class Player extends GameObject {
     private int bomb = 1;
     private int fire = 2;
     private int skate = 4;
-    private double speed = 3;
+    private int speed = 3;
 
-    private boolean canMove;
     private boolean moveLeft, moveRight, moveUp, moveDown;
     private boolean canDropBomb;
     private boolean hasSingleSpecialBomb, hasMultipleSpecialBomb;
@@ -45,23 +44,22 @@ public class Player extends GameObject {
         this.diameter = this.radius * 2;
         this.playerID = playerID;
         this.specialBomb = SpecialBomb.UNAVAILABLE;
-        canMove = true;
         canDropBomb = true;
     }
 
     @Override
     public Rectangle getBounds() {
         if (moveLeft) {
-            return new Rectangle(x - (int)speed, y, radius * 2, radius * 2);
-        }
-        if (moveRight) {
-            return new Rectangle(x + (int)speed, y, radius * 2, radius * 2);
-        }
-        if (moveUp) {
-            return new Rectangle(x, y - (int)speed, radius * 2, radius * 2);
-        }
-        if (moveDown) {
-            return new Rectangle(x, y + (int)speed, radius * 2, radius * 2);
+            return new Rectangle(x - 1, y, radius * 2, radius * 2);
+
+        } else if (moveRight) {
+            return new Rectangle(x + 1, y, radius * 2, radius * 2);
+
+        } else if (moveUp) {
+            return new Rectangle(x, y - 1, radius * 2, radius * 2);
+
+        } else if (moveDown) {
+            return new Rectangle(x, y + 1, radius * 2, radius * 2);
         }
         return super.getBounds();
     }
@@ -76,12 +74,12 @@ public class Player extends GameObject {
         super.collisionHandling(other);
 
         if (other.getClass() == BlockHard.class || other.getClass() == BlockSoft.class) {
-            cancelCollisionMovement();
+            cancelCollisionMovement(other);
         }
 
         if (other instanceof BombObject) {
             if (((BombObject)other).getIsCollisionActive()) {
-                cancelCollisionMovement();
+                cancelCollisionMovement(other);
             }
         }
     }
@@ -114,9 +112,7 @@ public class Player extends GameObject {
 
     @Override
     public void draw(Graphics2D g) {
-        if (canMove) {
-            movePlayer();
-        }
+        movePlayer();
 
         // Debug Bounding Box
         g.setColor(Color.DARK_GRAY);
@@ -179,41 +175,35 @@ public class Player extends GameObject {
     private void movePlayer() {
         if (moveLeft) {
             x -= speed;
-        }
-        if (moveRight) {
+
+        } else if (moveRight) {
             x += speed;
-        }
-        if (moveUp) {
+
+        } else if (moveUp) {
             y -= speed;
-        }
-        if (moveDown) {
+
+        } else if (moveDown) {
             y += speed;
         }
     }
 
-    private void cancelCollisionMovement() {
-        canMove = false;
+    private void cancelCollisionMovement(GameObject other) {
         if (moveLeft) {
             moveLeft = false;
-            x += speed;
-            x = Math.round((x / TILE_DIAMETER) * TILE_DIAMETER);
-        }
-        if (moveRight) {
+            x = other.getBounds().x + other.getBounds().width;
+
+        } else if (moveRight) {
             moveRight = false;
-            x -= speed;
-            x = Math.round((x / TILE_DIAMETER) * TILE_DIAMETER) + (TILE_DIAMETER - diameter);
-        }
-        if (moveUp) {
+            x = other.getBounds().x - diameter;
+
+        } else if (moveUp) {
             moveUp = false;
-            y += speed;
-            y = Math.round((y / TILE_DIAMETER) * TILE_DIAMETER);
-        }
-        if (moveDown) {
+            y = other.getBounds().y + other.getBounds().height;
+
+        } else if (moveDown) {
             moveDown = false;
-            y -= speed;
-            y = Math.round((y / TILE_DIAMETER) * TILE_DIAMETER) + (TILE_DIAMETER - diameter);
+            y = other.getBounds().y - diameter;
         }
-        canMove = true;
     }
 
     public void canDropBomb() {
