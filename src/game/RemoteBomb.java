@@ -6,8 +6,8 @@ import java.awt.Graphics2D;
 public class RemoteBomb extends BombObject {
     private static final int REMOTEBOMB_DETONATION_DELAY = 500;
 
-    public RemoteBomb(int x, int y, int range) {
-        super(x, y, range);
+    public RemoteBomb(int x, int y, int range, int bombID) {
+        super(x, y, range, bombID);
     }
 
     @Override

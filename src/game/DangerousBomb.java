@@ -7,8 +7,8 @@ import java.awt.Graphics2D;
 public class DangerousBomb extends BombObject {
     private static final Color DANGEROUSBOMB_COLOUR = Color.RED;
 
-    public DangerousBomb(int x, int y, int range) {
-        super(x, y, range);
+    public DangerousBomb(int x, int y, int range, int bombID) {
+        super(x, y, range, bombID);
         this.BOMB_COLOUR = DANGEROUSBOMB_COLOUR;
     }
 

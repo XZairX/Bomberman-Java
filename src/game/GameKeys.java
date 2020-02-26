@@ -34,53 +34,136 @@ public class GameKeys extends KeyAdapter {
                 game.player1.dropBomb();
                 break;
 
-            // Debug keys
-            case KeyEvent.VK_H:
-                game.player1.heartUp();
-                break;
-            case KeyEvent.VK_J:
-                game.player1.hit();
-                break;
-            case KeyEvent.VK_B:
-                game.player1.bombUp();
-                break;
-            case KeyEvent.VK_N:
-                game.player1.bombDown();
-                break;
-            case KeyEvent.VK_F:
-                game.player1.fireUp();
-                break;
-            case KeyEvent.VK_G:
-                game.player1.fireDown();
-                break;
-            case KeyEvent.VK_S:
-                game.player1.speedUp();
+            case KeyEvent.VK_A:
+                game.player2.setMoveLeft(true);
                 break;
             case KeyEvent.VK_D:
-                game.player1.speedDown();
+                game.player2.setMoveRight(true);
+                break;
+            case KeyEvent.VK_W:
+                game.player2.setMoveUp(true);
+                break;
+            case KeyEvent.VK_S:
+                game.player2.setMoveDown(true);
+                break;
+            case KeyEvent.VK_L:
+                game.player2.dropBomb();
                 break;
 
-            case KeyEvent.VK_Q:
+            // Debug keys
+            case KeyEvent.VK_1:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        object.hit();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_2:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).heartUp();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_3:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).debugHeartDown();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_4:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).bombUp();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_5:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).bombDown();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_6:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).fireUp();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_7:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).fireDown();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_8:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).speedUp();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_9:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).speedDown();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_0:
                 switch (special) {
                     case BOMB:
                         special = Special.POWER;
-                        game.player1.powerBomb();
+                        for (GameObject object : GameMain.getListObjects()) {
+                            if (object.getClass() == Player.class) {
+                                ((Player)object).powerBomb();
+                            }
+                        }
                         break;
                     case POWER:
                         special = Special.SPIKE;
-                        game.player1.spikeBomb();
+                        for (GameObject object : GameMain.getListObjects()) {
+                            if (object.getClass() == Player.class) {
+                                ((Player)object).spikeBomb();
+                            }
+                        }
                         break;
                     case SPIKE:
                         special = Special.DANGEROUS;
-                        game.player1.dangerousBomb();
+                        for (GameObject object : GameMain.getListObjects()) {
+                            if (object.getClass() == Player.class) {
+                                ((Player)object).dangerousBomb();
+                            }
+                        }
                         break;
                     case DANGEROUS:
                         special = Special.REMOTE;
-                        game.player1.remoteBomb();
+                        for (GameObject object : GameMain.getListObjects()) {
+                            if (object.getClass() == Player.class) {
+                                ((Player)object).remoteBomb();
+                            }
+                        }
                         break;
                     case REMOTE:
                         special = Special.POWER;
-                        game.player1.powerBomb();
+                        for (GameObject object : GameMain.getListObjects()) {
+                            if (object.getClass() == Player.class) {
+                                ((Player)object).powerBomb();
+                            }
+                        }
                         break;
                 }
                 break;
@@ -115,6 +198,22 @@ public class GameKeys extends KeyAdapter {
                 break;
             case KeyEvent.VK_SPACE:
                 game.player1.canDropBomb();
+                break;
+
+            case KeyEvent.VK_A:
+                game.player2.setMoveLeft(false);
+                break;
+            case KeyEvent.VK_D:
+                game.player2.setMoveRight(false);
+                break;
+            case KeyEvent.VK_W:
+                game.player2.setMoveUp(false);
+                break;
+            case KeyEvent.VK_S:
+                game.player2.setMoveDown(false);
+                break;
+            case KeyEvent.VK_L:
+                game.player2.canDropBomb();
                 break;
         }
     }

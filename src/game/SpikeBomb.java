@@ -7,8 +7,8 @@ import java.awt.Rectangle;
 public class SpikeBomb extends BombObject {
     private static final Color SPIKEBOMB_COLOUR = Color.MAGENTA;
 
-    public SpikeBomb(int x, int y, int range) {
-        super(x, y, range);
+    public SpikeBomb(int x, int y, int range, int bombID) {
+        super(x, y, range, bombID);
         this.BOMB_COLOUR = SPIKEBOMB_COLOUR;
     }
 

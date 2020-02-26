@@ -5,8 +5,8 @@ import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
 public class PowerBomb extends BombObject {
-    public PowerBomb(int x, int y, int range) {
-        super(x, y, range);
+    public PowerBomb(int x, int y, int range, int bombID) {
+        super(x, y, range, bombID);
     }
 
     @Override

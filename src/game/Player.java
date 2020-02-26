@@ -221,12 +221,12 @@ public class Player extends GameObject {
                 for (GameObject object : listObject) {
                     switch (specialBomb) {
                         case POWERBOMB:
-                            if (object.getClass() == PowerBomb.class) {
+                            if (object.getClass() == PowerBomb.class && ((BombObject)object).getBombID() == playerID) {
                                 droppedBombs++;
                                 break;
                             }
                         case DANGEROUSBOMB:
-                            if (object.getClass() == DangerousBomb.class) {
+                            if (object.getClass() == DangerousBomb.class && ((BombObject)object).getBombID() == playerID) {
                                 droppedBombs++;
                                 break;
                             }
@@ -236,10 +236,10 @@ public class Player extends GameObject {
                 if (droppedBombs < 1) {
                     switch (specialBomb) {
                         case POWERBOMB:
-                            GameMain.addAliveGameObject(new PowerBomb(x + radius, y + radius, fire));
+                            GameMain.addAliveGameObject(new PowerBomb(x + radius, y + radius, fire, playerID));
                             break;
                         case DANGEROUSBOMB:
-                            GameMain.addAliveGameObject(new DangerousBomb(x + radius, y + radius, fire));
+                            GameMain.addAliveGameObject(new DangerousBomb(x + radius, y + radius, fire, playerID));
                             break;
                     }
                 }
@@ -248,10 +248,14 @@ public class Player extends GameObject {
             for (GameObject object : listObject) {
                 if (hasMultipleSpecialBomb) {
                     if (object.getClass() == SpikeBomb.class || object.getClass() == RemoteBomb.class) {
-                        droppedBombs++;
+                        if (((BombObject)object).getBombID() == playerID) {
+                            droppedBombs++;
+                        }
                     }
                 } else if (object.getClass() == Bomb.class) {
-                    droppedBombs++;
+                    if (((BombObject)object).getBombID() == playerID) {
+                        droppedBombs++;
+                    }
                 }
             }
 
@@ -259,14 +263,14 @@ public class Player extends GameObject {
                 if (hasMultipleSpecialBomb) {
                     switch (specialBomb) {
                         case SPIKEBOMB:
-                            GameMain.addAliveGameObject(new SpikeBomb(x + radius, y + radius, fire));
+                            GameMain.addAliveGameObject(new SpikeBomb(x + radius, y + radius, fire, playerID));
                             break;
                         case REMOTEBOMB:
-                            GameMain.addAliveGameObject(new RemoteBomb(x + radius, y + radius, fire));
+                            GameMain.addAliveGameObject(new RemoteBomb(x + radius, y + radius, fire, playerID));
                             break;
                     }
                 } else {
-                    GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire));
+                    GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire, playerID));
                 }
 
             }
@@ -278,6 +282,10 @@ public class Player extends GameObject {
         if (heart < MAX) {
             heart++;
         }
+    }
+
+    public void debugHeartDown() {
+        heart--;
     }
 
     public void bombUp() {
@@ -351,8 +359,10 @@ public class Player extends GameObject {
         Collections.reverse(listObject);
         for (GameObject object : listObject) {
             if (object.getClass() == RemoteBomb.class && ((RemoteBomb)object).isNotHit()) {
-                ((RemoteBomb)object).detonate();
-                break;
+                if (((BombObject)object).getBombID() == playerID) {
+                        ((RemoteBomb)object).detonate();
+                        break;
+                }
             }
         }
     }

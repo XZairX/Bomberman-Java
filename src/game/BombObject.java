@@ -9,6 +9,8 @@ public abstract class BombObject extends GameObject {
     private static final int BOMB_DELAY = 2500;
 
     private final int range;
+    private final int bombID;
+
     private int debugSecondsToExplode = 3;
 
     private boolean isDropped;
@@ -20,11 +22,12 @@ public abstract class BombObject extends GameObject {
         NORMAL, POWER, SPIKE, DANGEROUS, REMOTE
     }
 
-    protected BombObject(int x, int y, int range) {
+    protected BombObject(int x, int y, int range, int bombID) {
         super(x, y);
         this.x = Math.round(x / diameter) * diameter;
         this.y = Math.round(y / diameter) * diameter;
         this.range = range;
+        this.bombID = bombID;
 
         for (TileObject tile : GameMain.getListTileObject()) {
             if (isColliding(tile)) {
@@ -144,6 +147,10 @@ public abstract class BombObject extends GameObject {
                     break;
             }
         }
+    }
+
+    protected int getBombID() {
+        return bombID;
     }
 
     protected boolean getIsCollisionActive() {

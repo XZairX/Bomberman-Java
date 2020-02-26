@@ -4,8 +4,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Bomb extends BombObject {
-    public Bomb(int x, int y, int range) {
-        super(x, y, range);
+    public Bomb(int x, int y, int range, int bombID) {
+        super(x, y, range, bombID);
     }
 
     @Override
