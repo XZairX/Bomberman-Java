@@ -2,7 +2,6 @@ package game;
 
 public class Dummy {
     /*
-    Collisions still need refinement (holding a direction against a wall)
     Menu?
     Sounds?
     Images?
