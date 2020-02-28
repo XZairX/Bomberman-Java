@@ -9,7 +9,7 @@ import static game.Constants.GAMESPACE_COLUMN;
 import static game.Constants.GAMESPACE_ROW;
 
 public class GameMain {
-    private static final int GAME_STARTUP_DELAY = 100;
+    private static final int GAME_STARTUP_DELAY = 200;
     private static final int GAME_LOOP_DELAY = 20;
 
     public static List<TileObject> listTileObject;

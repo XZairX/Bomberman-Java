@@ -16,7 +16,7 @@ public class Player extends GameObject {
     private static final Color PLAYER2_COLOUR = Color.RED;
     private static final Color PLAYER3_COLOUR = Color.MAGENTA;
     private static final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (TileObject is currently using this)
-    private static final int PLAYER_INVINCIBILITY = 2500;
+    private static final int PLAYER_INVINCIBILITY_TIME = 2000;
     private static final int MIN = 1;
     private static final int MAX = 8;
 
@@ -31,7 +31,6 @@ public class Player extends GameObject {
     private boolean moveLeft, moveRight, moveUp, moveDown;
     private boolean canDropBomb;
     private boolean hasSingleSpecialBomb, hasMultipleSpecialBomb;
-    private boolean isInvincible;
 
     private enum SpecialBomb { UNAVAILABLE, POWERBOMB, SPIKEBOMB, DANGEROUSBOMB, REMOTEBOMB }
     private SpecialBomb specialBomb;
@@ -87,23 +86,23 @@ public class Player extends GameObject {
 
     @Override
     public void hit() {
-        if (!isInvincible) {
+        if (!isHit) {
             heart--;
             if (heart == 0) {
                 GameMain.decrementNumberOfPlayers();
                 System.out.println("Player " + playerID + " died.");
                 super.hit();
             } else {
-                isInvincible = true;
+                isHit = true;
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            Thread.sleep(PLAYER_INVINCIBILITY);
+                            Thread.sleep(PLAYER_INVINCIBILITY_TIME);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        isInvincible = false;
+                        isHit = false;
                     }
                 });
                 thread.start();
@@ -119,7 +118,7 @@ public class Player extends GameObject {
         g.setColor(Color.DARK_GRAY);
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
 
-        if (isInvincible) {
+        if (isHit) {
             g.setColor(Color.WHITE);
             g.fillRect(x - (radius / 2), y - (radius / 2), (int)(diameter * 1.5), (int)(diameter * 1.5));
         }

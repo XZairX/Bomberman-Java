@@ -33,6 +33,9 @@ public class GameKeys extends KeyAdapter {
             case KeyEvent.VK_SPACE:
                 game.player1.dropBomb();
                 break;
+            case KeyEvent.VK_X:
+                game.player1.detonateRemoteBomb();
+                break;
 
             case KeyEvent.VK_A:
                 game.player2.setMoveLeft(true);
@@ -49,33 +52,12 @@ public class GameKeys extends KeyAdapter {
             case KeyEvent.VK_L:
                 game.player2.dropBomb();
                 break;
+            case KeyEvent.VK_SEMICOLON:
+                game.player2.detonateRemoteBomb();
+                break;
 
             // Debug keys
             case KeyEvent.VK_1:
-                for (GameObject object : GameMain.getListObjects()) {
-                    if (object.getClass() == Player.class) {
-                        object.hit();
-                    }
-                }
-                break;
-
-            case KeyEvent.VK_2:
-                for (GameObject object : GameMain.getListObjects()) {
-                    if (object.getClass() == Player.class) {
-                        ((Player)object).heartUp();
-                    }
-                }
-                break;
-
-            case KeyEvent.VK_3:
-                for (GameObject object : GameMain.getListObjects()) {
-                    if (object.getClass() == Player.class) {
-                        ((Player)object).debugHeartDown();
-                    }
-                }
-                break;
-
-            case KeyEvent.VK_4:
                 for (GameObject object : GameMain.getListObjects()) {
                     if (object.getClass() == Player.class) {
                         ((Player)object).bombUp();
@@ -83,7 +65,7 @@ public class GameKeys extends KeyAdapter {
                 }
                 break;
 
-            case KeyEvent.VK_5:
+            case KeyEvent.VK_2:
                 for (GameObject object : GameMain.getListObjects()) {
                     if (object.getClass() == Player.class) {
                         ((Player)object).bombDown();
@@ -91,7 +73,7 @@ public class GameKeys extends KeyAdapter {
                 }
                 break;
 
-            case KeyEvent.VK_6:
+            case KeyEvent.VK_3:
                 for (GameObject object : GameMain.getListObjects()) {
                     if (object.getClass() == Player.class) {
                         ((Player)object).fireUp();
@@ -99,7 +81,7 @@ public class GameKeys extends KeyAdapter {
                 }
                 break;
 
-            case KeyEvent.VK_7:
+            case KeyEvent.VK_4:
                 for (GameObject object : GameMain.getListObjects()) {
                     if (object.getClass() == Player.class) {
                         ((Player)object).fireDown();
@@ -107,7 +89,7 @@ public class GameKeys extends KeyAdapter {
                 }
                 break;
 
-            case KeyEvent.VK_8:
+            case KeyEvent.VK_5:
                 for (GameObject object : GameMain.getListObjects()) {
                     if (object.getClass() == Player.class) {
                         ((Player)object).speedUp();
@@ -115,10 +97,34 @@ public class GameKeys extends KeyAdapter {
                 }
                 break;
 
-            case KeyEvent.VK_9:
+            case KeyEvent.VK_6:
                 for (GameObject object : GameMain.getListObjects()) {
                     if (object.getClass() == Player.class) {
                         ((Player)object).speedDown();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_7:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).heartUp();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_8:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).debugHeartDown();
+                    }
+                }
+                break;
+
+            case KeyEvent.VK_9:
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        object.hit();
                     }
                 }
                 break;
@@ -168,14 +174,20 @@ public class GameKeys extends KeyAdapter {
                 }
                 break;
 
-            case KeyEvent.VK_X:
-                game.player1.detonateRemoteBomb();
-                break;
             case KeyEvent.VK_ESCAPE:
-                game.player1.debugGiveAll();
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).debugGiveAll();
+                    }
+                }
                 break;
+
             case KeyEvent.VK_BACK_SPACE:
-                game.player1.debugReset();
+                for (GameObject object : GameMain.getListObjects()) {
+                    if (object.getClass() == Player.class) {
+                        ((Player)object).debugReset();
+                    }
+                }
                 break;
         }
     }
