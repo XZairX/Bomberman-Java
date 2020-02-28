@@ -11,10 +11,11 @@ import static game.Constants.TILE_RADIUS;
 public class JEasyFrame extends JFrame {
     private static final Color BACKGROUND_COLOUR = Color.BLACK;
 
-    public Component comp;
-    public JEasyFrame(Component comp, String title) {
+    private Component component;
+
+    public JEasyFrame(Component component, String title) {
         super(title);
-        this.comp = comp;
+        this.component = component;
 
         JPanel panelNorth = new JPanel();
         JPanel panelEast = new JPanel();
@@ -27,7 +28,7 @@ public class JEasyFrame extends JFrame {
         panelWest.setBackground(BACKGROUND_COLOUR);
 
         //getContentPane().add
-        add(comp, BorderLayout.CENTER);
+        add(component, BorderLayout.CENTER);
         add(BorderLayout.NORTH, panelNorth);
         add(BorderLayout.EAST, panelEast);
         add(BorderLayout.SOUTH, panelSouth);

@@ -326,7 +326,7 @@ public class Player extends GameObject {
     }
 
     private void setSpeed() {
-        speed = (skate <= 2) ? 1 : skate - 2;
+        speed = (skate % 2 == 1) ? (skate / 2) + 1 : skate / 2;
     }
 
     public void fullFire() {
