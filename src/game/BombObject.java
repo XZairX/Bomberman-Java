@@ -13,6 +13,7 @@ public abstract class BombObject extends GameObject {
 
     private int debugSecondsToExplode = 3;
 
+    private boolean isInitialised;
     private boolean isDropped;
     private boolean isCollisionActive;
 
@@ -28,7 +29,10 @@ public abstract class BombObject extends GameObject {
         this.y = Math.round(y / diameter) * diameter;
         this.range = range;
         this.bombID = bombID;
+    }
 
+    protected void initialise() {
+        isInitialised = true;
         for (TileObject tile : GameMain.getListTileObject()) {
             if (isColliding(tile)) {
                 if (tile.isAvailable()) {
@@ -159,5 +163,9 @@ public abstract class BombObject extends GameObject {
 
     protected void setIsCollisionActive() {
         isCollisionActive = true;
+    }
+
+    protected boolean isInitialised() {
+        return isInitialised;
     }
 }

@@ -60,7 +60,7 @@ public class GameMain {
         numberOfPlayers--;
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         GameMain gameMain = new GameMain();
         GameView gameView = new GameView();
         GameSpace gameSpace = new GameSpace();
@@ -69,7 +69,7 @@ public class GameMain {
         gameSpace.spawnBorder();
         //gameSpace.spawnGameSpace();
         gameSpace.spawnBlockTiles();
-        gameSpace.spawnBlockHards();
+        //gameSpace.spawnBlockHards();
         //gameSpace.spawnBlockSofts();
 
         // Debug isolated row spawning
@@ -78,12 +78,22 @@ public class GameMain {
         //gameSpace.spawnRows03();
         //gameSpace.spawnRows04();
         //gameSpace.spawnRows05();
-        Thread.sleep(GAME_STARTUP_DELAY);
-        
+
+        try {
+            Thread.sleep(GAME_STARTUP_DELAY);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         while (true) {
             gameMain.update();
             gameView.repaint();
-            Thread.sleep(GAME_LOOP_DELAY);
+
+            try {
+                Thread.sleep(GAME_LOOP_DELAY);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -103,6 +113,10 @@ public class GameMain {
 
             // Collisions BombObject
             if (object instanceof BombObject) {
+                if (!((BombObject)object).isInitialised()) {
+                    ((BombObject)object).initialise();
+                }
+
                 int playersNotColliding = 0;
                 for (int i = listObjects.indexOf(this) + 1; i < listObjects.size(); i++) {
                     GameObject other = listObjects.get(i);
@@ -122,6 +136,10 @@ public class GameMain {
 
             // Collisions FireObject
             if (object instanceof FireObject) {
+                if (!((FireObject)object).isInitialised()) {
+                    ((FireObject)object).initialise();
+                }
+
                 for (int i = listObjects.indexOf(this) + 1; i < listObjects.size(); i++) {
                     GameObject other = listObjects.get(i);
                     if (object.isColliding(other)) {
@@ -141,7 +159,7 @@ public class GameMain {
             }
 
             object.update();
-            if (!object.isDead) {
+            if (!(object.isDead)) {
                 listAlive.add(object);
             }
         }

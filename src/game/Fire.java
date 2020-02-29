@@ -8,15 +8,7 @@ import java.util.List;
 
 public class Fire extends FireObject {
     public Fire(int x, int y, int range) {
-        super(x, y);
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                emitFire(x, y, range);
-            }
-        });
-        thread.start();
+        super(x, y, range);
     }
 
     private Fire(int x, int y) {

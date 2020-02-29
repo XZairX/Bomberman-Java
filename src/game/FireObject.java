@@ -11,13 +11,31 @@ public abstract class FireObject extends GameObject {
     protected int FIRE_DELAY = 500;
     protected boolean isFireLeftHit, isFireRightHit, isFireUpHit, isFireDownHit;
 
+    private boolean isInitialised;
+    private boolean canEmitFire;
+    protected int range;
+
     protected FireObject(int x, int y) {
         super(x, y);
         isFireObject = true;
+    }
 
+    protected FireObject(int x, int y, int range) {
+        super(x, y);
+        this.range = range;
+        isFireObject = true;
+        canEmitFire = true;
+    }
+
+    protected void initialise() {
+        isInitialised = true;
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                if (canEmitFire) {
+                    emitFire(x, y, range);
+                }
+
                 while (!isDead) {
                     try {
                         Thread.sleep(FIRE_DELAY);
@@ -81,4 +99,8 @@ public abstract class FireObject extends GameObject {
     }
 
     protected abstract void emitFire(int x, int y, int range);
+
+    protected boolean isInitialised() {
+        return isInitialised;
+    }
 }
