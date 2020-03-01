@@ -11,21 +11,23 @@ public class DangerousFire extends FireObject {
     private static final Color DANGEROUSFIRE_COLOUR = Color.RED;
 
     public DangerousFire(int x, int y, int range) {
-        super(x, y);
+        super(x, y, range);
         this.FIRE_COLOUR = DANGEROUSFIRE_COLOUR;
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                emitFire(x, y, range);
-            }
-        });
-        thread.start();
     }
 
     private DangerousFire(int x, int y) {
         super(x, y);
         this.FIRE_COLOUR = DANGEROUSFIRE_COLOUR;
+    }
+
+    @Override
+    public void initialise() {
+        super.initialise();
+    }
+
+    @Override
+    public boolean isNotInitialised() {
+        return super.isNotInitialised();
     }
 
     @Override

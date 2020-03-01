@@ -5,15 +5,15 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public abstract class FireObject extends GameObject {
+    // Should be private
     protected static final int FIRE_RECURSION_DELAY = 10;
+
+    private int range;
+    private boolean canEmitFire;
 
     protected Color FIRE_COLOUR = Color.YELLOW;
     protected int FIRE_DELAY = 500;
     protected boolean isFireLeftHit, isFireRightHit, isFireUpHit, isFireDownHit;
-
-    private boolean isInitialised;
-    private boolean canEmitFire;
-    protected int range;
 
     protected FireObject(int x, int y) {
         super(x, y);
@@ -28,7 +28,8 @@ public abstract class FireObject extends GameObject {
     }
 
     protected void initialise() {
-        isInitialised = true;
+        super.initialise();
+
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -47,6 +48,11 @@ public abstract class FireObject extends GameObject {
             }
         });
         thread.start();
+    }
+
+    @Override
+    protected boolean isNotInitialised() {
+        return super.isNotInitialised();
     }
 
     @Override
@@ -99,8 +105,4 @@ public abstract class FireObject extends GameObject {
     }
 
     protected abstract void emitFire(int x, int y, int range);
-
-    protected boolean isInitialised() {
-        return isInitialised;
-    }
 }

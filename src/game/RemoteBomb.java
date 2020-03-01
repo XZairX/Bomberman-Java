@@ -11,6 +11,16 @@ public class RemoteBomb extends BombObject {
     }
 
     @Override
+    public void initialise() {
+        super.initialise();
+    }
+
+    @Override
+    public boolean isNotInitialised() {
+        return super.isNotInitialised();
+    }
+
+    @Override
     public Rectangle getBounds() {
         return super.getBounds();
     }

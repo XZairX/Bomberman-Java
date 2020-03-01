@@ -11,21 +11,23 @@ public class SpikeFire extends FireObject {
     private static final Color SPIKEFIRE_COLOUR = Color.BLUE;
 
     public SpikeFire(int x, int y, int range) {
-        super(x, y);
+        super(x, y, range);
         this.FIRE_COLOUR = SPIKEFIRE_COLOUR;
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                emitFire(x, y, range);
-            }
-        });
-        thread.start();
     }
 
     private SpikeFire(int x, int y) {
         super(x, y);
         this.FIRE_COLOUR = SPIKEFIRE_COLOUR;
+    }
+
+    @Override
+    public void initialise() {
+        super.initialise();
+    }
+
+    @Override
+    public boolean isNotInitialised() {
+        return super.isNotInitialised();
     }
 
     @Override

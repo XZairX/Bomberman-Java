@@ -44,7 +44,17 @@ public class Player extends GameObject {
         this.playerID = playerID;
         this.specialBomb = SpecialBomb.UNAVAILABLE;
         canDropBomb = true;
+    }
+
+    @Override
+    public void initialise() {
+        super.initialise();
         setSpeed();
+    }
+
+    @Override
+    public boolean isNotInitialised() {
+        return super.isNotInitialised();
     }
 
     @Override

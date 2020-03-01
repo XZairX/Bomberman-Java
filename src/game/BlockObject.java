@@ -14,6 +14,16 @@ public abstract class BlockObject extends GameObject {
     }
 
     @Override
+    protected void initialise() {
+        super.initialise();
+    }
+
+    @Override
+    protected boolean isNotInitialised() {
+        return super.isNotInitialised();
+    }
+
+    @Override
     protected Rectangle getBounds() {
         return super.getBounds();
     }

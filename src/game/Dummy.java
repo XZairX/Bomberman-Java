@@ -7,6 +7,7 @@ public class Dummy {
     Images?
     Game start and end state?
     z - axis for sorting painted layers
+    FireObject private RECURSION_DELAY (pass through emitFire)
     GUI Freeze BUG
     - ScheduledExecutorService
     - emitFire to be compressed into a single object Thread? (no need for second constructor)

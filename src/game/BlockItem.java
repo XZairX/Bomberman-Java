@@ -16,6 +16,7 @@ public class BlockItem extends BlockObject {
     private final int Y_CENTRE = y + 15;
 
     private enum Item {
+        NULL,
         BOMBUP, FIREUP, SKATEUP,
         KICK, PUNCH, THROW,
         FULLFIRE, POWERBOMB, SPIKEBOMB,
@@ -28,7 +29,18 @@ public class BlockItem extends BlockObject {
     public BlockItem(int x, int y) {
         super(x, y);
         this.BLOCK_COLOUR = BLOCKITEM_COLOUR;
-        this.item = setItem();
+        this.item = Item.NULL;
+    }
+
+    @Override
+    public void initialise() {
+        super.initialise();
+        item = setItem();
+    }
+
+    @Override
+    public boolean isNotInitialised() {
+        return super.isNotInitialised();
     }
 
     @Override

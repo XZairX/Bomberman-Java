@@ -7,6 +7,8 @@ import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
 public abstract class GameObject {
+    private boolean isInitialised;
+
     protected int x;
     protected int y;
     protected int radius;
@@ -29,13 +31,17 @@ public abstract class GameObject {
         this.diameter = radius * 2;
     }
 
+    protected void initialise() {
+        isInitialised = true;
+    }
+
+    protected boolean isNotInitialised() {
+        return !isInitialised;
+    }
+
     protected Rectangle getBounds() {
         return new Rectangle(x, y, radius * 2, radius * 2);
     }
-
-    /*protected boolean isOverlapping(GameObject other) {
-        return (this.x == other.x && this.y == other.y);
-    }*/
 
     protected boolean isColliding(GameObject other) {
         return (this.getBounds().intersects(other.getBounds()));

@@ -11,21 +11,23 @@ public class PowerFire extends FireObject {
     private static final int POWERFIRE_RANGE = 16;
 
     public PowerFire(int x, int y, int range) {
-        super(x, y);
+        super(x, y, range);
         this.FIRE_DELAY = POWERFIRE_DELAY;
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                emitFire(x, y, POWERFIRE_RANGE);
-            }
-        });
-        thread.start();
     }
 
     private PowerFire(int x, int y) {
         super(x, y);
         this.FIRE_DELAY = POWERFIRE_DELAY;
+    }
+
+    @Override
+    public void initialise() {
+        super.initialise();
+    }
+
+    @Override
+    public boolean isNotInitialised() {
+        return super.isNotInitialised();
     }
 
     @Override

@@ -13,7 +13,6 @@ public abstract class BombObject extends GameObject {
 
     private int debugSecondsToExplode = 3;
 
-    private boolean isInitialised;
     private boolean isDropped;
     private boolean isCollisionActive;
 
@@ -32,7 +31,8 @@ public abstract class BombObject extends GameObject {
     }
 
     protected void initialise() {
-        isInitialised = true;
+        super.initialise();
+
         for (TileObject tile : GameMain.getListTileObject()) {
             if (isColliding(tile)) {
                 if (tile.isAvailable()) {
@@ -86,6 +86,11 @@ public abstract class BombObject extends GameObject {
         } else {
             debugSecondsToExplode = -1;
         }
+    }
+
+    @Override
+    protected boolean isNotInitialised() {
+        return super.isNotInitialised();
     }
 
     @Override
@@ -163,9 +168,5 @@ public abstract class BombObject extends GameObject {
 
     protected void setIsCollisionActive() {
         isCollisionActive = true;
-    }
-
-    protected boolean isInitialised() {
-        return isInitialised;
     }
 }
