@@ -59,7 +59,7 @@ public class PowerFire extends FireObject {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < range + 1; i++) {
+                for (int i = 0; i <= POWERFIRE_RANGE; i++) {
                     try {
                         Thread.sleep(FIRE_RECURSION_DELAY);
                     } catch (InterruptedException e) {

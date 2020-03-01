@@ -73,7 +73,7 @@ public class DangerousFire extends FireObject {
                 }
 
                 List<DangerousFire> fireObject = new ArrayList<>();
-                for (int i = 1; i < max + 1; i++) {
+                for (int i = 1; i <= max; i++) {
                     // North + NE
                     fireObject.add(new DangerousFire(x, y - (diameter * i)));
                     fireObject.add(new DangerousFire(x + (diameter * i), y - (diameter * i)));

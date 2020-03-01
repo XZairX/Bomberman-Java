@@ -5,11 +5,10 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public abstract class FireObject extends GameObject {
-    // Should be private
-    protected static final int FIRE_RECURSION_DELAY = 10;
-
     private int range;
     private boolean canEmitFire;
+
+    protected static final int FIRE_RECURSION_DELAY = 10;
 
     protected Color FIRE_COLOUR = Color.YELLOW;
     protected int FIRE_DELAY = 500;
