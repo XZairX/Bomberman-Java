@@ -120,7 +120,7 @@ public class GameMain {
                 for (int i = listObjects.indexOf(this) + 1; i < listObjects.size(); i++) {
                     GameObject other = listObjects.get(i);
 
-                    if ((!object.isColliding(other)) && other.getClass() == Player.class) {
+                    if (!object.isColliding(other) && other.getClass() == Player.class) {
                         playersNotColliding++;
                     }
 
@@ -154,7 +154,7 @@ public class GameMain {
             }
 
             object.update();
-            if (!(object.isDead)) {
+            if (!object.isDead) {
                 listAlive.add(object);
             }
         }

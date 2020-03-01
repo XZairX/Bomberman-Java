@@ -48,7 +48,7 @@ public abstract class GameObject {
     }
 
     protected void collisionHandling(GameObject other) {
-        if ((!isFireObject) && (other instanceof FireObject)) {
+        if (!isFireObject && other instanceof FireObject) {
             this.hit();
         }
     }
