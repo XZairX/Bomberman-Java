@@ -61,11 +61,11 @@ public class TileObject extends GameObject {
         g.drawString(String.valueOf(isAvailable).substring(0, 1).toUpperCase(), x + 7, y + 15);
     }
 
-    public boolean isAvailable() {
+    /*public boolean isAvailable() {
         return isAvailable;
     }
 
     public void toggleAvailability() {
         isAvailable = (isAvailable == true) ? false : true;
-    }
+    }*/
 }

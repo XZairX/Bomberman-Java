@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class BombObject extends GameObject {
     private static final Color DEBUG_DETONATION_COLOUR = Color.WHITE;
     private static final int BOMB_DELAY = 2500;
@@ -33,18 +36,17 @@ public abstract class BombObject extends GameObject {
     protected void initialise() {
         super.initialise();
 
-        for (TileObject tile : GameMain.getListTileObject()) {
-            if (isColliding(tile)) {
-                if (tile.isAvailable()) {
-                    tile.toggleAvailability();
-                    isDropped = true;
-                    break;
-                } else {
+        List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
+        for (GameObject object : listObject) {
+            if (object instanceof BombObject && object != this) {
+                if (isColliding(object)) {
                     hit();
                     break;
                 }
             }
         }
+
+        isDropped = true;
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -129,15 +131,6 @@ public abstract class BombObject extends GameObject {
 
     protected void dropFire(Type type) {
         if (isDropped) {
-            for (TileObject tile : GameMain.getListTileObject()) {
-                if (isColliding(tile)) {
-                    if (!tile.isAvailable()) {
-                        tile.toggleAvailability();
-                        break;
-                    }
-                }
-            }
-
             switch (type) {
                 case NORMAL:
                     GameMain.addAliveGameObject(new Fire(x, y, range));

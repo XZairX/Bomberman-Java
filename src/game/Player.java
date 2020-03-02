@@ -129,6 +129,7 @@ public class Player extends GameObject {
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
 
         if (isHit) {
+            canDropBomb = false;
             g.setColor(Color.WHITE);
             g.fillRect(x - (radius / 2), y - (radius / 2), (int)(diameter * 1.5), (int)(diameter * 1.5));
         }
@@ -221,10 +222,10 @@ public class Player extends GameObject {
     }
 
     public void dropBomb() {
-        List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
-
         if (canDropBomb) {
+            List<GameObject> listObject = new ArrayList<>(GameMain.getListObjects());
             int droppedBombs = 0;
+            boolean hasNotDroppedSingleBomb = true;
 
             if (hasSingleSpecialBomb) {
                 for (GameObject object : listObject) {
@@ -251,6 +252,7 @@ public class Player extends GameObject {
                             GameMain.addAliveGameObject(new DangerousBomb(x + radius, y + radius, fire, playerID));
                             break;
                     }
+                    hasNotDroppedSingleBomb = false;
                 }
             }
 
@@ -278,10 +280,9 @@ public class Player extends GameObject {
                             GameMain.addAliveGameObject(new RemoteBomb(x + radius, y + radius, fire, playerID));
                             break;
                     }
-                } else {
+                } else if (hasNotDroppedSingleBomb) {
                     GameMain.addAliveGameObject(new Bomb(x + radius, y + radius, fire, playerID));
                 }
-
             }
             canDropBomb = false;
         }
