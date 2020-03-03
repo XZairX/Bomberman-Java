@@ -322,6 +322,10 @@ public class Player extends GameObject {
         }
     }
 
+    public void fullFire() {
+        fire = MAX;
+    }
+
     public void speedUp() {
         if (skate < MAX) {
             skate++;
@@ -338,10 +342,6 @@ public class Player extends GameObject {
 
     private void setSpeed() {
         speed = (skate % 2 == 1) ? (skate / 2) + 1 : skate / 2;
-    }
-
-    public void fullFire() {
-        fire = MAX;
     }
 
     public void powerBomb() {

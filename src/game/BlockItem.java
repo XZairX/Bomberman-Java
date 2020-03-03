@@ -18,10 +18,10 @@ public class BlockItem extends BlockObject {
     private enum Item {
         NULL,
         BOMBUP, FIREUP, SKATEUP,
-        KICK, PUNCH, THROW,
-        FULLFIRE, POWERBOMB, SPIKEBOMB,
-        HEART, DANGEROUSBOMB, REMOTEBOMB,
-        BOMBDOWN, FIREDOWN, SKATEDOWN,
+        KICK, THROW, PUNCH,
+        POWERBOMB, SPIKEBOMB, FULLFIRE,
+        DANGEROUSBOMB, REMOTEBOMB, HEART,
+        SKATEDOWN, FIREDOWN, BOMBDOWN,
     }
 
     private Item item;
@@ -88,43 +88,43 @@ public class BlockItem extends BlockObject {
                 g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
                 g.drawString("KI", X_CENTRE, Y_CENTRE);
                 break;
-            case PUNCH:
-                g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
-                g.drawString("PU", X_CENTRE, Y_CENTRE);
-                break;
             case THROW:
                 g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
                 g.drawString("TH", X_CENTRE, Y_CENTRE);
                 break;
-
-            case FULLFIRE:
-                g.drawString("FF", X_CENTRE, Y_CENTRE);
+            case PUNCH:
+                g.setColor(BLOCKITEM_UNIMPLEMENTED_COLOUR);
+                g.drawString("PU", X_CENTRE, Y_CENTRE);
                 break;
+
             case POWERBOMB:
                 g.drawString("PB", X_CENTRE, Y_CENTRE);
                 break;
             case SPIKEBOMB:
                 g.drawString("SB", X_CENTRE, Y_CENTRE);
                 break;
-
-            case HEART:
-                g.drawString("H+", X_CENTRE, Y_CENTRE);
+            case FULLFIRE:
+                g.drawString("FF", X_CENTRE, Y_CENTRE);
                 break;
+
             case DANGEROUSBOMB:
                 g.drawString("DB", X_CENTRE, Y_CENTRE);
                 break;
             case REMOTEBOMB:
                 g.drawString("RB", X_CENTRE, Y_CENTRE);
                 break;
+            case HEART:
+                g.drawString("H+", X_CENTRE, Y_CENTRE);
+                break;
 
-            case BOMBDOWN:
-                g.drawString("B-", X_CENTRE, Y_CENTRE);
+            case SKATEDOWN:
+                g.drawString("S-", X_CENTRE, Y_CENTRE);
                 break;
             case FIREDOWN:
                 g.drawString("F-", X_CENTRE, Y_CENTRE);
                 break;
-            case SKATEDOWN:
-                g.drawString("S-", X_CENTRE, Y_CENTRE);
+            case BOMBDOWN:
+                g.drawString("B-", X_CENTRE, Y_CENTRE);
                 break;
         }
     }
@@ -134,11 +134,19 @@ public class BlockItem extends BlockObject {
 
         if (randomNumber < 60) {
             return setBasicItemUP();
-        } else if (randomNumber >= 60 && randomNumber < 70) {
+        } else {
+            return setOtherItem();
+        }
+    }
+
+    private Item setOtherItem() {
+        int randomNumber = RNG.nextInt(100);
+
+        if (randomNumber >= 0 && randomNumber < 25) {
             return setUtilityItem();
-        } else if (randomNumber >= 70 && randomNumber < 80) {
+        } else if (randomNumber >= 25 && randomNumber < 50) {
             return setBasicSpecialItem();
-        } else if (randomNumber >= 80 && randomNumber < 90) {
+        } else if (randomNumber >= 50 && randomNumber < 75) {
             return setAdvancedSpecialItem();
         } else {
             return setBasicItemDOWN();
@@ -148,9 +156,9 @@ public class BlockItem extends BlockObject {
     private Item setBasicItemUP() {
         int randomNumber = RNG.nextInt(100);
 
-        if (randomNumber < 33) {
+        if (randomNumber < 40) {
             item = Item.BOMBUP;
-        } else if (randomNumber >= 33 && randomNumber < 66) {
+        } else if (randomNumber >= 40 && randomNumber < 75) {
             item = Item.FIREUP;
         } else {
             item = Item.SKATEUP;
@@ -161,12 +169,12 @@ public class BlockItem extends BlockObject {
     private Item setUtilityItem() {
         int randomNumber = RNG.nextInt(100);
 
-        if (randomNumber < 33) {
+        if (randomNumber < 45) {
             item = Item.KICK;
-        } else if (randomNumber >= 33 && randomNumber < 66) {
-            item = Item.PUNCH;
-        } else {
+        } else if (randomNumber >= 45 && randomNumber < 80) {
             item = Item.THROW;
+        } else {
+            item = Item.PUNCH;
         }
         return item;
     }
@@ -174,12 +182,12 @@ public class BlockItem extends BlockObject {
     private Item setBasicSpecialItem() {
         int randomNumber = RNG.nextInt(100);
 
-        if (randomNumber < 33) {
-            item = Item.FULLFIRE;
-        } else if (randomNumber >= 33 && randomNumber < 66) {
+        if (randomNumber < 60) {
             item = Item.POWERBOMB;
-        } else {
+        } else if (randomNumber >= 60 && randomNumber < 90) {
             item = Item.SPIKEBOMB;
+        } else {
+            item = Item.FULLFIRE;
         }
         return item;
     }
@@ -187,12 +195,12 @@ public class BlockItem extends BlockObject {
     private Item setAdvancedSpecialItem() {
         int randomNumber = RNG.nextInt(100);
 
-        if (randomNumber < 33) {
-            item = Item.HEART;
-        } else if (randomNumber >= 33 && randomNumber < 66) {
+        if (randomNumber < 45) {
             item = Item.DANGEROUSBOMB;
-        } else {
+        } else if (randomNumber >= 45 && randomNumber < 90) {
             item = Item.REMOTEBOMB;
+        } else {
+            item = Item.HEART;
         }
         return item;
     }
@@ -200,12 +208,12 @@ public class BlockItem extends BlockObject {
     private Item setBasicItemDOWN() {
         int randomNumber = RNG.nextInt(100);
 
-        if (randomNumber < 33) {
-            item = Item.BOMBDOWN;
-        } else if (randomNumber >= 33 && randomNumber < 66) {
+        if (randomNumber < 60) {
+            item = Item.SKATEDOWN;
+        } else if (randomNumber >= 60 && randomNumber < 85) {
             item = Item.FIREDOWN;
         } else {
-            item = Item.SKATEDOWN;
+            item = Item.BOMBDOWN;
         }
         return item;
     }
@@ -224,39 +232,39 @@ public class BlockItem extends BlockObject {
 
             case KICK:
                 break;
-            case PUNCH:
-                break;
             case THROW:
                 break;
-
-            case FULLFIRE:
-                player.fullFire();
+            case PUNCH:
                 break;
+
             case POWERBOMB:
                 player.powerBomb();
                 break;
             case SPIKEBOMB:
                 player.spikeBomb();
                 break;
-
-            case HEART:
-                player.heartUp();
+            case FULLFIRE:
+                player.fullFire();
                 break;
+
             case DANGEROUSBOMB:
                 player.dangerousBomb();
                 break;
             case REMOTEBOMB:
                 player.remoteBomb();
                 break;
+            case HEART:
+                player.heartUp();
+                break;
 
-            case BOMBDOWN:
-                player.bombDown();
+            case SKATEDOWN:
+                player.speedDown();
                 break;
             case FIREDOWN:
                 player.fireDown();
                 break;
-            case SKATEDOWN:
-                player.speedDown();
+            case BOMBDOWN:
+                player.bombDown();
                 break;
         }
     }

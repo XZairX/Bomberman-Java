@@ -55,6 +55,7 @@ public class BlockSoft extends BlockObject {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 if (canSpawnBlockItem()) {
                     GameMain.addAliveGameObject(new BlockItem(x, y));
                 }
