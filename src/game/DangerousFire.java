@@ -13,11 +13,13 @@ public class DangerousFire extends FireObject {
     public DangerousFire(int x, int y, int range) {
         super(x, y, range);
         this.FIRE_COLOUR = DANGEROUSFIRE_COLOUR;
+        hasExtendedFireDelay = true;
     }
 
     private DangerousFire(int x, int y) {
         super(x, y);
         this.FIRE_COLOUR = DANGEROUSFIRE_COLOUR;
+        hasExtendedFireDelay = true;
     }
 
     @Override

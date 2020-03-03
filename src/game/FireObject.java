@@ -5,13 +5,16 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public abstract class FireObject extends GameObject {
+    private static final int FIRE_DELAY = 400;
+    private static final int EXTENDED_FIRE_DELAY = FIRE_DELAY * 2;
+
     private int range;
     private boolean canEmitFire;
 
     protected static final int FIRE_RECURSION_DELAY = 10;
 
     protected Color FIRE_COLOUR = Color.YELLOW;
-    protected int FIRE_DELAY = 500;
+    protected boolean hasExtendedFireDelay;
     protected boolean isFireLeftHit, isFireRightHit, isFireUpHit, isFireDownHit;
 
     protected FireObject(int x, int y) {
@@ -38,7 +41,11 @@ public abstract class FireObject extends GameObject {
 
                 while (!isDead) {
                     try {
-                        Thread.sleep(FIRE_DELAY);
+                        if (hasExtendedFireDelay) {
+                            Thread.sleep(EXTENDED_FIRE_DELAY);
+                        } else {
+                            Thread.sleep(FIRE_DELAY);
+                        }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

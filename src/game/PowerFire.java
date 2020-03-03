@@ -7,17 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PowerFire extends FireObject {
-    private static final int POWERFIRE_DELAY = 1000;
     private static final int POWERFIRE_RANGE = 16;
 
     public PowerFire(int x, int y, int range) {
         super(x, y, range);
-        this.FIRE_DELAY = POWERFIRE_DELAY;
+        hasExtendedFireDelay = true;
     }
 
     private PowerFire(int x, int y) {
         super(x, y);
-        this.FIRE_DELAY = POWERFIRE_DELAY;
+        hasExtendedFireDelay = true;
     }
 
     @Override
