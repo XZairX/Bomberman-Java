@@ -7,6 +7,8 @@ import static game.Constants.TILE_DIAMETER;
 import static game.Constants.TILE_RADIUS;
 
 public abstract class GameObject {
+    private static final int boundingBoxFactor = 3;
+
     private boolean isInitialised;
 
     protected int x;
@@ -40,7 +42,8 @@ public abstract class GameObject {
     }
 
     protected Rectangle getBounds() {
-        return new Rectangle(x, y, radius * 2, radius * 2);
+        return new Rectangle(x + boundingBoxFactor, y + boundingBoxFactor,
+                (radius * 2) - (boundingBoxFactor * 2), (radius * 2) - (boundingBoxFactor * 2));
     }
 
     protected boolean isColliding(GameObject other) {

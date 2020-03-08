@@ -33,7 +33,15 @@ public class GameKeys extends KeyAdapter {
             case KeyEvent.VK_SPACE:
                 game.player1.dropBomb();
                 break;
-            case KeyEvent.VK_X:
+            case KeyEvent.VK_C:
+                game.player1.detonateRemoteBomb();
+                break;
+
+            // Alternate control scheme for multiplayer
+            case KeyEvent.VK_N:
+                game.player1.dropBomb();
+                break;
+            case KeyEvent.VK_M:
                 game.player1.detonateRemoteBomb();
                 break;
 
@@ -49,10 +57,10 @@ public class GameKeys extends KeyAdapter {
             case KeyEvent.VK_S:
                 game.player2.setMoveDown(true);
                 break;
-            case KeyEvent.VK_L:
+            case KeyEvent.VK_F:
                 game.player2.dropBomb();
                 break;
-            case KeyEvent.VK_SEMICOLON:
+            case KeyEvent.VK_G:
                 game.player2.detonateRemoteBomb();
                 break;
 
@@ -211,6 +219,9 @@ public class GameKeys extends KeyAdapter {
             case KeyEvent.VK_SPACE:
                 game.player1.canDropBomb();
                 break;
+            case KeyEvent.VK_N:
+                game.player1.canDropBomb();
+                break;
 
             case KeyEvent.VK_A:
                 game.player2.setMoveLeft(false);
@@ -224,7 +235,7 @@ public class GameKeys extends KeyAdapter {
             case KeyEvent.VK_S:
                 game.player2.setMoveDown(false);
                 break;
-            case KeyEvent.VK_L:
+            case KeyEvent.VK_F:
                 game.player2.canDropBomb();
                 break;
         }

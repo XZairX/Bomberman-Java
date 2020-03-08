@@ -8,15 +8,11 @@ import static game.Constants.TILE_OUTLINE_COLOUR;
 
 public class TileObject extends GameObject {
     private static final Color BLOCKTILE_COLOUR = Color.GREEN;
-    private static final Color DEBUG_AVAILABILITY_COLOUR = Color.BLUE;
-
-    private boolean isAvailable;
 
     public TileObject(int x, int y) {
         super(x, y);
         this.x = (x * diameter) + (diameter * 2);
         this.y = (y * diameter) + (diameter * 2);
-        isAvailable = true;
     }
 
     @Override
@@ -55,17 +51,5 @@ public class TileObject extends GameObject {
         g.fillRect(x, y, diameter, diameter);
         g.setColor(TILE_OUTLINE_COLOUR);
         g.drawRect(x, y, diameter, diameter);
-
-        // Debugging TileObject isAvailable boolean flag
-        g.setColor(DEBUG_AVAILABILITY_COLOUR);
-        g.drawString(String.valueOf(isAvailable).substring(0, 1).toUpperCase(), x + 7, y + 15);
     }
-
-    /*public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public void toggleAvailability() {
-        isAvailable = (isAvailable == true) ? false : true;
-    }*/
 }

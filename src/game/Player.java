@@ -341,7 +341,14 @@ public class Player extends GameObject {
     }
 
     private void setSpeed() {
-        speed = (skate % 2 == 1) ? (skate / 2) + 1 : skate / 2;
+        if (skate <= 3) {
+            speed = 1;
+        } else if (skate <= 6) {
+            speed = 2;
+        } else {
+            speed = 3;
+        }
+        //speed = (skate % 2 == 1) ? (skate / 2) + 1 : skate / 2;
     }
 
     public void powerBomb() {

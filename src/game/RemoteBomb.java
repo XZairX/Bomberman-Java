@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
 public class RemoteBomb extends BombObject {
-    private static final int REMOTEBOMB_DETONATION_DELAY = 500;
+    private static final int REMOTEBOMB_DETONATION_DELAY = 1000;
 
     public RemoteBomb(int x, int y, int range, int bombID) {
         super(x, y, range, bombID);
@@ -43,7 +43,12 @@ public class RemoteBomb extends BombObject {
 
     @Override
     public void draw(Graphics2D g) {
-        super.draw(g);
+        if (isHit) {
+            g.setColor(BOMB_COLOUR);
+            g.fillOval(x, y, diameter, diameter);
+        } else {
+            super.draw(g);
+        }
     }
 
     public void detonate() {
