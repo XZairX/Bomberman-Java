@@ -16,7 +16,8 @@ public class Player extends GameObject {
     private static final Color PLAYER2_COLOUR = Color.RED;
     private static final Color PLAYER3_COLOUR = Color.MAGENTA;
     private static final Color PLAYER4_COLOUR = Color.YELLOW; // GREEN (TileObject is currently using this)
-    private static final int PLAYER_INVINCIBILITY_TIME = 2000;
+    private static final int PLAYER_INVINCIBILITY_FIRE = 1000;
+    private static final int PLAYER_INVINCIBILITY_SPAWN = 2500; // Unity implementation for returning from revenge cart
     private static final int MIN = 1;
     private static final int MAX = 8;
 
@@ -108,7 +109,7 @@ public class Player extends GameObject {
                     @Override
                     public void run() {
                         try {
-                            Thread.sleep(PLAYER_INVINCIBILITY_TIME);
+                            Thread.sleep(PLAYER_INVINCIBILITY_FIRE);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -129,7 +130,6 @@ public class Player extends GameObject {
         g.fillRect(getBounds().x, getBounds().y, getBounds().width, getBounds().height);
 
         if (isHit) {
-            canDropBomb = false;
             g.setColor(Color.WHITE);
             g.fillRect(x - (radius / 2), y - (radius / 2), (int)(diameter * 1.5), (int)(diameter * 1.5));
         }
@@ -199,6 +199,13 @@ public class Player extends GameObject {
     }
 
     private void cancelCollisionMovement(GameObject other) {
+        /*
+        * Unity Implementation
+        * IF player is certain position
+        * Correct their position and move them to prevent unnecessary blocking issues
+        * Prevents image overlapping
+        */
+
         if (moveLeft) {
             moveLeft = false;
             x = other.getBounds().x + other.getBounds().width;
@@ -217,8 +224,10 @@ public class Player extends GameObject {
         }
     }
 
-    public void canDropBomb() {
-        canDropBomb = true;
+    public void setCanDropBomb() {
+        if (!isHit) {
+            canDropBomb = true;
+        }
     }
 
     public void dropBomb() {
@@ -404,7 +413,7 @@ public class Player extends GameObject {
 
     public void debugGiveAll() {
         heart = MAX;
-        bomb = MAX * 4;
+        bomb = MAX;
         fire = MAX;
         skate = MAX;
         setSpeed();

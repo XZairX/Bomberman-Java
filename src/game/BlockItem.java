@@ -19,9 +19,10 @@ public class BlockItem extends BlockObject {
         NULL,
         BOMBUP, FIREUP, SKATEUP,
         KICK, THROW, PUNCH,
-        POWERBOMB, SPIKEBOMB, FULLFIRE,
+        POWERBOMB, SPIKEBOMB, FULLFIRE, // SpikeBomb to be renamed to PierceBomb in Unity implementation
         DANGEROUSBOMB, REMOTEBOMB, HEART,
         SKATEDOWN, FIREDOWN, BOMBDOWN,
+        //SKULL, RUBBERBOMB, MINEBOMB // Unity implementation
     }
 
     private Item item;
@@ -142,11 +143,11 @@ public class BlockItem extends BlockObject {
     private Item setOtherItem() {
         int randomNumber = RNG.nextInt(100);
 
-        if (randomNumber >= 0 && randomNumber < 25) {
+        if (randomNumber < 25) {
             return setUtilityItem();
-        } else if (randomNumber >= 25 && randomNumber < 50) {
+        } else if (randomNumber < 50) {
             return setBasicSpecialItem();
-        } else if (randomNumber >= 50 && randomNumber < 75) {
+        } else if (randomNumber < 75) {
             return setAdvancedSpecialItem();
         } else {
             return setBasicItemDOWN();
@@ -158,7 +159,7 @@ public class BlockItem extends BlockObject {
 
         if (randomNumber < 40) {
             item = Item.BOMBUP;
-        } else if (randomNumber >= 40 && randomNumber < 75) {
+        } else if (randomNumber < 75) {
             item = Item.FIREUP;
         } else {
             item = Item.SKATEUP;
@@ -171,7 +172,7 @@ public class BlockItem extends BlockObject {
 
         if (randomNumber < 45) {
             item = Item.KICK;
-        } else if (randomNumber >= 45 && randomNumber < 80) {
+        } else if (randomNumber < 80) {
             item = Item.THROW;
         } else {
             item = Item.PUNCH;
@@ -182,9 +183,9 @@ public class BlockItem extends BlockObject {
     private Item setBasicSpecialItem() {
         int randomNumber = RNG.nextInt(100);
 
-        if (randomNumber < 60) {
+        if (randomNumber < 45) {
             item = Item.POWERBOMB;
-        } else if (randomNumber >= 60 && randomNumber < 90) {
+        } else if (randomNumber < 80) {
             item = Item.SPIKEBOMB;
         } else {
             item = Item.FULLFIRE;
@@ -197,7 +198,7 @@ public class BlockItem extends BlockObject {
 
         if (randomNumber < 45) {
             item = Item.DANGEROUSBOMB;
-        } else if (randomNumber >= 45 && randomNumber < 90) {
+        } else if (randomNumber < 75) {
             item = Item.REMOTEBOMB;
         } else {
             item = Item.HEART;
@@ -210,7 +211,7 @@ public class BlockItem extends BlockObject {
 
         if (randomNumber < 60) {
             item = Item.SKATEDOWN;
-        } else if (randomNumber >= 60 && randomNumber < 85) {
+        } else if (randomNumber < 85) {
             item = Item.FIREDOWN;
         } else {
             item = Item.BOMBDOWN;

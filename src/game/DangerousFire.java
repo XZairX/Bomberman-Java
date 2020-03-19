@@ -66,9 +66,9 @@ public class DangerousFire extends FireObject {
 
                 if (range < 2) {
                     max = 1;
-                } else if (range >= 2 && range < 5) {
+                } else if (range < 5) {
                     max = 2;
-                } else if (range >= 5 && range < 8) {
+                } else if (range < 8) {
                     max = 3;
                 } else {
                     max = 4;

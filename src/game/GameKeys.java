@@ -217,10 +217,10 @@ public class GameKeys extends KeyAdapter {
                 game.player1.setMoveDown(false);
                 break;
             case KeyEvent.VK_SPACE:
-                game.player1.canDropBomb();
+                game.player1.setCanDropBomb();
                 break;
             case KeyEvent.VK_N:
-                game.player1.canDropBomb();
+                game.player1.setCanDropBomb();
                 break;
 
             case KeyEvent.VK_A:
@@ -236,7 +236,7 @@ public class GameKeys extends KeyAdapter {
                 game.player2.setMoveDown(false);
                 break;
             case KeyEvent.VK_F:
-                game.player2.canDropBomb();
+                game.player2.setCanDropBomb();
                 break;
         }
     }
