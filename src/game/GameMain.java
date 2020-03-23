@@ -9,8 +9,9 @@ import static game.Constants.GAMESPACE_COLUMN;
 import static game.Constants.GAMESPACE_ROW;
 
 public class GameMain {
+    private static final int FRAMES_PER_SECOND = 60;
     private static final int GAME_STARTUP_DELAY = 200;
-    private static final int GAME_LOOP_DELAY = 20;
+    private static final int GAME_LOOP_DELAY = 1000 / FRAMES_PER_SECOND;
 
     public static List<TileObject> listTileObject;
     public static List<GameObject> listObjects;

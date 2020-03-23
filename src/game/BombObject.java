@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class BombObject extends GameObject {
     private static final Color DEBUG_DETONATION_COLOUR = Color.WHITE;
-    private static final int BOMB_DELAY = 2500;
+    private static final int BOMB_DELAY = 2400;
 
     private final int range;
     private final int bombID;
