@@ -409,6 +409,9 @@ public class Player extends GameObject {
         fire = 2;
         skate = 4;
         setSpeed();
+        specialBomb = SpecialBomb.UNAVAILABLE;
+        hasSingleSpecialBomb = false;
+        hasMultipleSpecialBomb = false;
     }
 
     public void debugGiveAll() {

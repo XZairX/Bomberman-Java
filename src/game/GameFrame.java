@@ -1,4 +1,4 @@
-package utilities;
+package game;
 
 import javax.swing.*;
 
@@ -8,12 +8,12 @@ import java.awt.Component;
 
 import static game.Constants.TILE_RADIUS;
 
-public class JEasyFrame extends JFrame {
+public class GameFrame extends JFrame {
     private static final Color BACKGROUND_COLOUR = Color.BLACK;
 
     private Component component;
 
-    public JEasyFrame(Component component, String title) {
+    public GameFrame(Component component, String title) {
         super(title);
         this.component = component;
 

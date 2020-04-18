@@ -1,7 +1,5 @@
 package game;
 
-import utilities.JEasyFrame;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,8 +62,10 @@ public class GameMain {
     public static void main(String[] args) {
         GameMain gameMain = new GameMain();
         GameView gameView = new GameView();
+        GameFrame gameFrame = new GameFrame(gameView, "Bomberman Game");
+        GameKeys gameKeys = new GameKeys(gameMain);
+        gameFrame.addKeyListener(gameKeys);
         GameSpace gameSpace = new GameSpace();
-        new JEasyFrame(gameView, "Bomberman Game").addKeyListener(new GameKeys(gameMain));
 
         gameSpace.spawnBorder();
         //gameSpace.spawnGameSpace();
