@@ -37,13 +37,19 @@ https://www.jetbrains.com/help/idea/sdk.html
  
 3. Create and open a new project in IntelliJ and drag these two folders into your "src" directory within the project view sidebar on the left.
 
-4. If you have correctly set up the JDK and you have correctly transferred the extracted files, you will now be able to run and view the game by running the GameMain class.
+4. If you have correctly set up the JDK and you have correctly transferred the extracted files, you will now be able to run and interact with the game by running the GameMain class.
+
+
+### Game Overview
+The basic objective of the game is to blow up the other players and survive to win as the last player standing. Players start in one of the four corners of the arena and will be required to drop bombs in order to blow up the many soft blocks which surround them. Blowing up these blocks will form a traversable path to your opponents and may sometimes reveal power-ups which can be picked up to strengthen your capabilities.
+
+
+### Customisation
+The controls of the game are defined in the GameKeys class and can be edited to better suit your preferences. Debug commands represent actions that are primarily available for the purposes of testing and do not represent the core Bomberman experience. As the game is unfinished, these have been deliberately left in to add depth to the approaches in which this product can be enjoyed. The size of the game arena can also be customised bu editing the TILE_RADIUS constant within the Constants class.
 
 
 ### Versioning Strategy
-There is no specific versioning strategy being used for this project. Tasks relating to the project are uploaded and reviewed on Jira on a weekly basis. The development time pertaining to a task is committed, pushed, and annotated to GitLab as progress is made until the task satisfies the completion requirements that had been listed on Jira. Completed tasks are marked as done in Jira with a relevant comment provided to give detail on the work done and this process repeats for every task that is created.
-
-For every week that passes, my project supervisor and I hold a short meeting to reflect on the status of the project. This normally involves the discussion of development in terms of what had been done, the general progression of workflow, and what is to be done next. In relation to Jira, this involves looking at which Jira tasks have been completed, which remain, and what new tasks could be potentially created for the future. A supervisor feedback issue is created and marked as done for each week that these meetings are held to provide an overview of our discussions.
+There is no specific versioning strategy that was used for this project. Project management is solely handled by Jira where tasks are uploaded and reviewed on a weekly basis. The development time pertaining to a task is committed, pushed, and annotated to GitLab as progress is made until the task satisfies its completion requirements as determined by its given description. Completed tasks are marked as done in Jira with a relevant comment provided to give detail on the work done and this process repeats for every task that is created.
 
 
 ## Authors
