@@ -26,7 +26,7 @@ The Java Standard Edition Development Kit (JDK) is a collection of tools which p
 
 
 #### Setting up the JDK
-It is highly recommended to follow the link below for understanding how to configure the JDK to work cohesively with IntelliJ and Java.\
+It is highly recommended to follow the link below for understanding how to configure the JDK to work in cohension with IntelliJ and Java.\
 https://www.jetbrains.com/help/idea/sdk.html
 
 
