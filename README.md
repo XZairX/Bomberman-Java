@@ -3,7 +3,7 @@ This respository holds the work produced from a practical research investigation
 
 
 ## Getting Started
-In order to get the project running, you will need to have IntelliJ IDEA installed on your computer. This application is a Java integrated development environment (IDE) that allows for the development of computer software. More importantly, it is used to the view and manipulate the Java program that this project is contained within. IntelliJ is provided by JetBrains, a certified company who specialise in distributing developer tools for professionals and teams. The application is distributed as open-source software which can be freely downloaded from JetBrain's official website without concern for malicious malware.
+IntelliJ IDEA is required to be installed on a computer system in order to run the project. This application is a Java integrated development environment (IDE) that allows for the development of computer software. More importantly, it is the interface that is used to the view and manipulate the Java program that this project is contained within. IntelliJ is provided by JetBrains, a certified company who specialise in distributing developer tools for professionals and teams. The application is distributed as open-source software which can be freely downloaded from JetBrain's official website without concern for malicious malware.
 
 
 ### Prerequisites
