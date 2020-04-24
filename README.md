@@ -45,7 +45,7 @@ The basic objective of the game is to blow up the other players and survive to w
 
 
 ### Customisation
-The controls of the game are defined in the GameKeys class and can be edited to better suit your preferences. Debug commands represent actions that are primarily available for the purposes of testing and do not represent the core Bomberman experience. As the game is unfinished, these have been deliberately left in to add depth to the approaches in which this product can be enjoyed. The size of the game arena can also be customised bu editing the TILE_RADIUS constant within the Constants class.
+The controls of the game are defined in the GameKeys class and can be edited to better suit your preferences. Debug commands are developer actions that are used for the purposes of testing and do not represent the core Bomberman experience. As the game is unfinished, these have been deliberately left in to add depth to the approaches in which this product can be enjoyed. The size of the game arena can also be customised by editing the TILE_RADIUS constant within the Constants class.
 
 
 ### Versioning Strategy
