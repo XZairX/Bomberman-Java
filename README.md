@@ -1,9 +1,9 @@
 # Recreate a Classic Arcade Game
-The project I have chosen to undertake is Michael Fairbank's "Recreate a Classic Arcade Game" where I am given the freedom to recreate a classic 2D arcade game from the 80s or 90s. The challenge from this task comes from the requirement of having to code everything myself, including the engine that the game is to run on. Unity, a popular "high-powered" game engine, is explicitly forbidden unless the project has a enough high complexity to warrant its use. The classic arcade game I have chosen is Bomberman (1985), a strategic maze-based franchise whose multiplayer components withstand the test of time. As I could not attain permission to use Unity despite having never used it before, I opted to use Java instead, as it is the programming language that I am most comfortable and willing to experiment with. At the time of writing, the game engine is functional with proper game structure data types present and collision detection/handling, but gameplay has yet to be implemented.
+This respository holds the work produced from a practical research investigation which explores the feasibility in using programming languages, as opposed to pre-built game engine applications, to build and produce games as a game developer. This work is contained within a Java program which simply runs a basic recreation of Bomberman, a classic 2D arcade game first released in 1985. Whilst the written game engine and the main game itself are both largely unfinished, the two demonstrate the necessary functionality required to accurately test the study.
 
 
 ## Getting Started
-In order to get the project running, you will need to have IntelliJ IDEA installed on your computer. This application is a Java IDE (integrated development environment) that allows for the development of computer software. More importantly, it allows for the viewing and manipulation of the Java program that this project is contained within. IntelliJ is provided by JetBrains, a certified company who specialise in distributing developer tools for professionals and teams. As the application is distributed as open-source software, it can be freely downloaded from JetBrain's official website without concern for malicious malware.
+IntelliJ IDEA is required to be installed on a computer system in order to run the project. This application is a Java integrated development environment (IDE) that allows for the development of computer software. More importantly, it is the interface that is used to the view and manipulate the Java program that this project is contained within. IntelliJ is provided by JetBrains, a certified company who specialise in distributing developer tools for professionals and teams. The application is distributed as open-source software which can be freely downloaded from JetBrain's official website without concern for malicious malware.
 
 
 ### Prerequisites
@@ -16,7 +16,7 @@ In order to get the project running, you will need to have IntelliJ IDEA install
 
 2. Select the IntelliJ IDEA option on this page to once again be redirected this time to the main [IntelliJ IDEA page](https://www.jetbrains.com/idea).
 
-3. Select the "DOWNLOAD" option to be further redirected to the [IntelliJ download page](https://www.jetbrains.com/idea/download/#section=windows). Here, two versions are listed: Ultimate and Community. A list of features is present on this page which highlight the differences between the two editions. Also take note that there are different versions of IntelliJ for compatibility with different operating systems. The link provided is for downloading IntelliJ on a Windows operating system and this will need to be changed (via the page) if not using a Windows computer. For the purposes of viewing the project, you should select the Community version which can be acquired for free.
+3. Select the "DOWNLOAD" option to be further redirected to the [IntelliJ download page](https://www.jetbrains.com/idea/download/#section=windows). Here, two versions are listed: Ultimate and Community. A list of features is present on this page which highlight the differences between the two editions. Also take note that there are different versions of IntelliJ to provide a range of compatibility for different operating systems. The link provided is for downloading IntelliJ on a Windows operating system and this will need to be changed by manually navigating the IntelliJ IDEA page if using a different operating system. For the purpose of viewing the project, you should select the Community version which can be freely acquired without any hassle.
 
 4. Download and save the binary .exe file, run it, and follow the instructions given to install the application.
 
@@ -26,7 +26,7 @@ The Java Standard Edition Development Kit (JDK) is a collection of tools which p
 
 
 #### Setting up the JDK
-It is highly recommended to follow the link below for understanding how to configure the JDK to work cohesively with IntelliJ and Java.\
+It is highly recommended to follow the link below for understanding how to configure the JDK to work in cohension with IntelliJ and Java.\
 https://www.jetbrains.com/help/idea/sdk.html
 
 
@@ -37,13 +37,19 @@ https://www.jetbrains.com/help/idea/sdk.html
  
 3. Create and open a new project in IntelliJ and drag these two folders into your "src" directory within the project view sidebar on the left.
 
-4. If you have correctly set up the JDK and you have correctly transferred the extracted files, you will now be able to run and view the game by running the GameMain class.
+4. If you have correctly set up the JDK and you have correctly transferred the extracted files, you will now be able to run and interact with the game by running the GameMain class.
+
+
+### Game Overview
+The basic objective of the game is to blow up the other players and survive to win as the last player standing. Players start in one of the four corners of the arena and will be required to drop bombs in order to blow up the many soft blocks which surround them. Blowing up these blocks will form a traversable path to your opponents and may sometimes reveal power-ups which can be picked up to strengthen your capabilities.
+
+
+### Customisation
+The controls of the game are defined in the GameKeys class and can be edited to better suit your preferences. Debug commands are developer actions that are used for the purposes of testing and do not represent the core Bomberman experience. As the game is unfinished, these have been deliberately left in to add depth to the approaches in which this product can be enjoyed. The size of the game arena can also be customised by editing the TILE_RADIUS constant within the Constants class.
 
 
 ### Versioning Strategy
-There is no specific versioning strategy being used for this project. Tasks relating to the project are uploaded and reviewed on Jira on a weekly basis. The development time pertaining to a task is committed, pushed, and annotated to GitLab as progress is made until the task satisfies the completion requirements that had been listed on Jira. Completed tasks are marked as done in Jira with a relevant comment provided to give detail on the work done and this process repeats for every task that is created.
-
-For every week that passes, my project supervisor and I hold a short meeting to reflect on the status of the project. This normally involves the discussion of development in terms of what had been done, the general progression of workflow, and what is to be done next. In relation to Jira, this involves looking at which Jira tasks have been completed, which remain, and what new tasks could be potentially created for the future. A supervisor feedback issue is created and marked as done for each week that these meetings are held to provide an overview of our discussions.
+There is no specific versioning strategy that was used for this project. Project management is solely handled by Jira where tasks are uploaded and reviewed on a weekly basis. The development time pertaining to a task is committed, pushed, and annotated to GitLab as progress is made until the task satisfies its completion requirements as determined by its given description. Completed tasks are marked as done in Jira with a relevant comment provided to give detail on the work done and this process repeats for every task that is created.
 
 
 ## Authors
