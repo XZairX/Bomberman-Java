@@ -1,5 +1,5 @@
 # Recreate a Classic Arcade Game
-This respository holds the work produced from a practical research investigation which explores the feasibility in using programming languages, as opposed to pre-built game engine applications, to build and produce games as a game developer. This work has produced a Java program which runs a basic recreation of Bomberman, a classic 2D arcade game which was first released in 1985. Whilst the written game engine and its enclosing game are both largely unfinished, the two demonstrate the necessary functionality to test the study.
+This respository holds the work produced from a practical research investigation which explores the feasibility in using programming languages, as opposed to pre-built game engine applications, to build and produce games as a game developer. This work is contained within a Java program which simply runs a basic recreation of Bomberman, a classic 2D arcade game first released in 1985. Whilst the written game engine and the main game itself are both largely unfinished, the two demonstrate the necessary functionality required to accurately test the study.
 
 
 ## Getting Started
