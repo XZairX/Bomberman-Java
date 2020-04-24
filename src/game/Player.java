@@ -10,6 +10,7 @@ import java.util.List;
 
 import static game.Constants.FRAME_HEIGHT;
 import static game.Constants.TILE_DIAMETER;
+import static game.Constants.TILE_RADIUS;
 
 public class Player extends GameObject {
     private static final Color PLAYER1_COLOUR = Color.BLUE;
@@ -351,13 +352,12 @@ public class Player extends GameObject {
 
     private void setSpeed() {
         if (skate <= 3) {
-            speed = 1;
+            speed = 1 * (TILE_RADIUS / 10);
         } else if (skate <= 6) {
-            speed = 2;
+            speed = 2 * (TILE_RADIUS / 10);
         } else {
-            speed = 3;
+            speed = 3 * (TILE_RADIUS / 10);
         }
-        //speed = (skate % 2 == 1) ? (skate / 2) + 1 : skate / 2;
     }
 
     public void powerBomb() {
