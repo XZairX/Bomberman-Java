@@ -1,5 +1,5 @@
 # Recreate a Classic Arcade Game
-This respository holds the work produced from a practical research investigation which explores the feasibility in using programming languages, as opposed to pre-built game engine applications, to build and produce games as a game developer. This work is contained within a Java program which simply runs a basic recreation of Bomberman, a classic 2D arcade game first released in 1985. Whilst the written game engine and the main game itself are both largely unfinished, the two demonstrate the necessary functionality required to accurately test the study.
+This repository holds the work produced from a practical research investigation which explores the feasibility in using programming languages, as opposed to pre-built game engine applications, to build and produce games as a game developer. This work is contained within a Java program which simply runs a basic recreation of Bomberman, a classic 2D arcade game first released in 1985. Whilst the written game engine and the main game itself are both largely unfinished, the two demonstrate the necessary functionality required to accurately test the study.
 
 
 ## Getting Started
@@ -16,7 +16,7 @@ IntelliJ IDEA is required to be installed on a computer system in order to run t
 
 2. Select the IntelliJ IDEA option on this page to once again be redirected this time to the main [IntelliJ IDEA page](https://www.jetbrains.com/idea).
 
-3. Select the "DOWNLOAD" option to be further redirected to the [IntelliJ download page](https://www.jetbrains.com/idea/download/#section=windows). Here, two versions are listed: Ultimate and Community. A list of features is present on this page which highlight the differences between the two editions. Also take note that there are different versions of IntelliJ to provide a range of compatibility for different operating systems. The link provided is for downloading IntelliJ on a Windows operating system and this will need to be changed by manually navigating the IntelliJ IDEA page if using a different operating system. For the purpose of viewing the project, you should select the Community version which can be freely acquired without any hassle.
+3. Select the "DOWNLOAD" option to be further redirected to the [IntelliJ download page](https://www.jetbrains.com/idea/download/#section=windows). Here, two versions are listed: Ultimate and Community. A list of features is present on this page which highlight the differences between the two editions. Also take note that there are different versions of IntelliJ to provide a range of compatibility for different operating systems. The link provided is for downloading IntelliJ on a Windows operating system and this will need to be changed by manually navigating the IntelliJ IDEA page if using a different operating system. For the purposes of viewing the project, you should select the Community version which can be freely acquired without any hassle.
 
 4. Download and save the binary .exe file, run it, and follow the instructions given to install the application.
 
@@ -26,7 +26,7 @@ The Java Standard Edition Development Kit (JDK) is a collection of tools which p
 
 
 #### Setting up the JDK
-It is highly recommended to follow the link below for understanding how to configure the JDK to work in cohension with IntelliJ and Java.\
+It is highly recommended to follow the link below for understanding how to configure the JDK to work in cohesion with IntelliJ and Java.
 https://www.jetbrains.com/help/idea/sdk.html
 
 
