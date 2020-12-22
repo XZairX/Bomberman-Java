@@ -22,10 +22,10 @@ The basic objective of the game is to blow up the other players and survive to w
 The controls of the game are defined in `GameKeys.java` and can be edited to better suit your preferences. The size of the game arena can also be customised by editing `TILE_RADIUS` constant within `Constants.java`. Debug components (such as bombs displaying a countdown timer and having a HUD during gameplay) are development mode components that are solely used for the purposes of manual testing and do not represent the core Bomberman experience. As the game is unfinished, these have been deliberately left in to add depth to the approaches in which this product can be enjoyed.
 
 ### Versioning Notes
-This project was initially hosted on a university GitLab server whose project management was handled using a university Jira Board. The original GitLab repository was ported over to GitHub with the intent to allow for the public to access the project following its final submission. The aforemention university platforms can no longer be accessed by myself as I am no longer a student at the University of Essex having now graduated. This GitHub README.md file has since been revisited and refined to cater to a more generalised format as opposed to the specified format that was required as part of the original university assignment.
+This project was initially hosted on a university GitLab server whose project management was handled using a university Jira Board. The original GitLab repository was ported over to GitHub with the intent to allow for the public to access the project following its final submission. The aforementioned university platforms can no longer be accessed by myself as I am no longer a student at the University of Essex having now graduated. This GitHub README.md file has since been revisited and refined to cater to a more generalised format as opposed to the specified format that was required as part of the original university assignment.
 
 ## Authors
-* Riaz Philippe - University of Essex BSc Computer Games Graduate
+* Riaz Philippe - BSc Computer Games Graduate
 
 ## References
 * [two10degrees News Article](https://www.two10degrees.com/news/archives/08-2020)
