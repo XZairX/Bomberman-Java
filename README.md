@@ -22,21 +22,12 @@ The basic objective of the game is to blow up the other players and survive to w
 ### Customisation
 The controls of the game are defined in the `GameKeys.java` and can be edited to better suit your preferences. Debug commands are developer actions that are used for the purposes of manual testing and do not represent the core Bomberman experience. As the game is unfinished, these have been deliberately left in to add depth to the approaches in which this product can be enjoyed. The size of the game arena can also be customised by editing `TILE_RADIUS` constant within `Constants.java`.
 
-### Versioning Strategy
-There is no specific versioning strategy that was used for this project. Project management is solely handled by Jira where tasks are uploaded and reviewed on a weekly basis. The development time pertaining to a task is committed, pushed, and annotated to GitLab as progress is made until the task satisfies its completion requirements as determined by its given description. Completed tasks are marked as done in Jira with a relevant comment provided to give detail on the work done and this process repeats for every task that is created.
+### Versioning Notes
+This project was initially hosted on an academic GitLab server whose project management was handled using an academic Jira Board. The original GitLab repository was ported over to GitHub with the intent to allow for the public to access the project following its final submission. The aforemention academic platforms can no longer be accessed by myself as I am no longer a student at the University of Essex having now graduated. This GitHub README.md file has since been revisited and refined to cater more to a generalised format as opposed to the format that was required as part of the assignment.
 
 ## Authors
 * Riaz Philippe - University of Essex BSc Computer Games Graduate
-Notes(originally stored in GitLab/Jira. No longer existing. Mirror of original repo. Refine)
 
 ## References
 * [two10degrees News Article](https://www.two10degrees.com/news/archives/08-2020)
-* [Markdown Template](https://cseegit.essex.ac.uk/snippets/8)
-* [JetBrains Website](https://www.jetbrains.com)
-* [IntelliJ-based IDEs](https://www.jetbrains.com/products.html#type=ide)
-* [IntelliJ Download (Windows)](https://www.jetbrains.com/idea/download/#section=windows)
-* [IntelliJ SDK Help](https://www.jetbrains.com/help/idea/sdk.html)
-* [Oracle JDK Download](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* [GitLab Project Repository](https://cseegit.essex.ac.uk/ce301_2019/ce301_philippe_r)
-* [Jira Project Repository](https://cseejira.essex.ac.uk/secure/Dashboard.jspa)
-
+* [Originally Required Markdown Template](https://cseegit.essex.ac.uk/snippets/8)
