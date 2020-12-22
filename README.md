@@ -4,7 +4,7 @@ This project explores the feasibility in using programming languages, as opposed
 
 
 ## Introduction
-This repository holds the work produced from a practical research investigation which explores the feasibility in using programming languages, as opposed to pre-built game engine applications, to build and produce games as a game developer. This work is contained within a Java program which simply runs a basic recreation of Bomberman, a classic 2D arcade game first released in 1985. Whilst the written game engine and the main game itself are both largely unfinished, the two demonstrate the necessary functionality required to accurately test the study.
+This repository holds the work produced from a practical research investigation which is detailed in the abstract above. It is worth mentioning that this project was developed using IntelliJ IDEA Version 2016 with the Java Standard Edition Development Kit (JDK) 8. Other Java IDEs or platforms may be used in its place to run the program, but it is currently unknown if any compatibility issues would arise from doing so. The contained Bomberman program is largely unfinished in both its game engine and the game itself, yet the two demonstrate the necessary functionality to accurately test the above hypothesis.
 
 
 ## Academic Prize
