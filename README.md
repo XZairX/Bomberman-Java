@@ -1,17 +1,18 @@
 # Recreate a Classic Arcade Game
-## Introduction
-This repository holds the work produced from a practical research investigation which explores the feasibility in using programming languages, as opposed to pre-built game engine applications, to build and produce games as a game developer. This work is contained within a Java program which simply runs a basic recreation of Bomberman, a classic 2D arcade game first released in 1985. Whilst the written game engine and the main game itself are both largely unfinished, the two demonstrate the necessary functionality required to accurately test the study.
-
-This project was awarded with the two10degrees academic prize for producing the highest mark out of all the Computer Science and Electronic Engineering Final Year Projects at the University of Essex. Additional details can be found in this [two10degrees archived news article](https://www.two10degrees.com/news/archives/08-2020) which was published following the distribution of the prize.
-
-
 ## Abstract
 This project explores the feasibility in using programming languages, as opposed to pre-built game engine applications, to build games as a game developer. This hypothesis has been tested in a Java environment by attempting to recreate Bomberman, a classic 2D arcade game first released in Japan, 1985. This approach requires the components of the game engine to be hard-coded from scratch in order to allow for a functional game to run on top of it. Examples of these components include: using threads to imitate concurrency within a single-threaded environment, describing and handling physics for the purposes of managing collisions between custom objects, and designing the GameObject framework to provide an adaptable grouping of common object behaviours which conform to object-oriented programming design principles.
 
 
+## Introduction
+This repository holds the work produced from a practical research investigation which explores the feasibility in using programming languages, as opposed to pre-built game engine applications, to build and produce games as a game developer. This work is contained within a Java program which simply runs a basic recreation of Bomberman, a classic 2D arcade game first released in 1985. Whilst the written game engine and the main game itself are both largely unfinished, the two demonstrate the necessary functionality required to accurately test the study.
+
+
+## Academic Prize
+This project was awarded with the two10degrees academic prize for achieving the highest mark out of all the Computer Science and Electronic Engineering (CSEE) Final Year Projects at the University of Essex. Additional details can be found in this [two10degrees archived news article](https://www.two10degrees.com/news/archives/08-2020) which was published following the distribution of the prize.
+
+
 ## Getting Started
 IntelliJ IDEA is required to be installed on a computer system in order to run the project. This application is a Java integrated development environment (IDE) that allows for the development of computer software. More importantly, it is the interface that is used to the view and manipulate the Java program that this project is contained within. IntelliJ is provided by JetBrains, a certified company who specialise in distributing developer tools for professionals and teams. The application is distributed as open-source software which can be freely downloaded from JetBrains' official website without concern for malicious malware.
-
 
 ### Prerequisites
 * IntelliJ IDEA Version 2016 (or later)
