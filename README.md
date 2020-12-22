@@ -1,14 +1,14 @@
 # Recreate a Classic Arcade Game
-## Abstract
+## *Abstract*
 This project explores the feasibility in using programming languages, as opposed to pre-built game engine applications, to build games as a game developer. This hypothesis has been tested in a Java environment by attempting to recreate Bomberman, a classic 2D arcade game first released in Japan, 1985. This approach requires the components of the game engine to be hard-coded from scratch in order to allow for a functional game to run on top of it. Examples of these components include: using threads to imitate concurrency within a single-threaded environment, describing and handling physics for the purposes of managing collisions between custom objects, and designing the GameObject framework to provide an adaptable grouping of common object behaviours which conform to object-oriented programming design principles.
-
-## Introduction
-This repository holds the work produced from a practical research investigation which is detailed in the abstract above. It is worth mentioning that this project was developed using IntelliJ IDEA Version 2016 with the Java Standard Edition Development Kit (JDK) 8. Other Java IDEs may be used in its place to run the program, but it is currently unknown if any compatibility issues would arise from doing so. The contained Bomberman program is largely unfinished in both its game engine and the game itself, yet the two demonstrate the necessary functionality to accurately test the above hypothesis.
 
 ## Academic Prize
 This project was awarded with the two10degrees academic prize for achieving the highest mark out of all the Computer Science and Electronic Engineering (CSEE) Final Year Projects at the University of Essex. Additional details can be found in this [two10degrees archived news article](https://www.two10degrees.com/news/archives/08-2020) which was published following the distribution of the prize.
 
 ## Getting Started
+This project was developed usingusing IntelliJ IDEA Version 2016 with the Java Standard Edition Development Kit (JDK) 8. Other Java IDEs and JDKs may be used in their place to run the application, but it is currently unknown if any compatibility issues would arise from doing so. The contained Bomberman program is largely unfinished in both its game engine and the game itself, yet the two demonstrate the necessary functionality to accurately test the above hypothesis which is detailed in the above Abstract section.
+
+
 ### Prerequisites
 - Java IDE (IntelliJ IDEA Version 2016 (or later) recommended)
 - Java Standard Edition Development Kit (JDK) 8 (or later)
