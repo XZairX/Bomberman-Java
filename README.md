@@ -13,7 +13,10 @@ This project was developed using IntelliJ IDEA Version 2016 (an Integrated Devel
 - Java Standard Edition Development Kit (JDK) 8 (or later)
 
 ### Running the program
-After cloning the repository and opening it with a compatible IDE, simply run `GameMain.java` to run the application and start the game.
+1. Clone this repository
+2. Open the cloned repository project with a compatible Java IDE
+3. Run `GameMain.java` to run the `main` method of the program
+4. The application will run and a new window will pop up where you can interact with game
 
 ### Game Overview
 The basic objective of the game is to blow up the other players and survive to win as the last player standing. Players start in one of the four corners of the arena and will be required to drop bombs in order to blow up the many soft blocks which surround them. Blowing up these blocks will form a traversable path to your opponents and may sometimes reveal power-ups which can be picked up to strengthen your capabilities.
