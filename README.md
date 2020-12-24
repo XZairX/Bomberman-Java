@@ -15,7 +15,7 @@ This project was developed using IntelliJ IDEA Version 2016 (an Integrated Devel
 ### Running the program
 1. Clone this repository
 2. Open the cloned repository project with a compatible Java IDE
-3. Run `GameMain.java` to run the `main` method of the program
+3. Run `GameMain.java` to run the `main()` method of the program
 4. The application will run and a new window will pop up where you can interact with game
 
 ### Game Overview
